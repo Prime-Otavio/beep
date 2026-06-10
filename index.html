@@ -340,9 +340,46 @@ table.hist tr:hover td{background:rgba(255,255,255,0.015);}
   .hdr-pa{display:none;}
 }
 @media(max-width:480px){.grid4{grid-template-columns:1fr 1fr;}.fcg{grid-template-columns:1fr 1fr;}}
+
+/* ── AUTH ── */
+#auth{position:fixed;inset:0;z-index:9999;background:#0B0F17;display:flex;align-items:center;justify-content:center;padding:20px}
+.auth-card{width:100%;max-width:380px;background:#111827;border:1px solid #1F2937;border-radius:16px;padding:32px 28px}
+.auth-logo{font-size:22px;font-weight:800;text-align:center;margin-bottom:4px}
+.auth-sub{font-size:13px;color:#9CA3AF;text-align:center;margin-bottom:22px}
+.auth-tabs{display:flex;gap:6px;background:#0B0F17;border-radius:10px;padding:4px;margin-bottom:18px}
+.auth-tab{flex:1;text-align:center;padding:8px;border-radius:8px;font-size:13px;font-weight:600;color:#9CA3AF;cursor:pointer}
+.auth-tab.on{background:#1F2937;color:#fff}
+.auth-card label{display:block;font-size:12px;color:#9CA3AF;margin:12px 0 5px;font-weight:600}
+.auth-card input{width:100%;background:#0B0F17;border:1px solid #1F2937;border-radius:10px;padding:11px 13px;color:#fff;font-size:14px;outline:none;box-sizing:border-box}
+.auth-card input:focus{border-color:#22C55E}
+.auth-btn{width:100%;margin-top:18px;background:#22C55E;color:#06220f;border:none;border-radius:10px;padding:12px;font-size:14px;font-weight:700;cursor:pointer}
+.auth-btn:disabled{opacity:.6;cursor:wait}
+.auth-msg{font-size:12.5px;margin-top:12px;text-align:center;min-height:16px}
+.auth-msg.err{color:#EF4444}.auth-msg.ok{color:#22C55E}
+.auth-forgot{display:block;text-align:center;font-size:12px;color:#9CA3AF;margin-top:14px;cursor:pointer;text-decoration:underline}
+#app-wrap-hidden{visibility:hidden}
+.nav-user{font-size:11px;color:#9CA3AF;padding:10px 14px 2px;word-break:break-all}
+
 </style>
 </head>
 <body>
+
+<div id="auth">
+  <div class="auth-card">
+    <div class="auth-logo">⚡ Beep Elite</div>
+    <div class="auth-sub">Plataforma de treino e desempenho</div>
+    <div class="auth-tabs">
+      <div class="auth-tab on" id="tab-in" onclick="authTab('in')">Entrar</div>
+      <div class="auth-tab" id="tab-up" onclick="authTab('up')">Criar conta</div>
+    </div>
+    <div id="fld-nome" style="display:none"><label>Nome</label><input id="a-nome" type="text" placeholder="Seu nome" autocomplete="name"></div>
+    <label>Email</label><input id="a-email" type="email" placeholder="voce@email.com" autocomplete="email">
+    <label>Senha</label><input id="a-pass" type="password" placeholder="mínimo 6 caracteres" autocomplete="current-password" onkeydown="if(event.key==='Enter')authGo()">
+    <button class="auth-btn" id="a-btn" onclick="authGo()">Entrar</button>
+    <div class="auth-msg" id="a-msg"></div>
+    <span class="auth-forgot" onclick="authForgot()">Esqueci a senha</span>
+  </div>
+</div>
 
 <header id="hdr">
   <button id="menub" onclick="toggleMenu()">☰</button>
@@ -383,6 +420,10 @@ table.hist tr:hover td{background:rgba(255,255,255,0.015);}
     <a class="nav-i" onclick="go('flashcards',this)"><span class="nav-ic">🃏</span> Flashcards</a>
     <a class="nav-i" onclick="go('simulador',this)"><span class="nav-ic">🎮</span> Simulador de PA</a>
     <a class="nav-i" onclick="go('telas',this)"><span class="nav-ic">💰</span> Custos de tela</a>
+  </div>
+  <div class="nav-grp">
+    <div class="nav-user" id="nav-user"></div>
+    <a class="nav-i" onclick="sbLogout()"><span class="nav-ic">🚪</span> Sair</a>
   </div>
 </nav>
 
@@ -734,16 +775,126 @@ table.hist tr:hover td{background:rgba(255,255,255,0.015);}
 </main>
 <div id="toast"></div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <script>
-// Storage shim: usa localStorage quando fora do Claude
-if(!window.storage){
-  window.storage={
-    async get(k){const v=localStorage.getItem(k);if(v===null)throw new Error('key not found');return{key:k,value:v,shared:false};},
-    async set(k,v){localStorage.setItem(k,v);return{key:k,value:v,shared:false};},
-    async delete(k){localStorage.removeItem(k);return{key:k,deleted:true,shared:false};},
-    async list(p){const keys=Object.keys(localStorage).filter(k=>!p||k.startsWith(p));return{keys,prefix:p,shared:false};}
-  };
+// ════════ SUPABASE AUTH + STORAGE ════════
+const SB_URL='https://kdazwnvhpirofmaysfzs.supabase.co';
+const SB_KEY='sb_publishable_837wCTfqK7qo-3CFlng6fw_mfmKbXPw';
+const sb=window.supabase.createClient(SB_URL,SB_KEY);
+let UID=null;
+
+let authMode='in';
+function authTab(m){
+  authMode=m;
+  document.getElementById('tab-in').classList.toggle('on',m==='in');
+  document.getElementById('tab-up').classList.toggle('on',m==='up');
+  document.getElementById('fld-nome').style.display=m==='up'?'block':'none';
+  document.getElementById('a-btn').textContent=m==='in'?'Entrar':'Criar conta';
+  authMsg('');
 }
+function authMsg(t,err){const e=document.getElementById('a-msg');e.textContent=t;e.className='auth-msg '+(err?'err':'ok');}
+
+async function authGo(){
+  const email=document.getElementById('a-email').value.trim();
+  const pass=document.getElementById('a-pass').value;
+  const nome=document.getElementById('a-nome').value.trim();
+  if(!email||!pass){authMsg('Preenche email e senha.',1);return;}
+  if(authMode==='up'&&!nome){authMsg('Preenche seu nome.',1);return;}
+  if(pass.length<6){authMsg('Senha precisa de 6+ caracteres.',1);return;}
+  const btn=document.getElementById('a-btn');btn.disabled=true;
+  try{
+    if(authMode==='up'){
+      const{data,error}=await sb.auth.signUp({email,password:pass,options:{data:{nome}}});
+      if(error)throw error;
+      if(!data.session){authMsg('Conta criada! Confirma no link que mandei pro seu email e depois entra aqui.',0);btn.disabled=false;return;}
+      enterApp(data.session);
+    }else{
+      const{data,error}=await sb.auth.signInWithPassword({email,password:pass});
+      if(error)throw error;
+      enterApp(data.session);
+    }
+  }catch(e){
+    const m=(e.message||'').toLowerCase();
+    if(m.includes('invalid login'))authMsg('Email ou senha errados.',1);
+    else if(m.includes('already registered'))authMsg('Esse email já tem conta — usa o Entrar.',1);
+    else if(m.includes('not confirmed'))authMsg('Confirma seu email primeiro (olha a caixa de entrada).',1);
+    else authMsg(e.message||'Erro. Tenta de novo.',1);
+    btn.disabled=false;
+  }
+}
+
+async function authForgot(){
+  const email=document.getElementById('a-email').value.trim();
+  if(!email){authMsg('Digita seu email no campo acima primeiro.',1);return;}
+  const{error}=await sb.auth.resetPasswordForEmail(email,{redirectTo:location.origin+location.pathname});
+  authMsg(error?error.message:'Link de redefinição enviado pro seu email.',!!error);
+}
+
+function enterApp(session){
+  UID=session.user.id;
+  const nome=(session.user.user_metadata&&session.user.user_metadata.nome)||'';
+  document.getElementById('nav-user').textContent=(nome?nome+' · ':'')+session.user.email;
+  document.getElementById('auth').style.display='none';
+  if(window.__appInit){window.__appInit();window.__appInit=null;}
+}
+async function sbLogout(){await sb.auth.signOut();location.reload();}
+
+sb.auth.onAuthStateChange(async(ev,session)=>{
+  if(ev==='PASSWORD_RECOVERY'){
+    const np=prompt('Digite sua NOVA senha (6+ caracteres):');
+    if(np&&np.length>=6){await sb.auth.updateUser({password:np});alert('Senha alterada!');}
+  }
+});
+
+(async()=>{
+  const{data:{session}}=await sb.auth.getSession();
+  if(session)enterApp(session);
+  else{
+    // espera o app registrar __appInit; overlay já cobre a tela
+  }
+})();
+
+// ── window.storage agora grava no Supabase ──
+const ROW2DAY=r=>({date:r.date,atend:r.atend,prod:r.prod,fat:+r.fat,paOff:r.pa_off,paRec:r.pa_rec,vp:r.vp,vpConv:r.vp_conv,cat:r.cat||'',script:r.script||'',fala:r.fala||'',note:r.note||'',diffs:r.diffs||[]});
+const DAY2ROW=d=>({user_id:UID,date:d.date,atend:d.atend||0,prod:d.prod||0,fat:d.fat||0,pa_off:d.paOff||0,pa_rec:d.paRec||0,vp:d.vp||0,vp_conv:d.vpConv||0,cat:d.cat||'',script:d.script||'',fala:d.fala||'',note:d.note||'',diffs:d.diffs||[]});
+
+window.storage={
+  async get(k){
+    if(!UID)throw new Error('no session');
+    if(k==='beep_elite_v1'){
+      const{data,error}=await sb.from('daily_records').select('*').order('date');
+      if(error)throw error;
+      return{key:k,value:JSON.stringify((data||[]).map(ROW2DAY))};
+    }
+    if(k.startsWith('beep_rotina_')){
+      const date=k.replace('beep_rotina_','');
+      const{data,error}=await sb.from('rotina_checks').select('*').eq('date',date);
+      if(error)throw error;
+      if(!data||!data.length)throw new Error('key not found');
+      const st={};data.forEach(r=>st[r.block]=r.checked||[]);
+      return{key:k,value:JSON.stringify(st)};
+    }
+    throw new Error('key not found');
+  },
+  async set(k,v){
+    if(!UID)throw new Error('no session');
+    if(k==='beep_elite_v1'){
+      const rows=JSON.parse(v).map(DAY2ROW);
+      if(rows.length){const{error}=await sb.from('daily_records').upsert(rows,{onConflict:'user_id,date'});if(error)throw error;}
+      return{key:k,value:v};
+    }
+    if(k.startsWith('beep_rotina_')){
+      const date=k.replace('beep_rotina_','');
+      const st=JSON.parse(v);
+      const rows=Object.keys(st).map(b=>({user_id:UID,date,block:b,checked:st[b],updated_at:new Date().toISOString()}));
+      if(rows.length){const{error}=await sb.from('rotina_checks').upsert(rows,{onConflict:'user_id,date,block'});if(error)throw error;}
+      return{key:k,value:v};
+    }
+    return{key:k,value:v};
+  },
+  async delete(k){return{key:k,deleted:true};},
+  async list(p){return{keys:[],prefix:p};}
+};
 </script>
 <script>
 // ════════ DATA ════════
@@ -1578,7 +1729,8 @@ function init(){
   load();
   window.addEventListener('resize',()=>{if(days.length>=2)renderChart();});
 }
-init();
+window.__appInit=init;
+if(window.UID||(typeof UID!=='undefined'&&UID)){init();window.__appInit=null;}
 </script>
 </body>
 </html>
