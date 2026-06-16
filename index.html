@@ -198,6 +198,13 @@ h3::before{content:'';width:14px;height:2px;background:var(--accent);}
 .tr-b.on-dominado{background:var(--green-dim);border-color:rgba(34,197,94,0.4);color:var(--green);}
 .tr-b.on-treinando{background:var(--accent-dim);border-color:var(--accent-bd);color:var(--accent);}
 
+/* ATENDIMENTO MÍNIMO (catálogo) */
+.amin{background:var(--green-dim);border:1px solid rgba(34,197,94,0.25);border-radius:10px;padding:12px 14px;margin-bottom:12px;}
+.amin-t{font-size:12.5px;font-weight:700;color:var(--green);margin-bottom:3px;}
+.amin-s{font-size:11px;color:var(--text2);margin-bottom:9px;}
+.amin-chips{display:flex;flex-wrap:wrap;gap:6px;}
+.amin-c{font-size:11.5px;font-weight:600;background:var(--surface2);border:1px solid var(--border2);color:var(--text);border-radius:14px;padding:5px 11px;}
+
 /* QUIZ */
 .quiz-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px;}
 .quiz-prog{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;font-size:12px;color:var(--text2);font-weight:600;}
@@ -2131,6 +2138,26 @@ function renderLibCats(){
   cats.forEach(c=>{const b=document.createElement('button');b.className='fcb'+(c==='Todos'?' on':'');b.textContent=c==='Todos'?'Todos ('+library.length+')':c;b.onclick=()=>{libCat=c;document.querySelectorAll('#lib-cats .fcb').forEach(x=>x.classList.remove('on'));b.classList.add('on');renderLib();};document.getElementById('lib-cats').appendChild(b);});
 }
 function filterLib(){libQuery=document.getElementById('lib-search').value.trim().toLowerCase();renderLib();}
+// ATENDIMENTO MÍNIMO — campos obrigatórios por categoria (Playbook Beeper, fase P = Propor)
+const ATEND_MIN={
+  'Películas':['Material','Nível de qualidade','Durabilidade','Preço'],
+  'Capas':['Material','Nível de proteção','Preço'],
+  'Cabos':['Garantia','Turbo (suporta carga rápida?)','Nível de qualidade','Preço'],
+  'Carregadores':['Garantia','Turbo (potência)','Nível de qualidade','Preço'],
+  'Veicular':['Garantia','Turbo (potência)','Nível de qualidade','Preço'],
+  'Power Banks':['Nº de cargas no aparelho do cliente','Garantia','Nível do produto','Preço'],
+  'Fones':['Modelo (intra ou sem borracha)','Nível de qualidade','Garantia','Preço'],
+  'Caixas de som':['Potência / autonomia','Nível de qualidade','Garantia','Preço'],
+  'Suportes':['Material','Compatibilidade','Preço'],
+  'Smartwatch':['Funções principais','Nível de qualidade','Garantia','Preço'],
+};
+const ATEND_MIN_DEFAULT=['Qualidade','Garantia','Benefício pro cliente','Preço'];
+function atendMinFor(cat){return ATEND_MIN[cat]||ATEND_MIN_DEFAULT;}
+function atendMinBox(cat){
+  const campos=atendMinFor(cat);
+  return `<div class="amin"><div class="amin-t">✅ Atendimento Mínimo — ${cat}</div><div class="amin-s">Antes de fechar, o cliente TEM que ouvir:</div><div class="amin-chips">${campos.map(c=>`<span class="amin-c">${c}</span>`).join('')}</div></div>`;
+}
+
 function renderLib(){
   const list=document.getElementById('lib-list');
   let items=library.filter(p=>(libCat==='Todos'||p.cat===libCat)&&(!libQuery||p.n.toLowerCase().includes(libQuery)||p.cat.toLowerCase().includes(libQuery)));
@@ -2142,9 +2169,12 @@ function renderLib(){
     const cats=[...new Set(items.map(p=>p.cat))];
     cats.forEach(cat=>{
       html+=`<h3>${cat} <span style="color:var(--text3);font-weight:400;letter-spacing:0;text-transform:none">· ${items.filter(p=>p.cat===cat).length}</span></h3>`;
+      html+=atendMinBox(cat);
       items.filter(p=>p.cat===cat).forEach(p=>html+=libItem(p));
     });
   }else{
+    // filtrando por 1 categoria: mostra o atendimento mínimo dela no topo
+    if(libCat!=='Todos')html+=atendMinBox(libCat);
     items.forEach(p=>html+=libItem(p));
   }
   list.innerHTML=html;
@@ -2157,6 +2187,7 @@ function libItem(p){
       <div class="sc-r"><div class="sc-rl">Garantia</div><div class="sc-rv">${p.w}</div></div>
       <div class="sc-r"><div class="sc-rl">Subir para</div><div class="sc-rv" style="color:var(--yellow)">${p.nx}</div></div>
       <div class="sc-r"><div class="sc-rl">💬 Como falar</div><div class="sc-rv" style="font-style:italic">${p.s}</div></div>
+      <div class="sc-r"><div class="sc-rl">✅ Atend. Mínimo</div><div class="sc-rv" style="font-size:12px;color:var(--text2)">${atendMinFor(p.cat).join(' · ')}</div></div>
     </div></div>`;
 }
 function expandAllLib(open){document.querySelectorAll('#lib-list .sc-item').forEach(i=>i.classList.toggle('open',open));}
