@@ -205,6 +205,15 @@ h3::before{content:'';width:14px;height:2px;background:var(--accent);}
 .amin-chips{display:flex;flex-wrap:wrap;gap:6px;}
 .amin-c{font-size:11.5px;font-weight:600;background:var(--surface2);border:1px solid var(--border2);color:var(--text);border-radius:14px;padding:5px 11px;}
 
+/* BLOCO PREMIUM (o que falar) */
+.prem{margin-top:10px;background:linear-gradient(135deg,rgba(255,92,0,0.07),var(--surface2));border:1px solid var(--accent-bd);border-radius:9px;padding:12px 14px;}
+.prem-tag{font-size:11px;font-weight:700;letter-spacing:0.5px;color:var(--accent);margin-bottom:9px;}
+.prem-r{font-size:12.5px;line-height:1.5;color:var(--text);margin-bottom:7px;}
+.prem-r:last-child{margin-bottom:0;}
+.prem-r em{color:var(--white);font-style:italic;}
+.prem-l{display:inline-block;font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.4px;color:var(--text3);margin-right:6px;}
+.prem-err{color:var(--text2);}
+
 /* QUIZ */
 .quiz-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px;}
 .quiz-prog{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;font-size:12px;color:var(--text2);font-weight:600;}
@@ -488,6 +497,7 @@ table.hist tr:hover td{background:rgba(255,255,255,0.015);}
   </div>
   <div class="nav-grp">
     <div class="nav-lbl">Curso — técnica</div>
+    <a class="nav-i" onclick="go('abordagem',this)"><span class="nav-ic">🎯</span> Abordagem — puxar pra loja</a>
     <a class="nav-i" onclick="go('tipos',this)"><span class="nav-ic">👁</span> Tipos de cliente</a>
     <a class="nav-i" onclick="go('pa',this)"><span class="nav-ic">⚡</span> PA — kit embutido</a>
     <a class="nav-i" onclick="go('escada',this)"><span class="nav-ic">📈</span> Escada de produto</a>
@@ -806,6 +816,36 @@ table.hist tr:hover td{background:rgba(255,255,255,0.015);}
   </table>
 
   <div class="hbox hb-or"><div class="hb-l">Resumo de bolso</div>Calma transmite confiança → confiança transmite valor → valor fecha venda. Você não controla o "sim" do cliente; controla a respiração, o ritmo da fala, a pergunta certa e o silêncio depois dela. Cuida desses quatro e o resto é consequência.</div>
+</div>
+
+<!-- ════ ABORDAGEM — PUXAR PRA LOJA ════ -->
+<div class="pg" id="pg-abordagem">
+  <div class="pg-t">Abordagem — puxar o cliente pra loja</div>
+  <p class="pg-s">A venda começa antes do balcão. Quem domina a abordagem na porta enche a loja de gente que não ia entrar. A arma oficial da Beep pra isso é o Vale Película (VP) — e a técnica de parar quem está passando.</p>
+
+  <div class="hbox hb-or"><div class="hb-l">A verdade sobre o VP (direto da apostila)</div>O Vale Película é <strong>prospecção pura</strong>, não desconto. O objetivo é trazer pra dentro um cliente que <strong>não ia entrar</strong>. A apostila é clara: <em style="color:var(--white)">"o momento mais importante não é quando o cliente vem com o vale — é quando VOCÊ entrega o vale."</em> A entrega é a venda. Sem energia na entrega, o vale vira papel no chão.</div>
+
+  <h3>1 · A regra das formiguinhas</h3>
+  <div class="hbox hb-bl"><div class="hb-l">Entregar VP é trabalho de formiguinha</div>Ficar só alguns minutos entregando <strong>não dá resultado</strong>. A apostila manda: entregue a maior parte do dia que der, ou no mínimo <strong>todo o horário de pico</strong>. E quando o movimento na loja está fraco, é AÍ que você sai pra porta entregar — o VP enche a loja parada. Volume de entrega = volume de gente dentro.</div>
+
+  <h3>2 · Como PARAR quem está passando</h3>
+  <div class="hbox hb-gr"><div class="hb-l">A regra de ouro: modelo primeiro, vale depois</div>Não grite "GRÁTIS". O cérebro filtra panfleteiro. Pergunte o <strong>modelo do aparelho</strong> primeiro — isso para a pessoa e personaliza na hora.<br><br><em style="color:var(--white)">"Boa tarde! Te tomo 10 segundos só — qual é o seu celular? [espera] Então esse vale aqui é seu: película grátis pro seu [modelo], cortesia da loja. Vem comigo que em 5 minutos eu aplico."</em><br><br>Presente com o nome do aparelho dele é pessoal. Panfleto gritando GRÁTIS é descartável.</div>
+
+  <div class="ex ex-bad"><b>❌ Panfleteiro (filtrado na hora)</b>"Película grátis! Pega aí! Tem promoção! Película de graça!" <em>— vira ruído, a pessoa desvia. Ninguém para por um papel gritado.</em></div>
+  <div class="ex ex-good"><b>✅ Abordagem que para</b>"Qual é o seu celular? [espera a resposta] Esse vale é seu então: película grátis pro seu [modelo]." <em>— a pergunta para a pessoa, o nome do modelo personaliza, o "seu" cria posse. Ela vem.</em></div>
+
+  <h3>3 · Abordagens por situação (leia o aparelho na mão dele)</h3>
+  <div class="hbox hb-rd"><div class="hb-l">💥 Tela trincada</div>"Boa tarde! Vi que a tela já levou uma — ainda bem que segurou, né? [sorri] Esse vale te dá uma película grátis. Qual o modelo? Cinco minutinhos e ela sai daqui protegida." <em style="color:var(--text2)">— ele já sentiu a dor, é o mais fácil de trazer.</em></div>
+  <div class="hbox hb-yl"><div class="hb-l">📱 Sem capa / celular pelado</div>"Celular na mão desse jeito, sem nada... o senhor é corajoso, hein? [leve, sorrindo] Esse vale dá película grátis — ou R$20 de desconto numa capa boa. Qual é o modelo?"</div>
+  <div class="hbox hb-gr"><div class="hb-l">✨ Aparelho novo</div>"Esse aí é novinho, né? Dá pra ver pelo jeito que você segura. [sorri] Estreia ele do jeito certo: película grátis com esse vale. Qual o modelo?"</div>
+  <div class="hbox hb-bl"><div class="hb-l">⏱ Com pressa</div>"Dez segundos, prometo: esse vale dá película grátis, a loja é ali. Me fala só o modelo que eu confirmo se tenho — aí você decide se passa lá depois."</div>
+
+  <h3>4 · Trouxe pra dentro? Agora é o jogo todo</h3>
+  <div class="hbox hb-or"><div class="hb-l">⭐ O cliente do VP é uma venda inteira esperando</div>A apostila é explícita: trouxe pelo vale, <strong>aproveite TODA oportunidade</strong> — capa, fone, carregador, suporte. A película grátis é a isca que põe ele na cadeira; o lucro vem do resto. <em style="color:var(--white)">"Essa é a do vale, gratuita mesmo, já vou separar. Só te mostro uma coisa antes de aplicar: com os R$20 do mesmo vale, a cerâmica sai por R$39 — e ela não quebra junto com a tela. Aplico qual das duas?"</em> Metade sobe. E quem ficar na grátis ainda ouve o PA de câmera e capa. <span class="ins-link" onclick="go('pa')">Ver kit embutido →</span></div>
+
+  <div class="hbox hb-rd"><div class="hb-l">⚠️ O que é burlamento (NÃO faça)</div>VP é prospecção, nunca desconto disfarçado. A apostila proíbe: dar VP pra quem já está comprando na loja, usar VP pra dar desconto e lançar no sistema, mais de um VP por CPF. Isso queima você e a loja. O único caso de VP "salva-venda" é quando o cliente <strong>já está saindo</strong> e não vai comprar de jeito nenhum — aí sim, ao sair, você entrega.</div>
+
+  <div class="hbox hb-yl"><div class="hb-l">Resumo de bolso</div>Pergunta o modelo (não grite grátis) → personaliza o vale → traz pra dentro → e dentro da loja vende o resto. VP não é papel grátis, é cliente novo na sua cadeira. Quanto mais você entrega, mais cheia fica a loja.</div>
 </div>
 
 <!-- ════ TIPOS DE CLIENTE ════ -->
@@ -2153,6 +2193,39 @@ const ATEND_MIN={
 };
 const ATEND_MIN_DEFAULT=['Qualidade','Garantia','Benefício pro cliente','Preço'];
 function atendMinFor(cat){return ATEND_MIN[cat]||ATEND_MIN_DEFAULT;}
+
+// O QUE FALAR nos produtos PREMIUM — característica real (apostila Beeper) traduzida em fala de venda.
+// Chave = trecho do nome do produto. {carac: ficha técnica real, fala: como vender, erro: o erro comum}
+const FALA_PREMIUM=[
+  {match:'Fiber',carac:'Aplicada por máquina (centralização perfeita), polímero + fibra de vidro, sensação de tocar a própria tela, não quebra nem trinca, pega 100% da tela. Proteção e durabilidade são o ponto forte.',
+   fala:'"Essa é o topo. Aplicada na máquina, fica perfeita — sem bolha, sem torto. E a sensação é de tocar a tela direto, parece que não tem nada. Não quebra, não trinca, pega a tela inteira. É colocar e esquecer."',
+   erro:'Vender só pelo preço. Fiber se vende pela SENSAÇÃO — põe o dedo dele na tela aplicada e deixa sentir.'},
+  {match:'Diamond',carac:'7 camadas de proteção, extremamente sensível ao toque, resistente a risco, não quebra nem trinca, pega 100% sem borda (mantém a originalidade da tela), material hidrofóbico e oleofóbico.',
+   fala:'"Diamond é a que eu colocaria no meu. São 7 camadas, super sensível ao toque, e como não tem borda ela some na tela — fica original. Não quebra, não trinca, e ainda repele água e gordura, não fica marcando dedo. É colocar e esquecer."',
+   erro:'Esquecer de mostrar que ela "some" na tela. O cliente que liga pra visual ama o "sem borda, fica original".'},
+  {match:'Gear',carac:'Encaixe firme, câmera com borda de proteção. A queridinha da loja — equilíbrio de proteção e presença.',
+   fala:'"Essa é a queridinha da loja. Encaixe firme, não folga, e a borda cobre a câmera saltada. Pega ela na mão — sente como ela abraça o aparelho? É proteção de verdade com visual bonito, não precisa escolher um só."',
+   erro:'Não dar pra ele segurar. Gear se vende na mão — o encaixe firme convence sozinho.'},
+  {match:'Exclusive',carac:'Premium de verdade, acabamento e presença superiores. Degrau de capa de "parar de trocar".',
+   fala:'"Essa já é outro nível. Pega o acabamento... é capa de aparelho caro, daquelas que você para de trocar. Protege muito e ainda dá uma presença no aparelho que as comuns não dão."',
+   erro:'Oferecer pra quem quer só o básico. Exclusive é pra quem já valoriza o aparelho — leia o cliente primeiro.'},
+  {match:'Couro',carac:'Premium, toque diferenciado, presença elegante. Para iPhone/aparelho top, é capa de "parar de trocar".',
+   fala:'"Sente esse couro... é o toque que muda tudo. Capa de couro é elegância e proteção no mesmo produto — pra um aparelho desse nível, é a que combina. Você bota ela e não troca mais."',
+   erro:'Vender couro por proteção só. O forte dele é o TOQUE e a presença — deixa ele sentir na mão.'},
+  {match:'Nano Titanium',carac:'Proteção muito alta, acabamento premium. Sobe um degrau pra Focus/Couro pelo toque.',
+   fala:'"Protege pra caramba e tem um acabamento premium. Se você quer blindagem sem abrir mão do visual, é ela. O cliente sente na hora que pega."',
+   erro:'Não destacar o equilíbrio proteção+visual — é o que justifica o preço dela.'},
+  {match:'MagSafe',carac:'Já vem com câmera protegida e compatível com carregador magnético MagSafe.',
+   fala:'"Essa já vem com a câmera protegida e é magnética — se você usa ou pensa em usar carregador magnético, é quase obrigatória. Encaixa o carregador sozinho, sem enfiar cabo. Praticidade que vicia."',
+   erro:'Vender MagSafe pra quem não usa carregador magnético sem explicar o benefício — mostra a praticidade primeiro.'},
+  {match:'Baseus',carac:'Cabo com blindagem TPE, resistente a umidade e temperatura, carga turbo, chip inteligente que envia a carga exata pro aparelho. Qualidade próxima do original Apple, 100% compatível, 1 ano de garantia. Top de linha.',
+   fala:'"Esse é o ponto final em cabo. Blindagem por dentro, aguenta umidade e calor, e tem um chip que manda a carga certa pro seu aparelho — não esquenta, não estraga a bateria. É praticamente o original, com 1 ano de garantia. Você para de comprar cabo."',
+   erro:'Falar "é caro" na cabeça. Esse cabo se vende pela conta: quantos baratos ele já comprou no ano?'},
+  {match:'Fancy',carac:'Cabo revestido de metal flexível, resistente a umidade e temperatura, carga turbo, chip inteligente de carga, 100% compatível, 1 ano de garantia. Top de linha.',
+   fala:'"Revestido de metal, dobra à vontade e não rompe. Carga turbo com chip que protege sua bateria, 1 ano de garantia. É o cabo que encerra o assunto — você não volta aqui atrás de cabo tão cedo."',
+   erro:'Não usar a pergunta de ouro ("quantos cabos esse ano?") antes de mostrar o preço.'},
+];
+function falaPremiumFor(nome){return FALA_PREMIUM.find(x=>nome.includes(x.match));}
 function atendMinBox(cat){
   const campos=atendMinFor(cat);
   return `<div class="amin"><div class="amin-t">✅ Atendimento Mínimo — ${cat}</div><div class="amin-s">Antes de fechar, o cliente TEM que ouvir:</div><div class="amin-chips">${campos.map(c=>`<span class="amin-c">${c}</span>`).join('')}</div></div>`;
@@ -2188,7 +2261,18 @@ function libItem(p){
       <div class="sc-r"><div class="sc-rl">Subir para</div><div class="sc-rv" style="color:var(--yellow)">${p.nx}</div></div>
       <div class="sc-r"><div class="sc-rl">💬 Como falar</div><div class="sc-rv" style="font-style:italic">${p.s}</div></div>
       <div class="sc-r"><div class="sc-rl">✅ Atend. Mínimo</div><div class="sc-rv" style="font-size:12px;color:var(--text2)">${atendMinFor(p.cat).join(' · ')}</div></div>
+      ${premiumBlock(p)}
     </div></div>`;
+}
+function premiumBlock(p){
+  const f=falaPremiumFor(p.n);
+  if(!f)return '';
+  return `<div class="prem">
+    <div class="prem-tag">⭐ PREMIUM — o que falar</div>
+    <div class="prem-r"><span class="prem-l">Ficha real</span> ${f.carac}</div>
+    <div class="prem-r"><span class="prem-l">Fala de venda</span> <em>${f.fala}</em></div>
+    <div class="prem-r prem-err"><span class="prem-l">⚠️ Erro comum</span> ${f.erro}</div>
+  </div>`;
 }
 function expandAllLib(open){document.querySelectorAll('#lib-list .sc-item').forEach(i=>i.classList.toggle('open',open));}
 
