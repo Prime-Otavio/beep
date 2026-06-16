@@ -16,12 +16,18 @@
   --yellow:#EAB308; --yellow-dim:rgba(234,179,8,0.12);
   --blue:#3B82F6; --blue-dim:rgba(59,130,246,0.12);
   --purple:#A855F7;
-  --text:#E6E6E6; --text2:#8C8C92; --text3:#56565C; --white:#FFF;
+  --text:#E6E6E6; --text2:#9A9AA0; --text3:#6A6A70; --white:#FFF;
   --sb:248px; --hh:54px;
+  /* escala de espaçamento (4px) */
+  --sp-1:4px; --sp-2:8px; --sp-3:12px; --sp-4:16px; --sp-5:24px; --sp-6:32px;
+  /* raios */
+  --r-sm:6px; --r-md:10px; --r-lg:14px;
+  /* largura de leitura confortável */
+  --read:760px;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
-body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:14px;line-height:1.55;overflow-x:hidden;}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:14px;line-height:1.6;overflow-x:hidden;}
 ::-webkit-scrollbar{width:5px;height:5px;}
 ::-webkit-scrollbar-track{background:var(--surface);}
 ::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px;}
@@ -55,19 +61,42 @@ body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-
 .nav-i.on{background:var(--accent-dim);color:var(--accent);}
 .nav-ic{font-size:15px;width:20px;text-align:center;flex-shrink:0;}
 .nav-bd{margin-left:auto;background:var(--accent);color:var(--bg);font-size:8px;font-weight:800;padding:1px 5px;border-radius:8px;letter-spacing:0.3px;}
+.nav-prog{font-size:9px;font-weight:700;color:var(--green);letter-spacing:0;text-transform:none;margin-left:6px;}
+.nav-dot{margin-left:auto;width:7px;height:7px;border-radius:50%;background:transparent;flex-shrink:0;}
+.nav-dot.dominado{background:var(--green);}
+.nav-dot.treinando{background:var(--accent);}
+/* CONTINUAR DE ONDE PAREI */
+.continue{display:flex;align-items:center;gap:13px;background:linear-gradient(135deg,rgba(255,92,0,0.09),var(--surface));border:1px solid var(--accent-bd);border-radius:var(--r-md);padding:var(--sp-4);margin-bottom:var(--sp-4);cursor:pointer;transition:border-color 0.15s;}
+.continue:hover{border-color:var(--accent);}
+.continue-ic{font-size:24px;width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:var(--accent-dim);border-radius:var(--r-md);flex-shrink:0;}
+.continue-l{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.6px;color:var(--text2);}
+.continue-t{font-size:15px;font-weight:700;color:var(--white);margin-top:2px;}
+.continue-go{margin-left:auto;font-size:20px;color:var(--accent);}
+/* NAV ANTERIOR/PRÓXIMO (rodapé das aulas) */
+.lesson-nav{display:flex;gap:var(--sp-2);margin-top:var(--sp-6);padding-top:var(--sp-4);border-top:1px solid var(--border);}
+.ln-b{flex:1;display:flex;flex-direction:column;gap:2px;padding:var(--sp-3) var(--sp-4);background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);cursor:pointer;transition:border-color 0.15s;text-decoration:none;}
+.ln-b:hover{border-color:var(--accent-bd);}
+.ln-b.next{align-items:flex-end;text-align:right;}
+.ln-b.disabled{opacity:0.35;pointer-events:none;}
+.ln-l{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:var(--text3);}
+.ln-t{font-size:13px;font-weight:600;color:var(--text);}
+.lesson-test{display:block;width:100%;margin-top:var(--sp-4);padding:13px;background:var(--accent);border:none;border-radius:var(--r-md);color:var(--bg);font-weight:700;font-size:14px;cursor:pointer;font-family:inherit;text-align:center;}
+.lesson-test:hover{opacity:0.92;}
 
 /* MAIN */
 #main{margin-left:var(--sb);margin-top:var(--hh);min-height:calc(100vh - var(--hh));}
-.pg{display:none;padding:26px 30px 70px;max-width:900px;}
+.pg{display:none;padding:var(--sp-5) 30px 80px;max-width:var(--read);}
 .pg.on{display:block;animation:fade 0.25s ease;}
 @keyframes fade{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
-.pg-t{font-size:22px;font-weight:800;color:var(--white);letter-spacing:-0.5px;margin-bottom:3px;}
-.pg-s{color:var(--text2);font-size:13px;margin-bottom:24px;line-height:1.5;}
-h3{font-size:11px;font-weight:700;letter-spacing:1.1px;text-transform:uppercase;color:var(--text2);margin:26px 0 12px;display:flex;align-items:center;gap:8px;}
-h3::before{content:'';width:14px;height:2px;background:var(--accent);}
+.pg-t{font-size:24px;font-weight:800;color:var(--white);letter-spacing:-0.5px;margin-bottom:var(--sp-1);}
+.pg-s{color:var(--text2);font-size:13.5px;margin-bottom:var(--sp-5);line-height:1.55;}
+/* título de seção: agora título DE VERDADE (branco, 16px), não eyebrow apagado */
+h3{font-size:16px;font-weight:700;letter-spacing:-0.2px;color:var(--white);margin:var(--sp-6) 0 var(--sp-3);display:flex;align-items:center;gap:9px;line-height:1.3;}
+h3::before{content:'';width:4px;height:17px;border-radius:2px;background:var(--accent);flex-shrink:0;}
+h3:first-of-type{margin-top:var(--sp-4);}
 
 /* CARDS / GENERIC */
-.card{background:var(--surface);border:1px solid var(--border);border-radius:9px;padding:16px 18px;margin-bottom:10px;}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);padding:var(--sp-4);margin-bottom:var(--sp-2);}
 .card:hover{border-color:var(--border2);}
 .pill{display:inline-flex;align-items:center;font-size:10px;font-weight:700;letter-spacing:0.4px;text-transform:uppercase;padding:3px 8px;border-radius:14px;gap:4px;}
 .p-or{background:var(--accent-dim);color:var(--accent);border:1px solid var(--accent-bd);}
@@ -79,15 +108,16 @@ h3::before{content:'';width:14px;height:2px;background:var(--accent);}
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
 .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
 
-/* HBOX */
-.hbox{border-radius:9px;padding:13px 16px;margin-bottom:11px;font-size:13px;line-height:1.6;}
+/* HBOX — card de conteúdo de estudo */
+.hbox{border-radius:var(--r-md);padding:var(--sp-4);margin-bottom:var(--sp-2);font-size:14px;line-height:1.65;}
 .hb-or{background:var(--accent-dim);border-left:3px solid var(--accent);}
 .hb-gr{background:var(--green-dim);border-left:3px solid var(--green);}
 .hb-rd{background:var(--red-dim);border-left:3px solid var(--red);}
 .hb-yl{background:var(--yellow-dim);border-left:3px solid var(--yellow);}
-.hb-bl{background:var(--blue-dim);border-left:3px solid var(--blue);}
-.hb-l{font-size:10px;font-weight:700;letter-spacing:0.9px;text-transform:uppercase;margin-bottom:5px;}
-.hb-or .hb-l{color:var(--accent);} .hb-gr .hb-l{color:var(--green);} .hb-rd .hb-l{color:var(--red);} .hb-yl .hb-l{color:var(--yellow);} .hb-bl .hb-l{color:var(--blue);}
+/* azul rebaixado: info de contexto não precisa gritar cor */
+.hb-bl{background:var(--surface2);border-left:3px solid var(--border2);}
+.hb-l{font-size:10.5px;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;margin-bottom:var(--sp-2);}
+.hb-or .hb-l{color:var(--accent);} .hb-gr .hb-l{color:var(--green);} .hb-rd .hb-l{color:var(--red);} .hb-yl .hb-l{color:var(--yellow);} .hb-bl .hb-l{color:var(--text2);}
 .hbox strong{color:var(--white);}
 
 /* STAT CARDS */
@@ -340,6 +370,11 @@ table.hist tr:hover td{background:rgba(255,255,255,0.015);}
 .fc-pr{font-family:'JetBrains Mono',monospace;font-size:18px;font-weight:700;color:var(--accent);line-height:1;margin-bottom:4px;}
 .fc-wr{font-size:11px;color:var(--green);margin-bottom:4px;}
 .fc-nx{font-size:11px;color:var(--text2);} .fc-nx span{color:var(--yellow);font-weight:600;}
+.fc-srs{display:flex;gap:7px;margin-top:11px;}
+.fc-srs-b{flex:1;padding:8px;border-radius:var(--r-sm);border:1px solid var(--border2);background:var(--surface2);font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;}
+.fc-srs-b.ok{color:var(--green);border-color:rgba(34,197,94,0.4);}
+.fc-srs-b.err{color:var(--red);border-color:rgba(239,68,68,0.4);}
+.fc-srs-b:active{transform:scale(0.97);}
 
 /* SIM */
 #sim{background:var(--surface);border:1px solid var(--border);border-radius:11px;overflow:hidden;}
@@ -414,11 +449,16 @@ table.hist tr:hover td{background:rgba(255,255,255,0.015);}
   #sb.open{transform:translateX(0);}
   .ov.show{display:block;}
   #main{margin-left:0;}
-  .pg{padding:20px 16px 56px;}
+  .pg{padding:20px 16px 64px;}
   .grid2,.grid3,.grid4,.rot-grid,.fgrid{grid-template-columns:1fr;}
   .grid4{grid-template-columns:1fr 1fr;}
   .sc-r,.pa-row{grid-template-columns:1fr;}
   .hdr-pa{display:none;}
+  /* leitura mais confortável no celular */
+  body{font-size:15px;}
+  .hbox{font-size:15px;}
+  .pg-t{font-size:21px;}
+  h3{font-size:15px;margin-top:var(--sp-5);}
 }
 @media(max-width:480px){.grid4{grid-template-columns:1fr 1fr;}.fcg{grid-template-columns:1fr 1fr;}}
 
@@ -443,7 +483,7 @@ table.hist tr:hover td{background:rgba(255,255,255,0.015);}
 
 
 /* ── MENTE ── */
-.ex{border-radius:12px;padding:13px 15px;margin:8px 0;font-size:13.5px;line-height:1.55}
+.ex{border-radius:var(--r-md);padding:var(--sp-4);margin:var(--sp-2) 0;font-size:14px;line-height:1.6}
 .ex-bad{background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.35)}
 .ex-good{background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.35)}
 .ex b{display:block;font-size:11px;letter-spacing:1px;margin-bottom:4px}
@@ -488,7 +528,7 @@ table.hist tr:hover td{background:rgba(255,255,255,0.015);}
 
 <nav id="sb">
   <div class="nav-grp">
-    <div class="nav-lbl">Meu desempenho</div>
+    <div class="nav-lbl">Hoje</div>
     <a class="nav-i on" onclick="go('home',this)"><span class="nav-ic">📊</span> Dashboard</a>
     <a class="nav-i" onclick="go('registrar',this)"><span class="nav-ic">✍️</span> Registrar o dia</a>
     <a class="nav-i" onclick="go('revisar',this)"><span class="nav-ic">🎯</span> Revisar dia <span class="nav-bd" id="rev-badge" style="display:none">!</span></a>
@@ -496,26 +536,29 @@ table.hist tr:hover td{background:rgba(255,255,255,0.015);}
     <a class="nav-i" onclick="go('diario',this)"><span class="nav-ic">📅</span> Plano diário</a>
   </div>
   <div class="nav-grp">
-    <div class="nav-lbl">Curso — técnica</div>
-    <a class="nav-i" onclick="go('abordagem',this)"><span class="nav-ic">🎯</span> Abordagem — puxar pra loja</a>
-    <a class="nav-i" onclick="go('tipos',this)"><span class="nav-ic">👁</span> Tipos de cliente</a>
-    <a class="nav-i" onclick="go('pa',this)"><span class="nav-ic">⚡</span> PA — kit embutido</a>
-    <a class="nav-i" onclick="go('escada',this)"><span class="nav-ic">📈</span> Escada de produto</a>
-    <a class="nav-i" onclick="go('scripts',this)"><span class="nav-ic">💬</span> Scripts</a>
-    <a class="nav-i" onclick="go('fechamento',this)"><span class="nav-ic">🤝</span> Técnicas de fechamento</a>
-    <a class="nav-i" onclick="go('objecoes',this)"><span class="nav-ic">🛡</span> Objeções</a>
-    <a class="nav-i" onclick="go('posnao',this)"><span class="nav-ic">🌱</span> Depois do "não"</a>
-    <a class="nav-i" onclick="go('posvenda',this)"><span class="nav-ic">🔁</span> Pós-venda e recompra</a>
-    <a class="nav-i" onclick="go('vp',this)"><span class="nav-ic">🎫</span> VPs — abordagem</a>
-    <a class="nav-i" onclick="go('mente',this)"><span class="nav-ic">🧠</span> Mente do vendedor</a>
-    <a class="nav-i" onclick="go('biblioteca',this)"><span class="nav-ic">📚</span> Biblioteca de produtos <span class="nav-bd">80+</span></a>
+    <div class="nav-lbl">Aprender <span class="nav-prog" id="nav-prog"></span></div>
+    <a class="nav-i" onclick="go('mente',this)" data-aula="mente"><span class="nav-ic">🧠</span> Mente do vendedor <span class="nav-dot" data-dot="mente"></span></a>
+    <a class="nav-i" onclick="go('abordagem',this)" data-aula="abordagem"><span class="nav-ic">🎯</span> Abordagem — puxar pra loja <span class="nav-dot" data-dot="abordagem"></span></a>
+    <a class="nav-i" onclick="go('tipos',this)" data-aula="tipos"><span class="nav-ic">👁</span> Tipos de cliente <span class="nav-dot" data-dot="tipos"></span></a>
+    <a class="nav-i" onclick="go('escada',this)" data-aula="escada"><span class="nav-ic">📈</span> Escada de produto <span class="nav-dot" data-dot="escada"></span></a>
+    <a class="nav-i" onclick="go('pa',this)" data-aula="pa"><span class="nav-ic">⚡</span> PA — kit embutido <span class="nav-dot" data-dot="pa"></span></a>
+    <a class="nav-i" onclick="go('scripts',this)" data-aula="scripts"><span class="nav-ic">💬</span> Scripts <span class="nav-dot" data-dot="scripts"></span></a>
+    <a class="nav-i" onclick="go('fechamento',this)" data-aula="fechamento"><span class="nav-ic">🤝</span> Técnicas de fechamento <span class="nav-dot" data-dot="fechamento"></span></a>
+    <a class="nav-i" onclick="go('objecoes',this)" data-aula="objecoes"><span class="nav-ic">🛡</span> Objeções <span class="nav-dot" data-dot="objecoes"></span></a>
+    <a class="nav-i" onclick="go('posnao',this)" data-aula="posnao"><span class="nav-ic">🌱</span> Depois do "não" <span class="nav-dot" data-dot="posnao"></span></a>
+    <a class="nav-i" onclick="go('posvenda',this)" data-aula="posvenda"><span class="nav-ic">🔁</span> Pós-venda e recompra <span class="nav-dot" data-dot="posvenda"></span></a>
+    <a class="nav-i" onclick="go('vp',this)" data-aula="vp"><span class="nav-ic">🎫</span> VPs — abordagem <span class="nav-dot" data-dot="vp"></span></a>
   </div>
   <div class="nav-grp">
-    <div class="nav-lbl">Treino</div>
+    <div class="nav-lbl">Treinar</div>
     <a class="nav-i" onclick="go('trilha',this)"><span class="nav-ic">🎓</span> Minha trilha</a>
     <a class="nav-i" onclick="go('quiz',this)"><span class="nav-ic">📝</span> Quiz da semana</a>
     <a class="nav-i" onclick="go('flashcards',this)"><span class="nav-ic">🃏</span> Flashcards</a>
     <a class="nav-i" onclick="go('simulador',this)"><span class="nav-ic">🎮</span> Simulador de PA</a>
+  </div>
+  <div class="nav-grp">
+    <div class="nav-lbl">Consulta</div>
+    <a class="nav-i" onclick="go('biblioteca',this)"><span class="nav-ic">📚</span> Biblioteca de produtos <span class="nav-bd">80+</span></a>
     <a class="nav-i" onclick="go('telas',this)"><span class="nav-ic">💰</span> Custos de tela</a>
   </div>
   <div class="nav-grp">
@@ -530,6 +573,13 @@ table.hist tr:hover td{background:rgba(255,255,255,0.015);}
 <div class="pg on" id="pg-home">
   <div class="pg-t">Dashboard</div>
   <p class="pg-s">Sua evolução de perto. Registre todo dia para a plataforma apontar o que treinar.</p>
+
+  <!-- CONTINUAR DE ONDE PAREI -->
+  <div class="continue" id="continue-card" style="display:none">
+    <div class="continue-ic">▶</div>
+    <div><div class="continue-l">Continuar estudando</div><div class="continue-t">—</div></div>
+    <div class="continue-go">→</div>
+  </div>
 
   <!-- BANNER DE META + DEGRAUS -->
   <div class="goalbanner" id="goal-banner">
@@ -1621,15 +1671,73 @@ const fmtD=s=>{const[y,m,d]=s.split('-');return d+'/'+m;};
 const todayStr=()=>new Date().toISOString().split('T')[0];
 
 // ════════ NAV ════════
+// ordem das aulas do curso (mesma do menu "Aprender")
+const LESSONS=[
+  {id:'mente',n:'Mente do vendedor'},
+  {id:'abordagem',n:'Abordagem — puxar pra loja'},
+  {id:'tipos',n:'Tipos de cliente'},
+  {id:'escada',n:'Escada de produto'},
+  {id:'pa',n:'PA — kit embutido'},
+  {id:'scripts',n:'Scripts'},
+  {id:'fechamento',n:'Técnicas de fechamento'},
+  {id:'objecoes',n:'Objeções'},
+  {id:'posnao',n:'Depois do "não"'},
+  {id:'posvenda',n:'Pós-venda e recompra'},
+  {id:'vp',n:'VPs — abordagem'},
+];
+const LESSON_IDS=LESSONS.map(l=>l.id);
+let lastLesson=null;
+
 function go(id,el){
   document.querySelectorAll('.pg').forEach(p=>p.classList.remove('on'));
   document.querySelectorAll('.nav-i').forEach(n=>n.classList.remove('on'));
   document.getElementById('pg-'+id).classList.add('on');
   if(el)el.classList.add('on');
   else{document.querySelectorAll('.nav-i').forEach(n=>{if(n.getAttribute('onclick')&&n.getAttribute('onclick').includes("'"+id+"'"))n.classList.add('on');});}
+  // se for uma aula do curso: lembra e injeta a barra prox/anterior + testar
+  if(LESSON_IDS.includes(id)){
+    lastLesson=id; saveLast(id); injectLessonNav(id);
+  }
+  if(id==='home')renderContinue();
   if(window.innerWidth<=820)closeMenu();
   window.scrollTo(0,0);
 }
+
+// injeta no fim da página da aula: testar este conteúdo + anterior/próximo
+function injectLessonNav(id){
+  const pg=document.getElementById('pg-'+id);
+  if(!pg)return;
+  pg.querySelectorAll('.lesson-nav,.lesson-test').forEach(e=>e.remove());
+  const i=LESSON_IDS.indexOf(id);
+  const prevL=i>0?LESSONS[i-1]:null, nextL=i<LESSONS.length-1?LESSONS[i+1]:null;
+  // botão testar (só se houver quiz pro tema)
+  if(typeof quizThemeCount==='function' && quizThemeCount(id)>0){
+    const btn=document.createElement('button');
+    btn.className='lesson-test';
+    btn.textContent='📝 Testar este conteúdo';
+    btn.onclick=()=>{go('quiz');startQuiz(id);};
+    pg.appendChild(btn);
+  }
+  const bar=document.createElement('div');
+  bar.className='lesson-nav';
+  bar.innerHTML=`
+    <a class="ln-b ${prevL?'':'disabled'}" ${prevL?`onclick="go('${prevL.id}')"`:''}><span class="ln-l">‹ Anterior</span><span class="ln-t">${prevL?prevL.n:'—'}</span></a>
+    <a class="ln-b next ${nextL?'':'disabled'}" ${nextL?`onclick="go('${nextL.id}')"`:''}><span class="ln-l">Próximo ›</span><span class="ln-t">${nextL?nextL.n:'Fim do curso 🎉'}</span></a>`;
+  pg.appendChild(bar);
+}
+
+async function saveLast(id){try{await window.storage.set('beep_last_lesson',id);}catch(e){}}
+async function loadLast(){try{const r=await window.storage.get('beep_last_lesson');lastLesson=r&&r.value?r.value:null;}catch(e){lastLesson=null;}renderContinue();}
+function renderContinue(){
+  const box=document.getElementById('continue-card');if(!box)return;
+  if(!lastLesson){box.style.display='none';return;}
+  const l=LESSONS.find(x=>x.id===lastLesson);if(!l){box.style.display='none';return;}
+  box.style.display='flex';
+  box.querySelector('.continue-t').textContent=l.n;
+  box.onclick=()=>go(l.id);
+}
+function toggleMenu(){document.getElementById('sb').classList.toggle('open');document.getElementById('ov').classList.toggle('show');}
+function closeMenu(){document.getElementById('sb').classList.remove('open');document.getElementById('ov').classList.remove('show');}
 function toggleMenu(){document.getElementById('sb').classList.toggle('open');document.getElementById('ov').classList.toggle('show');}
 function closeMenu(){document.getElementById('sb').classList.remove('open');document.getElementById('ov').classList.remove('show');}
 
@@ -2015,17 +2123,50 @@ function renderLadders(){
     document.getElementById('lad-'+key).innerHTML=ladders[key].map(s=>`<div class="lad-s"><div class="lad-d ${s.cls}">${s.num}</div><div class="lad-c"><div class="lad-n">${s.n}</div><div class="lad-p">${s.p}</div><div class="lad-a">${s.a}</div>${s.s?`<div class="lad-sc">${s.s}</div>`:''}</div></div>`).join('');
   });
 }
+// ── REPETIÇÃO ESPAÇADA (Leitner simplificado) ──
+// fcSrs[nome] = {box:1..5, prox:'YYYY-MM-DD'}. Intervalos por caixa (dias):
+const SRS_DIAS=[0,1,3,7,16];
+let fcSrs={};
+async function loadSrs(){try{const r=await window.storage.get('beep_fc_srs_v1');fcSrs=r&&r.value?JSON.parse(r.value):{};}catch(e){fcSrs={};}}
+async function saveSrs(){try{await window.storage.set('beep_fc_srs_v1',JSON.stringify(fcSrs));}catch(e){}}
+function srsDue(nome){const s=fcSrs[nome];if(!s)return true;return s.prox<=todayStr();}
+function srsHit(nome,acertou){
+  let s=fcSrs[nome]||{box:1};
+  if(acertou)s.box=Math.min(5,(s.box||1)+1);
+  else s.box=1;
+  const d=new Date();d.setDate(d.getDate()+SRS_DIAS[s.box-1]);
+  s.prox=d.toISOString().split('T')[0];
+  fcSrs[nome]=s;saveSrs();
+  if(fcFilter==='Revisar hoje')renderFc('Revisar hoje');
+  updateFcDue();
+}
+function updateFcDue(){
+  const due=flashcards.filter(c=>srsDue(c.n)).length;
+  const b=document.getElementById('fc-due-count');
+  if(b)b.textContent=due;
+}
+
 let fcFilter='Todos';
 function renderFc(filter){
+  fcFilter=filter;
   const grid=document.getElementById('fcg');grid.innerHTML='';
-  const f=filter==='Todos'?flashcards:flashcards.filter(x=>x.cat===filter||x.cat.startsWith(filter));
-  f.forEach(c=>{const el=document.createElement('div');el.className='fc';el.innerHTML=`<div class="fc-f"><div><div class="fc-n">${c.n}</div><div class="fc-cat">${c.cat}</div></div><div class="fc-tap">Toque pra revelar</div></div><div class="fc-bk"><div><div class="fc-pr">${c.p}</div><div class="fc-wr">✓ ${c.w}</div><div class="fc-nx">Subir: <span>${c.nx}</span></div></div><div class="fc-tap">Toque pra fechar</div></div>`;el.onclick=()=>el.classList.toggle('flip');grid.appendChild(el);});
+  let f;
+  if(filter==='Revisar hoje')f=flashcards.filter(c=>srsDue(c.n));
+  else if(filter==='Todos')f=flashcards;
+  else f=flashcards.filter(x=>x.cat===filter||x.cat.startsWith(filter));
+  if(!f.length){grid.innerHTML='<div class="ins good" style="grid-column:1/-1"><span class="ins-ic">🎉</span><span>Nada pra revisar hoje! Você está em dia. Volte amanhã ou estude por categoria.</span></div>';return;}
+  f.forEach(c=>{
+    const s=fcSrs[c.n];const lvl=s?` · nível ${s.box}/5`:'';
+    const el=document.createElement('div');el.className='fc';
+    el.innerHTML=`<div class="fc-f"><div><div class="fc-n">${c.n}</div><div class="fc-cat">${c.cat}${lvl}</div></div><div class="fc-tap">Toque pra revelar</div></div><div class="fc-bk"><div><div class="fc-pr">${c.p}</div><div class="fc-wr">✓ ${c.w}</div><div class="fc-nx">Subir: <span>${c.nx}</span></div><div class="fc-srs"><button class="fc-srs-b err" onclick="event.stopPropagation();srsHit('${c.n.replace(/'/g,"\\'")}',false)">Errei ↺</button><button class="fc-srs-b ok" onclick="event.stopPropagation();srsHit('${c.n.replace(/'/g,"\\'")}',true)">Acertei ✓</button></div></div></div>`;
+    el.onclick=()=>el.classList.toggle('flip');grid.appendChild(el);
+  });
 }
 function renderFcFilters(){
-  const cats=['Todos',...new Set(flashcards.map(f=>f.cat))];
+  const cats=['Revisar hoje','Todos',...new Set(flashcards.map(f=>f.cat))];
   document.getElementById('fcf').innerHTML='';
-  cats.forEach(c=>{const b=document.createElement('button');b.className='fcb'+(c==='Todos'?' on':'');b.textContent=c;b.onclick=()=>{document.querySelectorAll('.fcb').forEach(x=>x.classList.remove('on'));b.classList.add('on');renderFc(c);};document.getElementById('fcf').appendChild(b);});
-  renderFc('Todos');
+  cats.forEach(c=>{const b=document.createElement('button');b.className='fcb'+(c==='Todos'?' on':'');if(c==='Revisar hoje')b.innerHTML=`🔁 Revisar hoje (<span id="fc-due-count">0</span>)`;else b.textContent=c;b.onclick=()=>{document.querySelectorAll('.fcb').forEach(x=>x.classList.remove('on'));b.classList.add('on');renderFc(c);};document.getElementById('fcf').appendChild(b);});
+  renderFc('Todos');updateFcDue();
 }
 
 // ════════ TRILHA DE ESTUDO (progresso) ════════
@@ -2083,68 +2224,91 @@ function renderTrilha(){
     }).join('');
     return `<div class="tr-grp"><div class="tr-grp-t">${g.grp}</div>${items}</div>`;
   }).join('');
+  paintNavDots();
+}
+// pinta os pontinhos de progresso no menu "Aprender" + contador
+function paintNavDots(){
+  let dom=0;
+  LESSON_IDS.forEach(id=>{
+    const st=trProgress[id]||'';
+    const dot=document.querySelector(`[data-dot="${id}"]`);
+    if(dot){dot.className='nav-dot'+(st?' '+st:'');}
+    if(st==='dominado')dom++;
+  });
+  const prog=document.getElementById('nav-prog');
+  if(prog)prog.textContent=dom>0?`${dom}/${LESSON_IDS.length}`:'';
 }
 
 // ════════ QUIZ DA SEMANA ════════
 const quizQuestions=[
-  {scn:'Cliente apressado, olhando o relógio: "Só quero uma película pro meu celular, rápido."',says:'Você tem 30 segundos de atenção.',
+  {tema:'tipos',scn:'Cliente apressado, olhando o relógio: "Só quero uma película pro meu celular, rápido."',says:'Você tem 30 segundos de atenção.',
    opts:[{t:'"Deixa eu te mostrar as 5 opções que temos, cada uma com um benefício diferente..."',ok:false},
          {t:'"Pro seu aparelho é essa. Aplico agora e já protejo a câmera junto, 30 segundos a mais. Fecho?"',ok:true},
          {t:'"Você quer a mais barata ou a mais cara?"',ok:false}],
    fok:'Certo. Você leu a pressa: decisão pronta, um PA embutido, sem escada longa. Apressado adora quem decide por ele.',
    fno:'Pra apressado, excesso de opção = "depois eu volto". A certa entrega a decisão pronta e embute o PA em segundos.'},
-  {scn:'Cliente pergunta o preço da película antes de qualquer outra coisa.',says:'"Quanto é a película?"',
+  {tema:'objecoes',scn:'Cliente pergunta o preço da película antes de qualquer outra coisa.',says:'"Quanto é a película?"',
    opts:[{t:'"É R$59 a cerâmica."',ok:false},
          {t:'"Você sabe quanto custa trocar a tela do seu modelo? Uns R$900. Essa cerâmica é R$59 e não quebra junto com a tela — é seguro contra prejuízo."',ok:true},
          {t:'"Depende, temos de R$19 a R$129."',ok:false}],
    fok:'Exato. Âncora ANTES do preço: o custo da tela vira a régua e R$59 fica barato perto de R$900.',
    fno:'Falar preço seco pro comparador = ele compara com a internet e vai embora. Ancoragem primeiro, preço depois.'},
-  {scn:'Cliente aceitou a Cerâmica. Câmera exposta e no ar.',says:'"Tá bom, só a película mesmo."',
+  {tema:'pa',scn:'Cliente aceitou a Cerâmica. Câmera exposta e no ar.',says:'"Tá bom, só a película mesmo."',
    opts:[{t:'"Certo! Mais alguma coisa?"',ok:false},
          {t:'"Aproveita que ele tá na minha mão — olha a câmera, saltada e no ar. R$29 e protejo ela também. Já coloco?"',ok:true},
          {t:'"Você não quer proteger a câmera também?"',ok:false}],
    fok:'Perfeito. PA embutido: aproveita o aparelho na mão, aponta algo visível, fecha com pergunta direta. Parece cuidado.',
    fno:'"Quer também?" é recusável. "Mais alguma coisa?" encerra a venda. A certa embute o PA como conveniência do momento.'},
-  {scn:'Você ofereceu a câmera junto. O cliente recusou de novo, firme.',says:'"Não, só a película mesmo, obrigado."',
+  {tema:'posnao',scn:'Você ofereceu a câmera junto. O cliente recusou de novo, firme.',says:'"Não, só a película mesmo, obrigado."',
    opts:[{t:'"Tem certeza? A câmera fica bem exposta..."',ok:false},
          {t:'"Tranquilo! Foi um prazer. Qualquer coisa chama por mim que eu resolvo rapidinho. [sorriso real]"',ok:true},
          {t:'"Ah, tá bom então. [vira pro próximo]"',ok:false}],
    fok:'Certo. Sem decepção, porta encostada. Ele sai bem e volta quando o momento for melhor. O "não" virou lead.',
    fno:'Insistir após o "não" firme queima a relação. Demonstrar decepção faz ele não voltar. A certa planta a volta.'},
-  {scn:'Fechou a venda. Hora de entregar o aparelho com a película aplicada.',says:'Momento da entrega.',
+  {tema:'posvenda',scn:'Fechou a venda. Hora de entregar o aparelho com a película aplicada.',says:'Momento da entrega.',
    opts:[{t:'"Pronto, tá aí. Próximo!"',ok:false},
          {t:'"Ficou ótima! Deixa eu anotar seu contato — te aviso das novidades do seu modelo e qualquer bolha você volta que eu reaplico."',ok:true},
          {t:'"Obrigado, volte sempre."',ok:false}],
    fok:'Exato. A entrega virou relacionamento: cadastro + porta da recompra aberta. A venda de hoje virou as próximas cinco.',
    fno:'Entregar e virar as costas joga fora o cliente. A certa cadastra e reforça o benefício — é o "R" de Relacionar.'},
-  {scn:'Cliente indeciso, pega e larga duas capas, não decide.',says:'"Ai, não sei qual... as duas são parecidas, né?"',
+  {tema:'tipos',scn:'Cliente indeciso, pega e larga duas capas, não decide.',says:'"Ai, não sei qual... as duas são parecidas, né?"',
    opts:[{t:'"São sim, leva a mais barata."',ok:false},
          {t:'"Segura as duas... sentiu a diferença? Essa é a que mais sai, ontem levaram quatro pra um modelo igual o seu. Pelo seu uso, eu iria nela."',ok:true},
          {t:'"Qual você prefere?"',ok:false}],
    fok:'Certo. Indeciso precisa de permissão pra decidir: prova física (sentir) + prova social (outros levaram) + você decide com gentileza.',
    fno:'"Qual você prefere?" devolve o problema pra quem não consegue decidir. A certa decide por ele, com prova física e social.'},
-  {scn:'Você fez a pergunta de fechamento. O cliente está pensando, em silêncio.',says:'"Qual das duas eu já aplico?" — e ele ficou calado, pensando.',
+  {tema:'fechamento',scn:'Você fez a pergunta de fechamento. O cliente está pensando, em silêncio.',says:'"Qual das duas eu já aplico?" — e ele ficou calado, pensando.',
    opts:[{t:'"...ou se preferir pode pensar, não precisa decidir agora, tem gente que leva a mais barata mesmo..."',ok:false},
          {t:'[Fica em silêncio, tranquilo, e espera ele responder.]',ok:true},
          {t:'"Não tem problema se não quiser nenhuma."',ok:false}],
    fok:'Perfeito. Depois da pergunta de fechamento: silêncio. Quem fala primeiro perde. O desconforto empurra a decisão.',
    fno:'Você fez a pergunta certa e aí respondeu por ele, devolvendo a saída. Segura o silêncio — é a técnica mais forte que existe.'},
 ];
-let quizIdx=0,quizScore=0,quizAns=false,quizOrder=[];
-function startQuiz(){
-  quizIdx=0;quizScore=0;quizAns=false;
-  quizOrder=[...quizQuestions].sort(()=>Math.random()-0.5).slice(0,5);
+let quizIdx=0,quizScore=0,quizAns=false,quizOrder=[],quizTema=null;
+function quizThemeCount(tema){return quizQuestions.filter(q=>q.tema===tema).length;}
+function startQuiz(tema){
+  quizTema=tema||null;quizIdx=0;quizScore=0;quizAns=false;
+  let pool=quizQuestions;
+  if(tema){const f=quizQuestions.filter(q=>q.tema===tema); if(f.length>=1)pool=f;}
+  quizOrder=[...pool].sort(()=>Math.random()-0.5).slice(0,5);
   renderQuiz();
 }
 function renderQuiz(){
   const box=document.getElementById('quiz-box');if(!box)return;
   if(quizIdx>=quizOrder.length){
     const pct=Math.round((quizScore/quizOrder.length)*100);
+    // DOMÍNIO CONQUISTADO: ≥80% domina o tema, ≥50% treina
+    let dominioMsg='';
+    if(quizTema){
+      if(pct>=80){trProgress[quizTema]='dominado';saveTrilha();renderTrilha();dominioMsg='<div style="color:var(--green);font-weight:700;margin-top:6px">✅ Você DOMINOU este tema na trilha!</div>';}
+      else if(pct>=50){if(trProgress[quizTema]!=='dominado'){trProgress[quizTema]='treinando';saveTrilha();renderTrilha();}dominioMsg='<div style="color:var(--accent);font-weight:700;margin-top:6px">📈 Marcado como "treinando". Faça 80%+ pra dominar.</div>';}
+    }
     let msg;
     if(pct>=80)msg='Faixa-preta de balcão. Você lê o cliente e fecha. Mantém o ritmo.';
     else if(pct>=50)msg='Bom caminho. Revê as que errou — geralmente é âncora ou fechamento que escapa.';
     else msg='Vale revisar a trilha antes de voltar. O conteúdo está todo no curso.';
-    box.innerHTML=`<div class="quiz-card quiz-result"><div class="qr-score">${quizScore}/${quizOrder.length}</div><div class="qr-msg">${msg}</div><button class="quiz-nx show" onclick="startQuiz()">Refazer com novas situações</button></div>`;
+    const refazer=quizTema?`startQuiz('${quizTema}')`:'startQuiz()';
+    box.innerHTML=`<div class="quiz-card quiz-result"><div class="qr-score">${quizScore}/${quizOrder.length}</div><div class="qr-msg">${msg}${dominioMsg}</div><button class="quiz-nx show" onclick="${refazer}">Refazer</button></div>`;
     return;
   }
   const q=quizOrder[quizIdx];quizAns=false;
@@ -2347,6 +2511,8 @@ function init(){
   document.getElementById('q-date').value=todayStr();
   renderDiffChips();renderScripts();renderObj();renderVp();renderPaFlow();renderLadders();renderFcFilters();renderLibCats();renderLib();renderSim();
   loadTrilha();startQuiz();
+  loadSrs().then(()=>{updateFcDue();});
+  loadLast();
   load();
   window.addEventListener('resize',()=>{if(days.length>=2)renderChart();});
 }
