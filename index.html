@@ -3,26 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Beep Elite, Plataforma</title>
+<title>Beep Elite — Plataforma</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap');
 
 :root {
-  /* TEMA CLARO, papel amarelado, estilo Apple */
-  --bg:#F4EFE3;        /* fundo geral, papel quente */
-  --surface:#FDFBF5;   /* cartões, quase branco amarelado */
-  --surface2:#F3EEE1;  /* superfícies secundárias */
-  --surface3:#EBE5D6;
-  --border:#E5DDCB; --border2:#D8CFB8;
-  /* destaque âmbar/dourado discreto no lugar do laranja forte */
-  --accent:#B6822A; --accent2:#CFA24E; --accent-dim:rgba(182,130,42,0.12); --accent-bd:rgba(182,130,42,0.32);
-  --green:#3F8F5B; --green-dim:rgba(63,143,91,0.12);
-  --red:#C2554A; --red-dim:rgba(194,85,74,0.12);
-  --yellow:#B6822A; --yellow-dim:rgba(182,130,42,0.12);
-  --blue:#4A739E; --blue-dim:rgba(74,115,158,0.10);
-  --purple:#8A6BB0;
-  --text:#26221A; --text2:#6E675A; --text3:#9A917E; --white:#16130D;
-  --on-accent:#FFFAF0; /* texto sobre o âmbar */
+  --bg:#0C0C0D; --surface:#151517; --surface2:#1C1C1F; --surface3:#232327;
+  --border:#28282C; --border2:#3A3A40;
+  --accent:#FF5C00; --accent2:#FF8642; --accent-dim:rgba(255,92,0,0.12); --accent-bd:rgba(255,92,0,0.3);
+  --green:#22C55E; --green-dim:rgba(34,197,94,0.12);
+  --red:#EF4444; --red-dim:rgba(239,68,68,0.12);
+  --yellow:#EAB308; --yellow-dim:rgba(234,179,8,0.12);
+  --blue:#3B82F6; --blue-dim:rgba(59,130,246,0.12);
+  --purple:#A855F7;
+  --text:#E6E6E6; --text2:#9A9AA0; --text3:#6A6A70; --white:#FFF;
   --sb:248px; --hh:54px;
   /* escala de espaçamento (4px) */
   --sp-1:4px; --sp-2:8px; --sp-3:12px; --sp-4:16px; --sp-5:24px; --sp-6:32px;
@@ -39,7 +33,7 @@ body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-
 ::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px;}
 
 /* HEADER */
-#hdr{position:fixed;top:0;left:0;right:0;height:var(--hh);background:rgba(253,251,245,0.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 18px;gap:14px;z-index:200;}
+#hdr{position:fixed;top:0;left:0;right:0;height:var(--hh);background:rgba(12,12,13,0.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 18px;gap:14px;z-index:200;}
 .logo{font-weight:800;font-size:16px;color:var(--white);letter-spacing:-0.4px;white-space:nowrap;}
 .logo b{color:var(--accent);}
 #searchwrap{flex:1;max-width:360px;position:relative;}
@@ -47,7 +41,7 @@ body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-
 #search:focus{border-color:var(--accent);}
 #search::placeholder{color:var(--text3);}
 .sicon{position:absolute;left:10px;top:50%;transform:translateY(-50%);color:var(--text3);font-size:12px;pointer-events:none;}
-#sres{position:absolute;top:calc(100% + 6px);left:0;right:0;background:var(--surface2);border:1px solid var(--border2);border-radius:8px;max-height:300px;overflow-y:auto;display:none;z-index:300;box-shadow:0 8px 28px rgba(70,55,20,0.10);}
+#sres{position:absolute;top:calc(100% + 6px);left:0;right:0;background:var(--surface2);border:1px solid var(--border2);border-radius:8px;max-height:300px;overflow-y:auto;display:none;z-index:300;box-shadow:0 8px 28px rgba(0,0,0,0.5);}
 .sr{padding:9px 13px;cursor:pointer;border-bottom:1px solid var(--border);}
 .sr:last-child{border-bottom:none;}
 .sr:hover{background:var(--accent-dim);}
@@ -66,7 +60,7 @@ body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-
 .nav-i:hover{background:var(--surface2);color:var(--text);}
 .nav-i.on{background:var(--accent-dim);color:var(--accent);}
 .nav-ic{font-size:15px;width:20px;text-align:center;flex-shrink:0;}
-.nav-bd{margin-left:auto;background:var(--accent);color:var(--on-accent);font-size:8px;font-weight:800;padding:1px 5px;border-radius:8px;letter-spacing:0.3px;}
+.nav-bd{margin-left:auto;background:var(--accent);color:var(--bg);font-size:8px;font-weight:800;padding:1px 5px;border-radius:8px;letter-spacing:0.3px;}
 .nav-prog{font-size:9px;font-weight:700;color:var(--green);letter-spacing:0;text-transform:none;margin-left:6px;}
 .nav-dot{margin-left:auto;width:7px;height:7px;border-radius:50%;background:transparent;flex-shrink:0;}
 .nav-dot.dominado{background:var(--green);}
@@ -82,20 +76,20 @@ body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-
 .onb-dots span.on{background:var(--accent);}
 .onb-btns{display:flex;gap:var(--sp-2);}
 .onb-skip{flex:0 0 auto;background:transparent;border:none;color:var(--text3);font-size:13px;cursor:pointer;font-family:inherit;padding:12px;}
-.onb-next{flex:1;background:var(--accent);border:none;border-radius:var(--r-md);padding:12px;color:var(--on-accent);font-weight:700;font-size:14px;cursor:pointer;font-family:inherit;}
+.onb-next{flex:1;background:var(--accent);border:none;border-radius:var(--r-md);padding:12px;color:var(--bg);font-weight:700;font-size:14px;cursor:pointer;font-family:inherit;}
 
-/* HERO, próximo passo (ação primária do dashboard) */
-.hero{background:var(--surface);border:1px solid var(--accent-bd);border-radius:var(--r-lg);padding:var(--sp-5);margin-bottom:var(--sp-4);}
-.hero-l{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--accent);}
-.hero-t{font-size:20px;font-weight:800;color:var(--white);line-height:1.3;margin:var(--sp-2) 0 var(--sp-1);}
-.hero-meta{font-size:13px;font-weight:600;color:var(--text2);margin-bottom:var(--sp-4);}
-.hero-btn{background:var(--accent);color:var(--on-accent);border:none;border-radius:var(--r-md);padding:13px 22px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;width:100%;}
+/* HERO — próximo passo (ação primária do dashboard) */
+.hero{background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:var(--r-lg);padding:var(--sp-5);margin-bottom:var(--sp-4);}
+.hero-l{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:rgba(0,0,0,0.55);}
+.hero-t{font-size:20px;font-weight:800;color:#1a0d00;line-height:1.25;margin:var(--sp-2) 0 var(--sp-1);}
+.hero-meta{font-size:13px;font-weight:600;color:rgba(26,13,0,0.7);margin-bottom:var(--sp-4);}
+.hero-btn{background:#1a0d00;color:#fff;border:none;border-radius:var(--r-md);padding:13px 22px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;width:100%;}
 .hero-btn:active{transform:scale(0.99);}
 .ins-more{font-size:12px;font-weight:700;color:var(--text2);cursor:pointer;padding:8px 0;text-align:center;}
 .ins-more:hover{color:var(--accent);}
 
 /* CONTINUAR DE ONDE PAREI */
-.continue{display:flex;align-items:center;gap:13px;background:var(--surface);border:1px solid var(--accent-bd);border-radius:var(--r-md);padding:var(--sp-4);margin-bottom:var(--sp-4);cursor:pointer;transition:border-color 0.15s;}
+.continue{display:flex;align-items:center;gap:13px;background:linear-gradient(135deg,rgba(255,92,0,0.09),var(--surface));border:1px solid var(--accent-bd);border-radius:var(--r-md);padding:var(--sp-4);margin-bottom:var(--sp-4);cursor:pointer;transition:border-color 0.15s;}
 .continue:hover{border-color:var(--accent);}
 .continue-ic{font-size:24px;width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:var(--accent-dim);border-radius:var(--r-md);flex-shrink:0;}
 .continue-l{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.6px;color:var(--text2);}
@@ -109,7 +103,7 @@ body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-
 .ln-b.disabled{opacity:0.35;pointer-events:none;}
 .ln-l{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:var(--text3);}
 .ln-t{font-size:13px;font-weight:600;color:var(--text);}
-.lesson-test{display:block;width:100%;margin-top:var(--sp-4);padding:13px;background:var(--accent);border:none;border-radius:var(--r-md);color:var(--on-accent);font-weight:700;font-size:14px;cursor:pointer;font-family:inherit;text-align:center;}
+.lesson-test{display:block;width:100%;margin-top:var(--sp-4);padding:13px;background:var(--accent);border:none;border-radius:var(--r-md);color:var(--bg);font-weight:700;font-size:14px;cursor:pointer;font-family:inherit;text-align:center;}
 .lesson-test:hover{opacity:0.92;}
 .lesson-time{display:inline-block;font-size:11.5px;font-weight:700;color:var(--text2);background:var(--surface2);border:1px solid var(--border);border-radius:14px;padding:4px 11px;margin:-12px 0 18px;}
 
@@ -138,7 +132,7 @@ h3:first-of-type{margin-top:var(--sp-4);}
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
 .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
 
-/* HBOX, card de conteúdo de estudo */
+/* HBOX — card de conteúdo de estudo */
 .hbox{border-radius:var(--r-md);padding:var(--sp-4);margin-bottom:var(--sp-2);font-size:14px;line-height:1.65;}
 .hb-or{background:var(--accent-dim);border-left:3px solid var(--accent);}
 .hb-gr{background:var(--green-dim);border-left:3px solid var(--green);}
@@ -157,7 +151,7 @@ h3:first-of-type{margin-top:var(--sp-4);}
 
 /* STAT CARDS */
 .statc{background:var(--surface);border:1px solid var(--border);border-radius:11px;padding:16px;display:flex;flex-direction:column;gap:4px;}
-.statc.feat{border-color:var(--accent-bd);background:var(--surface);}
+.statc.feat{border-color:var(--accent-bd);background:linear-gradient(135deg,rgba(255,92,0,0.07),var(--surface));}
 .sc-l{font-size:10px;font-weight:700;letter-spacing:0.7px;text-transform:uppercase;color:var(--text2);}
 .sc-v{font-family:'JetBrains Mono',monospace;font-size:30px;font-weight:700;color:var(--white);line-height:1;}
 .sc-v.ac{color:var(--accent);} .sc-v.gr{color:var(--green);}
@@ -166,7 +160,7 @@ h3:first-of-type{margin-top:var(--sp-4);}
 .trend.up{color:var(--green);} .trend.dn{color:var(--red);} .trend.fl{color:var(--text2);}
 
 /* GOAL BANNER */
-.goalbanner{background:var(--surface);border:1px solid var(--accent-bd);border-radius:12px;padding:14px 16px;margin-bottom:14px;}
+.goalbanner{background:linear-gradient(135deg,rgba(255,92,0,0.08),var(--surface));border:1px solid var(--accent-bd);border-radius:12px;padding:14px 16px;margin-bottom:14px;}
 .gb-top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:13px;}
 .gb-beep{font-size:13px;color:var(--text);} .gb-beep b{color:var(--white);font-family:'JetBrains Mono',monospace;}
 .gb-beep.hit{color:var(--green);} .gb-beep.hit b{color:var(--green);}
@@ -200,7 +194,7 @@ h3:first-of-type{margin-top:var(--sp-4);}
 .chip:hover{border-color:var(--border2);color:var(--text);}
 .chip.on{background:var(--accent-dim);border-color:var(--accent-bd);color:var(--accent);}
 
-.btn{width:100%;padding:12px;background:var(--accent);border:none;border-radius:8px;color:var(--on-accent);font-weight:700;font-size:14px;cursor:pointer;font-family:inherit;transition:opacity 0.15s;}
+.btn{width:100%;padding:12px;background:var(--accent);border:none;border-radius:8px;color:var(--bg);font-weight:700;font-size:14px;cursor:pointer;font-family:inherit;transition:opacity 0.15s;}
 .btn:hover{opacity:0.92;}
 .btn:active{transform:scale(0.99);}
 .btn-gh{background:transparent;border:1px solid var(--border2);color:var(--text2);width:auto;padding:8px 16px;font-size:12px;}
@@ -216,7 +210,7 @@ h3:first-of-type{margin-top:var(--sp-4);}
 .df-hint{font-size:11px;font-weight:500;color:var(--text3);}
 
 /* QUICK REGISTER */
-.quickcard{border-color:var(--accent-bd);background:var(--surface);margin-bottom:14px;}
+.quickcard{border-color:var(--accent-bd);background:linear-gradient(135deg,rgba(255,92,0,0.05),var(--surface));margin-bottom:14px;}
 .quick-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:12px;}
 .quick-head>span:first-child{font-size:14px;font-weight:700;color:var(--white);}
 .quick-sub{font-size:11px;color:var(--text3);}
@@ -279,7 +273,7 @@ h3:first-of-type{margin-top:var(--sp-4);}
 .amin-c{font-size:11.5px;font-weight:600;background:var(--surface2);border:1px solid var(--border2);color:var(--text);border-radius:14px;padding:5px 11px;}
 
 /* BLOCO PREMIUM (o que falar) */
-.prem{margin-top:10px;background:var(--surface2);border:1px solid var(--accent-bd);border-radius:9px;padding:12px 14px;}
+.prem{margin-top:10px;background:linear-gradient(135deg,rgba(255,92,0,0.07),var(--surface2));border:1px solid var(--accent-bd);border-radius:9px;padding:12px 14px;}
 .prem-tag{font-size:11px;font-weight:700;letter-spacing:0.5px;color:var(--accent);margin-bottom:9px;}
 .prem-r{font-size:12.5px;line-height:1.5;color:var(--text);margin-bottom:7px;}
 .prem-r:last-child{margin-bottom:0;}
@@ -299,7 +293,7 @@ h3:first-of-type{margin-top:var(--sp-4);}
 .quiz-fb{display:none;border-radius:9px;padding:13px 15px;font-size:13px;line-height:1.55;margin-top:6px;}
 .quiz-fb.show{display:block;} .quiz-fb.ok{background:var(--green-dim);} .quiz-fb.no{background:var(--red-dim);}
 .quiz-fb strong{color:var(--white);}
-.quiz-nx{display:none;width:100%;margin-top:12px;padding:12px;background:var(--accent);border:none;border-radius:8px;color:var(--on-accent);font-weight:700;font-size:14px;cursor:pointer;font-family:inherit;}
+.quiz-nx{display:none;width:100%;margin-top:12px;padding:12px;background:var(--accent);border:none;border-radius:8px;color:var(--bg);font-weight:700;font-size:14px;cursor:pointer;font-family:inherit;}
 .quiz-nx.show{display:block;}
 .quiz-result{text-align:center;padding:24px;}
 .quiz-result .qr-score{font-family:'JetBrains Mono',monospace;font-size:44px;font-weight:700;color:var(--accent);}
@@ -385,7 +379,7 @@ table.hist tr:hover td{background:rgba(255,255,255,0.015);}
 .pa-c{font-size:11px;font-weight:700;color:var(--green);white-space:nowrap;background:var(--green-dim);padding:3px 8px;border-radius:10px;}
 
 /* KIT */
-.kitb{background:var(--accent-dim);border:1px solid var(--accent-bd);border-radius:11px;padding:16px 18px;margin:14px 0;}
+.kitb{background:linear-gradient(135deg,rgba(255,92,0,0.07),rgba(255,92,0,0.02));border:1px solid var(--accent-bd);border-radius:11px;padding:16px 18px;margin:14px 0;}
 .kit-l{font-size:10px;font-weight:700;letter-spacing:1.3px;text-transform:uppercase;color:var(--accent);margin-bottom:10px;}
 .kit-i{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:11px;align-items:center;}
 .kit-it{background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:6px 11px;font-size:13px;color:var(--text);display:flex;align-items:center;gap:5px;}
@@ -404,7 +398,7 @@ table.hist tr:hover td{background:rgba(255,255,255,0.015);}
 .fcg{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:9px;}
 .fc{background:var(--surface);border:1px solid var(--border);border-radius:9px;padding:13px;cursor:pointer;min-height:104px;display:flex;flex-direction:column;justify-content:space-between;transition:border-color 0.15s;user-select:none;}
 .fc:hover{border-color:var(--border2);}
-.fc.flip{border-color:var(--accent);background:var(--accent-dim);}
+.fc.flip{border-color:var(--accent);background:rgba(255,92,0,0.04);}
 .fc.flip .fc-f{display:none;} .fc:not(.flip) .fc-bk{display:none;}
 .fc-f,.fc-bk{display:flex;flex-direction:column;justify-content:space-between;height:100%;}
 .fc-n{font-weight:700;font-size:12px;color:var(--white);line-height:1.3;margin-bottom:4px;}
@@ -438,7 +432,7 @@ table.hist tr:hover td{background:rgba(255,255,255,0.015);}
 .sim-fb.ok{background:var(--green-dim);border:1px solid rgba(34,197,94,0.2);}
 .sim-fb.no{background:var(--red-dim);border:1px solid rgba(239,68,68,0.2);}
 .sim-fb strong{color:var(--white);}
-.sim-nx{margin-top:13px;padding:9px 18px;background:var(--accent);border:none;border-radius:6px;color:var(--on-accent);font-weight:700;font-size:13px;cursor:pointer;display:none;font-family:inherit;}
+.sim-nx{margin-top:13px;padding:9px 18px;background:var(--accent);border:none;border-radius:6px;color:var(--bg);font-weight:700;font-size:13px;cursor:pointer;display:none;font-family:inherit;}
 .sim-nx.show{display:inline-block;}
 
 /* ROTINA / CHECKLIST */
@@ -449,7 +443,7 @@ table.hist tr:hover td{background:rgba(255,255,255,0.015);}
 .chk{list-style:none;}
 .chk li{display:flex;align-items:flex-start;gap:9px;padding:6px 0;font-size:13px;color:var(--text);cursor:pointer;user-select:none;line-height:1.4;}
 .chk-box{width:17px;height:17px;min-width:17px;border:1.5px solid var(--border2);border-radius:4px;margin-top:1px;display:flex;align-items:center;justify-content:center;font-size:11px;transition:all 0.12s;}
-.chk li.done .chk-box{background:var(--green);border-color:var(--green);color:var(--on-accent);}
+.chk li.done .chk-box{background:var(--green);border-color:var(--green);color:var(--bg);}
 .chk li.done span{color:var(--text3);text-decoration:line-through;}
 .chk-prog{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text2);margin-top:8px;padding-top:8px;border-top:1px solid var(--border);}
 
@@ -463,7 +457,7 @@ table.hist tr:hover td{background:rgba(255,255,255,0.015);}
 .tela-bd{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;padding:2px 7px;border-radius:4px;background:rgba(239,68,68,0.12);color:var(--red);border:1px solid rgba(239,68,68,0.2);}
 
 /* REVIEW PANEL (the difficulty -> study screen) */
-.rev-hero{background:var(--surface);border:1px solid var(--accent-bd);border-radius:13px;padding:20px;margin-bottom:16px;}
+.rev-hero{background:linear-gradient(135deg,rgba(255,92,0,0.1),var(--surface));border:1px solid var(--accent-bd);border-radius:13px;padding:20px;margin-bottom:16px;}
 .rev-date{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent);font-weight:600;text-transform:uppercase;letter-spacing:0.6px;margin-bottom:10px;}
 .rev-sum{display:flex;gap:20px;flex-wrap:wrap;margin-bottom:6px;}
 .rev-st{display:flex;flex-direction:column;}
@@ -479,7 +473,7 @@ table.hist tr:hover td{background:rgba(255,255,255,0.015);}
 .study-go{color:var(--accent);font-size:18px;align-self:center;}
 
 /* toast */
-#toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(100px);background:var(--green);color:var(--on-accent);padding:12px 22px;border-radius:8px;font-weight:700;font-size:13px;z-index:999;transition:transform 0.3s cubic-bezier(0.4,0,0.2,1);box-shadow:0 8px 24px rgba(70,55,20,0.14);}
+#toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(100px);background:var(--green);color:var(--bg);padding:12px 22px;border-radius:8px;font-weight:700;font-size:13px;z-index:999;transition:transform 0.3s cubic-bezier(0.4,0,0.2,1);box-shadow:0 8px 24px rgba(0,0,0,0.4);}
 #toast.show{transform:translateX(-50%) translateY(0);}
 
 /* mobile */
@@ -506,23 +500,23 @@ table.hist tr:hover td{background:rgba(255,255,255,0.015);}
 @media(max-width:480px){.grid4{grid-template-columns:1fr 1fr;}.fcg{grid-template-columns:1fr 1fr;}}
 
 /* ── AUTH ── */
-#auth{position:fixed;inset:0;z-index:9999;background:var(--bg);display:flex;align-items:center;justify-content:center;padding:20px}
-.auth-card{width:100%;max-width:380px;background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:32px 28px}
+#auth{position:fixed;inset:0;z-index:9999;background:#0B0F17;display:flex;align-items:center;justify-content:center;padding:20px}
+.auth-card{width:100%;max-width:380px;background:#111827;border:1px solid #1F2937;border-radius:16px;padding:32px 28px}
 .auth-logo{font-size:22px;font-weight:800;text-align:center;margin-bottom:4px}
-.auth-sub{font-size:13px;color:var(--text2);text-align:center;margin-bottom:22px}
-.auth-tabs{display:flex;gap:6px;background:var(--surface2);border-radius:10px;padding:4px;margin-bottom:18px}
-.auth-tab{flex:1;text-align:center;padding:8px;border-radius:8px;font-size:13px;font-weight:600;color:var(--text2);cursor:pointer}
-.auth-tab.on{background:var(--surface);color:var(--white);border:1px solid var(--border)}
-.auth-card label{display:block;font-size:12px;color:var(--text2);margin:12px 0 5px;font-weight:600}
-.auth-card input{width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:11px 13px;color:var(--text);font-size:14px;outline:none;box-sizing:border-box}
-.auth-card input:focus{border-color:var(--accent)}
-.auth-btn{width:100%;margin-top:18px;background:var(--accent);color:var(--on-accent);border:none;border-radius:10px;padding:12px;font-size:14px;font-weight:700;cursor:pointer}
+.auth-sub{font-size:13px;color:#9CA3AF;text-align:center;margin-bottom:22px}
+.auth-tabs{display:flex;gap:6px;background:#0B0F17;border-radius:10px;padding:4px;margin-bottom:18px}
+.auth-tab{flex:1;text-align:center;padding:8px;border-radius:8px;font-size:13px;font-weight:600;color:#9CA3AF;cursor:pointer}
+.auth-tab.on{background:#1F2937;color:#fff}
+.auth-card label{display:block;font-size:12px;color:#9CA3AF;margin:12px 0 5px;font-weight:600}
+.auth-card input{width:100%;background:#0B0F17;border:1px solid #1F2937;border-radius:10px;padding:11px 13px;color:#fff;font-size:14px;outline:none;box-sizing:border-box}
+.auth-card input:focus{border-color:#22C55E}
+.auth-btn{width:100%;margin-top:18px;background:#22C55E;color:#06220f;border:none;border-radius:10px;padding:12px;font-size:14px;font-weight:700;cursor:pointer}
 .auth-btn:disabled{opacity:.6;cursor:wait}
 .auth-msg{font-size:12.5px;margin-top:12px;text-align:center;min-height:16px}
 .auth-msg.err{color:#EF4444}.auth-msg.ok{color:#22C55E}
-.auth-forgot{display:block;text-align:center;font-size:12px;color:var(--text2);margin-top:14px;cursor:pointer;text-decoration:underline}
+.auth-forgot{display:block;text-align:center;font-size:12px;color:#9CA3AF;margin-top:14px;cursor:pointer;text-decoration:underline}
 #app-wrap-hidden{visibility:hidden}
-.nav-user{font-size:11px;color:var(--text2);padding:10px 14px 2px;word-break:break-all}
+.nav-user{font-size:11px;color:#9CA3AF;padding:10px 14px 2px;word-break:break-all}
 
 
 /* ── MENTE ── */
@@ -581,16 +575,16 @@ table.hist tr:hover td{background:rgba(255,255,255,0.015);}
   <div class="nav-grp">
     <div class="nav-lbl">Aprender <span class="nav-prog" id="nav-prog"></span></div>
     <a class="nav-i" onclick="go('mente',this)" data-aula="mente"><span class="nav-ic">🧠</span> Mente do vendedor <span class="nav-dot" data-dot="mente"></span></a>
-    <a class="nav-i" onclick="go('abordagem',this)" data-aula="abordagem"><span class="nav-ic">🎯</span> Abordagem: puxar pra loja <span class="nav-dot" data-dot="abordagem"></span></a>
+    <a class="nav-i" onclick="go('abordagem',this)" data-aula="abordagem"><span class="nav-ic">🎯</span> Abordagem — puxar pra loja <span class="nav-dot" data-dot="abordagem"></span></a>
     <a class="nav-i" onclick="go('tipos',this)" data-aula="tipos"><span class="nav-ic">👁</span> Tipos de cliente <span class="nav-dot" data-dot="tipos"></span></a>
     <a class="nav-i" onclick="go('escada',this)" data-aula="escada"><span class="nav-ic">📈</span> Escada de produto <span class="nav-dot" data-dot="escada"></span></a>
-    <a class="nav-i" onclick="go('pa',this)" data-aula="pa"><span class="nav-ic">⚡</span> PA: kit embutido <span class="nav-dot" data-dot="pa"></span></a>
+    <a class="nav-i" onclick="go('pa',this)" data-aula="pa"><span class="nav-ic">⚡</span> PA — kit embutido <span class="nav-dot" data-dot="pa"></span></a>
     <a class="nav-i" onclick="go('scripts',this)" data-aula="scripts"><span class="nav-ic">💬</span> Scripts <span class="nav-dot" data-dot="scripts"></span></a>
     <a class="nav-i" onclick="go('fechamento',this)" data-aula="fechamento"><span class="nav-ic">🤝</span> Técnicas de fechamento <span class="nav-dot" data-dot="fechamento"></span></a>
     <a class="nav-i" onclick="go('objecoes',this)" data-aula="objecoes"><span class="nav-ic">🛡</span> Objeções <span class="nav-dot" data-dot="objecoes"></span></a>
     <a class="nav-i" onclick="go('posnao',this)" data-aula="posnao"><span class="nav-ic">🌱</span> Depois do "não" <span class="nav-dot" data-dot="posnao"></span></a>
     <a class="nav-i" onclick="go('posvenda',this)" data-aula="posvenda"><span class="nav-ic">🔁</span> Pós-venda e recompra <span class="nav-dot" data-dot="posvenda"></span></a>
-    <a class="nav-i" onclick="go('vp',this)" data-aula="vp"><span class="nav-ic">🎫</span> VPs: abordagem <span class="nav-dot" data-dot="vp"></span></a>
+    <a class="nav-i" onclick="go('vp',this)" data-aula="vp"><span class="nav-ic">🎫</span> VPs — abordagem <span class="nav-dot" data-dot="vp"></span></a>
   </div>
   <div class="nav-grp">
     <div class="nav-lbl">Treinar</div>
@@ -636,7 +630,7 @@ table.hist tr:hover td{background:rgba(255,255,255,0.015);}
   <!-- BANNER DE META + DEGRAUS -->
   <div class="goalbanner" id="goal-banner">
     <div class="gb-top">
-      <div class="gb-beep" id="gb-beep">🎯 Meta Beep <b>1.36</b>, registre um dia pra ver seu status</div>
+      <div class="gb-beep" id="gb-beep">🎯 Meta Beep <b>1.36</b> — registre um dia pra ver seu status</div>
       <div class="gb-elite">Meta de elite <b>1.90</b></div>
     </div>
     <div class="gb-steps" id="gb-steps"></div>
@@ -652,9 +646,9 @@ table.hist tr:hover td{background:rgba(255,255,255,0.015);}
 
   <h3>Progresso até a meta</h3>
   <div class="card" id="meta-card">
-    <div class="meta-row"><div class="meta-h"><span class="meta-n">PA, caminho para 1.90 <span class="meta-rec" id="m-pa-rec"></span></span><span class="meta-num"><span class="meta-c" id="m-pa">—</span> <span class="meta-t">/ 1.90</span></span></div><div class="track"><div class="fill" id="m-pa-bar" style="width:0%"></div></div></div>
-    <div class="meta-row"><div class="meta-h"><span class="meta-n">Ticket médio, alvo R$97</span><span class="meta-num"><span class="meta-c" id="m-tk">—</span> <span class="meta-t">/ R$97</span></span></div><div class="track"><div class="fill gr" id="m-tk-bar" style="width:0%"></div></div></div>
-    <div class="meta-row"><div class="meta-h"><span class="meta-n">Conversão de PA, alvo 80%</span><span class="meta-num"><span class="meta-c" id="m-cv">—</span> <span class="meta-t">/ 80%</span></span></div><div class="track"><div class="fill" id="m-cv-bar" style="width:0%"></div></div></div>
+    <div class="meta-row"><div class="meta-h"><span class="meta-n">PA — caminho para 1.90 <span class="meta-rec" id="m-pa-rec"></span></span><span class="meta-num"><span class="meta-c" id="m-pa">—</span> <span class="meta-t">/ 1.90</span></span></div><div class="track"><div class="fill" id="m-pa-bar" style="width:0%"></div></div></div>
+    <div class="meta-row"><div class="meta-h"><span class="meta-n">Ticket médio — alvo R$97</span><span class="meta-num"><span class="meta-c" id="m-tk">—</span> <span class="meta-t">/ R$97</span></span></div><div class="track"><div class="fill gr" id="m-tk-bar" style="width:0%"></div></div></div>
+    <div class="meta-row"><div class="meta-h"><span class="meta-n">Conversão de PA — alvo 80%</span><span class="meta-num"><span class="meta-c" id="m-cv">—</span> <span class="meta-t">/ 80%</span></span></div><div class="track"><div class="fill" id="m-cv-bar" style="width:0%"></div></div></div>
   </div>
 
   <h3>Evolução</h3>
@@ -698,7 +692,7 @@ table.hist tr:hover td{background:rgba(255,255,255,0.015);}
   </div>
 
   <details class="detail-form">
-    <summary><span>➕ Adicionar detalhes (opcional)</span><span class="df-hint">scripts, dificuldades, VPs, pra diagnóstico mais fino</span></summary>
+    <summary><span>➕ Adicionar detalhes (opcional)</span><span class="df-hint">scripts, dificuldades, VPs — pra diagnóstico mais fino</span></summary>
   <div class="card" style="margin-top:var(--sp-2)">
     <div class="fgrid">
       <div class="fld fld-date"><label>Data</label><input type="date" id="f-date"></div>
@@ -733,7 +727,7 @@ table.hist tr:hover td{background:rgba(255,255,255,0.015);}
       <select id="f-fala"><option value="">Selecione</option><option value="travado">Travei / soei decorado</option><option value="ok">Fluiu mas posso melhorar</option><option value="natural">Natural, como consultor</option><option value="pressao">Forcei demais / pressionei</option></select>
     </div>
 
-    <div class="fld" style="margin-bottom:16px"><label>Anotação livre <span style="color:var(--text3);font-weight:400">(opcional, o que aconteceu hoje)</span></label>
+    <div class="fld" style="margin-bottom:16px"><label>Anotação livre <span style="color:var(--text3);font-weight:400">(opcional — o que aconteceu hoje)</span></label>
       <textarea id="f-note" placeholder="ex: perdi 3 vendas de câmera porque ofereci depois de fechar a película..."></textarea>
     </div>
 
@@ -756,7 +750,7 @@ table.hist tr:hover td{background:rgba(255,255,255,0.015);}
 <!-- ════ ROTINA ════ -->
 <div class="pg" id="pg-rotina">
   <div class="pg-t">Rotina de hoje</div>
-  <p class="pg-s">35 minutos por dia. Marque conforme cumpre, reseta automaticamente a cada dia.</p>
+  <p class="pg-s">35 minutos por dia. Marque conforme cumpre — reseta automaticamente a cada dia.</p>
 
   <div class="rot-grid">
     <div class="rot">
@@ -812,7 +806,7 @@ table.hist tr:hover td{background:rgba(255,255,255,0.015);}
       <tr><td>Quarta</td><td>FOLGA</td><td>Descansar (opcional: 10 flashcards)</td></tr>
       <tr><td>Quinta</td><td>Cabos + carregadores</td><td>Kimaster+ em 80% + PA ponteira</td></tr>
       <tr><td>Sexta</td><td>Fones e som</td><td>Diagnóstico de uso em todos</td></tr>
-      <tr><td>Sábado</td><td>Misto, dia cheio</td><td>PA 2.0+ e recorde de VPs</td></tr>
+      <tr><td>Sábado</td><td>Misto — dia cheio</td><td>PA 2.0+ e recorde de VPs</td></tr>
       <tr><td>Domingo</td><td>A cada 15 dias</td><td>Repetir o que funcionou no sábado</td></tr>
     </tbody>
   </table>
@@ -821,51 +815,51 @@ table.hist tr:hover td{background:rgba(255,255,255,0.015);}
 <!-- ════ PLANO DIÁRIO ════ -->
 <div class="pg" id="pg-diario">
   <div class="pg-t">Plano diário</div>
-  <p class="pg-s">Seu dia a dia de verdade: seg, ter, qui, sex, sáb, quarta de folga e domingo a cada 15 dias. O dia de hoje fica destacado sozinho.</p>
+  <p class="pg-s">Seu dia a dia de verdade: seg, ter, qui, sex, sáb — quarta de folga e domingo a cada 15 dias. O dia de hoje fica destacado sozinho.</p>
 
-  <div class="hbox hb-bl" data-day="1"><div class="hb-l">📱 Segunda, Películas</div>
-    <strong>Por que segunda:</strong> shopping mais calmo, dia perfeito pra treinar conversa longa sem pressão.<br><br>
+  <div class="hbox hb-bl" data-day="1"><div class="hb-l">📱 Segunda — Películas</div>
+    <strong>Por que segunda:</strong> shopping mais calmo — dia perfeito pra treinar conversa longa sem pressão.<br><br>
     <strong>🎯 Treino do dia:</strong> escada 9H → Cerâmica com as duas na mão do cliente. Toda película fechada = oferecer câmera (100%, sem exceção).<br>
     <strong>💬 Frase pra praticar:</strong> "Qual das duas eu já deixo aplicada?"<br>
     <strong>📊 Metas:</strong> 20 VPs entregues · câmera oferecida em toda película · PA 1.8+<br>
     <strong>🃏 Antes de abrir:</strong> decorar o custo de tela de 3 modelos que mais aparecem.</div>
 
-  <div class="hbox hb-gr" data-day="2"><div class="hb-l">🛡 Terça, Capas</div>
-    <strong>🎯 Treino do dia:</strong> prova física, as DUAS capas no aparelho do cliente, sempre. Você não fala da folga, ele sente a folga.<br>
+  <div class="hbox hb-gr" data-day="2"><div class="hb-l">🛡 Terça — Capas</div>
+    <strong>🎯 Treino do dia:</strong> prova física — as DUAS capas no aparelho do cliente, sempre. Você não fala da folga, ele sente a folga.<br>
     <strong>💬 Frase pra praticar:</strong> "Faz um teste de 10 segundos comigo... sentiu a diferença? Qual das duas vai?"<br>
     <strong>📊 Metas:</strong> Gear+ em 80% das capas · toda capa fechada = perguntar da película ("e a tela, como anda?")<br>
-    <strong>🃏 Antes de abrir:</strong> 5 flashcards de capas, saber preço e o degrau de cima de cor.</div>
+    <strong>🃏 Antes de abrir:</strong> 5 flashcards de capas — saber preço e o degrau de cima de cor.</div>
 
-  <div class="hbox hb-yl" data-day="3"><div class="hb-l">😴 Quarta, FOLGA</div>
-    Descansa de verdade, vendedor cansado vende menos na quinta.<br><br>
+  <div class="hbox hb-yl" data-day="3"><div class="hb-l">😴 Quarta — FOLGA</div>
+    Descansa de verdade — vendedor cansado vende menos na quinta.<br><br>
     <strong>Opcional (10 min no sofá):</strong> passar os flashcards ou reler 1 script que travou na semana. Só isso. Folga é folga.</div>
 
-  <div class="hbox hb-or" data-day="4"><div class="hb-l">🔌 Quinta, Cabos + carregadores</div>
+  <div class="hbox hb-or" data-day="4"><div class="hb-l">🔌 Quinta — Cabos + carregadores</div>
     <strong>🎯 Treino do dia:</strong> a pergunta de ouro ("quantos cabos você comprou esse ano?") + PA de ponteira em todo cabo vendido.<br>
     <strong>💬 Frase pra praticar:</strong> "Quer resolver o hoje ou resolver o ano?"<br>
     <strong>📊 Metas:</strong> Kimaster+ em 80% dos cabos · ponteira oferecida em todo cabo · 20 VPs<br>
     <strong>🃏 Antes de abrir:</strong> decorar garantias: V3 30 dias, Kimaster 90, Fancy 1 ano.</div>
 
-  <div class="hbox hb-bl" data-day="5"><div class="hb-l">🎧 Sexta, Fones e som</div>
-    <strong>🎯 Treino do dia:</strong> diagnóstico antes de indicar, "é pra quê? trabalho, música, academia?" em 100% dos fones. A recomendação nasce da resposta dele.<br>
+  <div class="hbox hb-bl" data-day="5"><div class="hb-l">🎧 Sexta — Fones e som</div>
+    <strong>🎯 Treino do dia:</strong> diagnóstico antes de indicar — "é pra quê? trabalho, música, academia?" em 100% dos fones. A recomendação nasce da resposta dele.<br>
     <strong>💬 Frase pra praticar:</strong> "Pro seu uso, é esse aqui. Pode ser?"<br>
     <strong>📊 Metas:</strong> diagnóstico em todo fone · PA 1.9+ · sexta tem fluxo: 25 VPs<br>
     <strong>🃏 Antes de abrir:</strong> preço dos 3 fones mais vendidos + o degrau de cima de cada um.</div>
 
-  <div class="hbox hb-gr" data-day="6"><div class="hb-l">🔥 Sábado, Dia cheio, modo máquina</div>
-    <strong>Por que sábado:</strong> maior fluxo da semana, dia de volume, não de conversa longa. Abordagem afiada e fechamento rápido.<br><br>
+  <div class="hbox hb-gr" data-day="6"><div class="hb-l">🔥 Sábado — Dia cheio, modo máquina</div>
+    <strong>Por que sábado:</strong> maior fluxo da semana — dia de volume, não de conversa longa. Abordagem afiada e fechamento rápido.<br><br>
     <strong>🎯 Treino do dia:</strong> VP com a regra de ouro (modelo primeiro, vale depois) + upgrade da grátis pra cerâmica dentro da loja.<br>
-    <strong>💬 Frase pra praticar:</strong> "Boa tarde! Te tomo 10 segundos só, qual é o seu celular?"<br>
+    <strong>💬 Frase pra praticar:</strong> "Boa tarde! Te tomo 10 segundos só — qual é o seu celular?"<br>
     <strong>📊 Metas:</strong> 30 VPs entregues · PA 2.0+ · melhor ticket da semana<br>
-    <strong>🃏 Antes de abrir:</strong> revisar os 7 scripts de VP, sábado é o dia que eles pagam a semana.</div>
+    <strong>🃏 Antes de abrir:</strong> revisar os 7 scripts de VP — sábado é o dia que eles pagam a semana.</div>
 
-  <div class="hbox hb-rd" data-day="0"><div class="hb-l">📆 Domingo (a cada 15 dias), Repetir o que funcionou</div>
-    <strong>🎯 Treino do dia:</strong> domingo é sábado em câmera lenta, mesma estratégia de VP, com mais tempo pra subir o cliente na escada.<br>
-    <strong>💬 Foco:</strong> repetir a técnica que mais fechou no sábado. Não inventa nada novo, repete o que deu certo.<br>
+  <div class="hbox hb-rd" data-day="0"><div class="hb-l">📆 Domingo (a cada 15 dias) — Repetir o que funcionou</div>
+    <strong>🎯 Treino do dia:</strong> domingo é sábado em câmera lenta — mesma estratégia de VP, com mais tempo pra subir o cliente na escada.<br>
+    <strong>💬 Foco:</strong> repetir a técnica que mais fechou no sábado. Não inventa nada novo — repete o que deu certo.<br>
     <strong>📊 Metas:</strong> 20 VPs · 1 kit completo fechado<br>
     <strong>📝 Fim do dia:</strong> registrar a quinzena e escolher a técnica nº 1 da próxima semana.</div>
 
-  <div class="hbox hb-yl"><div class="hb-l">Como usar</div>Todo dia tem UM treino só, técnica nova se aprende uma por vez. Antes de abrir a loja, lê o card do dia (2 min). No fim do turno, registra na aba "Registrar o dia" se bateu as metas.</div>
+  <div class="hbox hb-yl"><div class="hb-l">Como usar</div>Todo dia tem UM treino só — técnica nova se aprende uma por vez. Antes de abrir a loja, lê o card do dia (2 min). No fim do turno, registra na aba "Registrar o dia" se bateu as metas.</div>
 </div>
 
 <script>
@@ -893,7 +887,7 @@ table.hist tr:hover td{background:rgba(255,255,255,0.015);}
   <p class="pg-s">Técnica decorada com cabeça errada não fecha venda. Aqui é o lado de dentro: tensão, ansiedade, desapego e as alavancas de persuasão que funcionam de verdade.</p>
 
   <h3>1 · Tensão e nervosismo</h3>
-  <div class="hbox hb-bl"><div class="hb-l">A verdade sobre o frio na barriga</div>O cliente não percebe seu nervosismo, percebe os <strong>sintomas</strong>: falar rápido demais, preencher todo silêncio, rir sem motivo, mexer nas mãos. Você não precisa parar de sentir; precisa parar de <strong>vazar</strong>.<br><br><strong>Antes do turno (2 min):</strong> 5 respirações lentas, 4s puxa, 6s solta. Soltar mais devagar que puxa avisa o corpo que não tem perigo.<br><strong>Durante:</strong> sentiu acelerar? Desacelera a FALA de propósito. A fala lenta puxa a cabeça junto, funciona no sentido contrário também.<br><strong>O truque do primeiro cliente:</strong> o primeiro atendimento do dia é treino, não prova. Tira a pressão dele e o resto do dia flui.</div>
+  <div class="hbox hb-bl"><div class="hb-l">A verdade sobre o frio na barriga</div>O cliente não percebe seu nervosismo — percebe os <strong>sintomas</strong>: falar rápido demais, preencher todo silêncio, rir sem motivo, mexer nas mãos. Você não precisa parar de sentir; precisa parar de <strong>vazar</strong>.<br><br><strong>Antes do turno (2 min):</strong> 5 respirações lentas — 4s puxa, 6s solta. Soltar mais devagar que puxa avisa o corpo que não tem perigo.<br><strong>Durante:</strong> sentiu acelerar? Desacelera a FALA de propósito. A fala lenta puxa a cabeça junto — funciona no sentido contrário também.<br><strong>O truque do primeiro cliente:</strong> o primeiro atendimento do dia é treino, não prova. Tira a pressão dele e o resto do dia flui.</div>
 
   <div class="ex ex-bad"><b>❌ TENSO (vazando)</b>"Oi! Tudo bem? Posso ajudar? A gente tem promoção hoje, tem película, tem capa, se quiser eu te mostro, é rapidinho, sem compromisso..." <em>— metralhadora de palavras. O cliente sente a pressa e recua.</em></div>
   <div class="ex ex-good"><b>✅ CALMO (presente)</b>"Boa tarde. [pausa, sorri] Fica à vontade. Qual é o seu celular? [espera a resposta de verdade]" <em>— pouca palavra, pausa confortável. Quem tá calmo transmite que não precisa da venda.</em></div>
@@ -902,20 +896,20 @@ table.hist tr:hover td{background:rgba(255,255,255,0.015);}
   <div class="hbox hb-or"><div class="hb-l">Desapego vende</div>O erro nº 1 de quem tá começando: <strong>querer demais</strong>. Cliente sente cheiro de necessidade igual cachorro sente medo. Quando você PRECISA da venda, empurra, insiste, aceita qualquer objeção como ataque pessoal.<br><br>A postura certa é de <strong>médico</strong>, não de vendedor faminto: examina, recomenda, e a decisão é do paciente. Médico não implora pra você tomar o remédio.<br><br><strong>Regra prática:</strong> faça a melhor recomendação, reposicione UMA vez se recusar, e solte. "Você que sabe" dito com sinceridade fecha mais que três insistências.</div>
 
   <div class="ex ex-bad"><b>❌ EMOCIONADO (precisa da venda)</b>"Tem certeza? Olha, é a última... eu consigo um descontinho... leva, vai, você não vai se arrepender, é muito bom, todo mundo leva!" <em>— cada frase grita "eu preciso que você compre". O cliente passa a desconfiar do produto.</em></div>
-  <div class="ex ex-good"><b>✅ DESAPEGADO (recomenda e solta)</b>"Pelo seu uso, eu iria nessa. Se hoje não fizer sentido, tranquilo, qualquer coisa você volta que eu aplico rapidinho." <em>— quem dá liberdade pro cliente tira o peso da decisão. Metade volta.</em></div>
+  <div class="ex ex-good"><b>✅ DESAPEGADO (recomenda e solta)</b>"Pelo seu uso, eu iria nessa. Se hoje não fizer sentido, tranquilo — qualquer coisa você volta que eu aplico rapidinho." <em>— quem dá liberdade pro cliente tira o peso da decisão. Metade volta.</em></div>
 
   <div class="hbox hb-yl"><div class="hb-l">Levou um "não" grosso?</div>Não é sobre você. A pessoa pode ter brigado em casa, estourado o cartão, perdido o emprego. <strong>O "não" é pro momento dela, não pra sua pessoa.</strong> Respira, próximo cliente é página nova. Vendedor que carrega o "não" anterior pro próximo atendimento perde os dois.</div>
 
   <h3>3 · As alavancas de persuasão</h3>
-  <div class="hbox hb-gr"><div class="hb-l">🤝 Reciprocidade</div>Quem recebe primeiro quer retribuir. É a mágica do VP: a película grátis não é prejuízo, é dívida emocional. Aplique com capricho, trate como cliente pagante, a vontade de retribuir abre a porta do upgrade.</div>
+  <div class="hbox hb-gr"><div class="hb-l">🤝 Reciprocidade</div>Quem recebe primeiro quer retribuir. É a mágica do VP: a película grátis não é prejuízo, é dívida emocional. Aplique com capricho, trate como cliente pagante — a vontade de retribuir abre a porta do upgrade.</div>
   <div class="hbox hb-gr"><div class="hb-l">👥 Prova social</div>Decisão difícil? A pessoa olha o que os outros fizeram. <strong>Use específico, não genérico:</strong> "essa é a queridinha da loja" funciona; "todo mundo compra" soa vazio. Melhor ainda: "ontem saíram quatro dessa pra S23 igual o seu."</div>
   <div class="hbox hb-gr"><div class="hb-l">⚓ Ancoragem</div>O primeiro número da conversa vira a régua. Fale o custo da tela ANTES do preço da película: "trocar essa tela custa R$900... a Diamond é R$99." Sem âncora, R$99 é caro. Com âncora, é óbvio.</div>
-  <div class="hbox hb-gr"><div class="hb-l">⏳ Escassez, só a honesta</div>"Última peça" inventada o cliente fareja e você queima a loja. Escassez real existe: "essa capa desse modelo acabou ontem, chegou reposição hoje", se for verdade, fala. Se não for, não inventa. Confiança é seu estoque mais caro.</div>
-  <div class="hbox hb-gr"><div class="hb-l">🪞 Compromisso e coerência</div>Pequenos "sim" constroem o grande. "Você derruba muito?" → "direto" → quem ADMITIU que derrubar é problema não consegue negar a solução sem se contradizer. Faça o cliente falar, a palavra dele vale dez vezes a sua.</div>
-  <div class="hbox hb-gr"><div class="hb-l">🤫 O silêncio</div>A mais difícil e a mais forte: fez a pergunta de fechamento? <strong>CALA A BOCA.</strong> "Qual das duas eu aplico? [silêncio]" Quem fala primeiro depois da pergunta, perde. O silêncio é desconfortável, deixa o desconforto trabalhar pra você.</div>
+  <div class="hbox hb-gr"><div class="hb-l">⏳ Escassez — só a honesta</div>"Última peça" inventada o cliente fareja e você queima a loja. Escassez real existe: "essa capa desse modelo acabou ontem, chegou reposição hoje" — se for verdade, fala. Se não for, não inventa. Confiança é seu estoque mais caro.</div>
+  <div class="hbox hb-gr"><div class="hb-l">🪞 Compromisso e coerência</div>Pequenos "sim" constroem o grande. "Você derruba muito?" → "direto" → quem ADMITIU que derrubar é problema não consegue negar a solução sem se contradizer. Faça o cliente falar — a palavra dele vale dez vezes a sua.</div>
+  <div class="hbox hb-gr"><div class="hb-l">🤫 O silêncio</div>A mais difícil e a mais forte: fez a pergunta de fechamento? <strong>CALA A BOCA.</strong> "Qual das duas eu aplico? [silêncio]" Quem fala primeiro depois da pergunta, perde. O silêncio é desconfortável — deixa o desconforto trabalhar pra você.</div>
 
   <div class="ex ex-bad"><b>❌ QUEBROU O SILÊNCIO</b>"Qual das duas eu aplico? ...ou se você preferir pode pensar também, não precisa decidir agora, tem gente que leva a mais barata mesmo..." <em>— a pergunta era boa. Aí o vendedor respondeu por ele e devolveu a saída.</em></div>
-  <div class="ex ex-good"><b>✅ SEGUROU O SILÊNCIO</b>"Qual das duas eu aplico? [olha pra ele, tranquilo, e espera. 3 segundos parecem 30, espera mesmo assim]" <em>— o desconforto do silêncio empurra a decisão. Quem pergunta e espera, fecha.</em></div>
+  <div class="ex ex-good"><b>✅ SEGUROU O SILÊNCIO</b>"Qual das duas eu aplico? [olha pra ele, tranquilo, e espera. 3 segundos parecem 30 — espera mesmo assim]" <em>— o desconforto do silêncio empurra a decisão. Quem pergunta e espera, fecha.</em></div>
 
   <h3>4 · Erros emocionais clássicos</h3>
   <table class="tbl">
@@ -932,32 +926,32 @@ table.hist tr:hover td{background:rgba(255,255,255,0.015);}
   <div class="hbox hb-or"><div class="hb-l">Resumo de bolso</div>Calma transmite confiança → confiança transmite valor → valor fecha venda. Você não controla o "sim" do cliente; controla a respiração, o ritmo da fala, a pergunta certa e o silêncio depois dela. Cuida desses quatro e o resto é consequência.</div>
 </div>
 
-<!-- ════ ABORDAGEM, PUXAR PRA LOJA ════ -->
+<!-- ════ ABORDAGEM — PUXAR PRA LOJA ════ -->
 <div class="pg" id="pg-abordagem">
-  <div class="pg-t">Abordagem, puxar o cliente pra loja</div>
-  <p class="pg-s">A venda começa antes do balcão. Quem domina a abordagem na porta enche a loja de gente que não ia entrar. A arma oficial da Beep pra isso é o Vale Película (VP), e a técnica de parar quem está passando.</p>
+  <div class="pg-t">Abordagem — puxar o cliente pra loja</div>
+  <p class="pg-s">A venda começa antes do balcão. Quem domina a abordagem na porta enche a loja de gente que não ia entrar. A arma oficial da Beep pra isso é o Vale Película (VP) — e a técnica de parar quem está passando.</p>
 
-  <div class="hbox hb-or"><div class="hb-l">A verdade sobre o VP (direto da apostila)</div>O Vale Película é <strong>prospecção pura</strong>, não desconto. O objetivo é trazer pra dentro um cliente que <strong>não ia entrar</strong>. A apostila é clara: <em style="color:var(--white)">"o momento mais importante não é quando o cliente vem com o vale, é quando VOCÊ entrega o vale."</em> A entrega é a venda. Sem energia na entrega, o vale vira papel no chão.</div>
+  <div class="hbox hb-or"><div class="hb-l">A verdade sobre o VP (direto da apostila)</div>O Vale Película é <strong>prospecção pura</strong>, não desconto. O objetivo é trazer pra dentro um cliente que <strong>não ia entrar</strong>. A apostila é clara: <em style="color:var(--white)">"o momento mais importante não é quando o cliente vem com o vale — é quando VOCÊ entrega o vale."</em> A entrega é a venda. Sem energia na entrega, o vale vira papel no chão.</div>
 
   <h3>1 · A regra das formiguinhas</h3>
-  <div class="hbox hb-bl"><div class="hb-l">Entregar VP é trabalho de formiguinha</div>Ficar só alguns minutos entregando <strong>não dá resultado</strong>. A apostila manda: entregue a maior parte do dia que der, ou no mínimo <strong>todo o horário de pico</strong>. E quando o movimento na loja está fraco, é AÍ que você sai pra porta entregar, o VP enche a loja parada. Volume de entrega = volume de gente dentro.</div>
+  <div class="hbox hb-bl"><div class="hb-l">Entregar VP é trabalho de formiguinha</div>Ficar só alguns minutos entregando <strong>não dá resultado</strong>. A apostila manda: entregue a maior parte do dia que der, ou no mínimo <strong>todo o horário de pico</strong>. E quando o movimento na loja está fraco, é AÍ que você sai pra porta entregar — o VP enche a loja parada. Volume de entrega = volume de gente dentro.</div>
 
   <h3>2 · Como PARAR quem está passando</h3>
-  <div class="hbox hb-gr"><div class="hb-l">A regra de ouro: modelo primeiro, vale depois</div>Não grite "GRÁTIS". O cérebro filtra panfleteiro. Pergunte o <strong>modelo do aparelho</strong> primeiro, isso para a pessoa e personaliza na hora.<br><br><em style="color:var(--white)">"Boa tarde! Te tomo 10 segundos só, qual é o seu celular? [espera] Então esse vale aqui é seu: película grátis pro seu [modelo], cortesia da loja. Vem comigo que em 5 minutos eu aplico."</em><br><br>Presente com o nome do aparelho dele é pessoal. Panfleto gritando GRÁTIS é descartável.</div>
+  <div class="hbox hb-gr"><div class="hb-l">A regra de ouro: modelo primeiro, vale depois</div>Não grite "GRÁTIS". O cérebro filtra panfleteiro. Pergunte o <strong>modelo do aparelho</strong> primeiro — isso para a pessoa e personaliza na hora.<br><br><em style="color:var(--white)">"Boa tarde! Te tomo 10 segundos só — qual é o seu celular? [espera] Então esse vale aqui é seu: película grátis pro seu [modelo], cortesia da loja. Vem comigo que em 5 minutos eu aplico."</em><br><br>Presente com o nome do aparelho dele é pessoal. Panfleto gritando GRÁTIS é descartável.</div>
 
   <div class="ex ex-bad"><b>❌ Panfleteiro (filtrado na hora)</b>"Película grátis! Pega aí! Tem promoção! Película de graça!" <em>— vira ruído, a pessoa desvia. Ninguém para por um papel gritado.</em></div>
   <div class="ex ex-good"><b>✅ Abordagem que para</b>"Qual é o seu celular? [espera a resposta] Esse vale é seu então: película grátis pro seu [modelo]." <em>— a pergunta para a pessoa, o nome do modelo personaliza, o "seu" cria posse. Ela vem.</em></div>
 
   <h3>3 · Abordagens por situação (leia o aparelho na mão dele)</h3>
-  <div class="hbox hb-rd"><div class="hb-l">💥 Tela trincada</div>"Boa tarde! Vi que a tela já levou uma, ainda bem que segurou, né? [sorri] Esse vale te dá uma película grátis. Qual o modelo? Cinco minutinhos e ela sai daqui protegida." <em style="color:var(--text2)">— ele já sentiu a dor, é o mais fácil de trazer.</em></div>
-  <div class="hbox hb-yl"><div class="hb-l">📱 Sem capa / celular pelado</div>"Celular na mão desse jeito, sem nada... o senhor é corajoso, hein? [leve, sorrindo] Esse vale dá película grátis, ou R$20 de desconto numa capa boa. Qual é o modelo?"</div>
+  <div class="hbox hb-rd"><div class="hb-l">💥 Tela trincada</div>"Boa tarde! Vi que a tela já levou uma — ainda bem que segurou, né? [sorri] Esse vale te dá uma película grátis. Qual o modelo? Cinco minutinhos e ela sai daqui protegida." <em style="color:var(--text2)">— ele já sentiu a dor, é o mais fácil de trazer.</em></div>
+  <div class="hbox hb-yl"><div class="hb-l">📱 Sem capa / celular pelado</div>"Celular na mão desse jeito, sem nada... o senhor é corajoso, hein? [leve, sorrindo] Esse vale dá película grátis — ou R$20 de desconto numa capa boa. Qual é o modelo?"</div>
   <div class="hbox hb-gr"><div class="hb-l">✨ Aparelho novo</div>"Esse aí é novinho, né? Dá pra ver pelo jeito que você segura. [sorri] Estreia ele do jeito certo: película grátis com esse vale. Qual o modelo?"</div>
-  <div class="hbox hb-bl"><div class="hb-l">⏱ Com pressa</div>"Dez segundos, prometo: esse vale dá película grátis, a loja é ali. Me fala só o modelo que eu confirmo se tenho, aí você decide se passa lá depois."</div>
+  <div class="hbox hb-bl"><div class="hb-l">⏱ Com pressa</div>"Dez segundos, prometo: esse vale dá película grátis, a loja é ali. Me fala só o modelo que eu confirmo se tenho — aí você decide se passa lá depois."</div>
 
   <h3>4 · Trouxe pra dentro? Agora é o jogo todo</h3>
-  <div class="hbox hb-or"><div class="hb-l">⭐ O cliente do VP é uma venda inteira esperando</div>A apostila é explícita: trouxe pelo vale, <strong>aproveite TODA oportunidade</strong>, capa, fone, carregador, suporte. A película grátis é a isca que põe ele na cadeira; o lucro vem do resto. <em style="color:var(--white)">"Essa é a do vale, gratuita mesmo, já vou separar. Só te mostro uma coisa antes de aplicar: com os R$20 do mesmo vale, a cerâmica sai por R$39, e ela não quebra junto com a tela. Aplico qual das duas?"</em> Metade sobe. E quem ficar na grátis ainda ouve o PA de câmera e capa. <span class="ins-link" onclick="go('pa')">Ver kit embutido →</span></div>
+  <div class="hbox hb-or"><div class="hb-l">⭐ O cliente do VP é uma venda inteira esperando</div>A apostila é explícita: trouxe pelo vale, <strong>aproveite TODA oportunidade</strong> — capa, fone, carregador, suporte. A película grátis é a isca que põe ele na cadeira; o lucro vem do resto. <em style="color:var(--white)">"Essa é a do vale, gratuita mesmo, já vou separar. Só te mostro uma coisa antes de aplicar: com os R$20 do mesmo vale, a cerâmica sai por R$39 — e ela não quebra junto com a tela. Aplico qual das duas?"</em> Metade sobe. E quem ficar na grátis ainda ouve o PA de câmera e capa. <span class="ins-link" onclick="go('pa')">Ver kit embutido →</span></div>
 
-  <div class="hbox hb-rd"><div class="hb-l">⚠️ O que é burlamento (NÃO faça)</div>VP é prospecção, nunca desconto disfarçado. A apostila proíbe: dar VP pra quem já está comprando na loja, usar VP pra dar desconto e lançar no sistema, mais de um VP por CPF. Isso queima você e a loja. O único caso de VP "salva-venda" é quando o cliente <strong>já está saindo</strong> e não vai comprar de jeito nenhum, aí sim, ao sair, você entrega.</div>
+  <div class="hbox hb-rd"><div class="hb-l">⚠️ O que é burlamento (NÃO faça)</div>VP é prospecção, nunca desconto disfarçado. A apostila proíbe: dar VP pra quem já está comprando na loja, usar VP pra dar desconto e lançar no sistema, mais de um VP por CPF. Isso queima você e a loja. O único caso de VP "salva-venda" é quando o cliente <strong>já está saindo</strong> e não vai comprar de jeito nenhum — aí sim, ao sair, você entrega.</div>
 
   <div class="hbox hb-yl"><div class="hb-l">Resumo de bolso</div>Pergunta o modelo (não grite grátis) → personaliza o vale → traz pra dentro → e dentro da loja vende o resto. VP não é papel grátis, é cliente novo na sua cadeira. Quanto mais você entrega, mais cheia fica a loja.</div>
 </div>
@@ -965,9 +959,9 @@ table.hist tr:hover td{background:rgba(255,255,255,0.015);}
 <!-- ════ TIPOS DE CLIENTE ════ -->
 <div class="pg" id="pg-tipos">
   <div class="pg-t">Tipos de cliente</div>
-  <p class="pg-s">O script certo depende de ler o cliente certo. Aprenda a diagnosticar em 5 segundos quem está na sua frente, e qual abordagem puxar.</p>
+  <p class="pg-s">O script certo depende de ler o cliente certo. Aprenda a diagnosticar em 5 segundos quem está na sua frente — e qual abordagem puxar.</p>
 
-  <div class="hbox hb-or"><div class="hb-l">A regra dos 5 segundos</div>Antes de falar qualquer script, leia <strong>3 sinais</strong>: o que ele faz com o corpo (apressado? relaxado?), a primeira frase que solta ("quanto é?" vs "tô só olhando") e o estado do aparelho (tela trincada? sem capa? novo?). Esses 3 sinais já te dizem qual dos 5 tipos abaixo é, e cada tipo é um jogo diferente.</div>
+  <div class="hbox hb-or"><div class="hb-l">A regra dos 5 segundos</div>Antes de falar qualquer script, leia <strong>3 sinais</strong>: o que ele faz com o corpo (apressado? relaxado?), a primeira frase que solta ("quanto é?" vs "tô só olhando") e o estado do aparelho (tela trincada? sem capa? novo?). Esses 3 sinais já te dizem qual dos 5 tipos abaixo é — e cada tipo é um jogo diferente.</div>
 
   <h3>Os 5 que mais aparecem no balcão</h3>
   <table class="tbl">
@@ -975,51 +969,51 @@ table.hist tr:hover td{background:rgba(255,255,255,0.015);}
     <tbody>
       <tr><td><strong>⏱ Apressado</strong></td><td>Olha o relógio, fala curto, "só quero X", não senta</td><td>Direto ao ponto. UM PA forte, sem escada longa. "Te resolvo em 30 segundos."</td></tr>
       <tr><td><strong>💰 Comparador de preço</strong></td><td>Pergunta preço antes de qualquer coisa</td><td>Ancoragem PRIMEIRO (custo da tela), preço depois. Foca em garantia e risco, não em "é bom".</td></tr>
-      <tr><td><strong>💥 Chegou com a tela quebrada</strong></td><td>Aparelho trincado na mão, já sentiu a dor</td><td>Ouro pro PA. Já viveu o prejuízo, agora vende película nova + capa pra não repetir. "Pra não acontecer de novo."</td></tr>
+      <tr><td><strong>💥 Chegou com a tela quebrada</strong></td><td>Aparelho trincado na mão, já sentiu a dor</td><td>Ouro pro PA. Já viveu o prejuízo — agora vende película nova + capa pra não repetir. "Pra não acontecer de novo."</td></tr>
       <tr><td><strong>🤔 Indeciso</strong></td><td>"Não sei...", olha muito, pega e larga</td><td>Prova física + prova social. "Essa é a queridinha, saíram 4 ontem pra um modelo igual o seu."</td></tr>
       <tr><td><strong>📦 Revendedor</strong></td><td>Pergunta quantidade, preço de atacado</td><td>Outro jogo: volume e margem. Tratar diferente do consumidor final.</td></tr>
     </tbody>
   </table>
 
   <h3>Cada tipo na prática</h3>
-  <div class="hbox hb-bl"><div class="hb-l">⏱ Apressado, não enrole</div>Ele não quer conversa, quer resolver. Enrolar = perder. <em style="color:var(--white)">"Seu celular é qual? [responde] Pronto, tua película é essa. Aproveita que vou aplicar e já protejo a câmera junto, R$29, 30 segundos a mais. Fecho?"</em> Um PA só, embutido, sem escada. Velocidade É o serviço pra ele.</div>
+  <div class="hbox hb-bl"><div class="hb-l">⏱ Apressado — não enrole</div>Ele não quer conversa, quer resolver. Enrolar = perder. <em style="color:var(--white)">"Seu celular é qual? [responde] Pronto, tua película é essa. Aproveita que vou aplicar e já protejo a câmera junto, R$29, 30 segundos a mais. Fecho?"</em> Um PA só, embutido, sem escada. Velocidade É o serviço pra ele.</div>
   <div class="ex ex-bad"><b>❌ Tratou apressado como indeciso</b>"Deixa eu te mostrar as 5 opções de película, cada uma tem um benefício..." <em>— ele já saiu mentalmente. Excesso de opção pra quem tem pressa vira "depois eu volto".</em></div>
   <div class="ex ex-good"><b>✅ Leu a pressa</b>"Te resolvo rapidinho: pro seu aparelho é essa. Aplico agora?" <em>— decisão pronta, ele só confirma. Apressado adora quem decide por ele.</em></div>
 
-  <div class="hbox hb-yl"><div class="hb-l">💰 Comparador, âncora antes do preço, sempre</div>Se você falar preço primeiro, perdeu, ele compara com a internet e vai embora. Inverte: <em style="color:var(--white)">"Antes do preço, você sabe quanto custa trocar a tela do seu [modelo]? Uns R$[X]. Então: essa cerâmica é R$59 e ela não quebra junto com a tela. É seguro contra prejuízo, não despesa."</em> O número da tela vira a régua.</div>
+  <div class="hbox hb-yl"><div class="hb-l">💰 Comparador — âncora antes do preço, sempre</div>Se você falar preço primeiro, perdeu — ele compara com a internet e vai embora. Inverte: <em style="color:var(--white)">"Antes do preço, você sabe quanto custa trocar a tela do seu [modelo]? Uns R$[X]. Então: essa cerâmica é R$59 e ela não quebra junto com a tela. É seguro contra prejuízo, não despesa."</em> O número da tela vira a régua.</div>
 
-  <div class="hbox hb-gr"><div class="hb-l">💥 Chegou com a tela quebrada, o atendimento de ouro</div>Ele acabou de viver o prejuízo da tela quebrada, ninguém precisa convencer esse cliente do valor de proteger. É o mais fácil pra PA da vida. <em style="color:var(--white)">"Poxa, a tela já era... olha, eu não troco tela aqui, mas deixa eu te ajudar pra isso não acontecer de novo: assim que você consertar, volta aqui que eu já deixo separado uma película de verdade + uma capa do nível, pra essa ser a última vez."</em> Honestidade ("não troco tela") gera confiança, e a venda de proteção fecha sozinha em quem já se queimou.</div>
+  <div class="hbox hb-gr"><div class="hb-l">💥 Chegou com a tela quebrada — o atendimento de ouro</div>Ele acabou de viver o prejuízo da tela quebrada — ninguém precisa convencer esse cliente do valor de proteger. É o mais fácil pra PA da vida. <em style="color:var(--white)">"Poxa, a tela já era... olha, eu não troco tela aqui, mas deixa eu te ajudar pra isso não acontecer de novo: assim que você consertar, volta aqui que eu já deixo separado uma película de verdade + uma capa do nível, pra essa ser a última vez."</em> Honestidade ("não troco tela") gera confiança — e a venda de proteção fecha sozinha em quem já se queimou.</div>
 
-  <div class="hbox hb-or"><div class="hb-l">🤔 Indeciso, ele precisa de permissão pra decidir</div>Indeciso trava no medo de errar. Tira o medo com prova física (deixa SENTIR) e prova social (mostra que outros escolheram). <em style="color:var(--white)">"Segura as duas... sentiu? Essa aqui é a que mais sai, ontem levaram quatro pra um modelo igual o seu. Pelo seu uso, eu iria nela."</em> Você decide POR ele, com gentileza. Ele agradece.</div>
+  <div class="hbox hb-or"><div class="hb-l">🤔 Indeciso — ele precisa de permissão pra decidir</div>Indeciso trava no medo de errar. Tira o medo com prova física (deixa SENTIR) e prova social (mostra que outros escolheram). <em style="color:var(--white)">"Segura as duas... sentiu? Essa aqui é a que mais sai, ontem levaram quatro pra um modelo igual o seu. Pelo seu uso, eu iria nela."</em> Você decide POR ele, com gentileza. Ele agradece.</div>
 
-  <div class="hbox hb-bl"><div class="hb-l">📦 Revendedor, não trate como consumidor</div>Ele não compra emoção, compra margem. Script de prova física não funciona. Fala número: volume, preço por unidade, giro. <em style="color:var(--white)">"Quantas você gira por mês? A partir de X unidades eu consigo um preço fechado. Qual modelo sai mais pra você?"</em> Outro relacionamento, esse volta toda semana se o preço fizer sentido.</div>
+  <div class="hbox hb-bl"><div class="hb-l">📦 Revendedor — não trate como consumidor</div>Ele não compra emoção, compra margem. Script de prova física não funciona. Fala número: volume, preço por unidade, giro. <em style="color:var(--white)">"Quantas você gira por mês? A partir de X unidades eu consigo um preço fechado. Qual modelo sai mais pra você?"</em> Outro relacionamento — esse volta toda semana se o preço fizer sentido.</div>
 
   <div class="hbox hb-yl"><div class="hb-l">Resumo de bolso</div>Mesmo produto, 5 abordagens diferentes. O erro fatal é usar o script do indeciso (longo, comparativo) num apressado, ou falar preço seco pro comparador. Leia primeiro, fale depois. <span class="ins-link" onclick="go('scripts')">Ver scripts →</span></div>
 </div>
 
 <!-- ════ PA ════ -->
 <div class="pg" id="pg-pa">
-  <div class="pg-t">PA: kit embutido</div>
+  <div class="pg-t">PA — Kit embutido</div>
   <p class="pg-s">PA = produtos ÷ atendimentos. De 1.55 para 1.90 são ~5 PAs extras/dia. Tudo depende de uma mudança: o complemento entra junto, não depois.</p>
-  <div class="hbox hb-or"><div class="hb-l">A mudança central</div><strong>Antes (robótico):</strong> "Coloco a película? … Quer a câmera também?"<br><strong style="color:var(--green)">Depois (natural):</strong> "Aproveita que ele tá na minha mão, olha a câmera, saltada e no ar. R$29 e protejo ela junto. Já coloco?"<br><br>A diferença: você aponta algo <strong>visível agora</strong>, no aparelho <strong>dele</strong>, no momento em que ele já tá na sua mão. Não é oferta, é cuidado.</div>
+  <div class="hbox hb-or"><div class="hb-l">A mudança central</div><strong>Antes (robótico):</strong> "Coloco a película? … Quer a câmera também?"<br><strong style="color:var(--green)">Depois (natural):</strong> "Aproveita que ele tá na minha mão — olha a câmera, saltada e no ar. R$29 e protejo ela junto. Já coloco?"<br><br>A diferença: você aponta algo <strong>visível agora</strong>, no aparelho <strong>dele</strong>, no momento em que ele já tá na sua mão. Não é oferta — é cuidado.</div>
 
-  <h3>Kits, películas e capas (seu forte)</h3>
+  <h3>Kits — películas e capas (seu forte)</h3>
   <div class="kitb">
-    <div class="kit-l">Kit A, película de tela</div>
+    <div class="kit-l">Kit A — película de tela</div>
     <div class="kit-i"><div class="kit-it">📱 Tela <span class="kp">R$59–129</span></div><span class="kit-ar">+</span><div class="kit-it">📷 Câmera <span class="kp">R$29</span></div><span class="kit-ar">+</span><div class="kit-it">🛡 Capa Gear+ <span class="kp">R$59–79</span></div></div>
     <div class="kit-tot"><span class="kit-tl">Kit cerâmica:</span><span class="kit-tv">R$147</span><span class="kit-tn">vs R$59 só tela (+R$88)</span></div>
   </div>
   <div class="kitb">
-    <div class="kit-l">Kit B, capa</div>
+    <div class="kit-l">Kit B — capa</div>
     <div class="kit-i"><div class="kit-it">🛡 Capa Gear+ <span class="kp">R$59–79</span></div><span class="kit-ar">+</span><div class="kit-it">📱 Cerâmica <span class="kp">R$59</span></div><span class="kit-ar">+</span><div class="kit-it">📷 Câmera <span class="kp">R$29</span></div></div>
     <div class="kit-tot"><span class="kit-tl">Kit capa:</span><span class="kit-tv">R$167</span><span class="kit-tn">vs R$59 só capa (+R$108)</span></div>
   </div>
 
-  <h3>Frases de transição, PA embutido</h3>
+  <h3>Frases de transição — PA embutido</h3>
   <div id="pa-flow"></div>
 
   <h3>Quando o cliente recusa</h3>
-  <div class="hbox hb-yl"><div class="hb-l">Reposicionar, 1 vez só</div>Cliente fala "não, só a película" →<br><br><em style="color:var(--white)">"Tranquilo! Só uma coisa rápida, sem compromisso, [coloca a capa] vê como a câmera fica saltada mesmo com capa? Quina de mesa, chão... é ali que pega primeiro. R$29. Última vez que falo, prometo."</em><br><br>O "última vez que falo, prometo" tira o peso da insistência, vira quase uma brincadeira. Se recusar de novo → <strong>fecha o principal numa boa</strong> e planta: <em style="color:var(--white)">"qualquer coisa você volta que eu coloco rapidinho."</em></div>
+  <div class="hbox hb-yl"><div class="hb-l">Reposicionar — 1 vez só</div>Cliente fala "não, só a película" →<br><br><em style="color:var(--white)">"Tranquilo! Só uma coisa rápida, sem compromisso — [coloca a capa] vê como a câmera fica saltada mesmo com capa? Quina de mesa, chão... é ali que pega primeiro. R$29. Última vez que falo, prometo."</em><br><br>O "última vez que falo, prometo" tira o peso da insistência — vira quase uma brincadeira. Se recusar de novo → <strong>fecha o principal numa boa</strong> e planta: <em style="color:var(--white)">"qualquer coisa você volta que eu coloco rapidinho."</em></div>
 </div>
 
 <!-- ════ ESCADA ════ -->
@@ -1038,24 +1032,24 @@ table.hist tr:hover td{background:rgba(255,255,255,0.015);}
 <div class="pg" id="pg-scripts">
   <div class="pg-t">Scripts por produto</div>
   <p class="pg-s">Âncora de risco → 2 frases → prova física → pergunta fechada. Clique para expandir.</p>
-  <div class="hbox hb-yl" style="margin-bottom:14px"><div class="hb-l">⚠️ Regra de ouro: a gente NÃO troca tela</div>A âncora do "custo de trocar a tela" continua sendo sua arma mais forte, mas ela fala do <strong>prejuízo que o cliente vai ter no conserto lá fora</strong>, não de um serviço seu. Nunca diga "eu troco" ou "já mexo aqui dentro". Diga: <em style="color:var(--white)">"Trocar essa tela te custaria uns R$[X], essa película de R$99 te protege desse prejuízo."</em> Você vende proteção, não conserto. E quando o cliente chega com a tela já quebrada, seja honesto: <em style="color:var(--white)">"Tela eu não troco, mas te preparo pra isso não repetir."</em> Honestidade fecha venda.</div>
+  <div class="hbox hb-yl" style="margin-bottom:14px"><div class="hb-l">⚠️ Regra de ouro: a gente NÃO troca tela</div>A âncora do "custo de trocar a tela" continua sendo sua arma mais forte — mas ela fala do <strong>prejuízo que o cliente vai ter no conserto lá fora</strong>, não de um serviço seu. Nunca diga "eu troco" ou "já mexo aqui dentro". Diga: <em style="color:var(--white)">"Trocar essa tela te custaria uns R$[X] — essa película de R$99 te protege desse prejuízo."</em> Você vende proteção, não conserto. E quando o cliente chega com a tela já quebrada, seja honesto: <em style="color:var(--white)">"Tela eu não troco, mas te preparo pra isso não repetir."</em> Honestidade fecha venda.</div>
   <div id="scripts-list"></div>
 </div>
 
 <!-- ════ TÉCNICAS DE FECHAMENTO ════ -->
 <div class="pg" id="pg-fechamento">
   <div class="pg-t">Técnicas de fechamento</div>
-  <p class="pg-s">A hora de pedir o dinheiro. Você abre bem e oferece bem, aqui é o momento exato de fechar, sem dar saída fácil pro cliente.</p>
+  <p class="pg-s">A hora de pedir o dinheiro. Você abre bem e oferece bem — aqui é o momento exato de fechar, sem dar saída fácil pro cliente.</p>
 
   <div class="hbox hb-or"><div class="hb-l">A regra-mãe: nunca pergunte "quer?"</div>"Você quer?" é a pergunta mais fácil de responder "não". Toda técnica abaixo troca o "quer?" por algo que assume a venda ou oferece uma escolha entre dois sins. E depois de fechar: <strong>silêncio.</strong> Quem fala primeiro perde.</div>
 
   <h3>1 · Fechamento por alternativa</h3>
   <div class="hbox hb-bl"><div class="hb-l">Duas opções, as duas são venda</div>Em vez de "você vai querer?", você dá uma escolha onde qualquer resposta fecha. O cérebro foca em <em>qual</em>, esquece o <em>se</em>.</div>
   <div class="ex ex-bad"><b>❌ Pergunta aberta</b>"Você quer a película então?" <em>— resposta fácil: "não, deixa". Você abriu a porta de saída.</em></div>
-  <div class="ex ex-good"><b>✅ Alternativa</b>"Qual das duas eu já aplico, a Diamond ou a Cerâmica?" <em>— ele escolhe uma. Não existe "nenhuma" na pergunta.</em></div>
+  <div class="ex ex-good"><b>✅ Alternativa</b>"Qual das duas eu já aplico — a Diamond ou a Cerâmica?" <em>— ele escolhe uma. Não existe "nenhuma" na pergunta.</em></div>
 
   <h3>2 · Fechamento presumido</h3>
-  <div class="hbox hb-gr"><div class="hb-l">Aja como se já fosse sim</div>Você não pede permissão, já começa a executar, com naturalidade. Se o cliente não te parar, está fechado. A maioria não para.</div>
+  <div class="hbox hb-gr"><div class="hb-l">Aja como se já fosse sim</div>Você não pede permissão — já começa a executar, com naturalidade. Se o cliente não te parar, está fechado. A maioria não para.</div>
   <div class="ex ex-bad"><b>❌ Pede licença</b>"Posso ir aplicando?" <em>— de novo dá chance de "não, espera".</em></div>
   <div class="ex ex-good"><b>✅ Presumido</b>"Deixa eu já ir aplicando enquanto você escolhe a cor da capa." <em>— a venda já está em movimento. Parar dá mais trabalho que deixar seguir.</em></div>
 
@@ -1068,7 +1062,7 @@ table.hist tr:hover td{background:rgba(255,255,255,0.015);}
   <div class="ex ex-bad"><b>❌ Escassez falsa</b>"É a última peça, só hoje!" (quando não é) <em>— o cliente fareja e perde a confiança em tudo que você disse.</em></div>
   <div class="ex ex-good"><b>✅ Prazo honesto</b>"Aplico agora que tá calmo? Daqui a pouco enche e você espera." <em>— verdade simples que dá um motivo real pra decidir agora.</em></div>
 
-  <div class="hbox hb-or"><div class="hb-l">Resumo de bolso</div>Fechou? <strong>Cala a boca e espera.</strong> O silêncio depois da pergunta de fechamento é a técnica mais forte que existe, deixa o desconforto trabalhar por você. <span class="ins-link" onclick="go('mente')">Ver o silêncio →</span></div>
+  <div class="hbox hb-or"><div class="hb-l">Resumo de bolso</div>Fechou? <strong>Cala a boca e espera.</strong> O silêncio depois da pergunta de fechamento é a técnica mais forte que existe — deixa o desconforto trabalhar por você. <span class="ins-link" onclick="go('mente')">Ver o silêncio →</span></div>
 </div>
 
 <!-- ════ OBJEÇÕES ════ -->
@@ -1081,47 +1075,47 @@ table.hist tr:hover td{background:rgba(255,255,255,0.015);}
 <!-- ════ DEPOIS DO "NÃO" ════ -->
 <div class="pg" id="pg-posnao">
   <div class="pg-t">Depois do "não" final</div>
-  <p class="pg-s">O cliente recusou tudo. A maioria dos vendedores desiste aqui, e perde o cliente pra sempre. Quem planta semente transforma o "não" de hoje no "sim" da semana que vem.</p>
+  <p class="pg-s">O cliente recusou tudo. A maioria dos vendedores desiste aqui — e perde o cliente pra sempre. Quem planta semente transforma o "não" de hoje no "sim" da semana que vem.</p>
 
-  <div class="hbox hb-rd"><div class="hb-l">Regra nº 1: nunca demonstre decepção</div>O cliente <strong>sente</strong> sua frustração, no tom, na cara, no "ah, tá bom" seco. E quem sente que decepcionou o vendedor não volta, por constrangimento. Recebeu o "não"? Sorria de verdade, como se estivesse tudo bem. Porque está.</div>
+  <div class="hbox hb-rd"><div class="hb-l">Regra nº 1: nunca demonstre decepção</div>O cliente <strong>sente</strong> sua frustração — no tom, na cara, no "ah, tá bom" seco. E quem sente que decepcionou o vendedor não volta, por constrangimento. Recebeu o "não"? Sorria de verdade, como se estivesse tudo bem. Porque está.</div>
 
   <div class="hbox hb-gr"><div class="hb-l">🌱 Plante a volta</div>Você não está fechando a porta, está deixando ela encostada. <em style="color:var(--white)">"Sem problema nenhum! Qualquer coisa você volta que eu aplico em 2 minutos, tá? Pode chegar e chamar por mim."</em> Você virou "o vendedor que me atendeu bem", não "a loja". Isso traz de volta.</div>
 
-  <div class="hbox hb-or"><div class="hb-l">🎁 Reciprocidade às vezes fecha depois</div>Dar algo pequeno de graça (um VP, um descontinho registrado pra próxima) cria a dívida emocional que faz voltar. <em style="color:var(--white)">"Olha, leva esse vale aqui, da próxima a capa sai com R$20 a menos. Vou deixar anotado que é seu."</em> Não é prejuízo, é investimento num cliente que ainda não comprou.</div>
+  <div class="hbox hb-or"><div class="hb-l">🎁 Reciprocidade às vezes fecha depois</div>Dar algo pequeno de graça (um VP, um descontinho registrado pra próxima) cria a dívida emocional que faz voltar. <em style="color:var(--white)">"Olha, leva esse vale aqui — da próxima a capa sai com R$20 a menos. Vou deixar anotado que é seu."</em> Não é prejuízo, é investimento num cliente que ainda não comprou.</div>
 
-  <div class="hbox hb-bl"><div class="hb-l">🧠 Registre mentalmente: ele é lead, não caso perdido</div>Cliente que recusou hoje não é fracasso, é uma venda que ainda não amadureceu. Anote o modelo, o que ele quase levou, e a objeção real. Quando ele voltar (e muitos voltam), você já sabe por onde começar. <span class="ins-link" onclick="go('posvenda')">Ver pós-venda →</span></div>
+  <div class="hbox hb-bl"><div class="hb-l">🧠 Registre mentalmente: ele é lead, não caso perdido</div>Cliente que recusou hoje não é fracasso — é uma venda que ainda não amadureceu. Anote o modelo, o que ele quase levou, e a objeção real. Quando ele voltar (e muitos voltam), você já sabe por onde começar. <span class="ins-link" onclick="go('posvenda')">Ver pós-venda →</span></div>
 
   <div class="ex ex-bad"><b>❌ Demonstrou decepção</b>"Ah... tá. Tudo bem então. [cara fechada, vira pro próximo]" <em>— o cliente sai com culpa e não volta. Você perdeu os dois: a venda de hoje e a de sempre.</em></div>
   <div class="ex ex-good"><b>✅ Plantou a semente</b>"Tranquilo! Foi um prazer. Qualquer coisa chama por mim que eu te resolvo rapidinho. [sorriso real]" <em>— ele sai bem, lembra de você, e volta quando o momento for melhor.</em></div>
 
-  <div class="hbox hb-yl"><div class="hb-l">Resumo de bolso</div>O "não" final não é o fim, é o começo do relacionamento. Sem decepção + porta encostada + algo de valor = o cliente volta. Vendedor amador fecha a porta; profissional encosta ela.</div>
+  <div class="hbox hb-yl"><div class="hb-l">Resumo de bolso</div>O "não" final não é o fim — é o começo do relacionamento. Sem decepção + porta encostada + algo de valor = o cliente volta. Vendedor amador fecha a porta; profissional encosta ela.</div>
 </div>
 
 <!-- ════ PÓS-VENDA E RECOMPRA ════ -->
 <div class="pg" id="pg-posvenda">
   <div class="pg-t">Pós-venda e recompra</div>
-  <p class="pg-s">O "R" do método BEEPER, Relacionar. Cliente que já comprou é o mais fácil de vender de novo. A maioria dos vendedores ignora isso e recomeça do zero todo dia.</p>
+  <p class="pg-s">O "R" do método BEEPER — Relacionar. Cliente que já comprou é o mais fácil de vender de novo. A maioria dos vendedores ignora isso e recomeça do zero todo dia.</p>
 
-  <div class="hbox hb-or"><div class="hb-l">Por que cadastrar SEMPRE</div>O cliente que comprou hoje vai precisar de capa nova, cabo novo, película nova em alguns meses, é certo. Se você tem o contato, ele volta <strong>pra você</strong>. Se não tem, ele vira da concorrência ou compra na internet. O cadastro é o que transforma uma venda em um cliente.</div>
+  <div class="hbox hb-or"><div class="hb-l">Por que cadastrar SEMPRE</div>O cliente que comprou hoje vai precisar de capa nova, cabo novo, película nova em alguns meses — é certo. Se você tem o contato, ele volta <strong>pra você</strong>. Se não tem, ele vira da concorrência ou compra na internet. O cadastro é o que transforma uma venda em um cliente.</div>
 
-  <div class="hbox hb-bl"><div class="hb-l">Como cadastrar rápido, sem travar a fila</div>Não faça disso um formulário chato. Embute na entrega: <em style="color:var(--white)">"Vou deixar seu número anotado aqui, assim, quando chegar capa nova do seu modelo eu te aviso, e qualquer problema com a película você fala comigo direto, sem fila."</em> Você não está pedindo dado, está oferecendo um canal VIP. Ninguém recusa isso.</div>
+  <div class="hbox hb-bl"><div class="hb-l">Como cadastrar rápido, sem travar a fila</div>Não faça disso um formulário chato. Embute na entrega: <em style="color:var(--white)">"Vou deixar seu número anotado aqui — assim, quando chegar capa nova do seu modelo eu te aviso, e qualquer problema com a película você fala comigo direto, sem fila."</em> Você não está pedindo dado, está oferecendo um canal VIP. Ninguém recusa isso.</div>
 
-  <div class="hbox hb-gr"><div class="hb-l">O que falar na entrega (fideliza)</div>O momento da entrega é onde você cria o cliente fiel. Reforce o benefício e abra a porta da volta: <em style="color:var(--white)">"Pronto, ficou perfeita. Qualquer bolha que aparecer nos primeiros dias, você volta que eu reaplico sem custo. E olha, capa do seu modelo a gente sempre tem novidade, passa aqui quando quiser ver."</em> Ele sai sentindo que tem alguém cuidando do aparelho dele.</div>
+  <div class="hbox hb-gr"><div class="hb-l">O que falar na entrega (fideliza)</div>O momento da entrega é onde você cria o cliente fiel. Reforce o benefício e abra a porta da volta: <em style="color:var(--white)">"Pronto, ficou perfeita. Qualquer bolha que aparecer nos primeiros dias, você volta que eu reaplico sem custo. E olha — capa do seu modelo a gente sempre tem novidade, passa aqui quando quiser ver."</em> Ele sai sentindo que tem alguém cuidando do aparelho dele.</div>
 
-  <div class="hbox hb-yl"><div class="hb-l">🔁 Como o cadastro vira recompra</div>Cliente cadastrado é uma venda agendada. Película tem validade, capa desgasta, cabo morre. Com o contato, você avisa na hora certa: <em style="color:var(--white)">"Oi! Faz uns 4 meses da sua película, costuma ser quando começa a marcar. Passa aqui que eu troco rapidinho."</em> Isso é faturamento que volta sozinho, sem depender de fluxo de rua.</div>
+  <div class="hbox hb-yl"><div class="hb-l">🔁 Como o cadastro vira recompra</div>Cliente cadastrado é uma venda agendada. Película tem validade, capa desgasta, cabo morre. Com o contato, você avisa na hora certa: <em style="color:var(--white)">"Oi! Faz uns 4 meses da sua película — costuma ser quando começa a marcar. Passa aqui que eu troco rapidinho."</em> Isso é faturamento que volta sozinho, sem depender de fluxo de rua.</div>
 
   <div class="ex ex-bad"><b>❌ Entregou e virou as costas</b>"Pronto, tá aí. Próximo!" <em>— a venda acabou e o cliente também. Você vai ter que conquistar um novo amanhã, do zero.</em></div>
-  <div class="ex ex-good"><b>✅ Transformou em relacionamento</b>"Ficou ótima! Deixa eu anotar seu contato, te aviso das novidades do seu modelo e qualquer coisa você fala comigo direto." <em>— a venda de hoje virou as próximas cinco.</em></div>
+  <div class="ex ex-good"><b>✅ Transformou em relacionamento</b>"Ficou ótima! Deixa eu anotar seu contato — te aviso das novidades do seu modelo e qualquer coisa você fala comigo direto." <em>— a venda de hoje virou as próximas cinco.</em></div>
 
   <div class="hbox hb-or"><div class="hb-l">Resumo de bolso</div>Vender pra quem já confia em você é 5x mais fácil que conquistar alguém novo. Cadastra sempre, entrega com cuidado, avisa na hora certa. O cliente fiel é o que paga a sua semana sem você suar na rua.</div>
 </div>
 
 <!-- ════ VP ════ -->
 <div class="pg" id="pg-vp">
-  <div class="pg-t">VPs, Abordagem</div>
-  <p class="pg-s">Oferta real: película grátis ou R$20 off acima de R$40. Perguntar o modelo, entregar o vale como presente pessoal, trazer pra dentro, em 20 segundos.</p>
-  <div class="hbox hb-or"><div class="hb-l">A oferta do vale</div><strong>Película GRÁTIS</strong> ou <strong>R$20 de desconto</strong> em produtos acima de R$40. Pergunta o modelo PRIMEIRO, revela o vale depois, presente com o nome do aparelho dele é pessoal, e pessoal é difícil de recusar.</div>
-  <div class="hbox hb-gr"><div class="hb-l">⭐ O segredo: a grátis é a isca</div>A película grátis é a básica, ela traz o cliente pra cadeira, não é o produto final. Com ele sentado: <em style="color:var(--white)">"essa é a grátis, e com os R$20 do mesmo vale a cerâmica sai por R$39, a diferença é que ela não quebra junto com a tela"</em>. Metade sobe. E quem ficou na grátis ainda ouve o PA da câmera e da capa.</div>
+  <div class="pg-t">VPs — Abordagem</div>
+  <p class="pg-s">Oferta real: película grátis ou R$20 off acima de R$40. Perguntar o modelo, entregar o vale como presente pessoal, trazer pra dentro — em 20 segundos.</p>
+  <div class="hbox hb-or"><div class="hb-l">A oferta do vale</div><strong>Película GRÁTIS</strong> ou <strong>R$20 de desconto</strong> em produtos acima de R$40. Pergunta o modelo PRIMEIRO, revela o vale depois — presente com o nome do aparelho dele é pessoal, e pessoal é difícil de recusar.</div>
+  <div class="hbox hb-gr"><div class="hb-l">⭐ O segredo: a grátis é a isca</div>A película grátis é a básica — ela traz o cliente pra cadeira, não é o produto final. Com ele sentado: <em style="color:var(--white)">"essa é a grátis, e com os R$20 do mesmo vale a cerâmica sai por R$39 — a diferença é que ela não quebra junto com a tela"</em>. Metade sobe. E quem ficou na grátis ainda ouve o PA da câmera e da capa.</div>
   <h3>Scripts por situação</h3>
   <div id="vp-list"></div>
 </div>
@@ -1137,7 +1131,7 @@ table.hist tr:hover td{background:rgba(255,255,255,0.015);}
 <!-- ════ MINHA TRILHA ════ -->
 <div class="pg" id="pg-trilha">
   <div class="pg-t">Minha trilha de estudo</div>
-  <p class="pg-s">Marque cada conteúdo conforme você domina. A plataforma mostra o que ainda falta estudar, assim você não treina no escuro nem repete o que já sabe.</p>
+  <p class="pg-s">Marque cada conteúdo conforme você domina. A plataforma mostra o que ainda falta estudar — assim você não treina no escuro nem repete o que já sabe.</p>
 
   <div class="card" style="margin-bottom:16px">
     <div class="meta-row"><div class="meta-h"><span class="meta-n">Progresso geral do curso</span><span class="meta-num"><span class="meta-c" id="tr-pct">0%</span></span></div><div class="track"><div class="fill" id="tr-bar" style="width:0%"></div></div></div>
@@ -1150,14 +1144,14 @@ table.hist tr:hover td{background:rgba(255,255,255,0.015);}
 <!-- ════ QUIZ ════ -->
 <div class="pg" id="pg-quiz">
   <div class="pg-t">Quiz da semana</div>
-  <p class="pg-s">Situações reais de balcão. Responde como você responderia na loja, a plataforma corrige e mostra onde você ainda escorrega.</p>
+  <p class="pg-s">Situações reais de balcão. Responde como você responderia na loja — a plataforma corrige e mostra onde você ainda escorrega.</p>
   <div id="quiz-box"></div>
 </div>
 
 <!-- ════ CADERNO DE ERROS ════ -->
 <div class="pg" id="pg-erros">
   <div class="pg-t">Caderno de erros</div>
-  <p class="pg-s">Tudo que você errou no quiz e no simulador fica guardado aqui. Estude o que erra de verdade, não o que já sabe.</p>
+  <p class="pg-s">Tudo que você errou no quiz e no simulador fica guardado aqui. Estude o que erra de verdade — não o que já sabe.</p>
   <div id="erros-box"></div>
 </div>
 
@@ -1193,7 +1187,7 @@ table.hist tr:hover td{background:rgba(255,255,255,0.015);}
 <!-- ════ TELAS ════ -->
 <div class="pg" id="pg-telas">
   <div class="pg-t">Custos de tela</div>
-  <p class="pg-s">Saiba de cor. Esse número é sua âncora mais forte, película de R$99 parece barata perto de R$600 de tela.</p>
+  <p class="pg-s">Saiba de cor. Esse número é sua âncora mais forte — película de R$99 parece barata perto de R$600 de tela.</p>
   <div class="hbox hb-or"><div class="hb-l">Como usar</div>Antes do preço da película, fale o custo da tela: <em style="color:var(--white)">"Tela desse modelo custa R$[X] para trocar. A Diamond custa R$99. Faz conta."</em></div>
   <table class="tbl">
     <thead><tr><th>Modelo</th><th>Custo de troca</th><th>Indica</th><th>Script âncora</th></tr></thead>
@@ -1268,7 +1262,7 @@ async function authGo(){
   }catch(e){
     const m=(e.message||'').toLowerCase();
     if(m.includes('invalid login'))authMsg('Email ou senha errados.',1);
-    else if(m.includes('already registered'))authMsg('Esse email já tem conta, usa o Entrar.',1);
+    else if(m.includes('already registered'))authMsg('Esse email já tem conta — usa o Entrar.',1);
     else if(m.includes('not confirmed'))authMsg('Confirma seu email primeiro (olha a caixa de entrada).',1);
     else authMsg(e.message||'Erro. Tenta de novo.',1);
     btn.disabled=false;
@@ -1363,32 +1357,32 @@ const DIFFICULTIES = [
 ];
 
 const studyMap = {
-  pa:{icon:'⚡',title:'PA: kit embutido',desc:'O complemento entra junto com o fechamento, não depois. Veja as frases de transição e o protocolo de reposicionamento.'},
+  pa:{icon:'⚡',title:'PA — Kit embutido',desc:'O complemento entra junto com o fechamento, não depois. Veja as frases de transição e o protocolo de reposicionamento.'},
   escada:{icon:'📈',title:'Escada de produto',desc:'Como subir o cliente mostrando a entrada primeiro e o contraste com prova física.'},
   scripts:{icon:'💬',title:'Scripts por produto',desc:'Falas de 2 frases que não soam decoradas. Âncora de risco + pergunta fechada.'},
   objecoes:{icon:'🛡',title:'Objeções',desc:'Respostas para "tá caro", "vou pensar" e as outras. Concorde, reposicione, feche.'},
-  vp:{icon:'🎫',title:'VPs, Abordagem',desc:'As 3 etapas para o vale virar cliente dentro da loja em menos de 20 segundos.'},
+  vp:{icon:'🎫',title:'VPs — Abordagem',desc:'As 3 etapas para o vale virar cliente dentro da loja em menos de 20 segundos.'},
   flashcards:{icon:'🃏',title:'Flashcards + Biblioteca',desc:'Memorize preço, garantia e para onde subir. Use os flashcards para treinar rápido e a biblioteca para estudar produto por produto.'},
-  telas:{icon:'💰',title:'Custos de tela',desc:'Decore o custo de troca por modelo, sua âncora de preço mais poderosa.'},
+  telas:{icon:'💰',title:'Custos de tela',desc:'Decore o custo de troca por modelo — sua âncora de preço mais poderosa.'},
 };
 
 const scripts=[
   {title:'Película Vidro 9H → Cerâmica',tags:['película'],rows:[
-    {l:'🧠 A ideia',v:'Ninguém compra a 9H porque é boa, compra porque é barata. Não fala mal dela: coloca as duas na mão do cliente e deixa ele concluir sozinho.'},
-    {l:'💬 Na prática',v:'"Coloco essa sim, sem problema. Qual é o seu celular?" [espera] "Boa. Antes de aplicar, faz um teste comigo, segura uma em cada mão." [pausa, deixa ele sentir] "Essa de vidro quebra junto com a tela quando cai. Essa cerâmica dobra, ó." [dobra na frente dele] "Pro seu [modelo], que a tela custa uns R$[X] pra trocar, eu iria na cerâmica. Mas o senhor que manda."'},
-    {l:'🔑 Por quê funciona',v:'O cliente sente a diferença em vez de ouvir sobre ela. E falar em blocos curtos, com pausa pra ele reagir, é o que tira o ar de decorado, monólogo é o que soa robótico.'},
-    {l:'🔒 Fechar',v:'"Qual das duas eu já deixo aplicada?", escolha dupla: as duas respostas são venda.'},
-    {l:'📦 Emendar o PA',v:'"Fechou. Aproveita que ele tá na minha mão, vira a câmera pra mim. Tá vendo como ela fica saltada? R$29 e protejo ela junto. Coloco?"'}]},
+    {l:'🧠 A ideia',v:'Ninguém compra a 9H porque é boa — compra porque é barata. Não fala mal dela: coloca as duas na mão do cliente e deixa ele concluir sozinho.'},
+    {l:'💬 Na prática',v:'"Coloco essa sim, sem problema. Qual é o seu celular?" [espera] "Boa. Antes de aplicar, faz um teste comigo — segura uma em cada mão." [pausa, deixa ele sentir] "Essa de vidro quebra junto com a tela quando cai. Essa cerâmica dobra, ó." [dobra na frente dele] "Pro seu [modelo], que a tela custa uns R$[X] pra trocar, eu iria na cerâmica. Mas o senhor que manda."'},
+    {l:'🔑 Por quê funciona',v:'O cliente sente a diferença em vez de ouvir sobre ela. E falar em blocos curtos, com pausa pra ele reagir, é o que tira o ar de decorado — monólogo é o que soa robótico.'},
+    {l:'🔒 Fechar',v:'"Qual das duas eu já deixo aplicada?" — escolha dupla: as duas respostas são venda.'},
+    {l:'📦 Emendar o PA',v:'"Fechou. Aproveita que ele tá na minha mão — vira a câmera pra mim. Tá vendo como ela fica saltada? R$29 e protejo ela junto. Coloco?"'}]},
   {title:'Cerâmica → Diamond',tags:['película'],rows:[
-    {l:'🧠 A ideia',v:'Quem pede cerâmica já entende um pouco. Não empurra, pergunta do aparelho e do histórico de quedas. A resposta dele vende por você.'},
-    {l:'💬 Na prática',v:'"Cerâmica é ótima escolha, já vou separar. Seu aparelho é qual?" [espera] "E me conta: você derruba muito?" [se responder "direto"] "Então olha essa Diamond rapidinho. R$40 a mais, e é a que eu indico exatamente pra quem me fala isso, quem não quer voltar aqui tão cedo."'},
-    {l:'🔑 Por quê funciona',v:'A pergunta "você derruba muito?" faz o cliente se autoavaliar, ele se convence com a própria voz. Se responder "não, sou cuidadoso", fecha a cerâmica numa boa: forçar aqui queima a confiança que você acabou de construir.'},
+    {l:'🧠 A ideia',v:'Quem pede cerâmica já entende um pouco. Não empurra — pergunta do aparelho e do histórico de quedas. A resposta dele vende por você.'},
+    {l:'💬 Na prática',v:'"Cerâmica é ótima escolha, já vou separar. Seu aparelho é qual?" [espera] "E me conta: você derruba muito?" [se responder "direto"] "Então olha essa Diamond rapidinho. R$40 a mais — e é a que eu indico exatamente pra quem me fala isso, quem não quer voltar aqui tão cedo."'},
+    {l:'🔑 Por quê funciona',v:'A pergunta "você derruba muito?" faz o cliente se autoavaliar — ele se convence com a própria voz. Se responder "não, sou cuidadoso", fecha a cerâmica numa boa: forçar aqui queima a confiança que você acabou de construir.'},
     {l:'🔒 Fechar',v:'"Pelo que você me contou, eu iria na Diamond. Separo ela?"'}]},
   {title:'Diamond → Kit completo',tags:['película','premium'],rows:[
-    {l:'🧠 A ideia',v:'Cliente que aceita Diamond já decidiu investir. O kit não é venda extra, é terminar o serviço bem feito.'},
-    {l:'💬 Na prática',v:'"Boa escolha, essa é a melhor da linha pra tela." [aplica com calma] "Agora vira o aparelho pra mim." [aponta] "Câmera saltada, sem nada, você blindou a frente e deixou a porta dos fundos aberta. A câmera é R$29, e essa capa aqui é do nível do seu aparelho."'},
-    {l:'🖐 Prova física',v:'"Coloca a capa você mesmo. Sente o encaixe, e olha a borda cobrindo a câmera."'},
-    {l:'🔒 Fechar',v:'"Quer ver o preço do conjunto montado?", montar o kit na frente dele vende mais que falar dele.'}]},
+    {l:'🧠 A ideia',v:'Cliente que aceita Diamond já decidiu investir. O kit não é venda extra — é terminar o serviço bem feito.'},
+    {l:'💬 Na prática',v:'"Boa escolha, essa é a melhor da linha pra tela." [aplica com calma] "Agora vira o aparelho pra mim." [aponta] "Câmera saltada, sem nada — você blindou a frente e deixou a porta dos fundos aberta. A câmera é R$29, e essa capa aqui é do nível do seu aparelho."'},
+    {l:'🖐 Prova física',v:'"Coloca a capa você mesmo. Sente o encaixe — e olha a borda cobrindo a câmera."'},
+    {l:'🔒 Fechar',v:'"Quer ver o preço do conjunto montado?" — montar o kit na frente dele vende mais que falar dele.'}]},
   {title:'Capa entrada → Gear',tags:['capa'],rows:[
     {l:'🧠 A ideia',v:'Capa se vende na mão, não na boca. Coloca as duas no aparelho DO CLIENTE e deixa ele comparar.'},
     {l:'💬 Na prática',v:'"Te vendo essa tranquilo. Mas faz um teste de 10 segundos comigo: coloca essa no seu celular." [espera] "Agora essa Gear." [espera] "Sentiu a folga da primeira? É por ali que o tranco entra quando cai. E olha a câmera: numa fica exposta, na outra tem borda. Seu celular costuma cair?"'},
@@ -1396,66 +1390,66 @@ const scripts=[
     {l:'🔒 Fechar',v:'"Qual das duas vai?"'}]},
   {title:'Cabo entrada → Kimaster',tags:['cabo'],rows:[
     {l:'🧠 A ideia',v:'Cabo é onde o cliente mais acha que "é tudo igual". Sua arma é a história que ele já viveu: todo mundo já teve cabo que morreu do nada.'},
-    {l:'💬 Na prática',v:'"Posso te perguntar uma coisa? Quantos cabos você comprou esse ano?" [espera, todo mundo responde dois, três] "Pois é. E é sempre aqui que eles morrem." [mostra a ponta] "Esse barato resolve o hoje, mas daqui uns meses você volta. O Kimaster é R$30 a mais, com 90 dias de garantia. Pega os dois e compara a ponta."'},
+    {l:'💬 Na prática',v:'"Posso te perguntar uma coisa? Quantos cabos você comprou esse ano?" [espera — todo mundo responde dois, três] "Pois é. E é sempre aqui que eles morrem." [mostra a ponta] "Esse barato resolve o hoje, mas daqui uns meses você volta. O Kimaster é R$30 a mais, com 90 dias de garantia. Pega os dois e compara a ponta."'},
     {l:'🔒 Fechar',v:'"Quer resolver o hoje ou resolver o ano?"'},
     {l:'📦 Emendar o PA',v:'"E em casa, qual ponteira você usa? Se for fraquinha, nem o melhor cabo salva. Te mostro a que combina?"'}]},
   {title:'Fone básico → Kimaster',tags:['fone'],rows:[
     {l:'🧠 A ideia',v:'Fone se vende perguntando da vida da pessoa, não falando de driver e bateria.'},
-    {l:'💬 Na prática',v:'"Antes de te indicar qualquer coisa: esse fone é pra quê? Trabalho, música, academia?" [se academia] "Então esquece o básico, ele solta da orelha no primeiro pulo. Esse aqui tem a borrachinha que trava." [se música] "O básico toca, mas perto desse é rádio de pilha. Bota no ouvido e compara."'},
-    {l:'🔑 Por quê funciona',v:'Quando a recomendação nasce da resposta do cliente, não parece venda, parece conselho.'},
+    {l:'💬 Na prática',v:'"Antes de te indicar qualquer coisa: esse fone é pra quê? Trabalho, música, academia?" [se academia] "Então esquece o básico — ele solta da orelha no primeiro pulo. Esse aqui tem a borrachinha que trava." [se música] "O básico toca, mas perto desse é rádio de pilha. Bota no ouvido e compara."'},
+    {l:'🔑 Por quê funciona',v:'Quando a recomendação nasce da resposta do cliente, não parece venda — parece conselho.'},
     {l:'🔒 Fechar',v:'"Pro seu uso, é esse aqui. Pode ser?"'}]},
 ];
 
 const objections=[
-  {q:'"Tá caro"',r:'"É, não é baratinho mesmo. Mas você sabe quanto custa trocar essa tela? [deixa ele chutar] Uns R$[X]. R$99 contra R$[X], eu faria essa conta. Agora, se hoje não dá, tenho a [intermediária] por R$[Y] que já te segura bem."',w:'Concorda primeiro (desarma), faz o CLIENTE falar o custo da tela (ele se convence com a própria voz) e dá uma saída digna. Em 3 frases, resposta longa pra objeção soa defensiva.'},
-  {q:'"Quero a mais barata"',r:'"Fechado, é sua. Só segura as duas antes, 10 segundos, não é pra te empurrar nada, é pra você levar sabendo a diferença. [mostra na mão] Pronto. Qual vai?"',w:'Você respeita a escolha mas garante a comparação. Metade muda de ideia só de SENTIR a diferença.'},
-  {q:'"Vou pensar"',r:'"Pensa sim, sem pressa. Só me ajuda numa coisa: o que pesou, o valor, ou ficou na dúvida entre elas? [valor] Tenho uma intermediária que encaixa. [dúvida] Te explico em 30 segundos e você decide sabendo."',w:'"Vou pensar" nunca é sobre pensar, é preço ou confusão. Uma pergunta descobre qual e resolve na hora.'},
-  {q:'"Na internet é mais barato"',r:'"É mesmo, não vou mentir. Só que aqui você sai com ele aplicado e testado no SEU aparelho, e se der qualquer coisa, você volta e fala comigo, não abre chamado e espera 15 dias."',w:'Admitir o preço desarma na hora. Aí você vende o que a internet não tem: instantâneo + um rosto pra cobrar.'},
-  {q:'"Tenho em casa"',r:'"Melhor ainda, esse vira o reserva. Porque cabo principal só morre na pior hora: domingo à noite, véspera de viagem, bateria em 3%. [sorri] Quer garantir?"',w:'Humor leve + situação que todo mundo já viveu. Reserva é compra sem culpa.'},
-  {q:'"Não preciso"',r:'"Tranquilo, de verdade. Te mostrei porque combina com o que você tá levando, avisar é meu trabalho, decidir é o seu. Qualquer coisa, sabe onde me achar."',w:'Zero pressão deixa a porta aberta. Cliente que não se sentiu empurrado volta, e compra.'},
+  {q:'"Tá caro"',r:'"É, não é baratinho mesmo. Mas você sabe quanto custa trocar essa tela? [deixa ele chutar] Uns R$[X]. R$99 contra R$[X] — eu faria essa conta. Agora, se hoje não dá, tenho a [intermediária] por R$[Y] que já te segura bem."',w:'Concorda primeiro (desarma), faz o CLIENTE falar o custo da tela (ele se convence com a própria voz) e dá uma saída digna. Em 3 frases — resposta longa pra objeção soa defensiva.'},
+  {q:'"Quero a mais barata"',r:'"Fechado, é sua. Só segura as duas antes, 10 segundos — não é pra te empurrar nada, é pra você levar sabendo a diferença. [mostra na mão] Pronto. Qual vai?"',w:'Você respeita a escolha mas garante a comparação. Metade muda de ideia só de SENTIR a diferença.'},
+  {q:'"Vou pensar"',r:'"Pensa sim, sem pressa. Só me ajuda numa coisa: o que pesou — o valor, ou ficou na dúvida entre elas? [valor] Tenho uma intermediária que encaixa. [dúvida] Te explico em 30 segundos e você decide sabendo."',w:'"Vou pensar" nunca é sobre pensar — é preço ou confusão. Uma pergunta descobre qual e resolve na hora.'},
+  {q:'"Na internet é mais barato"',r:'"É mesmo, não vou mentir. Só que aqui você sai com ele aplicado e testado no SEU aparelho — e se der qualquer coisa, você volta e fala comigo, não abre chamado e espera 15 dias."',w:'Admitir o preço desarma na hora. Aí você vende o que a internet não tem: instantâneo + um rosto pra cobrar.'},
+  {q:'"Tenho em casa"',r:'"Melhor ainda — esse vira o reserva. Porque cabo principal só morre na pior hora: domingo à noite, véspera de viagem, bateria em 3%. [sorri] Quer garantir?"',w:'Humor leve + situação que todo mundo já viveu. Reserva é compra sem culpa.'},
+  {q:'"Não preciso"',r:'"Tranquilo, de verdade. Te mostrei porque combina com o que você tá levando — avisar é meu trabalho, decidir é o seu. Qualquer coisa, sabe onde me achar."',w:'Zero pressão deixa a porta aberta. Cliente que não se sentiu empurrado volta — e compra.'},
   {q:'"Não vou gastar mais agora"',r:'"Justo, o mês tá puxado pra todo mundo. Leva o principal hoje e quando voltar a gente vê o resto. Só fica de olho nessa câmera no ar, hein?"',w:'Empatia real + semente plantada. "Câmera no ar" fica ecoando na cabeça dele.'},
 ];
 
 const vps=[
-  {tag:'⭐ A regra de ouro',c:'or',t:'Pergunta o MODELO antes de revelar o vale. "Qual é o seu celular?" → ele responde → "então esse vale é seu: película grátis pro seu [modelo]". Presente com o nome do aparelho dele é pessoal, panfleto gritando GRÁTIS o cérebro já filtra.'},
-  {tag:'Abertura padrão',c:'or',t:'"Boa tarde! Te tomo 10 segundos só, qual é o seu celular?" [espera] "Então esse vale aqui é seu: película grátis pro seu [modelo], cortesia da loja. Vem comigo que em cinco minutos eu aplico."'},
-  {tag:'Tela trincada',c:'rd',t:'"Boa tarde! Vi que a tela já levou uma, ainda bem que segurou, né? [sorri] Esse vale te dá uma película grátis. Qual o modelo? Cinco minutinhos e ela sai daqui protegida."'},
-  {tag:'Sem capa',c:'yl',t:'"Boa tarde! Celular na mão desse jeito, sem nada... o senhor é corajoso, hein? [leve, sorrindo] Esse vale dá película grátis, ou R$20 de desconto numa capa boa. Qual é o modelo?"'},
+  {tag:'⭐ A regra de ouro',c:'or',t:'Pergunta o MODELO antes de revelar o vale. "Qual é o seu celular?" → ele responde → "então esse vale é seu: película grátis pro seu [modelo]". Presente com o nome do aparelho dele é pessoal — panfleto gritando GRÁTIS o cérebro já filtra.'},
+  {tag:'Abertura padrão',c:'or',t:'"Boa tarde! Te tomo 10 segundos só — qual é o seu celular?" [espera] "Então esse vale aqui é seu: película grátis pro seu [modelo], cortesia da loja. Vem comigo que em cinco minutos eu aplico."'},
+  {tag:'Tela trincada',c:'rd',t:'"Boa tarde! Vi que a tela já levou uma — ainda bem que segurou, né? [sorri] Esse vale te dá uma película grátis. Qual o modelo? Cinco minutinhos e ela sai daqui protegida."'},
+  {tag:'Sem capa',c:'yl',t:'"Boa tarde! Celular na mão desse jeito, sem nada... o senhor é corajoso, hein? [leve, sorrindo] Esse vale dá película grátis — ou R$20 de desconto numa capa boa. Qual é o modelo?"'},
   {tag:'Aparelho novo',c:'gr',t:'"Esse aí é novinho, né? Dá pra ver pelo jeito que você segura. [sorri] Então estreia ele do jeito certo: película grátis com esse vale. Qual o modelo?"'},
-  {tag:'Com pressa',c:'bl',t:'"Dez segundos, prometo: esse vale dá película grátis, a loja é ali. Me fala só o modelo que eu confirmo se tenho, aí você decide se passa lá depois."'},
-  {tag:'Só olhando',c:'or',t:'"Fica à vontade! Só guarda esse vale, película grátis, sem compromisso. Qual é o seu celular? Se eu tiver algo que valha a pena pra ele, te falo antes de você ir."'},
-  {tag:'⭐ Dentro da loja, o upgrade',c:'gr',t:'"Essa é a do vale, gratuita mesmo, já vou separar. Só te mostro uma coisa antes de aplicar: essa cerâmica do lado. Com os R$20 do mesmo vale, ela sai por R$39, e a diferença é que ela não quebra junto com a tela. Aplico qual das duas?"'},
+  {tag:'Com pressa',c:'bl',t:'"Dez segundos, prometo: esse vale dá película grátis, a loja é ali. Me fala só o modelo que eu confirmo se tenho — aí você decide se passa lá depois."'},
+  {tag:'Só olhando',c:'or',t:'"Fica à vontade! Só guarda esse vale — película grátis, sem compromisso. Qual é o seu celular? Se eu tiver algo que valha a pena pra ele, te falo antes de você ir."'},
+  {tag:'⭐ Dentro da loja — o upgrade',c:'gr',t:'"Essa é a do vale, gratuita mesmo — já vou separar. Só te mostro uma coisa antes de aplicar: essa cerâmica do lado. Com os R$20 do mesmo vale, ela sai por R$39 — e a diferença é que ela não quebra junto com a tela. Aplico qual das duas?"'},
 ];
 
 const paFlow=[
-  {p:'📱 Película tela',f:'"Aproveita que ele tá na minha mão, olha a câmera: saltada e no ar. R$29 e ela fica protegida também."',c:'Já coloco?'},
+  {p:'📱 Película tela',f:'"Aproveita que ele tá na minha mão — olha a câmera: saltada e no ar. R$29 e ela fica protegida também."',c:'Já coloco?'},
   {p:'📷 Câmera vendida',f:'"Câmera blindada. E a tela, como anda? [olha o aparelho] Tá no ar ainda..."',c:'Fecha o conjunto?'},
-  {p:'🛡 Capa',f:'"Capa boa essa. Agora a tela continua pelada por baixo, já aproveito que tô mexendo nele?"',c:'Já aproveito?'},
+  {p:'🛡 Capa',f:'"Capa boa essa. Agora a tela continua pelada por baixo — já aproveito que tô mexendo nele?"',c:'Já aproveito?'},
   {p:'🔌 Cabo',f:'"Qual ponteira você usa em casa? Se for fraquinha, esse cabo não rende nem metade."',c:'Te mostro a certa?'},
   {p:'⚡ Fonte',f:'"Essa fonte é forte. Seu cabo aguenta ela? Cabo velho engasga fonte nova. O par certo é R$X."',c:'Leva o par?'},
   {p:'🚗 Suporte carro',f:'"Você usa Waze, né? Waze + tela ligada come bateria que é uma beleza. O veicular fecha o combo."',c:'Fecho o combo?'},
-  {p:'🔋 Power bank',f:'"Esse power bank é bom, mas com cabo ruim ele vira tartaruga. Tem um cabo decente pra andar com ele?"',c:'Coloco um junto?'},
+  {p:'🔋 Power bank',f:'"Esse power bank é bom — mas com cabo ruim ele vira tartaruga. Tem um cabo decente pra andar com ele?"',c:'Coloco um junto?'},
   {p:'⌚ Smartwatch',f:'"Relógio no pulso bate em tudo: mesa, porta, parede. Eu não deixo nenhum sair daqui sem película."',c:'Coloco?'},
 ];
 
 const ladders={
   pelicula:[
-    {n:'Vidro 9H',p:'R$ 19,99 · 7 dias',a:'Segura risco leve. Quebra junto com a tela.',cls:'e',num:1,s:'"Te coloco essa, claro. Mas qual é o seu aparelho? Pra [modelo] eu te mostraria a cerâmica antes, segura as duas aqui e sente a diferença você mesmo."'},
-    {n:'3D',p:'R$ 39,99 · 7 dias',a:'Melhor que vidro, mas ainda quebra na queda.',cls:'e',num:2,s:'"A 3D te protege hoje. Mas é proteção de ontem num aparelho de hoje, segura o básico, só não combina com celular novo."'},
+    {n:'Vidro 9H',p:'R$ 19,99 · 7 dias',a:'Segura risco leve. Quebra junto com a tela.',cls:'e',num:1,s:'"Te coloco essa, claro. Mas qual é o seu aparelho? Pra [modelo] eu te mostraria a cerâmica antes — segura as duas aqui e sente a diferença você mesmo."'},
+    {n:'3D',p:'R$ 39,99 · 7 dias',a:'Melhor que vidro, mas ainda quebra na queda.',cls:'e',num:2,s:'"A 3D te protege hoje. Mas é proteção de ontem num aparelho de hoje — segura o básico, só não combina com celular novo."'},
     {n:'Cerâmica',p:'R$ 59,99 · 7 dias',a:'Não quebra junto. Até R$1.500 de aparelho.',cls:'m',num:3,s:'"Cerâmica é escolha esperta. Agora me fala: você derruba muito? Porque se sim, a Diamond existe exatamente pra você."'},
     {n:'Máquina',p:'R$ 69,99–79,99 · 7 dias',a:'Acabamento melhor, aplicação precisa.',cls:'m',num:4,s:'"A de máquina aplicada fica perfeita, sem bolha. Se a prioridade é visual, é ela. Se é blindagem mesmo, a Diamond ganha."'},
-    {n:'Diamond',p:'R$ 99,99 · 7 dias',a:'Proteção premium. Acima de R$2.000.',cls:'p',num:5,s:'"Diamond é o que eu colocaria no meu. Só não deixa câmera e lateral de fora, senão você blindou a frente e esqueceu os fundos."'},
+    {n:'Diamond',p:'R$ 99,99 · 7 dias',a:'Proteção premium. Acima de R$2.000.',cls:'p',num:5,s:'"Diamond é o que eu colocaria no meu. Só não deixa câmera e lateral de fora — senão você blindou a frente e esqueceu os fundos."'},
     {n:'Fiber Pró',p:'R$ 129,99 · 7 dias',a:'Melhor da linha. Kit completo obrigatório.',cls:'t',num:6,s:'"Fiber é o teto. Quem chega nela fecha o conjunto: câmera e capa no mesmo nível."'},
   ],
   cabo:[
     {n:'V3 / Kaidi básico',p:'R$ 19,99–29,99 · 30 dias',a:'Quebra-galho. Ponta fraca, mau contato em 3 meses.',cls:'e',num:1,s:'"Quantos cabos você já comprou esse ano? Pois é. É a ponta que mata eles. Esse resolve o hoje; o Kimaster resolve o ano."'},
-    {n:'Kimaster / FAM',p:'R$ 59,99–69,99 · 90 dias',a:'Aguenta rotina. Entrada inteligente.',cls:'m',num:2,s:'"Kimaster aguenta o tranco do dia a dia. Pra iPhone ou uso bruto, o Fancy tem 1 ano de garantia, é outro contrato."'},
-    {n:'Fancy / Baseus',p:'R$ 79,99–129,99 · 1 ano',a:'Zero dor de cabeça. iPhone ou uso pesado.',cls:'p',num:3,s:'"Aqui você já tá no premium. A última subida é o Original, pra quem não quer nem pensar em compatibilidade."'},
+    {n:'Kimaster / FAM',p:'R$ 59,99–69,99 · 90 dias',a:'Aguenta rotina. Entrada inteligente.',cls:'m',num:2,s:'"Kimaster aguenta o tranco do dia a dia. Pra iPhone ou uso bruto, o Fancy tem 1 ano de garantia — é outro contrato."'},
+    {n:'Fancy / Baseus',p:'R$ 79,99–129,99 · 1 ano',a:'Zero dor de cabeça. iPhone ou uso pesado.',cls:'p',num:3,s:'"Aqui você já tá no premium. A última subida é o Original — pra quem não quer nem pensar em compatibilidade."'},
     {n:'Original / XO 240W',p:'R$ 159,99–219,99 · 1 ano',a:'Compatibilidade garantida. Sem risco.',cls:'t',num:4,s:''},
   ],
   capa:[
     {n:'Transparente / Anti-impacto',p:'R$ 19,99–24,99',a:'Câmera exposta. Amarela em 2 meses.',cls:'e',num:1,s:'"Coloca essa no seu celular... agora a Gear. Sentiu a folga? É por ali que o tranco entra. E olha onde a câmera fica em cada uma."'},
-    {n:'Skin / Gear 7',p:'R$ 59,99–79,99',a:'Encaixe firme. Câmera com borda.',cls:'m',num:2,s:'"A Gear é a queridinha da loja, encaixe firme, câmera com borda. Quer luxo mesmo? Exclusive e Nano."'},
+    {n:'Skin / Gear 7',p:'R$ 59,99–79,99',a:'Encaixe firme. Câmera com borda.',cls:'m',num:2,s:'"A Gear é a queridinha da loja — encaixe firme, câmera com borda. Quer luxo mesmo? Exclusive e Nano."'},
     {n:'Exclusive / Nano / MagSafe',p:'R$ 99,99',a:'Presença premium. Proteção total.',cls:'p',num:3,s:''},
     {n:'Focus / Couro Magnético',p:'R$ 119,99',a:'Fecha com Diamond/Fiber + câmera.',cls:'t',num:4,s:'"Capa desse nível pede tela no mesmo nível. Capa top com película de entrada é terno com chinelo."'},
   ],
@@ -1507,105 +1501,105 @@ const flashcards=[
 const library=[
   // ── PELÍCULAS ──
   {cat:'Películas',n:'Película Vidro 9H',p:'R$ 19,99',w:'7 dias aplicação',nx:'3D, Cerâmica ou Diamond',s:'Vou te falar a real: essa é a que mais sai porque é barata, não porque é boa. Qual é o seu aparelho? Deixa eu te mostrar a diferença na mão antes de você decidir.'},
-  {cat:'Películas',n:'Película Ultragel',p:'R$ 39,99',w:'7 dias aplicação',nx:'Máquina ou Diamond',s:'Flexível, aguenta bem o tranco. Só não espera acabamento de vitrine, se o visual importa pra você, a de máquina é outro papo.'},
-  {cat:'Películas',n:'Película 3D',p:'R$ 39,99',w:'7 dias aplicação',nx:'Cerâmica, Diamond ou Fiber',s:'Boa pra resolver hoje. Mas celular novo com 3D é tipo carro zero com pneu meia-vida, funciona, só não combina.'},
+  {cat:'Películas',n:'Película Ultragel',p:'R$ 39,99',w:'7 dias aplicação',nx:'Máquina ou Diamond',s:'Flexível, aguenta bem o tranco. Só não espera acabamento de vitrine — se o visual importa pra você, a de máquina é outro papo.'},
+  {cat:'Películas',n:'Película 3D',p:'R$ 39,99',w:'7 dias aplicação',nx:'Cerâmica, Diamond ou Fiber',s:'Boa pra resolver hoje. Mas celular novo com 3D é tipo carro zero com pneu meia-vida — funciona, só não combina.'},
   {cat:'Películas',n:'Película Cerâmica Traseira',p:'R$ 39,99',w:'7 dias aplicação',nx:'Capa premium + câmera',s:'Protege a traseira, mas queda de quina e câmera ela não segura. O combo pra dormir tranquilo é capa boa + câmera.'},
   {cat:'Películas',n:'Película Cerâmica',p:'R$ 59,99',w:'7 dias aplicação',nx:'Diamond ou Fiber Pró',s:'Essa eu vendo de olho fechado. Agora, se você derruba direto, a Diamond existe exatamente pra você.'},
   {cat:'Películas',n:'Película Cerâmica Fosca',p:'R$ 59,99',w:'7 dias aplicação',nx:'Máquina Fosca ou Diamond',s:'Pra quem odeia marca de dedo, é ela. Quer um acabamento mais fino ainda? A máquina fosca.'},
   {cat:'Películas',n:'Película Máquina Brilhante',p:'R$ 69,99',w:'7 dias aplicação',nx:'Diamond',s:'Aplicada na máquina fica perfeita, sem bolha nenhuma. Pra blindagem máxima mesmo, a Diamond.'},
   {cat:'Películas',n:'Película Máquina Fosca',p:'R$ 79,99',w:'7 dias aplicação',nx:'Diamond ou Fiber Pró',s:'Visual top, zero dedo marcado. Se a prioridade virar proteção, Diamond ou Fiber.'},
-  {cat:'Películas',n:'Película Diamond',p:'R$ 99,99',w:'7 dias aplicação',nx:'Fiber Pró + câmera + capa',s:'É a que eu colocaria no meu. Só termina o serviço: câmera e capa, senão blindou a frente e esqueceu o resto.'},
+  {cat:'Películas',n:'Película Diamond',p:'R$ 99,99',w:'7 dias aplicação',nx:'Fiber Pró + câmera + capa',s:'É a que eu colocaria no meu. Só termina o serviço: câmera e capa — senão blindou a frente e esqueceu o resto.'},
   {cat:'Películas',n:'Película Fiber Pró',p:'R$ 129,99',w:'7 dias aplicação',nx:'Capa premium + câmera',s:'O teto da linha. Quem investe nela fecha o conjunto: câmera e capa à altura.'},
   {cat:'Películas',n:'Película de Câmera',p:'R$ 29,99',w:'7 dias aplicação',nx:'Capa com proteção de câmera',s:'Câmera é o conserto mais chato e caro depois da tela. R$29 pra você nunca descobrir isso.'},
-  {cat:'Películas',n:'Película Câmera Lisa/Strass',p:'R$ 9,99',w:'7 dias aplicação',nx:'Câmera melhor ou capa premium',s:'Essa é mais estética que blindagem. Pra aparelho caro eu vou na firme, câmera não é lugar de economizar.'},
+  {cat:'Películas',n:'Película Câmera Lisa/Strass',p:'R$ 9,99',w:'7 dias aplicação',nx:'Câmera melhor ou capa premium',s:'Essa é mais estética que blindagem. Pra aparelho caro eu vou na firme — câmera não é lugar de economizar.'},
   {cat:'Películas',n:'Película 3D Smartwatch',p:'R$ 59,99',w:'7 dias aplicação',nx:'Nanogel Smartwatch',s:'Relógio bate em tudo. A 3D segura, mas a Nanogel acompanha melhor a curva e o uso.'},
   {cat:'Películas',n:'Película Nanogel Smartwatch',p:'R$ 49,99',w:'7 dias aplicação',nx:'Pulseira/proteção extra',s:'Pra relógio é essa: flexível, acompanha o pulso. Completa com uma pulseira boa e tá feito.'},
 
   // ── CAPAS ──
-  {cat:'Capas',n:'Capa Transparente',p:'R$ 19,99',w:'Consultar',nx:'Transparente Premium',s:'Mostra o celular, resolve o básico. Só que amarela, em 2 meses vira capa de celular antigo. A premium segura o visual.'},
-  {cat:'Capas',n:'Capa Anti-impacto',p:'R$ 19,99',w:'Consultar',nx:'Gear, Skin ou Premium',s:'O nome promete mais do que ela entrega, é a versão de entrada. Seu celular vive caindo? Sobe um degrau.'},
+  {cat:'Capas',n:'Capa Transparente',p:'R$ 19,99',w:'Consultar',nx:'Transparente Premium',s:'Mostra o celular, resolve o básico. Só que amarela — em 2 meses vira capa de celular antigo. A premium segura o visual.'},
+  {cat:'Capas',n:'Capa Anti-impacto',p:'R$ 19,99',w:'Consultar',nx:'Gear, Skin ou Premium',s:'O nome promete mais do que ela entrega — é a versão de entrada. Seu celular vive caindo? Sobe um degrau.'},
   {cat:'Capas',n:'Capa Carteira',p:'R$ 24,99',w:'Consultar',nx:'Dreams ou Exclusive',s:'Prática pra quem leva cartão junto. Pra uso pesado de todo dia, a Dreams ou Exclusive parecem produto de verdade.'},
-  {cat:'Capas',n:'Capa Dreams',p:'R$ 39,99',w:'Consultar',nx:'Exclusive ou Couro',s:'Funcional e bonita. Aparelho caro pede couro ou Exclusive, a presença é outra.'},
+  {cat:'Capas',n:'Capa Dreams',p:'R$ 39,99',w:'Consultar',nx:'Exclusive ou Couro',s:'Funcional e bonita. Aparelho caro pede couro ou Exclusive — a presença é outra.'},
   {cat:'Capas',n:'Capa Transparente Premium',p:'R$ 39,99–49,99',w:'Consultar',nx:'Gear, AG Glass ou Focus',s:'Não amarela como a comum, isso já muda tudo. Mas é visual; se quiser visual + blindagem, te mostro o caminho.'},
-  {cat:'Capas',n:'Capa Transparente com Borda',p:'R$ 59,99',w:'Consultar',nx:'Gear ou Focus',s:'Bonita pela borda. Só não escolhe capa pela cor, escolhe pela quina. Te mostro uma que faz os dois?'},
-  {cat:'Capas',n:'Capa Z com Borda Colorida',p:'R$ 59,99',w:'Consultar',nx:'AG Glass ou Focus',s:'Chama atenção mesmo, é estilosa. Só garante que além de bonita ela te protege, essa outra aqui faz os dois.'},
-  {cat:'Capas',n:'Capa Fosca Colorida',p:'R$ 59,99',w:'Consultar',nx:'Skin, Gear ou Focus',s:'Fosca não marca dedo, é ótima. Pra queda o que manda é quina e material, se você derruba, compara com essa.'},
+  {cat:'Capas',n:'Capa Transparente com Borda',p:'R$ 59,99',w:'Consultar',nx:'Gear ou Focus',s:'Bonita pela borda. Só não escolhe capa pela cor — escolhe pela quina. Te mostro uma que faz os dois?'},
+  {cat:'Capas',n:'Capa Z com Borda Colorida',p:'R$ 59,99',w:'Consultar',nx:'AG Glass ou Focus',s:'Chama atenção mesmo, é estilosa. Só garante que além de bonita ela te protege — essa outra aqui faz os dois.'},
+  {cat:'Capas',n:'Capa Fosca Colorida',p:'R$ 59,99',w:'Consultar',nx:'Skin, Gear ou Focus',s:'Fosca não marca dedo, é ótima. Pra queda o que manda é quina e material — se você derruba, compara com essa.'},
   {cat:'Capas',n:'Capa Transparente Colorida',p:'R$ 59,99',w:'Consultar',nx:'AG Glass ou Focus',s:'Visual bonito. Pra aparelho caro eu olharia câmera e quina antes da cor.'},
   {cat:'Capas',n:'Capa Skin Case / Homologadas',p:'R$ 59,99',w:'Consultar',nx:'Gear ou Exclusive',s:'Acabamento gostoso na mão, dá pra sentir. A Gear sobe proteção e presença num degrau só.'},
-  {cat:'Capas',n:'Capa Gear 7',p:'R$ 59,99–79,99',w:'Consultar',nx:'Exclusive ou Nano Titanium',s:'Essa é a queridinha da loja, encaixe firme, câmera com borda. Quer luxo mesmo? Exclusive e Nano.'},
+  {cat:'Capas',n:'Capa Gear 7',p:'R$ 59,99–79,99',w:'Consultar',nx:'Exclusive ou Nano Titanium',s:'Essa é a queridinha da loja — encaixe firme, câmera com borda. Quer luxo mesmo? Exclusive e Nano.'},
   {cat:'Capas',n:'Capa Exclusive',p:'R$ 99,99',w:'Consultar',nx:'Focus ou Couro Magnético',s:'Premium de verdade. Pra iPhone, a Focus ou Couro Magnético é capa de parar de trocar.'},
-  {cat:'Capas',n:'Capa Nano Titanium',p:'R$ 99,99',w:'Consultar',nx:'Focus ou Couro',s:'Protege muito bem. A subida pra Focus/Couro é o toque, o cliente sente na hora que pega.'},
+  {cat:'Capas',n:'Capa Nano Titanium',p:'R$ 99,99',w:'Consultar',nx:'Focus ou Couro',s:'Protege muito bem. A subida pra Focus/Couro é o toque — o cliente sente na hora que pega.'},
   {cat:'Capas',n:'Capa MagSafe + Película Câmera',p:'R$ 99,99',w:'Consultar',nx:'Focus ou Couro Magnético',s:'Já vem com câmera protegida e MagSafe. Usa carregador magnético? Então é quase obrigatória.'},
   {cat:'Capas',n:'Capa Fumê Premium',p:'R$ 99,99',w:'Consultar',nx:'Couro ou Focus',s:'Discreta e elegante. Couro ou Focus entregam mais presença, se quiser subir.'},
   {cat:'Capas',n:'Capa Titanium',p:'R$ 99,99',w:'Consultar',nx:'Focus ou Couro',s:'Bonita e firme. Focus ou Couro é o degrau de quem quer o toque premium completo.'},
-  {cat:'Capas',n:'Capa Couro Magnético',p:'R$ 99,99–119,99',w:'Consultar',nx:'Película premium + câmera',s:'Topo de linha. Agora não estraga o conjunto com película básica, tela e câmera no mesmo nível.'},
+  {cat:'Capas',n:'Capa Couro Magnético',p:'R$ 99,99–119,99',w:'Consultar',nx:'Película premium + câmera',s:'Topo de linha. Agora não estraga o conjunto com película básica — tela e câmera no mesmo nível.'},
   {cat:'Capas',n:'Capa AG Glass',p:'R$ 99,99',w:'Consultar',nx:'Focus ou Couro',s:'Linda, vidro de verdade. Pra rotina de bolso, carro e correria, a Focus aguenta mais porrada.'},
-  {cat:'Capas',n:'Capa Focus',p:'R$ 119,99',w:'Consultar',nx:'Diamond/Fiber + câmera',s:'Das melhores da loja. Fecha com Diamond ou Fiber na tela, capa top com película de entrada é alarme ligado com a janela aberta.'},
+  {cat:'Capas',n:'Capa Focus',p:'R$ 119,99',w:'Consultar',nx:'Diamond/Fiber + câmera',s:'Das melhores da loja. Fecha com Diamond ou Fiber na tela — capa top com película de entrada é alarme ligado com a janela aberta.'},
   {cat:'Capas',n:'Capa Couro',p:'R$ 119,99',w:'Consultar',nx:'Diamond/Fiber + câmera',s:'Escolha de quem gosta de coisa boa. O combo no mesmo nível: tela premium e câmera.'},
 
   // ── CABOS ──
   {cat:'Cabos',n:'Cabo V3',p:'R$ 19,99',w:'30 dias',nx:'Kaidi ou H\'Maston',s:'O quebra-galho oficial. Pra aparelho antigo ou emergência, vai. Cabo principal? Te mostro o que dura.'},
-  {cat:'Cabos',n:'Cabo Kaidi IPH/V8/TC',p:'R$ 29,99–34,99',w:'30 dias',nx:'Kimaster ou FAM',s:'Resolve, mas é entrada. Uso diário, carro, cama, trabalho, pede do Kimaster pra cima.'},
+  {cat:'Cabos',n:'Cabo Kaidi IPH/V8/TC',p:'R$ 29,99–34,99',w:'30 dias',nx:'Kimaster ou FAM',s:'Resolve, mas é entrada. Uso diário — carro, cama, trabalho — pede do Kimaster pra cima.'},
   {cat:'Cabos',n:'Cabo Curto Metálico H\'Maston',p:'R$ 29,99',w:'30 dias',nx:'Cabo 1m/2m reforçado',s:'Perfeito pra power bank e carro. Como cabo principal te deixa grudado na tomada.'},
-  {cat:'Cabos',n:'Cabo Kaidi 2M',p:'R$ 39,99–49,99',w:'30 dias',nx:'Kimaster 2M ou Fancy',s:'2 metros é conforto. Mas cabo comprido barato sofre puxão em dobro, a ponta sente primeiro.'},
-  {cat:'Cabos',n:'Cabo H\'Maston 2M',p:'R$ 39,99–49,99',w:'30 dias',nx:'Kimaster ou Fancy',s:'Atende. Pra uso pesado, cabo grande pede construção melhor, senão o tamanho vira o problema.'},
+  {cat:'Cabos',n:'Cabo Kaidi 2M',p:'R$ 39,99–49,99',w:'30 dias',nx:'Kimaster 2M ou Fancy',s:'2 metros é conforto. Mas cabo comprido barato sofre puxão em dobro — a ponta sente primeiro.'},
+  {cat:'Cabos',n:'Cabo H\'Maston 2M',p:'R$ 39,99–49,99',w:'30 dias',nx:'Kimaster ou Fancy',s:'Atende. Pra uso pesado, cabo grande pede construção melhor — senão o tamanho vira o problema.'},
   {cat:'Cabos',n:'Cabo Kimaster 2M',p:'R$ 59,99–69,99',w:'90 dias',nx:'Fancy, Baseus ou Original',s:'Esse aguenta o ano inteiro. iPhone ou uso bruto? Fancy e Baseus têm 1 ano de garantia.'},
   {cat:'Cabos',n:'Cabo FAM Metal',p:'R$ 59,99–69,99',w:'90 dias',nx:'Fancy ou Baseus',s:'Reforçado de verdade. Quer parar de comprar cabo? Fancy/Baseus é o ponto final.'},
-  {cat:'Cabos',n:'Cabo Fancy',p:'R$ 79,99–99,99',w:'1 ano',nx:'Baseus ou Original Apple',s:'Premium, 1 ano de garantia. A última subida é o Original, principalmente pra iPhone.'},
-  {cat:'Cabos',n:'Cabo Original Apple USB 1M',p:'R$ 159,99',w:'1 ano',nx:'Original 2M + fonte',s:'Original, zero conversa. Só que 1 metro te prende na tomada, na cama, o 2 metros é outra vida.'},
+  {cat:'Cabos',n:'Cabo Fancy',p:'R$ 79,99–99,99',w:'1 ano',nx:'Baseus ou Original Apple',s:'Premium, 1 ano de garantia. A última subida é o Original — principalmente pra iPhone.'},
+  {cat:'Cabos',n:'Cabo Original Apple USB 1M',p:'R$ 159,99',w:'1 ano',nx:'Original 2M + fonte',s:'Original, zero conversa. Só que 1 metro te prende na tomada — na cama, o 2 metros é outra vida.'},
   {cat:'Cabos',n:'Cabo Original Apple USB 2M',p:'R$ 219,99',w:'1 ano',nx:'Fonte original/premium',s:'O cabo certo. Agora confere a fonte: original com fonte fraca é Ferrari com gasolina batizada.'},
-  {cat:'Cabos',n:'Cabo Kimaster Lightning/TC',p:'R$ 79,99',w:'90 dias',nx:'Fancy ou Baseus',s:'Custo-benefício honesto. Aparelho caro pede Fancy/Baseus, cabo não é onde se economiza.'},
+  {cat:'Cabos',n:'Cabo Kimaster Lightning/TC',p:'R$ 79,99',w:'90 dias',nx:'Fancy ou Baseus',s:'Custo-benefício honesto. Aparelho caro pede Fancy/Baseus — cabo não é onde se economiza.'},
   {cat:'Cabos',n:'Cabo Fancy Lightning/TC',p:'R$ 109,99',w:'1 ano',nx:'Baseus ou Original Apple',s:'Forte. Pra dormir tranquilo com iPhone, Original ou Baseus é o topo.'},
   {cat:'Cabos',n:'Cabo Baseus Lightning/TC 20W',p:'R$ 129,99',w:'1 ano',nx:'Original Apple ou kit completo',s:'Excelente. Só casa ele com uma ponteira à altura, senão ela vira o gargalo.'},
   {cat:'Cabos',n:'Cabo Original Apple Light/TC 1M',p:'R$ 189,99',w:'1 ano',nx:'Original 2M ou fonte Apple',s:'A escolha mais segura. Quer conforto? 2 metros. Não tem fonte boa? Fecha o kit.'},
-  {cat:'Cabos',n:'Cabo Original Apple Light/TC 2M',p:'R$ 219,99',w:'1 ano',nx:'Fonte Apple ou premium',s:'Top absoluto. Completa com a fonte certa, senão o conjunto manca.'},
-  {cat:'Cabos',n:'Cabo H\'Maston TC/TC',p:'R$ 44,99',w:'30 dias',nx:'Kimaster, Fancy ou Baseus',s:'Entrada pro Type-C. Seu aparelho tem carga rápida? Esse segura ela, sobe pra liberar.'},
+  {cat:'Cabos',n:'Cabo Original Apple Light/TC 2M',p:'R$ 219,99',w:'1 ano',nx:'Fonte Apple ou premium',s:'Top absoluto. Completa com a fonte certa — senão o conjunto manca.'},
+  {cat:'Cabos',n:'Cabo H\'Maston TC/TC',p:'R$ 44,99',w:'30 dias',nx:'Kimaster, Fancy ou Baseus',s:'Entrada pro Type-C. Seu aparelho tem carga rápida? Esse segura ela — sobe pra liberar.'},
   {cat:'Cabos',n:'Cabo Kimaster TC/TC',p:'R$ 79,99',w:'90 dias',nx:'Fancy, Baseus ou XO 240W',s:'Bom. Carregador forte ou notebook? Fancy, Baseus ou o XO 240W.'},
-  {cat:'Cabos',n:'Cabo Fancy TC/TC',p:'R$ 109,99',w:'1 ano',nx:'Baseus ou XO 240W',s:'Premium. O XO 240W é pra quem quer sobra, notebook e celular sem suar.'},
+  {cat:'Cabos',n:'Cabo Fancy TC/TC',p:'R$ 109,99',w:'1 ano',nx:'Baseus ou XO 240W',s:'Premium. O XO 240W é pra quem quer sobra — notebook e celular sem suar.'},
   {cat:'Cabos',n:'Cabo Baseus TC/TC 20W',p:'R$ 129,99',w:'1 ano',nx:'XO 240W',s:'Ótimo pra celular. Quer um cabo bruto pra tudo? O XO 240W é outro animal.'},
   {cat:'Cabos',n:'Cabo XO 240W 2M TC/TC',p:'R$ 119,99',w:'1 ano',nx:'Fonte compatível forte',s:'Esse é pancada. Casa ele com fonte boa, senão você comprou potência e travou na tomada.'},
 
   // ── CARREGADORES E PONTEIRAS ──
-  {cat:'Carregadores',n:'Carregador H\'Maston V8',p:'R$ 49,99',w:'30 dias',nx:'Kaidi ou Kit Kimaster',s:'Carrega, mas com calma. Carregador principal merece kit, rápido e seguro.'},
-  {cat:'Carregadores',n:'Carregador H\'Maston TC 3.1A',p:'R$ 59,99',w:'30 dias',nx:'Kaidi TC 20W ou Kit 40W',s:'Pra uso simples, vai. Celular com turbo merece mais, senão você pagou por turbo e anda a 60.'},
-  {cat:'Carregadores',n:'Carregador Kaidi V8 2.4A',p:'R$ 69,99',w:'90 dias',nx:'Kit Kimaster',s:'Já melhora. Mas cabo e fonte precisam conversar, o kit resolve a conversa.'},
-  {cat:'Carregadores',n:'Kit Kimaster 15W',p:'R$ 99,99',w:'1 ano',nx:'Kit 40W, Baseus, Samsung ou Xiaomi',s:'Bom kit. Se o aparelho aceita mais potência, você tá comprando abaixo dele, 40W ou 67W.'},
+  {cat:'Carregadores',n:'Carregador H\'Maston V8',p:'R$ 49,99',w:'30 dias',nx:'Kaidi ou Kit Kimaster',s:'Carrega, mas com calma. Carregador principal merece kit — rápido e seguro.'},
+  {cat:'Carregadores',n:'Carregador H\'Maston TC 3.1A',p:'R$ 59,99',w:'30 dias',nx:'Kaidi TC 20W ou Kit 40W',s:'Pra uso simples, vai. Celular com turbo merece mais — senão você pagou por turbo e anda a 60.'},
+  {cat:'Carregadores',n:'Carregador Kaidi V8 2.4A',p:'R$ 69,99',w:'90 dias',nx:'Kit Kimaster',s:'Já melhora. Mas cabo e fonte precisam conversar — o kit resolve a conversa.'},
+  {cat:'Carregadores',n:'Kit Kimaster 15W',p:'R$ 99,99',w:'1 ano',nx:'Kit 40W, Baseus, Samsung ou Xiaomi',s:'Bom kit. Se o aparelho aceita mais potência, você tá comprando abaixo dele — 40W ou 67W.'},
   {cat:'Carregadores',n:'Carregador Kaidi TC 20W',p:'R$ 79,99',w:'90 dias',nx:'Baseus, Apple ou Samsung',s:'Resolve bem. Aparelho caro? Baseus, Apple ou Samsung é comprar tranquilo.'},
-  {cat:'Carregadores',n:'Kit Kimaster Turbo 40W',p:'R$ 129,99–149,99',w:'1 ano',nx:'Baseus, Samsung ou Xiaomi 67W',s:'Forte. Aparelho exigente pede Baseus/Samsung/Xiaomi, compra de longo prazo.'},
+  {cat:'Carregadores',n:'Kit Kimaster Turbo 40W',p:'R$ 129,99–149,99',w:'1 ano',nx:'Baseus, Samsung ou Xiaomi 67W',s:'Forte. Aparelho exigente pede Baseus/Samsung/Xiaomi — compra de longo prazo.'},
   {cat:'Carregadores',n:'Kit Baseus Lightning-TC 20W',p:'R$ 179,99',w:'1 ano',nx:'Original Apple',s:'Excelente. Quer o máximo pra iPhone? Original Apple. Mas Baseus já é premium de verdade.'},
   {cat:'Carregadores',n:'Kit Baseus TC/TC 25W',p:'R$ 179,99',w:'1 ano',nx:'Samsung/Apple original',s:'Premium. A subida é o original da marca, pra compatibilidade total.'},
-  {cat:'Carregadores',n:'Kit Xiaomi Turbo 67W',p:'R$ 169,99',w:'1 ano',nx:'Cabo forte + power bank',s:'Esse é um monstro. Só não estraga ele com cabo fraco, fecha com o compatível.'},
-  {cat:'Carregadores',n:'Kit Samsung 25W TC/TC',p:'R$ 169,99',w:'1 ano',nx:'Cabo TC/TC premium',s:'O padrão certo pra Samsung. Cabo simples limita ele, par certo ou nada.'},
+  {cat:'Carregadores',n:'Kit Xiaomi Turbo 67W',p:'R$ 169,99',w:'1 ano',nx:'Cabo forte + power bank',s:'Esse é um monstro. Só não estraga ele com cabo fraco — fecha com o compatível.'},
+  {cat:'Carregadores',n:'Kit Samsung 25W TC/TC',p:'R$ 169,99',w:'1 ano',nx:'Cabo TC/TC premium',s:'O padrão certo pra Samsung. Cabo simples limita ele — par certo ou nada.'},
   {cat:'Carregadores',n:'Carregador Indução 3 em 1 25W',p:'R$ 149,99',w:'90 dias',nx:'Fonte/cabo premium',s:'Celular, relógio e fone num lugar só. Com fonte boa é um sonho; com fraca é enfeite lento.'},
-  {cat:'Carregadores',n:'Ponteira H\'Maston 4.8A',p:'R$ 34,99',w:'30 dias',nx:'Kaidi ou Kimaster',s:'A mais simples. A tomada é o coração da carga, coração fraco, conjunto fraco.'},
+  {cat:'Carregadores',n:'Ponteira H\'Maston 4.8A',p:'R$ 34,99',w:'30 dias',nx:'Kaidi ou Kimaster',s:'A mais simples. A tomada é o coração da carga — coração fraco, conjunto fraco.'},
   {cat:'Carregadores',n:'Ponteira Kaidi 3.4A',p:'R$ 49,99',w:'90 dias',nx:'Kimaster ou Type-C 18W',s:'Melhor que a básica. Aparelho com turbo? De 18W pra cima.'},
   {cat:'Carregadores',n:'Ponteira Kimaster 3.1A',p:'R$ 69,99',w:'90 dias',nx:'XO, Apple ou Samsung',s:'Boa. Premium e confiável: XO, Apple ou Samsung.'},
-  {cat:'Carregadores',n:'Ponteira Apple 5W',p:'R$ 119,99',w:'1 ano',nx:'Apple USB-C 18W ou 35W',s:'Original, mas é tecnologia de 2015, lenta pro padrão de hoje. 18W ou 35W carrega de verdade.'},
+  {cat:'Carregadores',n:'Ponteira Apple 5W',p:'R$ 119,99',w:'1 ano',nx:'Apple USB-C 18W ou 35W',s:'Original, mas é tecnologia de 2015 — lenta pro padrão de hoje. 18W ou 35W carrega de verdade.'},
   {cat:'Carregadores',n:'Ponteira PMCell TC 18W',p:'R$ 79,99',w:'30 dias',nx:'XO TC 18W ou Apple 18W',s:'Resolve. Uso diário em aparelho caro pede XO ou Apple.'},
   {cat:'Carregadores',n:'Ponteira XO TC 18W',p:'R$ 119,99',w:'90 dias',nx:'Apple/Samsung original',s:'Boa. O mais seguro possível é o original da marca.'},
   {cat:'Carregadores',n:'Ponteira Apple USB-C 18W',p:'R$ 249,99',w:'1 ano',nx:'Apple 35W',s:'Excelente. A 35W é pra quem já pensa no próximo aparelho também.'},
-  {cat:'Carregadores',n:'Ponteira Apple 35W',p:'R$ 299,99',w:'1 ano',nx:'Cabo Apple/TC premium',s:'Topo. Agora cabo à altura, motor forte com pneu careca não corre.'},
+  {cat:'Carregadores',n:'Ponteira Apple 35W',p:'R$ 299,99',w:'1 ano',nx:'Cabo Apple/TC premium',s:'Topo. Agora cabo à altura — motor forte com pneu careca não corre.'},
 
   // ── VEICULAR E POWER BANK ──
   {cat:'Veicular',n:'Ponteira Carro Metal',p:'R$ 34,99',w:'30 dias',nx:'H\'Maston ou Turbo 45W',s:'Básica. Com Waze e tela ligada, ela mal empata a bateria. Turbo resolve.'},
-  {cat:'Veicular',n:'Ponteira Carro H\'Maston',p:'R$ 49,99',w:'90 dias',nx:'Turbo 45W ou Kit Kimaster',s:'Ajuda. Mas GPS + carga pede turbo, carregador fraco no carro é teste de paciência.'},
-  {cat:'Veicular',n:'Ponteira Turbo H\'Maston 45W TC',p:'R$ 59,99',w:'90 dias',nx:'Kit Kimaster veicular',s:'Essa é boa. Só fecha com cabo compatível, turbo com cabo ruim vira comum.'},
+  {cat:'Veicular',n:'Ponteira Carro H\'Maston',p:'R$ 49,99',w:'90 dias',nx:'Turbo 45W ou Kit Kimaster',s:'Ajuda. Mas GPS + carga pede turbo — carregador fraco no carro é teste de paciência.'},
+  {cat:'Veicular',n:'Ponteira Turbo H\'Maston 45W TC',p:'R$ 59,99',w:'90 dias',nx:'Kit Kimaster veicular',s:'Essa é boa. Só fecha com cabo compatível — turbo com cabo ruim vira comum.'},
   {cat:'Veicular',n:'Kit Kimaster veicular',p:'R$ 79,99',w:'90 dias',nx:'Suporte veicular',s:'Resolve o carro. Usa GPS? Suporte é quase obrigatório junto.'},
-  {cat:'Veicular',n:'Power Bank 5.000 mAh',p:'R$ 79,99',w:'90 dias',nx:'10.000 mAh',s:'Emergência pura. Pra atravessar o dia, o 10.000, senão você leva o problema junto.'},
+  {cat:'Veicular',n:'Power Bank 5.000 mAh',p:'R$ 79,99',w:'90 dias',nx:'10.000 mAh',s:'Emergência pura. Pra atravessar o dia, o 10.000 — senão você leva o problema junto.'},
   {cat:'Veicular',n:'Power Bank 10.000 mAh',p:'R$ 119,99',w:'90 dias',nx:'20.000 mAh',s:'O equilíbrio certo. Viaja ou trabalha fora? O 20.000 é paz total.'},
   {cat:'Veicular',n:'Power Bank 20.000 mAh',p:'R$ 179,99',w:'90 dias',nx:'MagSafe + cabo premium',s:'Forte. MagSafe é mais cômodo; por cabo, leva um reforçado pra não engasgar.'},
   {cat:'Veicular',n:'Power Bank MagSafe 5.000 mAh',p:'R$ 149,99',w:'90 dias',nx:'MagSafe 10.000 mAh',s:'Prático demais, mas é emergência. O 10.000 é o ponto certo.'},
-  {cat:'Veicular',n:'Power Bank MagSafe 10.000 mAh',p:'R$ 179,99',w:'90 dias',nx:'Cabo + tomada premium',s:'Premium. Completa com cabo e tomada bons, senão vira investimento desperdiçado.'},
+  {cat:'Veicular',n:'Power Bank MagSafe 10.000 mAh',p:'R$ 179,99',w:'90 dias',nx:'Cabo + tomada premium',s:'Premium. Completa com cabo e tomada bons — senão vira investimento desperdiçado.'},
 
   // ── FONES COM FIO ──
-  {cat:'Fones',n:'Fone Queridinho Beep',p:'R$ 9,99',w:'7 dias',nx:'Beep Intra ou PmCell',s:'R$9,99, quebra-galho assumido. Pra emergência, ok. Todo dia? Seu ouvido merece o próximo.'},
-  {cat:'Fones',n:'Fone Beep Intra c/ microfone',p:'R$ 19,99',w:'30 dias',nx:'PmCell ou Kimaster',s:'Resolve ligação. Música todo dia pede Kimaster, som e construção sobem juntos.'},
+  {cat:'Fones',n:'Fone Queridinho Beep',p:'R$ 9,99',w:'7 dias',nx:'Beep Intra ou PmCell',s:'R$9,99 — quebra-galho assumido. Pra emergência, ok. Todo dia? Seu ouvido merece o próximo.'},
+  {cat:'Fones',n:'Fone Beep Intra c/ microfone',p:'R$ 19,99',w:'30 dias',nx:'PmCell ou Kimaster',s:'Resolve ligação. Música todo dia pede Kimaster — som e construção sobem juntos.'},
   {cat:'Fones',n:'Fone Beep Redondo c/ microfone',p:'R$ 19,99',w:'30 dias',nx:'PmCell ou Kimaster',s:'Simples, sem borracha. Quer que dure e soe melhor? PmCell ou Kimaster.'},
   {cat:'Fones',n:'Fone PmCell c/ borracha',p:'R$ 29,99',w:'30 dias',nx:'Kimaster ou Fancy',s:'Já é melhor que os básicos. Uso intenso? Kimaster/Fancy compensa rápido.'},
   {cat:'Fones',n:'Fone PmCell s/ borracha',p:'R$ 29,99',w:'30 dias',nx:'Kimaster, Fancy ou JBL',s:'Confortável pra quem odeia borracha no ouvido. Som melhor: Kimaster, Fancy ou JBL.'},
   {cat:'Fones',n:'Fone Kimaster K505',p:'R$ 49,99',w:'90 dias',nx:'Fancy ou JBL',s:'O custo-benefício da casa. Áudio e marca forte? Fancy/JBL é o degrau.'},
   {cat:'Fones',n:'Fone Kimaster Metal',p:'R$ 59,99',w:'90 dias',nx:'Fancy Lata ou JBL',s:'Reforçado. Experiência premium: Fancy Lata ou JBL.'},
-  {cat:'Fones',n:'Fone Fancy FE10',p:'R$ 59,99',w:'90 dias',nx:'Fancy Lata ou JBL',s:'Bom. Mas se você vive de fone no ouvido, Fancy Lata ou JBL, fone ruim irrita todo santo dia.'},
+  {cat:'Fones',n:'Fone Fancy FE10',p:'R$ 59,99',w:'90 dias',nx:'Fancy Lata ou JBL',s:'Bom. Mas se você vive de fone no ouvido, Fancy Lata ou JBL — fone ruim irrita todo santo dia.'},
   {cat:'Fones',n:'Fone Fancy Lata Intra',p:'R$ 79,99',w:'90 dias',nx:'JBL ou Apple',s:'Opção forte. JBL ou Apple é o teto de som e marca.'},
   {cat:'Fones',n:'Fone Fancy Lata Redondo',p:'R$ 79,99',w:'90 dias',nx:'JBL ou Apple',s:'Premium sem borracha. Se som importa mesmo, compara com JBL.'},
   {cat:'Fones',n:'Fone JBL Tune 110',p:'R$ 119,99',w:'1 ano',nx:'Bluetooth JBL ou Headphone JBL',s:'JBL com fio é excelente. Quer liberdade? O Bluetooth JBL muda o jogo.'},
@@ -1617,29 +1611,29 @@ const library=[
   {cat:'Fones',n:'Fone Apple Lightning',p:'R$ 249,99',w:'1 ano',nx:'Bluetooth premium',s:'Compra certa. Conforto no dia a dia? Bluetooth premium é o próximo capítulo.'},
 
   // ── BLUETOOTH ──
-  {cat:'Fones BT',n:'Fone Bluetooth Gold',p:'R$ 99,99',w:'30 dias',nx:'Kimaster TWS300',s:'A porta de entrada do sem fio. Pra testar, vai. Todo dia: bateria e microfone mandam, Kimaster.'},
+  {cat:'Fones BT',n:'Fone Bluetooth Gold',p:'R$ 99,99',w:'30 dias',nx:'Kimaster TWS300',s:'A porta de entrada do sem fio. Pra testar, vai. Todo dia: bateria e microfone mandam — Kimaster.'},
   {cat:'Fones BT',n:'Fone Kimaster TWS300',p:'R$ 119,99',w:'90 dias',nx:'Kaidi KD771 ou Fancy',s:'Custo-benefício bom. Visual e segurança no uso: Kaidi/Fancy.'},
   {cat:'Fones BT',n:'Fone Kaidi KD771 Airpods',p:'R$ 149,99',w:'90 dias',nx:'Fancy ou JBL',s:'Bonito de ver. Som, bateria e marca: Fancy ou JBL ganham.'},
   {cat:'Fones BT',n:'Fone Kaidi Intra TWS',p:'R$ 149,99',w:'90 dias',nx:'Fancy ou JBL Buds',s:'Isola bem o som. Música e chamada intensas: Fancy ou JBL.'},
   {cat:'Fones BT',n:'Fone Air Dots Kaidi Gamer',p:'R$ 149,99',w:'90 dias',nx:'Fancy ou JBL',s:'Baixa latência pra jogo. Pra som geral, Fancy/JBL é mais completo.'},
-  {cat:'Fones BT',n:'Fone Condução Óssea Kaidi',p:'R$ 149,99',w:'90 dias',nx:'JBL esportivo ou headphone',s:'Pra esporte é perfeito, você continua ouvindo a rua. Qualidade de som puro: JBL/headphone.'},
-  {cat:'Fones BT',n:'Fone Kaidi KD7021',p:'R$ 179,99',w:'90 dias',nx:'Fancy Lata ou JBL',s:'Bom. O próximo nível é Fancy ou JBL, som, bateria e construção sobem juntos.'},
+  {cat:'Fones BT',n:'Fone Condução Óssea Kaidi',p:'R$ 149,99',w:'90 dias',nx:'JBL esportivo ou headphone',s:'Pra esporte é perfeito — você continua ouvindo a rua. Qualidade de som puro: JBL/headphone.'},
+  {cat:'Fones BT',n:'Fone Kaidi KD7021',p:'R$ 179,99',w:'90 dias',nx:'Fancy Lata ou JBL',s:'Bom. O próximo nível é Fancy ou JBL — som, bateria e construção sobem juntos.'},
   {cat:'Fones BT',n:'Fone Kaidi Redondo com visor',p:'R$ 179,99',w:'90 dias',nx:'Fancy ou JBL',s:'O visor vende sozinho, mas não compra por ele. Qualidade: Fancy/JBL.'},
-  {cat:'Fones BT',n:'Fone Fancy Lata Bluetooth',p:'R$ 199,99',w:'90 dias',nx:'JBL Wave/Flex/Tune',s:'Premium. JBL é marca, som e garantia acima, pra uso diário eu mostro.'},
+  {cat:'Fones BT',n:'Fone Fancy Lata Bluetooth',p:'R$ 199,99',w:'90 dias',nx:'JBL Wave/Flex/Tune',s:'Premium. JBL é marca, som e garantia acima — pra uso diário eu mostro.'},
   {cat:'Fones BT',n:'Fone JBL Wave Buds2',p:'R$ 479,99',w:'Consultar',nx:'JBL Wave Flex/Tune + cabo',s:'Produto sério. Garante a recarga: cabo ou power bank junto.'},
   {cat:'Fones BT',n:'Fone JBL Wave Flex',p:'R$ 599,99',w:'Consultar',nx:'JBL Tune Buds',s:'Top. Quer experiência mais fechada? Tune Buds.'},
-  {cat:'Fones BT',n:'Fone JBL Tune Buds',p:'R$ 599,99',w:'Consultar',nx:'Carregador/cabo/power bank',s:'O teto. Agora é suporte: carregador, cabo, power bank, nunca parado sem bateria.'},
+  {cat:'Fones BT',n:'Fone JBL Tune Buds',p:'R$ 599,99',w:'Consultar',nx:'Carregador/cabo/power bank',s:'O teto. Agora é suporte: carregador, cabo, power bank — nunca parado sem bateria.'},
   {cat:'Fones BT',n:'Fone JBL Tune 125',p:'R$ 249,99',w:'Consultar',nx:'JBL Wave/Flex ou headphone',s:'Pra esporte. Totalmente sem fio: Wave/Flex. Som imersivo: headphone.'},
-  {cat:'Fones BT',n:'Fone Kimaster TW200',p:'R$ 249,99',w:'1 ano',nx:'JBL esportivo',s:'Forte, e ainda carrega o celular. Marca premium: JBL segue o topo.'},
+  {cat:'Fones BT',n:'Fone Kimaster TW200',p:'R$ 249,99',w:'1 ano',nx:'JBL esportivo',s:'Forte — e ainda carrega o celular. Marca premium: JBL segue o topo.'},
 
   // ── HEADPHONES ──
-  {cat:'Headphones',n:'Headphone Altomex A872',p:'R$ 59,99',w:'90 dias',nx:'PmCell ou H\'Maston',s:'Entrada. Estudar, jogar, trabalhar, conforto pesa muito. PmCell/H\'Maston sobe.'},
+  {cat:'Headphones',n:'Headphone Altomex A872',p:'R$ 59,99',w:'90 dias',nx:'PmCell ou H\'Maston',s:'Entrada. Estudar, jogar, trabalhar — conforto pesa muito. PmCell/H\'Maston sobe.'},
   {cat:'Headphones',n:'Headphone JBL Tune500',p:'R$ 349,99',w:'1 ano',nx:'JBL Tune520 ou 720BT',s:'Excelente com fio. Quer liberdade? 520/720 Bluetooth.'},
   {cat:'Headphones',n:'Headphone Gatinho',p:'R$ 99,99',w:'90 dias',nx:'PmCell ou JBL',s:'Visual fofo, público infantil. Som e durabilidade: outro modelo.'},
   {cat:'Headphones',n:'Headphone PmCell',p:'R$ 129,99',w:'90 dias',nx:'H\'Maston ou JBL Tune500',s:'Custo-benefício. Uso diário: JBL/H\'Maston entrega mais.'},
   {cat:'Headphones',n:'Headphone H\'Maston AirPods Max',p:'R$ 149,99',w:'90 dias',nx:'JBL Tune520/720',s:'Visual premium por pouco. Áudio de verdade: JBL.'},
   {cat:'Headphones',n:'Headphone Hrebos Aluminium',p:'R$ 219,99',w:'90 dias',nx:'JBL Tune520',s:'Bateria boa. Uso pesado: JBL é marca, som e segurança.'},
-  {cat:'Headphones',n:'Headphone JBL Tune520BT',p:'R$ 399,99',w:'1 ano',nx:'JBL Tune720BT',s:'Muito bom. O 720 soma bateria e conforto, a experiência completa.'},
+  {cat:'Headphones',n:'Headphone JBL Tune520BT',p:'R$ 399,99',w:'1 ano',nx:'JBL Tune720BT',s:'Muito bom. O 720 soma bateria e conforto — a experiência completa.'},
   {cat:'Headphones',n:'Headphone JBL Tune720BT',p:'R$ 549,99',w:'1 ano',nx:'Cabo/carregador/power bank',s:'O topo. Leva cabo ou power bank pra ele nunca dormir.'},
 
   // ── CAIXAS DE SOM ──
@@ -1664,15 +1658,15 @@ const library=[
   {cat:'Acessórios',n:'Bateria moeda (2032/LR44...)',p:'R$ 9,99',w:'Consultar',nx:'Levar reserva',s:'Daquelas que acaba quando você mais precisa. Controle ou alarme? Leva reserva.'},
   {cat:'Acessórios',n:'Pilha Alcalina AAA/AA',p:'R$ 19,99',w:'Consultar',nx:'Recarregável',s:'Dura bem mais que a comum. Uso frequente? Recarregável é a conta inteligente.'},
   {cat:'Acessórios',n:'Pilha Recarregável AAA/AA',p:'R$ 24,99',w:'Consultar',nx:'Carregador de pilhas',s:'Só faz sentido completo com o carregador. Não tem? Te mostro o kit.'},
-  {cat:'Acessórios',n:'Carregador de Pilhas',p:'R$ 49,99',w:'30 dias',nx:'Pilhas extras',s:'Resolve. Leva pilhas extras, o esquema é um jogo usando e outro carregando.'},
+  {cat:'Acessórios',n:'Carregador de Pilhas',p:'R$ 49,99',w:'30 dias',nx:'Pilhas extras',s:'Resolve. Leva pilhas extras — o esquema é um jogo usando e outro carregando.'},
   {cat:'Acessórios',n:'Suporte Retrovisor',p:'R$ 44,99',w:'30 dias',nx:'Carregador veicular',s:'Geralmente é pra GPS, né? GPS come bateria. Já fecha com o carregador veicular.'},
   {cat:'Acessórios',n:'Suporte Imã Kingo',p:'R$ 24,99',w:'30 dias',nx:'Imã Kimaster ou premium',s:'Imã simples segura, mas celular pesado pede um mais firme. Queda no carro não dá segunda chance.'},
   {cat:'Acessórios',n:'Suporte Imã Kimaster',p:'R$ 39,99',w:'30 dias',nx:'Trava rápida ou painel gel',s:'Melhor. Segurança máxima mesmo: trava rápida prende mais que imã.'},
   {cat:'Acessórios',n:'Suporte Robocop',p:'R$ 39,99',w:'30 dias',nx:'Trava rápida',s:'Legal e funcional. Dirige muito? Trava rápida é mais firmeza.'},
-  {cat:'Acessórios',n:'Suporte Trava Rápida',p:'R$ 49,99',w:'30 dias',nx:'Carregador veicular',s:'Esse é o suporte certo. Agora falta energia, quem usa suporte usa GPS. Veicular junto.'},
+  {cat:'Acessórios',n:'Suporte Trava Rápida',p:'R$ 49,99',w:'30 dias',nx:'Carregador veicular',s:'Esse é o suporte certo. Agora falta energia — quem usa suporte usa GPS. Veicular junto.'},
   {cat:'Acessórios',n:'Suporte Moto Trava Clip',p:'R$ 39,99',w:'30 dias',nx:'Bolsa guidão/retrovisor',s:'Resolve. Pega chuva, poeira? A bolsa de guidão protege melhor.'},
   {cat:'Acessórios',n:'Suporte Mesa Celular Fixo',p:'R$ 49,99',w:'30 dias',nx:'Carregador/cabo extra',s:'Ótimo pra mesa. Deixa um cabo ali junto e vira estação fixa.'},
-  {cat:'Acessórios',n:'Pen drive/Cartão 16GB',p:'R$ 49,99',w:'Consultar',nx:'32GB ou 64GB',s:'Resolve pouco arquivo. Foto e vídeo comem espaço rápido, 32/64GB pra não comprar duas vezes.'},
+  {cat:'Acessórios',n:'Pen drive/Cartão 16GB',p:'R$ 49,99',w:'Consultar',nx:'32GB ou 64GB',s:'Resolve pouco arquivo. Foto e vídeo comem espaço rápido — 32/64GB pra não comprar duas vezes.'},
   {cat:'Acessórios',n:'Pen drive/Cartão 64GB',p:'R$ 79,99',w:'Consultar',nx:'128GB',s:'Já é bom. Grava vídeo ou guarda muita coisa? 128GB é a jogada.'},
   {cat:'Acessórios',n:'Pen drive/Cartão 128GB',p:'R$ 119,99',w:'Consultar',nx:'Leitor/adaptador',s:'Resolve com folga. Só confirma se precisa de leitor ou adaptador.'},
   {cat:'Acessórios',n:'Leitor de Cartão',p:'R$ 9,99',w:'Consultar',nx:'Cartão de memória',s:'Sozinho só serve se já tem o cartão. Não tem? Te mostro o certo.'},
@@ -1693,24 +1687,24 @@ const library=[
   {cat:'Smartwatch',n:'Smartwatch Quadrado 45/49mm',p:'R$ 299,00',w:'90 dias',nx:'7 pulseiras ou prova d\'água',s:'Já tem presença no pulso. Kit mais completo ou resistência: 7 pulseiras ou prova d\'água.'},
   {cat:'Smartwatch',n:'Smartwatch Redondo H\'Maston',p:'R$ 199,99',w:'90 dias',nx:'Amazfit/Redmi',s:'Bonito e discreto. Quer marca conhecida? Redmi/Amazfit é a subida lógica.'},
   {cat:'Smartwatch',n:'Smartwatch à prova d\'água 49mm',p:'R$ 359,00',w:'90 dias',nx:'Amazfit/Redmi',s:'Bem completo. Quer marca reconhecida? Amazfit/Redmi entra forte.'},
-  {cat:'Smartwatch',n:'Amazfit Pop 3S',p:'R$ 379,99',w:'1 ano',nx:'Película smartwatch',s:'Marca forte. Eu não vendo nenhum sem película, relógio bate em tudo.'},
-  {cat:'Smartwatch',n:'Redmi Watch 5 Active',p:'R$ 349,99',w:'1 ano',nx:'Película smartwatch',s:'Passa confiança. Protege a tela junto, smartwatch sem película risca na primeira semana.'},
+  {cat:'Smartwatch',n:'Amazfit Pop 3S',p:'R$ 379,99',w:'1 ano',nx:'Película smartwatch',s:'Marca forte. Eu não vendo nenhum sem película — relógio bate em tudo.'},
+  {cat:'Smartwatch',n:'Redmi Watch 5 Active',p:'R$ 349,99',w:'1 ano',nx:'Película smartwatch',s:'Passa confiança. Protege a tela junto — smartwatch sem película risca na primeira semana.'},
   {cat:'Smartwatch',n:'Smartwatch R com Chip 5G Ultra',p:'R$ 429,99',w:'90 dias',nx:'Película + pulseira',s:'O mais completo, tem até chip. Fecho com película e pulseira pra proteger e personalizar.'},
 ];
 
 const simCases=[
   {scn:'Cliente aceitou a Cerâmica (R$59). Câmera exposta.',says:'"Tá bom, só a película mesmo."',opts:[
-    {t:'"Certo! Mais alguma coisa?"',ok:false},{t:'"Aproveita que ele tá na minha mão, olha a câmera, saltada e no ar. R$29 e protejo ela também. Já coloco?"',ok:true},
+    {t:'"Certo! Mais alguma coisa?"',ok:false},{t:'"Aproveita que ele tá na minha mão — olha a câmera, saltada e no ar. R$29 e protejo ela também. Já coloco?"',ok:true},
     {t:'"Tem certeza? A câmera é importante..."',ok:false},{t:'"Posso te mostrar a câmera também?"',ok:false}],
     fok:'Perfeito. Você aproveitou o momento (aparelho na sua mão), apontou algo VISÍVEL e fechou com pergunta direta. Soa como cuidado, não como venda.',
     fno:'A certa aproveita que o aparelho já tá na sua mão e mostra algo visível. "Posso te mostrar?" pede permissão demais; "Tem certeza?" pressiona.'},
   {scn:'Cliente aceitou a Capa Gear (R$59). Tela sem película.',says:'"Só a capa mesmo, obrigado."',opts:[
-    {t:'"Capa boa essa. Agora a tela continua pelada por baixo, já aproveito que tô mexendo nele e coloco a película?"',ok:true},
+    {t:'"Capa boa essa. Agora a tela continua pelada por baixo — já aproveito que tô mexendo nele e coloco a película?"',ok:true},
     {t:'"Quer ver a película?"',ok:false},{t:'"Ok, sem problema!"',ok:false},{t:'"Mas a tela fica desprotegida assim..."',ok:false}],
-    fok:'Certo. "Já aproveito que tô mexendo nele" transforma o PA em conveniência, parece favor, não venda.',
+    fok:'Certo. "Já aproveito que tô mexendo nele" transforma o PA em conveniência — parece favor, não venda.',
     fno:'"Quer ver?" dá saída fácil. "Mas a tela..." soa como insistência. A certa transforma o PA em conveniência do momento.'},
   {scn:'Cliente quer só o Cabo V3 (R$19). Você sabe que vai dar mau contato.',says:'"Pode ser o mais barato mesmo."',opts:[
-    {t:'"Fechado, te vendo. Só me responde: quantos cabos você já comprou esse ano? Pois é, é a ponta que mata eles. O Kimaster é R$40 a mais e quebra esse ciclo. Mas você que decide."',ok:true},
+    {t:'"Fechado, te vendo. Só me responde: quantos cabos você já comprou esse ano? Pois é — é a ponta que mata eles. O Kimaster é R$40 a mais e quebra esse ciclo. Mas você que decide."',ok:true},
     {t:'"Esse cabo é ruim, não recomendo."',ok:false},{t:'"Ok, pode ser."',ok:false},{t:'"Você tem certeza? O V3 não é bom."',ok:false}],
     fok:'Perfeito. A pergunta "quantos cabos esse ano?" faz ELE lembrar da própria frustração. "Você que decide" devolve o controle.',
     fno:'"É ruim" só soa negativo. "Ok" abandona. A certa usa uma pergunta que ativa a memória de frustração do próprio cliente.'},
@@ -1721,12 +1715,12 @@ const simCases=[
     fok:'Exato. "Vira o aparelho comigo" envolve o cliente fisicamente. A metáfora da porta dos fundos é visual e fica na cabeça.',
     fno:'"Quer também?" e "Posso mostrar?" são perguntas fracas. A certa envolve o cliente fisicamente e usa imagem concreta.'},
   {scn:'Você ofereceu a câmera junto. O cliente recusou.',says:'"Não, só a película mesmo."',opts:[
-    {t:'"Tranquilo! Só uma coisa rápida, sem compromisso, [coloca a capa] vê como a câmera fica saltada mesmo com capa? Quina de mesa, chão... é ali que pega primeiro. R$29. Última vez que falo, prometo."',ok:true},
+    {t:'"Tranquilo! Só uma coisa rápida, sem compromisso — [coloca a capa] vê como a câmera fica saltada mesmo com capa? Quina de mesa, chão... é ali que pega primeiro. R$29. Última vez que falo, prometo."',ok:true},
     {t:'"Tem certeza? A câmera fica exposta."',ok:false},{t:'"Tudo bem, entendido!"',ok:false},{t:'"Só lembrando que a câmera vai ficar exposta..."',ok:false}],
-    fok:'Certo. Segunda tentativa com prova física + "última vez que falo, prometo", humor que tira o peso da insistência. Se recusar de novo, fecha numa boa.',
-    fno:'"Tem certeza?" pressiona sem mostrar nada novo. A certa traz prova física E avisa que é a última tentativa, isso desarma.'},
+    fok:'Certo. Segunda tentativa com prova física + "última vez que falo, prometo" — humor que tira o peso da insistência. Se recusar de novo, fecha numa boa.',
+    fno:'"Tem certeza?" pressiona sem mostrar nada novo. A certa traz prova física E avisa que é a última tentativa — isso desarma.'},
   {scn:'Comprou carregador 40W. Tem cabo Kaidi velho.',says:'"O cabo que tenho serve."',opts:[
-    {t:'"Pode até servir, mas olha, essa fonte é forte. Cabo velho engasga fonte nova, aí você pagou por 40W e recebe 15. O par certo é R$X. Vale conferir o seu antes?"',ok:true},
+    {t:'"Pode até servir — mas olha, essa fonte é forte. Cabo velho engasga fonte nova, aí você pagou por 40W e recebe 15. O par certo é R$X. Vale conferir o seu antes?"',ok:true},
     {t:'"Tudo bem, qualquer cabo serve."',ok:false},{t:'"Quer ver os cabos?"',ok:false},{t:'"Tem certeza? Cabo velho pode dar problema."',ok:false}],
     fok:'Perfeito. "Pagou por 40W e recebe 15" é matemática que dói. E "vale conferir o seu?" envolve em vez de empurrar.',
     fno:'"Qualquer cabo serve" joga a venda fora. A certa mostra o prejuízo em números e convida em vez de empurrar.'},
@@ -1759,16 +1753,16 @@ const todayStr=()=>new Date().toISOString().split('T')[0];
 // ordem das aulas do curso (mesma do menu "Aprender")
 const LESSONS=[
   {id:'mente',n:'Mente do vendedor',min:6},
-  {id:'abordagem',n:'Abordagem: puxar pra loja',min:5},
+  {id:'abordagem',n:'Abordagem — puxar pra loja',min:5},
   {id:'tipos',n:'Tipos de cliente',min:4},
   {id:'escada',n:'Escada de produto',min:5},
-  {id:'pa',n:'PA: kit embutido',min:5},
+  {id:'pa',n:'PA — kit embutido',min:5},
   {id:'scripts',n:'Scripts',min:6},
   {id:'fechamento',n:'Técnicas de fechamento',min:4},
   {id:'objecoes',n:'Objeções',min:4},
   {id:'posnao',n:'Depois do "não"',min:3},
   {id:'posvenda',n:'Pós-venda e recompra',min:3},
-  {id:'vp',n:'VPs: abordagem',min:5},
+  {id:'vp',n:'VPs — abordagem',min:5},
 ];
 const lessonMin=id=>{const l=LESSONS.find(x=>x.id===id);return l?l.min:null;};
 const LESSON_IDS=LESSONS.map(l=>l.id);
@@ -1895,7 +1889,7 @@ function saveDay(){
   if(!date){toast('Escolha a data',1);return;}
   if(atend<=0){toast('Preencha os atendimentos',1);return;}
   if(prod<=0){toast('Preencha os produtos vendidos',1);return;}
-  if(paRec>paOff){toast('Confere os números, recusados não pode ser mais que oferecidos',1);return;}
+  if(paRec>paOff){toast('Confere os números — recusados não pode ser mais que oferecidos',1);return;}
 
   const day={date,atend,prod,fat,paOff,paRec,vp,vpConv,cat,script,fala,note,diffs:[...selectedDiffs]};
   const ex=days.findIndex(d=>d.date===date);
@@ -1950,14 +1944,14 @@ function renderGoalBanner(){
   const stepsEl=document.getElementById('gb-steps');
   const nextEl=document.getElementById('gb-next');
   if(!days.length){
-    beepEl.className='gb-beep';beepEl.innerHTML='🎯 Meta Beep <b>1.36</b>, registre um dia pra ver seu status';
+    beepEl.className='gb-beep';beepEl.innerHTML='🎯 Meta Beep <b>1.36</b> — registre um dia pra ver seu status';
     stepsEl.innerHTML='';nextEl.innerHTML='';return;
   }
   const n=days.length;
   const avgPa=days.reduce((s,d)=>s+pa(d),0)/n;
   // meta Beep
-  if(avgPa>=1.36){beepEl.className='gb-beep hit';beepEl.innerHTML='✅ Meta Beep <b>1.36</b> batida, você já está à frente';}
-  else{beepEl.className='gb-beep';beepEl.innerHTML=`🎯 Meta Beep <b>1.36</b>, faltam <b>${fmt(1.36-avgPa)}</b>`;}
+  if(avgPa>=1.36){beepEl.className='gb-beep hit';beepEl.innerHTML='✅ Meta Beep <b>1.36</b> batida — você já está à frente';}
+  else{beepEl.className='gb-beep';beepEl.innerHTML=`🎯 Meta Beep <b>1.36</b> — faltam <b>${fmt(1.36-avgPa)}</b>`;}
   // degraus
   let curIdx=GOAL_STEPS.findIndex(s=>avgPa<s);
   if(curIdx===-1)curIdx=GOAL_STEPS.length; // passou todos
@@ -1968,11 +1962,11 @@ function renderGoalBanner(){
   }).join('');
   // próximo degrau
   if(curIdx>=GOAL_STEPS.length){
-    nextEl.innerHTML=`🏆 Você passou todos os degraus. PA médio <b>${fmt(avgPa)}</b>, agora é manter a consistência.`;
+    nextEl.innerHTML=`🏆 Você passou todos os degraus. PA médio <b>${fmt(avgPa)}</b> — agora é manter a consistência.`;
   }else{
     const target=GOAL_STEPS[curIdx];const gap=target-avgPa;
     const atend=days[n-1].atend||40;const extra=Math.ceil(gap*atend);
-    nextEl.innerHTML=`Você está em <b>${fmt(avgPa)}</b>. Próximo degrau: <b>${fmt(target)}</b>, faltam <b>${fmt(gap)}</b>, ou ~<b>${extra} ${extra===1?'item':'itens'}/dia</b> a mais. Embuta o complemento no fechamento.`;
+    nextEl.innerHTML=`Você está em <b>${fmt(avgPa)}</b>. Próximo degrau: <b>${fmt(target)}</b> — faltam <b>${fmt(gap)}</b>, ou ~<b>${extra} ${extra===1?'item':'itens'}/dia</b> a mais. Embuta o complemento no fechamento.`;
   }
 }
 
@@ -2046,23 +2040,23 @@ function renderInsights(){
   const cvD=days.filter(d=>cv(d)!==null);const avgCv=cvD.length?cvD.reduce((s,d)=>s+cv(d),0)/cvD.length:null;
   const last=days[n-1];
 
-  if(avgPa>=1.9)ins.push(['good','🏆',`<strong>PA médio de ${fmt(avgPa)}, meta batida!</strong> Foco agora é consistência. Não relaxe no kit embutido.`]);
-  else{const gap=1.9-avgPa;const ex=Math.ceil(gap*(last.atend||40));ins.push(['warn','⚡',`PA médio <strong>${fmt(avgPa)}</strong>. Faltam <strong>${fmt(gap)}</strong>, ~<strong>${ex} PAs extras/dia</strong>. Embuta o complemento no fechamento. <span class="ins-link" onclick="studyJump('pa')">Estudar PA →</span>`]);}
+  if(avgPa>=1.9)ins.push(['good','🏆',`<strong>PA médio de ${fmt(avgPa)} — meta batida!</strong> Foco agora é consistência. Não relaxe no kit embutido.`]);
+  else{const gap=1.9-avgPa;const ex=Math.ceil(gap*(last.atend||40));ins.push(['warn','⚡',`PA médio <strong>${fmt(avgPa)}</strong>. Faltam <strong>${fmt(gap)}</strong> — ~<strong>${ex} PAs extras/dia</strong>. Embuta o complemento no fechamento. <span class="ins-link" onclick="studyJump('pa')">Estudar PA →</span>`]);}
 
   if(avgCv!==null){
-    if(avgCv<0.6)ins.push(['bad','🛑',`Conversão de PA <strong>${Math.round(avgCv*100)}%</strong>, você oferece mas perde mais da metade. O problema é <strong>como</strong>, não oferecer. <span class="ins-link" onclick="studyJump('pa')">Ver kit embutido →</span>`]);
+    if(avgCv<0.6)ins.push(['bad','🛑',`Conversão de PA <strong>${Math.round(avgCv*100)}%</strong> — você oferece mas perde mais da metade. O problema é <strong>como</strong>, não oferecer. <span class="ins-link" onclick="studyJump('pa')">Ver kit embutido →</span>`]);
     else if(avgCv<0.8)ins.push(['warn','📊',`Conversão de PA <strong>${Math.round(avgCv*100)}%</strong>. Perto. Subir pra 80% fecha o gap até 1.90. Reposicione 1x com a câmera na mão. <span class="ins-link" onclick="studyJump('simulador')">Treinar →</span>`]);
-    else ins.push(['good','✅',`Conversão <strong>${Math.round(avgCv*100)}%</strong>, excelente. Agora aumente o <em>volume</em>: ofereça em todo atendimento.`]);
+    else ins.push(['good','✅',`Conversão <strong>${Math.round(avgCv*100)}%</strong> — excelente. Agora aumente o <em>volume</em>: ofereça em todo atendimento.`]);
     const tR=days.reduce((s,d)=>s+(d.paRec||0),0),tO=days.reduce((s,d)=>s+(d.paOff||0),0);
     if(tO>0)ins.push(['info','💡',`Você perdeu <strong>${tR} PAs</strong> de ${tO} oferecidos. Recuperar metade ≈ <strong>${fmtBR(Math.round(tR/2)*29)}</strong> só de câmera.`]);
-  }else ins.push(['info','📝',`Preencha "PAs oferecidos" e "recusados" pra ver sua conversão, a métrica que mais importa pra você.`]);
+  }else ins.push(['info','📝',`Preencha "PAs oferecidos" e "recusados" pra ver sua conversão — a métrica que mais importa pra você.`]);
 
   const vpD=days.filter(d=>d.vp>0&&vpc(d)!==null);
   if(vpD.length){const avgVpc=vpD.reduce((s,d)=>s+vpc(d),0)/vpD.length;
     if(avgVpc<0.2)ins.push(['warn','🎫',`Conversão de VP <strong>${Math.round(avgVpc*100)}%</strong>. Está entregando vale mas não trazendo pra dentro. Use as 3 etapas. <span class="ins-link" onclick="studyJump('vp')">Ver VPs →</span>`]);
-    else ins.push(['good','🎫',`Conversão de VP <strong>${Math.round(avgVpc*100)}%</strong>, boa abordagem na rua.`]);}
+    else ins.push(['good','🎫',`Conversão de VP <strong>${Math.round(avgVpc*100)}%</strong> — boa abordagem na rua.`]);}
 
-  if(avgTk>=90)ins.push(['good','💰',`Ticket <strong>${fmtBR(avgTk)}</strong>, bem acima da loja. Você sabe subir o cliente. Mantenha.`]);
+  if(avgTk>=90)ins.push(['good','💰',`Ticket <strong>${fmtBR(avgTk)}</strong> — bem acima da loja. Você sabe subir o cliente. Mantenha.`]);
   else if(avgTk>=80)ins.push(['info','📈',`Ticket <strong>${fmtBR(avgTk)}</strong>, acima da loja. Pra R$97, use a escada: nunca pare na entrada. <span class="ins-link" onclick="studyJump('escada')">Ver escada →</span>`]);
 
   if(n>=3){const best=days.reduce((b,d)=>pa(d)>pa(b)?d:b);ins.push(['good','⭐',`Melhor dia: <strong>${fmtD(best.date)}</strong> com PA <strong>${fmt(pa(best))}</strong>. O que fez diferente? Repita.`]);}
@@ -2073,7 +2067,7 @@ function renderInsights(){
     const lastPa=pa(last);
     // perto de bater o recorde
     if(lastPa<best&&(best-lastPa)<=0.15&&lastPa>=1.7){
-      ins.push(['info','🏁',`Seu recorde é <strong>${fmt(best)}</strong>. Ontem você fez <strong>${fmt(lastPa)}</strong>, faltou pouco. Bater o próprio recorde rende mais foco que perseguir uma meta distante.`]);
+      ins.push(['info','🏁',`Seu recorde é <strong>${fmt(best)}</strong>. Ontem você fez <strong>${fmt(lastPa)}</strong> — faltou pouco. Bater o próprio recorde rende mais foco que perseguir uma meta distante.`]);
     }
     // ticket subiu mas PA caiu = vendendo caro pra poucos
     if(n>=4){
@@ -2090,7 +2084,7 @@ function renderInsights(){
     if(tO>0&&tAt>0){
       const offRate=tO/tAt;
       if(offRate<0.7&&avgCv!==null&&avgCv>=0.7){
-        ins.push(['bad','📉',`Você fecha bem (<strong>${Math.round(avgCv*100)}%</strong>) mas só ofereceu PA em <strong>${Math.round(offRate*100)}%</strong> dos atendimentos. O problema não é fechar, é que você <strong>não está oferecendo</strong>. Ofereça em 100%.`]);
+        ins.push(['bad','📉',`Você fecha bem (<strong>${Math.round(avgCv*100)}%</strong>) mas só ofereceu PA em <strong>${Math.round(offRate*100)}%</strong> dos atendimentos. O problema não é fechar — é que você <strong>não está oferecendo</strong>. Ofereça em 100%.`]);
       }
     }
   }
@@ -2113,8 +2107,8 @@ function heroAction(){
   const avgCv=(()=>{const c=days.filter(d=>cv(d)!==null);return c.length?c.reduce((s,d)=>s+cv(d),0)/c.length:null;})();
   const avgPa=days.reduce((s,d)=>s+pa(d),0)/n;
   // prioridade: conversão baixa → fechamento; PA baixo → PA/kit; senão treinar a dificuldade do dia
-  if(avgCv!==null&&avgCv<0.6)return{tipo:'treino',titulo:'Treinar fechamento, sua conversão está baixa',meta:'Quiz do tema · ~3 min',act:()=>{go('quiz');startQuiz('fechamento');}};
-  if(avgPa<1.65)return{tipo:'estudo',titulo:'Estudar PA: kit embutido',meta:'Sua maior alavanca pro PA · ~5 min',act:()=>go('pa')};
+  if(avgCv!==null&&avgCv<0.6)return{tipo:'treino',titulo:'Treinar fechamento — sua conversão está baixa',meta:'Quiz do tema · ~3 min',act:()=>{go('quiz');startQuiz('fechamento');}};
+  if(avgPa<1.65)return{tipo:'estudo',titulo:'Estudar PA — kit embutido',meta:'Sua maior alavanca pro PA · ~5 min',act:()=>go('pa')};
   // último dia tem dificuldade marcada?
   const last=days[n-1];
   if(last.diffs&&last.diffs.length){const d=DIFFICULTIES.find(x=>x.id===last.diffs[0]);if(d)return{tipo:'estudo',titulo:'Treinar: '+d.label,meta:'Sua dificuldade de ontem · ~5 min',act:()=>go(d.study)};}
@@ -2137,7 +2131,7 @@ function heroGo(){if(_heroAct)_heroAct();}
 // ════════ ONBOARDING (primeiro acesso) ════════
 const ONB=[
   {e:'👋',t:'Bem-vindo ao Beep Elite',x:'Em 4 telas rápidas você entende como usar a plataforma pra subir seu PA. Leva 30 segundos.'},
-  {e:'📊',t:'Comece pelo "Próximo passo"',x:'No Dashboard, o bloco laranja no topo te diz exatamente o que fazer agora, é só tocar em Começar. Sem se perder.'},
+  {e:'📊',t:'Comece pelo "Próximo passo"',x:'No Dashboard, o bloco laranja no topo te diz exatamente o que fazer agora — é só tocar em Começar. Sem se perder.'},
   {e:'✍️',t:'Registre seu dia',x:'No fim do turno, use o "Registro rápido" (10 segundos). A plataforma calcula seu PA e aponta o que treinar.'},
   {e:'🎓',t:'Estude e teste',x:'No menu "Aprender" você lê as aulas em sequência. No fim de cada uma, toque em "Testar este conteúdo" pra fixar de verdade.'},
 ];
@@ -2186,7 +2180,7 @@ function renderReview(){
 
   // today's cronograma focus
   const weekday=new Date(d.date+'T12:00').getDay();
-  const cron=['Revisão geral, ver evolução da semana','Películas, PA câmera em toda película','Capas, Gear+ em 80% das vendas','Cabos, Kimaster+ e PA ponteira','Carregadores, kit completo','Fones, diagnóstico de uso','Misto, meta PA 2.0+'][weekday];
+  const cron=['Revisão geral — ver evolução da semana','Películas — PA câmera em toda película','Capas — Gear+ em 80% das vendas','Cabos — Kimaster+ e PA ponteira','Carregadores — kit completo','Fones — diagnóstico de uso','Misto — meta PA 2.0+'][weekday];
 
   let html=`<div class="rev-hero">
     <div class="rev-date">Resumo de ${fmtD(d.date)}</div>
@@ -2206,7 +2200,7 @@ function renderReview(){
     probable.forEach(id=>{const f=DIFFICULTIES.find(x=>x.id===id);if(f)html+=`<span class="pill p-rd">${f.label}</span>`;});
     html+='</div>';
   }else{
-    html+='<div class="ins good"><span class="ins-ic">🎉</span><span>Nenhuma dificuldade marcada e seus números estão sólidos. Dia limpo, continue assim.</span></div>';
+    html+='<div class="ins good"><span class="ins-ic">🎉</span><span>Nenhuma dificuldade marcada e seus números estão sólidos. Dia limpo — continue assim.</span></div>';
   }
 
   if(d.note){html+=`<div class="hbox hb-bl" style="margin-top:10px"><div class="hb-l">Sua anotação</div>${d.note}</div>`;}
@@ -2221,7 +2215,7 @@ function renderReview(){
   html+='<h3>Já no seu cronograma</h3>';
   html+=`<div class="hbox hb-or"><div class="hb-l">Foco de ${['domingo','segunda','terça','quarta','quinta','sexta','sábado'][weekday]}</div>${cron}</div>`;
   html+=`<div class="study-card" onclick="go('rotina')"><div class="study-ic">✅</div><div class="study-bd"><div class="study-t">Rotina de hoje</div><div class="study-d">Veja seu checklist diário e marque o que já cumpriu.</div></div><div class="study-go">→</div></div>`;
-  html+=`<div class="study-card" onclick="go('simulador')"><div class="study-ic">🎮</div><div class="study-bd"><div class="study-t">Treino rápido, Simulador de PA</div><div class="study-d">6 cenários de recusa pra você praticar o fechamento agora.</div></div><div class="study-go">→</div></div>`;
+  html+=`<div class="study-card" onclick="go('simulador')"><div class="study-ic">🎮</div><div class="study-bd"><div class="study-t">Treino rápido — Simulador de PA</div><div class="study-d">6 cenários de recusa pra você praticar o fechamento agora.</div></div><div class="study-go">→</div></div>`;
 
   box.innerHTML=html;
 }
@@ -2237,24 +2231,24 @@ function renderChart(){
   cv2.width=rect.width*dpr;cv2.height=rect.height*dpr;ctx.scale(dpr,dpr);
   const W=rect.width,H=rect.height;ctx.clearRect(0,0,W,H);
   let vals,target=null,baseline=null,fmtF,color,labels=days.map(d=>fmtD(d.date));
-  if(chartMetric==='pa'){vals=days.map(pa);target=1.9;baseline=1.36;fmtF=v=>fmt(v);color='#B6822A';}
-  else if(chartMetric==='ticket'){vals=days.map(tk);target=97;baseline=73;fmtF=v=>fmtBR(v);color='#3F8F5B';}
-  else if(chartMetric==='conv'){vals=days.map(d=>{const c=cv(d);return c===null?0:c*100;});target=80;fmtF=v=>Math.round(v)+'%';color='#4A739E';}
-  else if(chartMetric==='vp'){vals=days.map(d=>d.vp||0);target=20;fmtF=v=>fmt(v,0);color='#8A6BB0';}
-  else{vals=days.map(d=>d.fat||0);fmtF=v=>fmtBR(v);color='#CFA24E';}
+  if(chartMetric==='pa'){vals=days.map(pa);target=1.9;baseline=1.36;fmtF=v=>fmt(v);color='#FF5C00';}
+  else if(chartMetric==='ticket'){vals=days.map(tk);target=97;baseline=73;fmtF=v=>fmtBR(v);color='#22C55E';}
+  else if(chartMetric==='conv'){vals=days.map(d=>{const c=cv(d);return c===null?0:c*100;});target=80;fmtF=v=>Math.round(v)+'%';color='#3B82F6';}
+  else if(chartMetric==='vp'){vals=days.map(d=>d.vp||0);target=20;fmtF=v=>fmt(v,0);color='#A855F7';}
+  else{vals=days.map(d=>d.fat||0);fmtF=v=>fmtBR(v);color='#EAB308';}
   const pad={l:50,r:16,t:16,b:28},cw=W-pad.l-pad.r,ch=H-pad.t-pad.b;
   let max=Math.max(...vals,target||0),min=Math.min(...vals,baseline||Math.min(...vals));
   const range=max-min||1;max+=range*0.12;min-=range*0.12;
   if(chartMetric==='fat'||chartMetric==='conv'||chartMetric==='vp')min=Math.max(0,min);
   const X=i=>pad.l+(vals.length===1?cw/2:(i/(vals.length-1))*cw),Y=v=>pad.t+ch-((v-min)/(max-min))*ch;
-  ctx.strokeStyle='rgba(70,55,20,0.10)';ctx.fillStyle='#9A917E';ctx.font='10px JetBrains Mono,monospace';ctx.lineWidth=1;
+  ctx.strokeStyle='rgba(255,255,255,0.05)';ctx.fillStyle='#555';ctx.font='10px JetBrains Mono,monospace';ctx.lineWidth=1;
   for(let i=0;i<=4;i++){const gv=min+(max-min)*(i/4),gy=Y(gv);ctx.beginPath();ctx.moveTo(pad.l,gy);ctx.lineTo(W-pad.r,gy);ctx.stroke();ctx.textAlign='right';ctx.fillText(fmtF(gv),pad.l-8,gy+3);}
-  if(target!==null&&target>=min&&target<=max){const ty=Y(target);ctx.strokeStyle='rgba(182,130,42,0.5)';ctx.setLineDash([4,4]);ctx.beginPath();ctx.moveTo(pad.l,ty);ctx.lineTo(W-pad.r,ty);ctx.stroke();ctx.setLineDash([]);ctx.fillStyle='#B6822A';ctx.textAlign='left';ctx.fillText('meta',pad.l+4,ty-5);}
-  const g=ctx.createLinearGradient(0,pad.t,0,H-pad.b);g.addColorStop(0,color+'33');g.addColorStop(1,color+'00');
+  if(target!==null&&target>=min&&target<=max){const ty=Y(target);ctx.strokeStyle='rgba(255,255,255,0.35)';ctx.setLineDash([4,4]);ctx.beginPath();ctx.moveTo(pad.l,ty);ctx.lineTo(W-pad.r,ty);ctx.stroke();ctx.setLineDash([]);ctx.fillStyle='rgba(255,255,255,0.5)';ctx.textAlign='left';ctx.fillText('meta',pad.l+4,ty-5);}
+  const g=ctx.createLinearGradient(0,pad.t,0,H-pad.b);g.addColorStop(0,color+'40');g.addColorStop(1,color+'00');
   ctx.beginPath();ctx.moveTo(X(0),Y(vals[0]));vals.forEach((v,i)=>ctx.lineTo(X(i),Y(v)));ctx.lineTo(X(vals.length-1),H-pad.b);ctx.lineTo(X(0),H-pad.b);ctx.closePath();ctx.fillStyle=g;ctx.fill();
   ctx.beginPath();ctx.moveTo(X(0),Y(vals[0]));vals.forEach((v,i)=>ctx.lineTo(X(i),Y(v)));ctx.strokeStyle=color;ctx.lineWidth=2.5;ctx.lineJoin='round';ctx.stroke();
-  vals.forEach((v,i)=>{ctx.beginPath();ctx.arc(X(i),Y(v),4,0,7);ctx.fillStyle='#FDFBF5';ctx.fill();ctx.strokeStyle=color;ctx.lineWidth=2;ctx.stroke();});
-  ctx.fillStyle='#9A917E';ctx.textAlign='center';ctx.font='10px Inter,sans-serif';
+  vals.forEach((v,i)=>{ctx.beginPath();ctx.arc(X(i),Y(v),4,0,7);ctx.fillStyle='#0C0C0D';ctx.fill();ctx.strokeStyle=color;ctx.lineWidth=2;ctx.stroke();});
+  ctx.fillStyle='#888';ctx.textAlign='center';ctx.font='10px Inter,sans-serif';
   const step=Math.ceil(vals.length/8);labels.forEach((l,i)=>{if(i%step===0||i===vals.length-1)ctx.fillText(l,X(i),H-pad.b+16);});
 }
 
@@ -2332,7 +2326,7 @@ let trProgress={}; // {itemId: 'dominado'|'treinando'}
 const TRILHA=[
   {grp:'Fundamentos',items:[
     {id:'tipos',n:'Tipos de cliente',go:'tipos'},
-    {id:'pa',n:'PA: kit embutido',go:'pa'},
+    {id:'pa',n:'PA — kit embutido',go:'pa'},
     {id:'escada',n:'Escada de produto',go:'escada'},
     {id:'mente',n:'Mente do vendedor',go:'mente'},
   ]},
@@ -2342,7 +2336,7 @@ const TRILHA=[
     {id:'posnao',n:'Depois do "não"',go:'posnao'},
   ]},
   {grp:'Relacionamento',items:[
-    {id:'vp',n:'VPs: abordagem',go:'vp'},
+    {id:'vp',n:'VPs — abordagem',go:'vp'},
     {id:'posvenda',n:'Pós-venda e recompra',go:'posvenda'},
   ]},
   {grp:'Scripts por produto',items:
@@ -2406,13 +2400,13 @@ const quizQuestions=[
    fno:'Pra apressado, excesso de opção = "depois eu volto". A certa entrega a decisão pronta e embute o PA em segundos.'},
   {tema:'objecoes',scn:'Cliente pergunta o preço da película antes de qualquer outra coisa.',says:'"Quanto é a película?"',
    opts:[{t:'"É R$59 a cerâmica."',ok:false},
-         {t:'"Você sabe quanto custa trocar a tela do seu modelo? Uns R$900. Essa cerâmica é R$59 e não quebra junto com a tela, é seguro contra prejuízo."',ok:true},
+         {t:'"Você sabe quanto custa trocar a tela do seu modelo? Uns R$900. Essa cerâmica é R$59 e não quebra junto com a tela — é seguro contra prejuízo."',ok:true},
          {t:'"Depende, temos de R$19 a R$129."',ok:false}],
    fok:'Exato. Âncora ANTES do preço: o custo da tela vira a régua e R$59 fica barato perto de R$900.',
    fno:'Falar preço seco pro comparador = ele compara com a internet e vai embora. Ancoragem primeiro, preço depois.'},
   {tema:'pa',scn:'Cliente aceitou a Cerâmica. Câmera exposta e no ar.',says:'"Tá bom, só a película mesmo."',
    opts:[{t:'"Certo! Mais alguma coisa?"',ok:false},
-         {t:'"Aproveita que ele tá na minha mão, olha a câmera, saltada e no ar. R$29 e protejo ela também. Já coloco?"',ok:true},
+         {t:'"Aproveita que ele tá na minha mão — olha a câmera, saltada e no ar. R$29 e protejo ela também. Já coloco?"',ok:true},
          {t:'"Você não quer proteger a câmera também?"',ok:false}],
    fok:'Perfeito. PA embutido: aproveita o aparelho na mão, aponta algo visível, fecha com pergunta direta. Parece cuidado.',
    fno:'"Quer também?" é recusável. "Mais alguma coisa?" encerra a venda. A certa embute o PA como conveniência do momento.'},
@@ -2424,22 +2418,22 @@ const quizQuestions=[
    fno:'Insistir após o "não" firme queima a relação. Demonstrar decepção faz ele não voltar. A certa planta a volta.'},
   {tema:'posvenda',scn:'Fechou a venda. Hora de entregar o aparelho com a película aplicada.',says:'Momento da entrega.',
    opts:[{t:'"Pronto, tá aí. Próximo!"',ok:false},
-         {t:'"Ficou ótima! Deixa eu anotar seu contato, te aviso das novidades do seu modelo e qualquer bolha você volta que eu reaplico."',ok:true},
+         {t:'"Ficou ótima! Deixa eu anotar seu contato — te aviso das novidades do seu modelo e qualquer bolha você volta que eu reaplico."',ok:true},
          {t:'"Obrigado, volte sempre."',ok:false}],
    fok:'Exato. A entrega virou relacionamento: cadastro + porta da recompra aberta. A venda de hoje virou as próximas cinco.',
-   fno:'Entregar e virar as costas joga fora o cliente. A certa cadastra e reforça o benefício, é o "R" de Relacionar.'},
+   fno:'Entregar e virar as costas joga fora o cliente. A certa cadastra e reforça o benefício — é o "R" de Relacionar.'},
   {tema:'tipos',scn:'Cliente indeciso, pega e larga duas capas, não decide.',says:'"Ai, não sei qual... as duas são parecidas, né?"',
    opts:[{t:'"São sim, leva a mais barata."',ok:false},
          {t:'"Segura as duas... sentiu a diferença? Essa é a que mais sai, ontem levaram quatro pra um modelo igual o seu. Pelo seu uso, eu iria nela."',ok:true},
          {t:'"Qual você prefere?"',ok:false}],
    fok:'Certo. Indeciso precisa de permissão pra decidir: prova física (sentir) + prova social (outros levaram) + você decide com gentileza.',
    fno:'"Qual você prefere?" devolve o problema pra quem não consegue decidir. A certa decide por ele, com prova física e social.'},
-  {tema:'fechamento',scn:'Você fez a pergunta de fechamento. O cliente está pensando, em silêncio.',says:'"Qual das duas eu já aplico?", e ele ficou calado, pensando.',
+  {tema:'fechamento',scn:'Você fez a pergunta de fechamento. O cliente está pensando, em silêncio.',says:'"Qual das duas eu já aplico?" — e ele ficou calado, pensando.',
    opts:[{t:'"...ou se preferir pode pensar, não precisa decidir agora, tem gente que leva a mais barata mesmo..."',ok:false},
          {t:'[Fica em silêncio, tranquilo, e espera ele responder.]',ok:true},
          {t:'"Não tem problema se não quiser nenhuma."',ok:false}],
    fok:'Perfeito. Depois da pergunta de fechamento: silêncio. Quem fala primeiro perde. O desconforto empurra a decisão.',
-   fno:'Você fez a pergunta certa e aí respondeu por ele, devolvendo a saída. Segura o silêncio, é a técnica mais forte que existe.'},
+   fno:'Você fez a pergunta certa e aí respondeu por ele, devolvendo a saída. Segura o silêncio — é a técnica mais forte que existe.'},
 ];
 let quizIdx=0,quizScore=0,quizAns=false,quizOrder=[],quizTema=null;
 function quizThemeCount(tema){return quizQuestions.filter(q=>q.tema===tema).length;}
@@ -2462,7 +2456,7 @@ function renderQuiz(){
     }
     let msg;
     if(pct>=80)msg='Faixa-preta de balcão. Você lê o cliente e fecha. Mantém o ritmo.';
-    else if(pct>=50)msg='Bom caminho. Revê as que errou, geralmente é âncora ou fechamento que escapa.';
+    else if(pct>=50)msg='Bom caminho. Revê as que errou — geralmente é âncora ou fechamento que escapa.';
     else msg='Vale revisar a trilha antes de voltar. O conteúdo está todo no curso.';
     const refazer=quizTema?`startQuiz('${quizTema}')`:'startQuiz()';
     box.innerHTML=`<div class="quiz-card quiz-result"><div class="qr-score">${quizScore}/${quizOrder.length}</div><div class="qr-msg">${msg}${dominioMsg}</div><button class="quiz-nx show" onclick="${refazer}">Refazer</button></div>`;
@@ -2507,7 +2501,7 @@ function updateErrosBadge(){const b=document.getElementById('erros-badge');if(b)
 function limparErros(){if(!confirm('Limpar o caderno de erros?'))return;erros=[];saveErros();updateErrosBadge();renderErros();}
 function renderErros(){
   const box=document.getElementById('erros-box');if(!box)return;
-  if(!erros.length){box.innerHTML='<div class="ins good"><span class="ins-ic">🎉</span><span>Caderno limpo! Você não errou nada ainda, ou já revisou tudo. Faça um quiz pra testar.</span></div>';return;}
+  if(!erros.length){box.innerHTML='<div class="ins good"><span class="ins-ic">🎉</span><span>Caderno limpo! Você não errou nada ainda — ou já revisou tudo. Faça um quiz pra testar.</span></div>';return;}
   let html=`<div class="hbox hb-yl"><div class="hb-l">Como usar</div>Releia cada situação que você errou, foque na resposta certa e no porquê. Quando dominar, limpe o caderno. <span class="ins-link" onclick="limparErros()">Limpar tudo</span></div>`;
   html+=erros.map(e=>`<div class="card">
     <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:var(--text3);margin-bottom:6px">${e.fonte} · ${e.data}</div>
@@ -2527,7 +2521,7 @@ function renderLibCats(){
   cats.forEach(c=>{const b=document.createElement('button');b.className='fcb'+(c==='Todos'?' on':'');b.textContent=c==='Todos'?'Todos ('+library.length+')':c;b.onclick=()=>{libCat=c;document.querySelectorAll('#lib-cats .fcb').forEach(x=>x.classList.remove('on'));b.classList.add('on');renderLib();};document.getElementById('lib-cats').appendChild(b);});
 }
 function filterLib(){libQuery=document.getElementById('lib-search').value.trim().toLowerCase();renderLib();}
-// ATENDIMENTO MÍNIMO, campos obrigatórios por categoria (Playbook Beeper, fase P = Propor)
+// ATENDIMENTO MÍNIMO — campos obrigatórios por categoria (Playbook Beeper, fase P = Propor)
 const ATEND_MIN={
   'Películas':['Material','Nível de qualidade','Durabilidade','Preço'],
   'Capas':['Material','Nível de proteção','Preço'],
@@ -2543,6 +2537,168 @@ const ATEND_MIN={
 const ATEND_MIN_DEFAULT=['Qualidade','Garantia','Benefício pro cliente','Preço'];
 function atendMinFor(cat){return ATEND_MIN[cat]||ATEND_MIN_DEFAULT;}
 
-// O QUE FALAR nos produtos PREMIUM, característica real (apostila Beeper) traduzida em fala de venda.
+// O QUE FALAR nos produtos PREMIUM — característica real (apostila Beeper) traduzida em fala de venda.
 // Chave = trecho do nome do produto. {carac: ficha técnica real, fala: como vender, erro: o erro comum}
-const FALA_PREM             
+const FALA_PREMIUM=[
+  {match:'Fiber',carac:'Aplicada por máquina (centralização perfeita), polímero + fibra de vidro, sensação de tocar a própria tela, não quebra nem trinca, pega 100% da tela. Proteção e durabilidade são o ponto forte.',
+   fala:'"Essa é o topo. Aplicada na máquina, fica perfeita — sem bolha, sem torto. E a sensação é de tocar a tela direto, parece que não tem nada. Não quebra, não trinca, pega a tela inteira. É colocar e esquecer."',
+   erro:'Vender só pelo preço. Fiber se vende pela SENSAÇÃO — põe o dedo dele na tela aplicada e deixa sentir.'},
+  {match:'Diamond',carac:'7 camadas de proteção, extremamente sensível ao toque, resistente a risco, não quebra nem trinca, pega 100% sem borda (mantém a originalidade da tela), material hidrofóbico e oleofóbico.',
+   fala:'"Diamond é a que eu colocaria no meu. São 7 camadas, super sensível ao toque, e como não tem borda ela some na tela — fica original. Não quebra, não trinca, e ainda repele água e gordura, não fica marcando dedo. É colocar e esquecer."',
+   erro:'Esquecer de mostrar que ela "some" na tela. O cliente que liga pra visual ama o "sem borda, fica original".'},
+  {match:'Gear',carac:'Encaixe firme, câmera com borda de proteção. A queridinha da loja — equilíbrio de proteção e presença.',
+   fala:'"Essa é a queridinha da loja. Encaixe firme, não folga, e a borda cobre a câmera saltada. Pega ela na mão — sente como ela abraça o aparelho? É proteção de verdade com visual bonito, não precisa escolher um só."',
+   erro:'Não dar pra ele segurar. Gear se vende na mão — o encaixe firme convence sozinho.'},
+  {match:'Exclusive',carac:'Premium de verdade, acabamento e presença superiores. Degrau de capa de "parar de trocar".',
+   fala:'"Essa já é outro nível. Pega o acabamento... é capa de aparelho caro, daquelas que você para de trocar. Protege muito e ainda dá uma presença no aparelho que as comuns não dão."',
+   erro:'Oferecer pra quem quer só o básico. Exclusive é pra quem já valoriza o aparelho — leia o cliente primeiro.'},
+  {match:'Couro',carac:'Premium, toque diferenciado, presença elegante. Para iPhone/aparelho top, é capa de "parar de trocar".',
+   fala:'"Sente esse couro... é o toque que muda tudo. Capa de couro é elegância e proteção no mesmo produto — pra um aparelho desse nível, é a que combina. Você bota ela e não troca mais."',
+   erro:'Vender couro por proteção só. O forte dele é o TOQUE e a presença — deixa ele sentir na mão.'},
+  {match:'Nano Titanium',carac:'Proteção muito alta, acabamento premium. Sobe um degrau pra Focus/Couro pelo toque.',
+   fala:'"Protege pra caramba e tem um acabamento premium. Se você quer blindagem sem abrir mão do visual, é ela. O cliente sente na hora que pega."',
+   erro:'Não destacar o equilíbrio proteção+visual — é o que justifica o preço dela.'},
+  {match:'MagSafe',carac:'Já vem com câmera protegida e compatível com carregador magnético MagSafe.',
+   fala:'"Essa já vem com a câmera protegida e é magnética — se você usa ou pensa em usar carregador magnético, é quase obrigatória. Encaixa o carregador sozinho, sem enfiar cabo. Praticidade que vicia."',
+   erro:'Vender MagSafe pra quem não usa carregador magnético sem explicar o benefício — mostra a praticidade primeiro.'},
+  {match:'Baseus',carac:'Cabo com blindagem TPE, resistente a umidade e temperatura, carga turbo, chip inteligente que envia a carga exata pro aparelho. Qualidade próxima do original Apple, 100% compatível, 1 ano de garantia. Top de linha.',
+   fala:'"Esse é o ponto final em cabo. Blindagem por dentro, aguenta umidade e calor, e tem um chip que manda a carga certa pro seu aparelho — não esquenta, não estraga a bateria. É praticamente o original, com 1 ano de garantia. Você para de comprar cabo."',
+   erro:'Falar "é caro" na cabeça. Esse cabo se vende pela conta: quantos baratos ele já comprou no ano?'},
+  {match:'Fancy',carac:'Cabo revestido de metal flexível, resistente a umidade e temperatura, carga turbo, chip inteligente de carga, 100% compatível, 1 ano de garantia. Top de linha.',
+   fala:'"Revestido de metal, dobra à vontade e não rompe. Carga turbo com chip que protege sua bateria, 1 ano de garantia. É o cabo que encerra o assunto — você não volta aqui atrás de cabo tão cedo."',
+   erro:'Não usar a pergunta de ouro ("quantos cabos esse ano?") antes de mostrar o preço.'},
+];
+function falaPremiumFor(nome){return FALA_PREMIUM.find(x=>nome.includes(x.match));}
+function atendMinBox(cat){
+  const campos=atendMinFor(cat);
+  return `<div class="amin"><div class="amin-t">✅ Atendimento Mínimo — ${cat}</div><div class="amin-s">Antes de fechar, o cliente TEM que ouvir:</div><div class="amin-chips">${campos.map(c=>`<span class="amin-c">${c}</span>`).join('')}</div></div>`;
+}
+
+function renderLib(){
+  const list=document.getElementById('lib-list');
+  let items=library.filter(p=>(libCat==='Todos'||p.cat===libCat)&&(!libQuery||p.n.toLowerCase().includes(libQuery)||p.cat.toLowerCase().includes(libQuery)));
+  document.getElementById('lib-count').textContent=items.length+' produto'+(items.length!==1?'s':'');
+  if(!items.length){list.innerHTML='<div class="ins info"><span class="ins-ic">🔍</span><span>Nenhum produto encontrado.</span></div>';return;}
+  // group by category when showing all
+  let html='';
+  if(libCat==='Todos'&&!libQuery){
+    const cats=[...new Set(items.map(p=>p.cat))];
+    cats.forEach(cat=>{
+      html+=`<h3>${cat} <span style="color:var(--text3);font-weight:400;letter-spacing:0;text-transform:none">· ${items.filter(p=>p.cat===cat).length}</span></h3>`;
+      html+=atendMinBox(cat);
+      items.filter(p=>p.cat===cat).forEach(p=>html+=libItem(p));
+    });
+  }else{
+    // filtrando por 1 categoria: mostra o atendimento mínimo dela no topo
+    if(libCat!=='Todos')html+=atendMinBox(libCat);
+    items.forEach(p=>html+=libItem(p));
+  }
+  list.innerHTML=html;
+}
+function libItem(p){
+  return `<div class="sc-item"><div class="sc-h" onclick="this.parentElement.classList.toggle('open')">
+    <div class="sc-tt">${p.n} <span class="pill p-or" style="font-family:'JetBrains Mono',monospace">${p.p}</span></div>
+    <span class="sc-ch">▼</span></div>
+    <div class="sc-b">
+      <div class="sc-r"><div class="sc-rl">Garantia</div><div class="sc-rv">${p.w}</div></div>
+      <div class="sc-r"><div class="sc-rl">Subir para</div><div class="sc-rv" style="color:var(--yellow)">${p.nx}</div></div>
+      <div class="sc-r"><div class="sc-rl">💬 Como falar</div><div class="sc-rv" style="font-style:italic">${p.s}</div></div>
+      <div class="sc-r"><div class="sc-rl">✅ Atend. Mínimo</div><div class="sc-rv" style="font-size:12px;color:var(--text2)">${atendMinFor(p.cat).join(' · ')}</div></div>
+      ${premiumBlock(p)}
+    </div></div>`;
+}
+function premiumBlock(p){
+  const f=falaPremiumFor(p.n);
+  if(!f)return '';
+  return `<div class="prem">
+    <div class="prem-tag">⭐ PREMIUM — o que falar</div>
+    <div class="prem-r"><span class="prem-l">Ficha real</span> ${f.carac}</div>
+    <div class="prem-r"><span class="prem-l">Fala de venda</span> <em>${f.fala}</em></div>
+    <div class="prem-r prem-err"><span class="prem-l">⚠️ Erro comum</span> ${f.erro}</div>
+  </div>`;
+}
+function expandAllLib(open){document.querySelectorAll('#lib-list .sc-item').forEach(i=>i.classList.toggle('open',open));}
+
+// ════════ SIMULADOR ════════
+let simIdx=0,simC=0,simT=0,simAns=false;
+function renderSim(){
+  const c=simCases[simIdx%simCases.length],bd=document.getElementById('sim-bd');
+  document.getElementById('sim-sc').textContent=simC+' / '+simT;simAns=false;
+  bd.innerHTML=`<div class="sim-scn">${c.scn}</div><div class="sim-says">${c.says}</div><div class="sim-o" id="sim-o"></div><div class="sim-fb" id="sim-fb"></div><button class="sim-nx" id="sim-nx" onclick="nextSim()">Próximo →</button>`;
+  const o=document.getElementById('sim-o'),sh=[...c.opts].sort(()=>Math.random()-0.5);
+  sh.forEach(op=>{const b=document.createElement('button');b.className='sim-op';b.textContent=op.t;b.onclick=()=>ansSim(op.ok,c,b);o.appendChild(b);});
+}
+function ansSim(ok,c,btn){
+  if(simAns)return;simAns=true;simT++;
+  if(ok){simC++;btn.classList.add('ok');}else{btn.classList.add('no');addErro({fonte:'Simulador',scn:c.scn,says:c.says,certa:c.opts.find(o=>o.ok).t,porque:c.fno});}
+  document.querySelectorAll('.sim-op').forEach(b=>{b.style.pointerEvents='none';if(b.textContent===c.opts.find(o=>o.ok).t)b.classList.add('ok');});
+  const fb=document.getElementById('sim-fb');fb.className='sim-fb show '+(ok?'ok':'no');
+  fb.innerHTML=(ok?'<strong>✓ Certo!</strong> ':'<strong>✗ Não era essa.</strong> ')+(ok?c.fok:c.fno);
+  document.getElementById('sim-nx').classList.add('show');document.getElementById('sim-sc').textContent=simC+' / '+simT;
+}
+function nextSim(){simIdx++;renderSim();}
+
+// ════════ ROTINA CHECKLIST ════════
+function toggleChk(li){li.classList.toggle('done');updateChkProg();saveChk();}
+function updateChkProg(){
+  document.querySelectorAll('.chk').forEach(ul=>{
+    const block=ul.getAttribute('data-block');const lis=ul.querySelectorAll('li');const done=ul.querySelectorAll('li.done').length;
+    document.querySelector(`[data-prog="${block}"]`).textContent=done+'/'+lis.length;
+  });
+}
+async function saveChk(){
+  const state={};document.querySelectorAll('.chk').forEach(ul=>{state[ul.getAttribute('data-block')]=[...ul.querySelectorAll('li')].map(li=>li.classList.contains('done'));});
+  try{await window.storage.set(CHK_KEY+todayStr(),JSON.stringify(state));}catch(e){}
+}
+async function loadChk(){
+  let state=null;
+  try{const r=await window.storage.get(CHK_KEY+todayStr());state=r&&r.value?JSON.parse(r.value):null;}catch(e){}
+  if(state){document.querySelectorAll('.chk').forEach(ul=>{const arr=state[ul.getAttribute('data-block')];if(arr)[...ul.querySelectorAll('li')].forEach((li,i)=>{if(arr[i])li.classList.add('done');});});}
+  updateChkProg();
+}
+
+// ════════ SEARCH ════════
+const searchIdx=[
+  ...library.map(p=>({n:p.n,m:p.cat+' · '+p.p,act:'biblioteca'})),
+  ...objections.map(o=>({n:o.q,m:'Objeção',act:'objecoes'})),
+  ...scripts.map(s=>({n:s.title,m:'Script',act:'scripts'})),
+  {n:'Custos de tela',m:'Ancoragem de preço',act:'telas'},
+  {n:'Kit embutido',m:'PA',act:'pa'},
+  {n:'Escada de produto',m:'Upgrade',act:'escada'},
+  {n:'VP abordagem',m:'Vale de proteção',act:'vp'},
+  {n:'Mente do vendedor',m:'Tensão, desapego e persuasão',act:'mente'},
+  {n:'Silêncio no fechamento',m:'Mente do vendedor',act:'mente'},
+  {n:'Objeção sem discutir',m:'Mente do vendedor',act:'mente'},
+];
+document.getElementById('search').addEventListener('input',function(){
+  const q=this.value.trim().toLowerCase(),box=document.getElementById('sres');
+  if(!q){box.style.display='none';return;}
+  const hits=searchIdx.filter(i=>i.n.toLowerCase().includes(q)||i.m.toLowerCase().includes(q)).slice(0,8);
+  if(!hits.length){box.style.display='none';return;}
+  box.innerHTML=hits.map(h=>`<div class="sr" onclick="go('${h.act}');document.getElementById('search').value='';document.getElementById('sres').style.display='none';"><div class="sr-n">${h.n}</div><div class="sr-m">${h.m}</div></div>`).join('');
+  box.style.display='block';
+});
+document.addEventListener('click',e=>{if(!e.target.closest('#searchwrap'))document.getElementById('sres').style.display='none';});
+
+// ════════ TOAST ════════
+let tT;function toast(msg,err){const t=document.getElementById('toast');t.textContent=msg;t.style.background=err?'#EF4444':'#22C55E';t.classList.add('show');clearTimeout(tT);tT=setTimeout(()=>t.classList.remove('show'),2200);}
+
+// ════════ INIT ════════
+function init(){
+  const now=new Date();
+  document.getElementById('f-date').value=todayStr();
+  document.getElementById('q-date').value=todayStr();
+  renderDiffChips();renderScripts();renderObj();renderVp();renderPaFlow();renderLadders();renderFcFilters();renderLibCats();renderLib();renderSim();
+  loadTrilha();startQuiz();
+  loadSrs().then(()=>{updateFcDue();});
+  loadLast();
+  loadErros();
+  load();
+  maybeOnboard();
+  window.addEventListener('resize',()=>{if(days.length>=2)renderChart();});
+}
+window.__appInit=init;
+if(window.UID||(typeof UID!=='undefined'&&UID)){init();window.__appInit=null;}
+</script>
+</body>
+</html>
