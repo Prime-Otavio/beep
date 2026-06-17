@@ -65,6 +65,29 @@ body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-
 .nav-dot{margin-left:auto;width:7px;height:7px;border-radius:50%;background:transparent;flex-shrink:0;}
 .nav-dot.dominado{background:var(--green);}
 .nav-dot.treinando{background:var(--accent);}
+/* ONBOARDING */
+.onb{position:fixed;inset:0;background:rgba(0,0,0,0.7);backdrop-filter:blur(4px);z-index:500;display:flex;align-items:center;justify-content:center;padding:20px;}
+.onb-card{background:var(--surface);border:1px solid var(--border2);border-radius:var(--r-lg);padding:var(--sp-6) var(--sp-5);max-width:380px;width:100%;text-align:center;}
+.onb-emoji{font-size:40px;margin-bottom:var(--sp-3);}
+.onb-t{font-size:19px;font-weight:800;color:var(--white);margin-bottom:var(--sp-2);}
+.onb-x{font-size:14px;color:var(--text2);line-height:1.6;margin-bottom:var(--sp-4);}
+.onb-dots{display:flex;gap:6px;justify-content:center;margin-bottom:var(--sp-4);}
+.onb-dots span{width:7px;height:7px;border-radius:50%;background:var(--border2);}
+.onb-dots span.on{background:var(--accent);}
+.onb-btns{display:flex;gap:var(--sp-2);}
+.onb-skip{flex:0 0 auto;background:transparent;border:none;color:var(--text3);font-size:13px;cursor:pointer;font-family:inherit;padding:12px;}
+.onb-next{flex:1;background:var(--accent);border:none;border-radius:var(--r-md);padding:12px;color:var(--bg);font-weight:700;font-size:14px;cursor:pointer;font-family:inherit;}
+
+/* HERO — próximo passo (ação primária do dashboard) */
+.hero{background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:var(--r-lg);padding:var(--sp-5);margin-bottom:var(--sp-4);}
+.hero-l{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:rgba(0,0,0,0.55);}
+.hero-t{font-size:20px;font-weight:800;color:#1a0d00;line-height:1.25;margin:var(--sp-2) 0 var(--sp-1);}
+.hero-meta{font-size:13px;font-weight:600;color:rgba(26,13,0,0.7);margin-bottom:var(--sp-4);}
+.hero-btn{background:#1a0d00;color:#fff;border:none;border-radius:var(--r-md);padding:13px 22px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;width:100%;}
+.hero-btn:active{transform:scale(0.99);}
+.ins-more{font-size:12px;font-weight:700;color:var(--text2);cursor:pointer;padding:8px 0;text-align:center;}
+.ins-more:hover{color:var(--accent);}
+
 /* CONTINUAR DE ONDE PAREI */
 .continue{display:flex;align-items:center;gap:13px;background:linear-gradient(135deg,rgba(255,92,0,0.09),var(--surface));border:1px solid var(--accent-bd);border-radius:var(--r-md);padding:var(--sp-4);margin-bottom:var(--sp-4);cursor:pointer;transition:border-color 0.15s;}
 .continue:hover{border-color:var(--accent);}
@@ -82,6 +105,7 @@ body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-
 .ln-t{font-size:13px;font-weight:600;color:var(--text);}
 .lesson-test{display:block;width:100%;margin-top:var(--sp-4);padding:13px;background:var(--accent);border:none;border-radius:var(--r-md);color:var(--bg);font-weight:700;font-size:14px;cursor:pointer;font-family:inherit;text-align:center;}
 .lesson-test:hover{opacity:0.92;}
+.lesson-time{display:inline-block;font-size:11.5px;font-weight:700;color:var(--text2);background:var(--surface2);border:1px solid var(--border);border-radius:14px;padding:4px 11px;margin:-12px 0 18px;}
 
 /* MAIN */
 #main{margin-left:var(--sb);margin-top:var(--hh);min-height:calc(100vh - var(--hh));}
@@ -119,6 +143,11 @@ h3:first-of-type{margin-top:var(--sp-4);}
 .hb-l{font-size:10.5px;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;margin-bottom:var(--sp-2);}
 .hb-or .hb-l{color:var(--accent);} .hb-gr .hb-l{color:var(--green);} .hb-rd .hb-l{color:var(--red);} .hb-yl .hb-l{color:var(--yellow);} .hb-bl .hb-l{color:var(--text2);}
 .hbox strong{color:var(--white);}
+/* plano diário: hoje destacado, outros dias colapsados */
+.day-today{outline:2px solid var(--green);outline-offset:2px;}
+.day-collapsed{max-height:46px;overflow:hidden;position:relative;}
+.day-collapsed .hb-l{margin-bottom:0;}
+.day-collapsed .hb-l::after{content:' ▾ (toque pra ver)';font-size:9px;color:var(--text3);font-weight:600;letter-spacing:0;}
 
 /* STAT CARDS */
 .statc{background:var(--surface);border:1px solid var(--border);border-radius:11px;padding:16px;display:flex;flex-direction:column;gap:4px;}
@@ -171,6 +200,14 @@ h3:first-of-type{margin-top:var(--sp-4);}
 .btn-gh{background:transparent;border:1px solid var(--border2);color:var(--text2);width:auto;padding:8px 16px;font-size:12px;}
 .btn-gh:hover{border-color:var(--red);color:var(--red);}
 .btn-sm{width:auto;padding:8px 16px;font-size:13px;}
+
+/* FORM DETALHADO COLAPSÁVEL */
+.detail-form{margin-bottom:var(--sp-2);}
+.detail-form>summary{list-style:none;cursor:pointer;display:flex;flex-direction:column;gap:2px;padding:13px 15px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);font-weight:700;color:var(--text);font-size:14px;}
+.detail-form>summary::-webkit-details-marker{display:none;}
+.detail-form>summary:hover{border-color:var(--border2);}
+.detail-form[open]>summary{border-bottom-left-radius:0;border-bottom-right-radius:0;}
+.df-hint{font-size:11px;font-weight:500;color:var(--text3);}
 
 /* QUICK REGISTER */
 .quickcard{border-color:var(--accent-bd);background:linear-gradient(135deg,rgba(255,92,0,0.05),var(--surface));margin-bottom:14px;}
@@ -555,6 +592,7 @@ table.hist tr:hover td{background:rgba(255,255,255,0.015);}
     <a class="nav-i" onclick="go('quiz',this)"><span class="nav-ic">📝</span> Quiz da semana</a>
     <a class="nav-i" onclick="go('flashcards',this)"><span class="nav-ic">🃏</span> Flashcards</a>
     <a class="nav-i" onclick="go('simulador',this)"><span class="nav-ic">🎮</span> Simulador de PA</a>
+    <a class="nav-i" onclick="go('erros',this)"><span class="nav-ic">📓</span> Caderno de erros <span class="nav-bd" id="erros-badge" style="display:none">0</span></a>
   </div>
   <div class="nav-grp">
     <div class="nav-lbl">Consulta</div>
@@ -573,6 +611,14 @@ table.hist tr:hover td{background:rgba(255,255,255,0.015);}
 <div class="pg on" id="pg-home">
   <div class="pg-t">Dashboard</div>
   <p class="pg-s">Sua evolução de perto. Registre todo dia para a plataforma apontar o que treinar.</p>
+
+  <!-- HERO: PRÓXIMO PASSO -->
+  <div class="hero" id="hero">
+    <div class="hero-l">Seu próximo passo</div>
+    <div class="hero-t" id="hero-t">—</div>
+    <div class="hero-meta" id="hero-meta"></div>
+    <button class="hero-btn" id="hero-btn" onclick="heroGo()">Começar</button>
+  </div>
 
   <!-- CONTINUAR DE ONDE PAREI -->
   <div class="continue" id="continue-card" style="display:none">
@@ -645,7 +691,9 @@ table.hist tr:hover td{background:rgba(255,255,255,0.015);}
     <button class="btn btn-sm" style="width:100%" onclick="saveQuick()">Salvar registro rápido</button>
   </div>
 
-  <div class="card">
+  <details class="detail-form">
+    <summary><span>➕ Adicionar detalhes (opcional)</span><span class="df-hint">scripts, dificuldades, VPs — pra diagnóstico mais fino</span></summary>
+  <div class="card" style="margin-top:var(--sp-2)">
     <div class="fgrid">
       <div class="fld fld-date"><label>Data</label><input type="date" id="f-date"></div>
       <div class="fld"><label>Atendimentos</label><input type="number" id="f-atend" min="0" placeholder="ex: 40" oninput="prev()"><span class="h">Clientes atendidos</span></div>
@@ -685,6 +733,7 @@ table.hist tr:hover td{background:rgba(255,255,255,0.015);}
 
     <button class="btn" onclick="saveDay()">Salvar dia e ver minhas dificuldades</button>
   </div>
+  </details>
 
   <div style="margin-top:14px;text-align:right"><button class="btn-gh" onclick="clearAll()">Limpar todos os dados</button></div>
 </div>
@@ -816,10 +865,19 @@ table.hist tr:hover td{background:rgba(255,255,255,0.015);}
 <script>
 (function(){
   var d=new Date().getDay();
-  var el=document.querySelector('#pg-diario [data-day="'+d+'"]');
-  if(el){el.style.outline='2px solid var(--green, #4ade80)';el.style.outlineOffset='2px';
-    var b=document.createElement('div');b.textContent='⬆ HOJE';b.style.cssText='font-size:11px;font-weight:700;letter-spacing:1px;color:var(--green,#4ade80);margin:-8px 0 14px 2px';
-    el.parentNode.insertBefore(b,el.nextSibling);}
+  document.querySelectorAll('#pg-diario [data-day]').forEach(function(el){
+    var dd=el.getAttribute('data-day');
+    var titulo=el.querySelector('.hb-l');
+    if(parseInt(dd)===d){
+      // HOJE: destaca e mantém aberto
+      el.classList.add('day-today');
+      if(titulo){var b=document.createElement('span');b.textContent=' ⬆ HOJE';b.style.cssText='color:var(--green);font-weight:800';titulo.appendChild(b);}
+    }else{
+      // outros dias: colapsa o corpo, clique no título abre
+      el.classList.add('day-collapsed');
+      if(titulo){titulo.style.cursor='pointer';titulo.title='Toque pra ver';titulo.addEventListener('click',function(){el.classList.toggle('day-collapsed');});}
+    }
+  });
 })();
 </script>
 
@@ -1090,6 +1148,13 @@ table.hist tr:hover td{background:rgba(255,255,255,0.015);}
   <div id="quiz-box"></div>
 </div>
 
+<!-- ════ CADERNO DE ERROS ════ -->
+<div class="pg" id="pg-erros">
+  <div class="pg-t">Caderno de erros</div>
+  <p class="pg-s">Tudo que você errou no quiz e no simulador fica guardado aqui. Estude o que erra de verdade — não o que já sabe.</p>
+  <div id="erros-box"></div>
+</div>
+
 <!-- ════ SIMULADOR ════ -->
 <div class="pg" id="pg-simulador">
   <div class="pg-t">Simulador de PA</div>
@@ -1141,6 +1206,20 @@ table.hist tr:hover td{background:rgba(255,255,255,0.015);}
 
 </main>
 <div id="toast"></div>
+
+<!-- ONBOARDING (primeiro acesso) -->
+<div id="onb" class="onb" style="display:none">
+  <div class="onb-card">
+    <div class="onb-emoji" id="onb-emoji">👋</div>
+    <div class="onb-t" id="onb-t"></div>
+    <div class="onb-x" id="onb-x"></div>
+    <div class="onb-dots" id="onb-dots"></div>
+    <div class="onb-btns">
+      <button class="onb-skip" onclick="onbClose()">Pular</button>
+      <button class="onb-next" id="onb-next" onclick="onbNext()">Próximo</button>
+    </div>
+  </div>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <script>
@@ -1673,18 +1752,19 @@ const todayStr=()=>new Date().toISOString().split('T')[0];
 // ════════ NAV ════════
 // ordem das aulas do curso (mesma do menu "Aprender")
 const LESSONS=[
-  {id:'mente',n:'Mente do vendedor'},
-  {id:'abordagem',n:'Abordagem — puxar pra loja'},
-  {id:'tipos',n:'Tipos de cliente'},
-  {id:'escada',n:'Escada de produto'},
-  {id:'pa',n:'PA — kit embutido'},
-  {id:'scripts',n:'Scripts'},
-  {id:'fechamento',n:'Técnicas de fechamento'},
-  {id:'objecoes',n:'Objeções'},
-  {id:'posnao',n:'Depois do "não"'},
-  {id:'posvenda',n:'Pós-venda e recompra'},
-  {id:'vp',n:'VPs — abordagem'},
+  {id:'mente',n:'Mente do vendedor',min:6},
+  {id:'abordagem',n:'Abordagem — puxar pra loja',min:5},
+  {id:'tipos',n:'Tipos de cliente',min:4},
+  {id:'escada',n:'Escada de produto',min:5},
+  {id:'pa',n:'PA — kit embutido',min:5},
+  {id:'scripts',n:'Scripts',min:6},
+  {id:'fechamento',n:'Técnicas de fechamento',min:4},
+  {id:'objecoes',n:'Objeções',min:4},
+  {id:'posnao',n:'Depois do "não"',min:3},
+  {id:'posvenda',n:'Pós-venda e recompra',min:3},
+  {id:'vp',n:'VPs — abordagem',min:5},
 ];
+const lessonMin=id=>{const l=LESSONS.find(x=>x.id===id);return l?l.min:null;};
 const LESSON_IDS=LESSONS.map(l=>l.id);
 let lastLesson=null;
 
@@ -1699,6 +1779,7 @@ function go(id,el){
     lastLesson=id; saveLast(id); injectLessonNav(id);
   }
   if(id==='home')renderContinue();
+  if(id==='erros')renderErros();
   if(window.innerWidth<=820)closeMenu();
   window.scrollTo(0,0);
 }
@@ -1707,7 +1788,16 @@ function go(id,el){
 function injectLessonNav(id){
   const pg=document.getElementById('pg-'+id);
   if(!pg)return;
-  pg.querySelectorAll('.lesson-nav,.lesson-test').forEach(e=>e.remove());
+  pg.querySelectorAll('.lesson-nav,.lesson-test,.lesson-time').forEach(e=>e.remove());
+  // pílula de tempo estimado logo após o subtítulo
+  const min=lessonMin(id);
+  if(min){
+    const sub=pg.querySelector('.pg-s');
+    if(sub&&!sub.nextElementSibling?.classList?.contains('lesson-time')){
+      const t=document.createElement('div');t.className='lesson-time';t.innerHTML=`⏱ leitura de ~${min} min`;
+      sub.insertAdjacentElement('afterend',t);
+    }
+  }
   const i=LESSON_IDS.indexOf(id);
   const prevL=i>0?LESSONS[i-1]:null, nextL=i<LESSONS.length-1?LESSONS[i+1]:null;
   // botão testar (só se houver quiz pro tema)
@@ -1844,7 +1934,7 @@ function deleteDay(date){days=days.filter(d=>d.date!==date);persist();renderAll(
 function clearAll(){if(!confirm('Apagar todos os dados? Não pode ser desfeito.'))return;days=[];persist();renderAll();toast('Tudo limpo');}
 
 // ════════ RENDER ALL ════════
-function renderAll(){renderStats();renderGoalBanner();renderMeta();renderStreak();renderInsights();renderChart();renderReview();updateRevBadge();}
+function renderAll(){renderStats();renderHero();renderGoalBanner();renderMeta();renderStreak();renderInsights();renderChart();renderReview();updateRevBadge();}
 
 // ════════ GOAL BANNER (degraus de meta) ════════
 const GOAL_STEPS=[1.36,1.65,1.78,1.90];
@@ -1999,8 +2089,69 @@ function renderInsights(){
     }
   }
 
-  box.innerHTML=ins.map(([t,i,x])=>`<div class="ins ${t}"><span class="ins-ic">${i}</span><span>${x}</span></div>`).join('');
+  // mostra só os 2 primeiros + "ver mais" (reduz os 6 alertas competindo)
+  const top=ins.slice(0,2),rest=ins.slice(2);
+  let html=top.map(([t,i,x])=>`<div class="ins ${t}"><span class="ins-ic">${i}</span><span>${x}</span></div>`).join('');
+  if(rest.length){
+    html+=`<div id="ins-rest" style="display:none">${rest.map(([t,i,x])=>`<div class="ins ${t}"><span class="ins-ic">${i}</span><span>${x}</span></div>`).join('')}</div>`;
+    html+=`<div class="ins-more" id="ins-more" onclick="document.getElementById('ins-rest').style.display='block';this.style.display='none';">+ ver mais ${rest.length} ponto${rest.length>1?'s':''} ↓</div>`;
+  }
+  box.innerHTML=html;
 }
+
+// ════════ HERO: próximo passo (ação primária do dashboard) ════════
+function heroAction(){
+  // sem dados ainda → registrar
+  if(!days.length)return{tipo:'registrar',titulo:'Registre seu primeiro dia',meta:'Leva 10 segundos · alimenta todo o resto',act:()=>go('registrar')};
+  const n=days.length;
+  const avgCv=(()=>{const c=days.filter(d=>cv(d)!==null);return c.length?c.reduce((s,d)=>s+cv(d),0)/c.length:null;})();
+  const avgPa=days.reduce((s,d)=>s+pa(d),0)/n;
+  // prioridade: conversão baixa → fechamento; PA baixo → PA/kit; senão treinar a dificuldade do dia
+  if(avgCv!==null&&avgCv<0.6)return{tipo:'treino',titulo:'Treinar fechamento — sua conversão está baixa',meta:'Quiz do tema · ~3 min',act:()=>{go('quiz');startQuiz('fechamento');}};
+  if(avgPa<1.65)return{tipo:'estudo',titulo:'Estudar PA — kit embutido',meta:'Sua maior alavanca pro PA · ~5 min',act:()=>go('pa')};
+  // último dia tem dificuldade marcada?
+  const last=days[n-1];
+  if(last.diffs&&last.diffs.length){const d=DIFFICULTIES.find(x=>x.id===last.diffs[0]);if(d)return{tipo:'estudo',titulo:'Treinar: '+d.label,meta:'Sua dificuldade de ontem · ~5 min',act:()=>go(d.study)};}
+  // tem flashcard pra revisar hoje?
+  const due=flashcards.filter(c=>srsDue(c.n)).length;
+  if(due>0)return{tipo:'flash',titulo:`Revisar ${due} flashcard${due>1?'s':''} de hoje`,meta:'Repetição espaçada · ~3 min',act:()=>{go('flashcards');renderFc('Revisar hoje');document.querySelectorAll('.fcb').forEach(b=>b.classList.toggle('on',b.textContent.includes('Revisar')));}};
+  // continuar curso
+  if(lastLesson){const l=LESSONS.find(x=>x.id===lastLesson);if(l)return{tipo:'estudo',titulo:'Continuar: '+l.n,meta:'De onde você parou · ~5 min',act:()=>go(l.id)};}
+  return{tipo:'estudo',titulo:'Começar pelo começo: Mente do vendedor',meta:'Fundamento de tudo · ~6 min',act:()=>go('mente')};
+}
+let _heroAct=null;
+function renderHero(){
+  const box=document.getElementById('hero');if(!box)return;
+  const a=heroAction();_heroAct=a.act;
+  document.getElementById('hero-t').textContent=a.titulo;
+  document.getElementById('hero-meta').textContent=a.meta;
+}
+function heroGo(){if(_heroAct)_heroAct();}
+
+// ════════ ONBOARDING (primeiro acesso) ════════
+const ONB=[
+  {e:'👋',t:'Bem-vindo ao Beep Elite',x:'Em 4 telas rápidas você entende como usar a plataforma pra subir seu PA. Leva 30 segundos.'},
+  {e:'📊',t:'Comece pelo "Próximo passo"',x:'No Dashboard, o bloco laranja no topo te diz exatamente o que fazer agora — é só tocar em Começar. Sem se perder.'},
+  {e:'✍️',t:'Registre seu dia',x:'No fim do turno, use o "Registro rápido" (10 segundos). A plataforma calcula seu PA e aponta o que treinar.'},
+  {e:'🎓',t:'Estude e teste',x:'No menu "Aprender" você lê as aulas em sequência. No fim de cada uma, toque em "Testar este conteúdo" pra fixar de verdade.'},
+];
+let onbIdx=0;
+async function maybeOnboard(){
+  let seen=false;
+  try{const r=await window.storage.get('beep_onboard_v1');seen=r&&r.value==='1';}catch(e){}
+  if(!seen){onbIdx=0;onbShow();}
+}
+function onbShow(){
+  const o=ONB[onbIdx];
+  document.getElementById('onb-emoji').textContent=o.e;
+  document.getElementById('onb-t').textContent=o.t;
+  document.getElementById('onb-x').textContent=o.x;
+  document.getElementById('onb-dots').innerHTML=ONB.map((_,i)=>`<span class="${i===onbIdx?'on':''}"></span>`).join('');
+  document.getElementById('onb-next').textContent=onbIdx===ONB.length-1?'Começar 🚀':'Próximo';
+  document.getElementById('onb').style.display='flex';
+}
+function onbNext(){if(onbIdx>=ONB.length-1){onbClose();}else{onbIdx++;onbShow();}}
+function onbClose(){document.getElementById('onb').style.display='none';try{window.storage.set('beep_onboard_v1','1');}catch(e){}}
 
 // ════════ REVIEW PANEL ════════
 function updateRevBadge(){
@@ -2326,13 +2477,41 @@ function renderQuiz(){
 }
 function quizAnswer(ok,q,btn){
   if(quizAns)return;quizAns=true;
-  if(ok){quizScore++;btn.classList.add('ok');}else btn.classList.add('no');
+  if(ok){quizScore++;btn.classList.add('ok');}else{btn.classList.add('no');addErro({fonte:'Quiz',scn:q.scn,says:q.says,certa:q.opts.find(o=>o.ok).t,porque:q.fno});}
   document.querySelectorAll('.quiz-op').forEach(b=>{b.style.pointerEvents='none';if(b.textContent===q.opts.find(o=>o.ok).t)b.classList.add('ok');});
   const fb=document.getElementById('quiz-fb');fb.className='quiz-fb show '+(ok?'ok':'no');
   fb.innerHTML=(ok?'<strong>✓ Certo!</strong> ':'<strong>✗ Não era essa.</strong> ')+(ok?q.fok:q.fno);
   document.getElementById('quiz-nx').classList.add('show');
 }
 function quizNext(){quizIdx++;renderQuiz();}
+
+// ════════ CADERNO DE ERROS ════════
+let erros=[];
+async function loadErros(){try{const r=await window.storage.get('beep_erros_v1');erros=r&&r.value?JSON.parse(r.value):[];}catch(e){erros=[];}updateErrosBadge();}
+async function saveErros(){try{await window.storage.set('beep_erros_v1',JSON.stringify(erros));}catch(e){}}
+function addErro(e){
+  e.data=todayStr();
+  // evita duplicado exato (mesma situação)
+  erros=erros.filter(x=>x.scn!==e.scn);
+  erros.unshift(e);
+  if(erros.length>50)erros=erros.slice(0,50);
+  saveErros();updateErrosBadge();
+}
+function updateErrosBadge(){const b=document.getElementById('erros-badge');if(b){b.textContent=erros.length;b.style.display=erros.length?'inline-block':'none';}}
+function limparErros(){if(!confirm('Limpar o caderno de erros?'))return;erros=[];saveErros();updateErrosBadge();renderErros();}
+function renderErros(){
+  const box=document.getElementById('erros-box');if(!box)return;
+  if(!erros.length){box.innerHTML='<div class="ins good"><span class="ins-ic">🎉</span><span>Caderno limpo! Você não errou nada ainda — ou já revisou tudo. Faça um quiz pra testar.</span></div>';return;}
+  let html=`<div class="hbox hb-yl"><div class="hb-l">Como usar</div>Releia cada situação que você errou, foque na resposta certa e no porquê. Quando dominar, limpe o caderno. <span class="ins-link" onclick="limparErros()">Limpar tudo</span></div>`;
+  html+=erros.map(e=>`<div class="card">
+    <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:var(--text3);margin-bottom:6px">${e.fonte} · ${e.data}</div>
+    <div style="font-size:14px;margin-bottom:5px">${e.scn}</div>
+    ${e.says?`<div style="font-size:13.5px;color:var(--accent);font-style:italic;margin-bottom:9px">${e.says}</div>`:''}
+    <div style="font-size:13px;background:var(--green-dim);border-radius:var(--r-sm);padding:9px 11px;margin-bottom:6px"><strong style="color:var(--green)">✓ Resposta certa:</strong> ${e.certa}</div>
+    <div style="font-size:12.5px;color:var(--text2);line-height:1.55">${e.porque||''}</div>
+  </div>`).join('');
+  box.innerHTML=html;
+}
 
 // ════════ BIBLIOTECA ════════
 let libCat='Todos',libQuery='';
@@ -2451,7 +2630,7 @@ function renderSim(){
 }
 function ansSim(ok,c,btn){
   if(simAns)return;simAns=true;simT++;
-  if(ok){simC++;btn.classList.add('ok');}else btn.classList.add('no');
+  if(ok){simC++;btn.classList.add('ok');}else{btn.classList.add('no');addErro({fonte:'Simulador',scn:c.scn,says:c.says,certa:c.opts.find(o=>o.ok).t,porque:c.fno});}
   document.querySelectorAll('.sim-op').forEach(b=>{b.style.pointerEvents='none';if(b.textContent===c.opts.find(o=>o.ok).t)b.classList.add('ok');});
   const fb=document.getElementById('sim-fb');fb.className='sim-fb show '+(ok?'ok':'no');
   fb.innerHTML=(ok?'<strong>✓ Certo!</strong> ':'<strong>✗ Não era essa.</strong> ')+(ok?c.fok:c.fno);
@@ -2513,7 +2692,9 @@ function init(){
   loadTrilha();startQuiz();
   loadSrs().then(()=>{updateFcDue();});
   loadLast();
+  loadErros();
   load();
+  maybeOnboard();
   window.addEventListener('resize',()=>{if(days.length>=2)renderChart();});
 }
 window.__appInit=init;
