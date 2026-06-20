@@ -109,6 +109,27 @@ body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-
 .lesson-test:hover{opacity:0.92;}
 .lesson-time{display:inline-block;font-size:11.5px;font-weight:700;color:var(--text2);background:var(--surface2);border:1px solid var(--border);border-radius:14px;padding:4px 11px;margin:-12px 0 18px;}
 
+/* ÍNDICE + LEITURA FOCADA (aulas) */
+.lesson-tabs{display:flex;gap:7px;overflow-x:auto;padding-bottom:10px;margin-bottom:18px;border-bottom:1px solid var(--border);}
+.lesson-tabs::-webkit-scrollbar{display:none;}
+.lesson-tab{white-space:nowrap;font-size:13px;font-weight:600;padding:8px 14px;border-radius:999px;border:1px solid var(--border);background:var(--surface);color:var(--text2);cursor:pointer;font-family:inherit;flex-shrink:0;}
+.lesson-tab:hover{border-color:var(--border2);color:var(--text);}
+.lesson-tab.on{background:var(--accent);border-color:var(--accent);color:var(--on-accent);}
+.lesson-sec{display:none;}
+.lesson-sec.on{display:block;animation:fade 0.2s ease;}
+.lesson-sec-h{margin-top:0!important;}
+.lesson-secnav{display:flex;align-items:center;justify-content:space-between;gap:var(--sp-2);margin-top:var(--sp-5);padding-top:var(--sp-4);border-top:1px solid var(--border);}
+.lsn-prev,.lsn-next{background:var(--surface);border:1px solid var(--border2);border-radius:var(--r-md);padding:9px 15px;font-size:13px;font-weight:600;color:var(--text);cursor:pointer;font-family:inherit;}
+.lsn-next{background:var(--accent);border-color:var(--accent);color:var(--on-accent);font-weight:700;}
+.lsn-prev:hover{border-color:var(--accent-bd);}
+.lsn-pos{font-size:12px;color:var(--text3);font-weight:600;}
+@media(min-width:821px){
+  .lesson-wrap{display:grid;grid-template-columns:170px 1fr;gap:24px;align-items:start;}
+  .lesson-tabs{flex-direction:column;overflow:visible;border-bottom:none;border-right:1px solid var(--border);padding:0 16px 0 0;margin:0;position:sticky;top:70px;gap:5px;}
+  .lesson-tab{text-align:left;border:none;border-radius:9px;padding:9px 11px;background:transparent;}
+  .lesson-tab.on{background:var(--accent-dim);color:var(--accent);}
+}
+
 /* MAIN */
 #main{margin-left:var(--sb);margin-top:var(--hh);min-height:calc(100vh - var(--hh));}
 .pg{display:none;padding:var(--sp-5) 30px 80px;max-width:var(--read);}
@@ -595,6 +616,7 @@ table.hist tr:hover td{background:rgba(70,55,20,0.025);}
     <a class="nav-i" onclick="go('flashcards',this)"><span class="nav-ic">🃏</span> Flashcards</a>
     <a class="nav-i" onclick="go('simulador',this)"><span class="nav-ic">🎮</span> Simulador de PA</a>
     <a class="nav-i" onclick="go('erros',this)"><span class="nav-ic">📓</span> Caderno de erros <span class="nav-bd" id="erros-badge" style="display:none">0</span></a>
+    <a class="nav-i" onclick="go('ia',this)"><span class="nav-ic">✨</span> Treinador IA <span class="nav-bd">novo</span></a>
   </div>
   <div class="nav-grp">
     <div class="nav-lbl">Consulta</div>
@@ -1155,6 +1177,22 @@ table.hist tr:hover td{background:rgba(70,55,20,0.025);}
   <div class="pg-t">Caderno de erros</div>
   <p class="pg-s">Tudo que você errou no quiz e no simulador fica guardado aqui. Estude o que erra de verdade, não o que já sabe.</p>
   <div id="erros-box"></div>
+</div>
+
+<!-- ════ TREINADOR IA ════ -->
+<div class="pg" id="pg-ia">
+  <div class="pg-t">Treinador IA</div>
+  <p class="pg-s">Cole o que você falou num atendimento real. A IA analisa com a sua metodologia (silêncio, âncora, desapego, escada, kit embutido) e aponta o que você não viu.</p>
+
+  <div class="card">
+    <label style="font-size:12px;font-weight:600;color:var(--text2);display:block;margin-bottom:8px">O que você falou no atendimento</label>
+    <textarea id="ia-input" placeholder="Ex: O cliente chegou querendo só uma película. Eu disse que tinha de 19 a 99 reais, mostrei as opções, ele escolheu a de 59. Aí perguntei se ele queria a câmera também, ele disse que não e eu deixei..." style="min-height:120px"></textarea>
+    <button class="btn" style="margin-top:12px" onclick="iaAnalisar()">Analisar meu atendimento</button>
+  </div>
+
+  <div id="ia-resultado" style="margin-top:14px"></div>
+
+  <div class="hbox hb-bl" style="margin-top:16px"><div class="hb-l">Como isto funciona</div>O Treinador IA usa um modelo de IA com a SUA metodologia carregada como contexto, então a análise é sobre o seu jeito de vender, não dicas genéricas. Para ativar de verdade, falta plugar uma chave de API (a tela já está pronta). Enquanto não está plugada, ele mostra uma análise de demonstração para você ver o formato.</div>
 </div>
 
 <!-- ════ SIMULADOR ════ -->
@@ -1786,6 +1824,57 @@ function go(id,el){
   window.scrollTo(0,0);
 }
 
+// ── ÍNDICE + LEITURA FOCADA ──
+// agrupa o conteúdo da aula por <h3> e mostra uma seção por vez, com índice navegável
+function enhanceLesson(id){
+  const pg=document.getElementById('pg-'+id);
+  if(!pg||pg.dataset.enhanced)return;
+  const h3s=[...pg.children].filter(e=>e.tagName==='H3');
+  if(h3s.length<2)return; // poucas seções: deixa rolar normal
+  const secs=[];
+  h3s.forEach(h=>{
+    const title=h.textContent.replace(/^\s*\d+\s*[·.]\s*/,'').trim();
+    const body=[];let n=h.nextElementSibling;
+    while(n&&n.tagName!=='H3'&&!n.classList.contains('lesson-nav')&&!n.classList.contains('lesson-test')){const nx=n.nextElementSibling;body.push(n);n=nx;}
+    secs.push({title,h,body});
+  });
+  const wrap=document.createElement('div');wrap.className='lesson-wrap';
+  const tabs=document.createElement('div');tabs.className='lesson-tabs';
+  const panel=document.createElement('div');panel.className='lesson-panel';
+  secs.forEach((s,i)=>{
+    const tab=document.createElement('button');tab.className='lesson-tab'+(i===0?' on':'');tab.textContent=s.title;
+    tab.onclick=()=>showLessonSec(id,i);tabs.appendChild(tab);
+    const sec=document.createElement('div');sec.className='lesson-sec'+(i===0?' on':'');
+    s.h.classList.add('lesson-sec-h');sec.appendChild(s.h);
+    s.body.forEach(b=>sec.appendChild(b));
+    panel.appendChild(sec);
+  });
+  wrap.appendChild(tabs);wrap.appendChild(panel);
+  const after=pg.querySelector('.lesson-time')||pg.querySelector('.pg-s');
+  after.insertAdjacentElement('afterend',wrap);
+  const secnav=document.createElement('div');secnav.className='lesson-secnav';
+  secnav.innerHTML=`<button class="lsn-prev" onclick="moveLessonSec('${id}',-1)">‹ Anterior</button><span class="lsn-pos" id="lsn-pos-${id}"></span><button class="lsn-next" onclick="moveLessonSec('${id}',1)">Próxima seção ›</button>`;
+  panel.appendChild(secnav);
+  pg.dataset.enhanced='1';pg.dataset.secCount=secs.length;pg.dataset.secCur=0;
+  updateSecPos(id);
+}
+function showLessonSec(id,i){
+  const pg=document.getElementById('pg-'+id);if(!pg)return;
+  pg.querySelectorAll('.lesson-sec').forEach((s,k)=>s.classList.toggle('on',k===i));
+  pg.querySelectorAll('.lesson-tab').forEach((t,k)=>t.classList.toggle('on',k===i));
+  pg.dataset.secCur=i;updateSecPos(id);
+  const tabs=pg.querySelector('.lesson-tabs');if(tabs){const on=tabs.querySelector('.lesson-tab.on');if(on)on.scrollIntoView({inline:'center',block:'nearest',behavior:'smooth'});}
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function moveLessonSec(id,dir){
+  const pg=document.getElementById('pg-'+id);if(!pg)return;
+  const cur=+pg.dataset.secCur,total=+pg.dataset.secCount,nx=cur+dir;
+  if(nx<0)return;
+  if(nx>=total){const t=pg.querySelector('.lesson-test');if(t){t.scrollIntoView({behavior:'smooth',block:'center'});return;}const i=LESSON_IDS.indexOf(id);if(i<LESSONS.length-1)go(LESSONS[i+1].id);return;}
+  showLessonSec(id,nx);
+}
+function updateSecPos(id){const pg=document.getElementById('pg-'+id);if(!pg)return;const el=document.getElementById('lsn-pos-'+id);if(el)el.textContent=`${(+pg.dataset.secCur)+1} de ${pg.dataset.secCount}`;}
+
 // injeta no fim da página da aula: testar este conteúdo + anterior/próximo
 function injectLessonNav(id){
   const pg=document.getElementById('pg-'+id);
@@ -1800,6 +1889,7 @@ function injectLessonNav(id){
       sub.insertAdjacentElement('afterend',t);
     }
   }
+  enhanceLesson(id);
   const i=LESSON_IDS.indexOf(id);
   const prevL=i>0?LESSONS[i-1]:null, nextL=i<LESSONS.length-1?LESSONS[i+1]:null;
   // botão testar (só se houver quiz pro tema)
@@ -1813,7 +1903,7 @@ function injectLessonNav(id){
   const bar=document.createElement('div');
   bar.className='lesson-nav';
   bar.innerHTML=`
-    <a class="ln-b ${prevL?'':'disabled'}" ${prevL?`onclick="go('${prevL.id}')"`:''}><span class="ln-l">‹ Anterior</span><span class="ln-t">${prevL?prevL.n:'—'}</span></a>
+    <a class="ln-b ${prevL?'':'disabled'}" ${prevL?`onclick="go('${prevL.id}')"`:''}><span class="ln-l">‹ Anterior</span><span class="ln-t">${prevL?prevL.n:'Início'}</span></a>
     <a class="ln-b next ${nextL?'':'disabled'}" ${nextL?`onclick="go('${nextL.id}')"`:''}><span class="ln-l">Próximo ›</span><span class="ln-t">${nextL?nextL.n:'Fim do curso 🎉'}</span></a>`;
   pg.appendChild(bar);
 }
@@ -2113,7 +2203,11 @@ function heroAction(){
   if(avgPa<1.65)return{tipo:'estudo',titulo:'Estudar PA: kit embutido',meta:'Sua maior alavanca pro PA · ~5 min',act:()=>go('pa')};
   // último dia tem dificuldade marcada?
   const last=days[n-1];
-  if(last.diffs&&last.diffs.length){const d=DIFFICULTIES.find(x=>x.id===last.diffs[0]);if(d)return{tipo:'estudo',titulo:'Treinar: '+d.label,meta:'Sua dificuldade de ontem · ~5 min',act:()=>go(d.study)};}
+  if(last.diffs&&last.diffs.length){const d=DIFFICULTIES.find(x=>x.id===last.diffs[0]);if(d){
+    const temQuiz=(typeof quizThemeCount==='function')&&quizThemeCount(d.study)>0;
+    if(temQuiz)return{tipo:'treino',titulo:'Treinar: '+d.label,meta:'Sua dificuldade de ontem, vira treino · ~4 min',act:()=>{go('quiz');startQuiz(d.study);}};
+    return{tipo:'estudo',titulo:'Estudar: '+d.label,meta:'Sua dificuldade de ontem · ~5 min',act:()=>go(d.study)};
+  }}
   // tem flashcard pra revisar hoje?
   const due=flashcards.filter(c=>srsDue(c.n)).length;
   if(due>0)return{tipo:'flash',titulo:`Revisar ${due} flashcard${due>1?'s':''} de hoje`,meta:'Repetição espaçada · ~3 min',act:()=>{go('flashcards');renderFc('Revisar hoje');document.querySelectorAll('.fcb').forEach(b=>b.classList.toggle('on',b.textContent.includes('Revisar')));}};
@@ -2513,6 +2607,42 @@ function renderErros(){
     <div style="font-size:12.5px;color:var(--text2);line-height:1.55">${e.porque||''}</div>
   </div>`).join('');
   box.innerHTML=html;
+}
+
+// ════════ TREINADOR IA (espaço pronto, plugar chave depois) ════════
+// Para ativar de verdade: criar uma Edge Function no Supabase que chama a API do Claude
+// com a metodologia como system prompt, e setar IA_ENDPOINT abaixo. Sem isso, roda a demo heurística.
+const IA_ENDPOINT=''; // ex: 'https://SEU-PROJETO.supabase.co/functions/v1/treinador-ia'
+function iaAnalisar(){
+  const txt=(document.getElementById('ia-input').value||'').trim();
+  const box=document.getElementById('ia-resultado');
+  if(txt.length<20){box.innerHTML='<div class="ins warn"><span class="ins-ic">✍️</span><span>Conte um pouco mais do atendimento (o que o cliente falou, o que você respondeu) pra eu analisar direito.</span></div>';return;}
+  if(IA_ENDPOINT){
+    box.innerHTML='<div class="ins info"><span class="ins-ic">⏳</span><span>Analisando seu atendimento...</span></div>';
+    fetch(IA_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({texto:txt})})
+      .then(r=>r.json()).then(d=>{box.innerHTML=iaRender(d.analise||[],false);})
+      .catch(()=>{box.innerHTML='<div class="ins bad"><span class="ins-ic">⚠️</span><span>Não consegui falar com a IA agora. Tenta de novo em instantes.</span></div>';});
+    return;
+  }
+  box.innerHTML=iaRender(iaDemoAnalise(txt),true);
+}
+function iaDemoAnalise(t){
+  const x=t.toLowerCase();const out=[];
+  const iPreco=Math.min(...['real','reais','r$','preço','custa','19','29','39','59','99'].map(k=>{const i=x.indexOf(k);return i<0?9999:i;}));
+  const iAncora=Math.min(...['tela','quebra','conserto','prejuízo','trocar'].map(k=>{const i=x.indexOf(k);return i<0?9999:i;}));
+  if(iPreco<9999&&(iAncora===9999||iPreco<iAncora))out.push(['bad','Falou o preço antes da âncora','Você citou valor antes de ancorar no custo do prejuízo (tela, conserto). Inverte: primeiro o risco que ele evita, depois o preço. Aí R$59 parece barato.']);
+  if(/quer (também|tambem|mais)|queria (também|tambem)|gostaria/.test(x))out.push(['bad','Ofereceu o PA com pergunta recusável','"Quer também?" é fácil de recusar. Usa o embutido: "já protejo a câmera junto, R$29, coloco?" Vira conveniência, não oferta.']);
+  if(/(disse que não|falou que não|recusou|não quis).*(deixei|tudo bem|ok|aceitei)/.test(x)||/e eu deixei/.test(x))out.push(['warn','Aceitou o primeiro "não" sem reposicionar','Depois do não, cabe UMA reposicionada com prova física: "última coisa, olha a câmera saltada... R$29, aí eu paro de te encher." Metade fecha aí.']);
+  if(!/(qual das duas|fecho|coloco|aplico|já vou|fechado)/.test(x))out.push(['warn','Faltou pergunta de fechamento','Não vi uma pergunta que assume a venda. Termina com escolha: "qual das duas eu já aplico?" e depois silêncio.']);
+  if(/qual.*celular|seu (aparelho|modelo|celular)/.test(x))out.push(['good','Bom: perguntou o aparelho','Você personalizou pelo modelo do cliente, isso para a pessoa e abre a conversa. Mantém.']);
+  if(/sente|segura|na mão|mostr|teste/.test(x))out.push(['good','Bom: usou prova física','Deixar o cliente sentir vale mais que falar. Continua trazendo o produto pra mão dele.']);
+  if(!out.length)out.push(['info','Análise','Não identifiquei erros clássicos nesse relato. Para um retorno mais afiado, conte a sequência: como abriu, o que ofereceu, como tentou fechar.']);
+  return out;
+}
+function iaRender(items,demo){
+  let h=demo?'<div class="ins info" style="margin-bottom:10px"><span class="ins-ic">✨</span><span><strong>Demonstração</strong> (a IA real entra quando a chave for plugada). Mesmo assim, isto aponta padrões de verdade no seu texto:</span></div>':'';
+  h+=items.map(([t,titulo,corpo])=>`<div class="ins ${t}"><span class="ins-ic">${t==='good'?'✓':t==='bad'?'✗':t==='warn'?'⚡':'💡'}</span><span><strong>${titulo}.</strong> ${corpo}</span></div>`).join('');
+  return h;
 }
 
 // ════════ BIBLIOTECA ════════
