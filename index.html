@@ -592,8 +592,7 @@ table.hist tr:hover td{background:rgba(70,55,20,0.025);}
     <a class="nav-i on" onclick="go('home',this)"><span class="nav-ic">📊</span> Dashboard</a>
     <a class="nav-i" onclick="go('registrar',this)"><span class="nav-ic">✍️</span> Registrar o dia</a>
     <a class="nav-i" onclick="go('revisar',this)"><span class="nav-ic">🎯</span> Revisar dia <span class="nav-bd" id="rev-badge" style="display:none">!</span></a>
-    <a class="nav-i" onclick="go('rotina',this)"><span class="nav-ic">✅</span> Rotina de hoje</a>
-    <a class="nav-i" onclick="go('diario',this)"><span class="nav-ic">📅</span> Plano diário</a>
+    <a class="nav-i" onclick="go('rotina',this)"><span class="nav-ic">✅</span> Hoje</a>
   </div>
   <div class="nav-grp">
     <div class="nav-lbl">Aprender <span class="nav-prog" id="nav-prog"></span></div>
@@ -773,9 +772,12 @@ table.hist tr:hover td{background:rgba(70,55,20,0.025);}
 
 <!-- ════ ROTINA ════ -->
 <div class="pg" id="pg-rotina">
-  <div class="pg-t">Rotina de hoje</div>
-  <p class="pg-s">35 minutos por dia. Marque conforme cumpre, reseta automaticamente a cada dia.</p>
+  <div class="pg-t">Hoje</div>
+  <p class="pg-s">Seu foco do dia e o checklist do turno num lugar só. Marque conforme cumpre, reseta a cada dia.</p>
 
+  <div class="hbox hb-or" id="hoje-foco" style="margin-bottom:18px"><div class="hb-l">📅 Foco de hoje</div><span id="hoje-foco-txt">Carregando...</span> <span class="ins-link" onclick="go('diario')">ver a semana toda ›</span></div>
+
+  <h3>Checklist do turno</h3>
   <div class="rot-grid">
     <div class="rot">
       <div class="rot-tm">ANTES DO TURNO · 15 min</div>
@@ -838,8 +840,8 @@ table.hist tr:hover td{background:rgba(70,55,20,0.025);}
 
 <!-- ════ PLANO DIÁRIO ════ -->
 <div class="pg" id="pg-diario">
-  <div class="pg-t">Plano diário</div>
-  <p class="pg-s">Seu dia a dia de verdade: seg, ter, qui, sex, sáb, quarta de folga e domingo a cada 15 dias. O dia de hoje fica destacado sozinho.</p>
+  <div class="pg-t">Plano da semana</div>
+  <p class="pg-s"><span class="ins-link" onclick="go('rotina')">‹ voltar pra Hoje</span> · Seu dia a dia de verdade: seg, ter, qui, sex, sáb, quarta de folga e domingo a cada 15 dias. O dia de hoje fica destacado.</p>
 
   <div class="hbox hb-bl" data-day="1"><div class="hb-l">📱 Segunda, Películas</div>
     <strong>Por que segunda:</strong> shopping mais calmo, dia perfeito pra treinar conversa longa sem pressão.<br><br>
@@ -2788,6 +2790,19 @@ async function loadChk(){
   if(state){document.querySelectorAll('.chk').forEach(ul=>{const arr=state[ul.getAttribute('data-block')];if(arr)[...ul.querySelectorAll('li')].forEach((li,i)=>{if(arr[i])li.classList.add('done');});});}
   updateChkProg();
 }
+// puxa o foco do dia (do Plano da semana) pra dentro de "Hoje"
+function renderFocoHoje(){
+  const el=document.getElementById('hoje-foco-txt');if(!el)return;
+  const d=new Date().getDay();
+  const card=document.querySelector('#pg-diario [data-day="'+d+'"]');
+  if(!card){el.textContent='Veja o plano da semana.';return;}
+  const titulo=(card.querySelector('.hb-l')?.textContent||'').trim();
+  // pega a frase do "Treino do dia" se houver
+  const txt=card.textContent;
+  const m=txt.match(/Treino do dia:\s*([^]*?)(?:💬|📊|🃏|🎯|$)/);
+  const treino=m?m[1].trim().replace(/\s+/g,' ').slice(0,160):'';
+  el.innerHTML=`<strong>${titulo}.</strong> ${treino}`;
+}
 
 // ════════ SEARCH ════════
 const searchIdx=[
@@ -2826,6 +2841,7 @@ function init(){
   loadLast();
   loadErros();
   load();
+  renderFocoHoje();
   maybeOnboard();
   window.addEventListener('resize',()=>{if(days.length>=2)renderChart();});
 }
