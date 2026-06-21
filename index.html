@@ -1266,8 +1266,8 @@ table.hist tr:hover td{background:rgba(70,55,20,0.025);}
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <script>
 // ════════ SUPABASE AUTH + STORAGE ════════
-const SB_URL='https://kdazwnvhpirofmaysfzs.supabase.co';
-const SB_KEY='sb_publishable_837wCTfqK7qo-3CFlng6fw_mfmKbXPw';
+const SB_URL='https://agxttwognoloswntibzo.supabase.co';
+const SB_KEY='sb_publishable_uOqP3j6vXxplN7q_htvvuw_tOZhL6qU';
 const sb=window.supabase.createClient(SB_URL,SB_KEY);
 let UID=null;
 
@@ -1362,7 +1362,13 @@ window.storage={
       const st={};data.forEach(r=>st[r.block]=r.checked||[]);
       return{key:k,value:JSON.stringify(st)};
     }
-    throw new Error('key not found');
+    // qualquer outra chave (trilha, flashcards SR, caderno de erros, onboarding, ultima aula)
+    {
+      const{data,error}=await sb.from('kv_store').select('value').eq('key',k).maybeSingle();
+      if(error)throw error;
+      if(!data)throw new Error('key not found');
+      return{key:k,value:data.value};
+    }
   },
   async set(k,v){
     if(!UID)throw new Error('no session');
@@ -1378,7 +1384,12 @@ window.storage={
       if(rows.length){const{error}=await sb.from('rotina_checks').upsert(rows,{onConflict:'user_id,date,block'});if(error)throw error;}
       return{key:k,value:v};
     }
-    return{key:k,value:v};
+    // qualquer outra chave vai pro armazém chave-valor
+    {
+      const{error}=await sb.from('kv_store').upsert({user_id:UID,key:k,value:v,updated_at:new Date().toISOString()},{onConflict:'user_id,key'});
+      if(error)throw error;
+      return{key:k,value:v};
+    }
   },
   async delete(k){return{key:k,deleted:true};},
   async list(p){return{keys:[],prefix:p};}
