@@ -117,18 +117,21 @@ body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-
 .lesson-tab.on{background:var(--accent);border-color:var(--accent);color:var(--on-accent);}
 .lesson-sec{display:none;}
 .lesson-sec.on{display:block;animation:fade 0.2s ease;}
-.lesson-sec-h{margin-top:0!important;}
+.lesson-sec-h{margin-top:0!important;margin-bottom:var(--sp-4);}
 .lesson-secnav{display:flex;align-items:center;justify-content:space-between;gap:var(--sp-2);margin-top:var(--sp-5);padding-top:var(--sp-4);border-top:1px solid var(--border);}
 .lsn-prev,.lsn-next{background:var(--surface);border:1px solid var(--border2);border-radius:var(--r-md);padding:9px 15px;font-size:13px;font-weight:600;color:var(--text);cursor:pointer;font-family:inherit;}
 .lsn-next{background:var(--accent);border-color:var(--accent);color:var(--on-accent);font-weight:700;}
 .lsn-prev:hover{border-color:var(--accent-bd);}
 .lsn-pos{font-size:12px;color:var(--text3);font-weight:600;}
 @media(min-width:821px){
-  .lesson-wrap{display:grid;grid-template-columns:170px 1fr;gap:24px;align-items:start;}
-  .lesson-tabs{flex-direction:column;overflow:visible;border-bottom:none;border-right:1px solid var(--border);padding:0 16px 0 0;margin:0;position:sticky;top:70px;gap:5px;}
-  .lesson-tab{text-align:left;border:none;border-radius:9px;padding:9px 11px;background:transparent;}
+  .lesson-wrap{display:grid;grid-template-columns:210px minmax(0,1fr);gap:28px;align-items:start;}
+  .lesson-tabs{flex-direction:column;overflow:visible;border-bottom:none;border-right:1px solid var(--border);padding:0 16px 0 0;margin:0;position:sticky;top:70px;gap:4px;}
+  .lesson-tab{text-align:left;border:none;border-radius:9px;padding:9px 11px;background:transparent;white-space:normal;line-height:1.35;}
   .lesson-tab.on{background:var(--accent-dim);color:var(--accent);}
+  .lesson-panel{min-width:0;}
 }
+.lesson-sec{min-width:0;}
+.lesson-sec>*{max-width:100%;}
 
 /* MAIN */
 #main{margin-left:var(--sb);margin-top:var(--hh);min-height:calc(100vh - var(--hh));}
@@ -1081,7 +1084,7 @@ table.hist tr:hover td{background:rgba(70,55,20,0.025);}
   <div class="pg-t">Escada de produto</div>
   <p class="pg-s">Mostre sempre a entrada primeiro. O premium parece óbvio quando a diferença está visível.</p>
 
-  <h3>⭐ Ultra Safe: o topo de tudo</h3>
+  <h3>⭐ Ultra Safe</h3>
   <div class="ultrasafe">
     <div class="us-badge">A ÚNICA COM GARANTIA DA SUA TELA</div>
     <div class="us-title">Película Ultra Safe</div>
@@ -1112,8 +1115,8 @@ table.hist tr:hover td{background:rgba(70,55,20,0.025);}
 
   <div class="hbox hb-bl"><div class="hb-l">Como introduzir sem parecer empurrar</div>Não comece pela Ultra Safe nem pelo preço. Comece pela <strong>dor</strong>: <em style="color:var(--white)">"Posso te perguntar? Você já quebrou tela de celular antes?"</em> Quase todo mundo já. Aí: <em style="color:var(--white)">"Pois é. Tem uma película que cobre exatamente isso, se quebrar em 6 meses, eles trocam a sua tela. Quer ver?"</em> Você não empurrou nada, ele pediu pra ver.</div>
 
-  <h3>🎯 Mentalidade: ninguém sai abaixo da Diamond</h3>
-  <div class="hbox hb-gr"><div class="hb-l">A Ultra Safe puxa o piso pra cima</div>Esse é o pulo do gato: <strong>mesmo quem recusa a Ultra Safe, sai com a Diamond.</strong> Por quê? Quando você ancora lá em cima (R$220, garantia da tela), a Diamond de R$99 deixa de parecer "cara", vira "o meio-termo sensato". Você nunca mais fecha uma 9H de R$19 em quem ouviu a Ultra Safe. <strong>A meta não é vender Ultra Safe sempre. É a Ultra Safe puxar todo mundo pra cima.</strong></div>
+  <h3>🎯 Piso na Diamond</h3>
+  <div class="hbox hb-gr"><div class="hb-l">A Ultra Safe puxa o piso pra cima, ninguém sai abaixo da Diamond</div>Esse é o pulo do gato: <strong>mesmo quem recusa a Ultra Safe, sai com a Diamond.</strong> Por quê? Quando você ancora lá em cima (R$220, garantia da tela), a Diamond de R$99 deixa de parecer "cara", vira "o meio-termo sensato". Você nunca mais fecha uma 9H de R$19 em quem ouviu a Ultra Safe. <strong>A meta não é vender Ultra Safe sempre. É a Ultra Safe puxar todo mundo pra cima.</strong></div>
 
   <div class="us-fallback">
     <div class="us-fallback-t">A escada de recuo (se recusar a Ultra Safe):</div>
