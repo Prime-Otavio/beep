@@ -382,6 +382,34 @@ table.hist tr:hover td{background:rgba(70,55,20,0.025);}
 .obj-r{font-size:13px;color:var(--text);line-height:1.7;padding:10px 0 6px;}
 .obj-w{font-size:11px;color:var(--text3);font-style:italic;padding:6px 10px;background:var(--surface2);border-radius:4px;}
 
+/* ULTRA SAFE (destaque máximo) */
+.ultrasafe{background:var(--surface);border:2px solid var(--accent);border-radius:var(--r-lg);padding:20px;margin-bottom:8px;box-shadow:0 6px 22px rgba(182,130,42,0.14);}
+.us-badge{display:inline-block;background:var(--accent);color:var(--on-accent);font-size:10.5px;font-weight:800;letter-spacing:0.6px;padding:5px 12px;border-radius:999px;margin-bottom:12px;}
+.us-title{font-size:22px;font-weight:800;color:var(--white);line-height:1.15;}
+.us-sub{font-size:12.5px;color:var(--text2);margin-bottom:12px;}
+.us-p{font-size:14.5px;line-height:1.65;color:var(--text);margin-bottom:14px;}
+.us-p strong{color:var(--accent);}
+.us-specs{display:grid;gap:8px;margin-bottom:14px;}
+.us-spec{font-size:13px;line-height:1.5;color:var(--text);background:var(--surface2);border-radius:var(--r-sm);padding:9px 12px;}
+.us-spec b{color:var(--accent);font-weight:700;margin-right:4px;}
+.us-block{background:var(--accent-dim);border-radius:var(--r-md);padding:14px;margin-bottom:12px;}
+.us-block-t{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.5px;color:var(--accent);margin-bottom:9px;}
+.us-way{font-size:13.5px;line-height:1.6;color:var(--text);margin-bottom:9px;}
+.us-way:last-child{margin-bottom:0;}
+.us-way em{color:var(--white);font-style:italic;}
+.us-close{font-size:13.5px;line-height:1.6;color:var(--text);background:var(--green-dim);border-radius:var(--r-sm);padding:11px 13px;margin-bottom:8px;}
+.us-close em{color:var(--white);font-style:italic;}
+.us-erro{font-size:12.5px;line-height:1.55;color:var(--text2);background:var(--red-dim);border-radius:var(--r-sm);padding:10px 12px;}
+.us-erro strong{color:var(--red);}
+/* escada de recuo Ultra Safe */
+.us-fallback{background:var(--surface);border:1px solid var(--border2);border-radius:var(--r-md);padding:16px;margin:8px 0;}
+.us-fallback-t{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.5px;color:var(--accent);margin-bottom:11px;}
+.us-step{font-size:13.5px;line-height:1.6;color:var(--text);padding:11px 13px;background:var(--surface2);border-radius:var(--r-sm);border-left:3px solid var(--accent);margin-bottom:8px;}
+.us-step b{color:var(--white);}
+.us-step em{color:var(--text);font-style:italic;}
+.us-step.us-floor{border-left-color:var(--red);background:var(--red-dim);}
+.us-step.us-floor b{color:var(--red);}
+
 /* LADDER */
 .lad{margin:14px 0;}
 .lad-s{display:flex;gap:12px;position:relative;}
@@ -389,6 +417,12 @@ table.hist tr:hover td{background:rgba(70,55,20,0.025);}
 .lad-d{width:40px;height:40px;min-width:40px;border-radius:50%;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;z-index:1;background:var(--surface);}
 .lad-d.e{border-color:var(--red);color:var(--red);} .lad-d.m{border-color:var(--yellow);color:var(--yellow);}
 .lad-d.p{border-color:var(--green);color:var(--green);} .lad-d.t{border-color:var(--accent);color:var(--accent);background:var(--accent-dim);}
+/* Ultra Safe: topo destacado de todos */
+.lad-d.us{border-color:var(--accent);color:var(--on-accent);background:var(--accent);box-shadow:0 0 0 4px var(--accent-dim);}
+.lad-s.us-row{background:var(--surface);border:1.5px solid var(--accent);border-radius:var(--r-md);padding:12px;margin-top:6px;}
+.lad-s.us-row::after{display:none;}
+.lad-s.us-row .lad-n::after{content:' ⭐ TOPO';font-size:10px;font-weight:800;color:var(--accent);letter-spacing:0.5px;}
+.lad-s.us-row .lad-c{padding-bottom:0;}
 .lad-c{flex:1;padding-bottom:18px;}
 .lad-n{font-weight:700;font-size:14px;color:var(--white);margin-bottom:2px;}
 .lad-p{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--accent);margin-bottom:4px;}
@@ -1046,7 +1080,51 @@ table.hist tr:hover td{background:rgba(70,55,20,0.025);}
 <div class="pg" id="pg-escada">
   <div class="pg-t">Escada de produto</div>
   <p class="pg-s">Mostre sempre a entrada primeiro. O premium parece óbvio quando a diferença está visível.</p>
-  <h3>Películas</h3>
+
+  <h3>⭐ Ultra Safe: o topo de tudo</h3>
+  <div class="ultrasafe">
+    <div class="us-badge">A ÚNICA COM GARANTIA DA SUA TELA</div>
+    <div class="us-title">Película Ultra Safe</div>
+    <div class="us-sub">Gorila Shield (Gshield) · R$ 220</div>
+    <p class="us-p">Não é seguro da película. É seguro da <strong>tela do aparelho</strong>: se a tela do cliente quebrar nos primeiros <strong>6 meses</strong>, a fabricante cobre. Nenhuma outra película do mercado faz isso. É o argumento mais forte que você tem pra fechar.</p>
+    <div class="us-specs">
+      <div class="us-spec"><b>🛡 Garantia</b> 6 meses da tela do aparelho (não só da película)</div>
+      <div class="us-spec"><b>🔬 Material</b> fibra de vidro com microfilamentos + vidro temperado, 5 camadas</div>
+      <div class="us-spec"><b>✋ Toque</b> 100% de sensibilidade, 99% de transparência, 0,35mm</div>
+      <div class="us-spec"><b>🚫 Resiste a</b> impacto, queda, risco. Antirreflexo e oleofóbica</div>
+    </div>
+
+    <div class="us-block">
+      <div class="us-block-t">Como vender, dois caminhos:</div>
+      <div class="us-way"><b>1. Subindo pela escada (depois da Fiber):</b> <em>"A Fiber já é altíssima. Mas tem uma acima: a Ultra Safe, se a SUA tela quebrar, a fabricante troca. Quer que eu te mostre a única do mundo com isso?"</em></div>
+      <div class="us-way"><b>2. Indo direto (cliente com aparelho caro ou medroso de quebrar):</b> <em>"Pro seu aparelho eu nem perco seu tempo com as básicas. Existe uma única película que garante a sua tela por 6 meses, se quebrar, eles cobrem. É essa. Posso aplicar?"</em></div>
+    </div>
+
+    <div class="us-close"><b>🔒 Fechamento:</b> <em>"Pensa comigo: trocar essa tela custa R$[X]. Essa película garante ela por 6 meses. Você tá comprando tranquilidade, não película. Fecho?"</em></div>
+    <div class="us-erro"><b>⚠️ Erro comum:</b> falar dela como "uma película melhor". Não é. O que vende é a <strong>garantia da tela</strong>, fala disso primeiro, sempre.</div>
+  </div>
+
+  <h3>🔥 Intensivo Ultra Safe</h3>
+  <div class="hbox hb-or"><div class="hb-l">A regra de ouro: fale POUCO, deixe a garantia falar</div>O erro de quem vende mal a Ultra Safe é <strong>falar demais</strong>. Ficar explicando 5 camadas, fibra de vidro, microfilamento, o cliente perde o fio e acha caro. A Ultra Safe se vende em <strong>UMA frase</strong>: <em style="color:var(--white)">"Se a sua tela quebrar em 6 meses, eles trocam. É a única do mundo."</em> Calou? <strong>Silêncio.</strong> Deixa o peso da frase trabalhar. Quem fala primeiro depois dessa frase, perde.</div>
+
+  <div class="ex ex-bad"><b>❌ ENROLOU (falou demais)</b>"Ela tem 5 camadas, fibra de vidro com microfilamento ionizado, camada oleofóbica, TPU, silicone, 0.35mm, 99% de transparência, antirreflexo..." <em>o cliente desligou na terceira palavra. Virou aula, não venda.</em></div>
+  <div class="ex ex-good"><b>✅ DIRETO (uma frase + silêncio)</b>"Essa é a única película que, se a SUA tela quebrar em 6 meses, a fabricante troca de graça. [pausa] Só essa faz isso." <em>curto, forte, e o silêncio depois fecha.</em></div>
+
+  <div class="hbox hb-bl"><div class="hb-l">Como introduzir sem parecer empurrar</div>Não comece pela Ultra Safe nem pelo preço. Comece pela <strong>dor</strong>: <em style="color:var(--white)">"Posso te perguntar? Você já quebrou tela de celular antes?"</em> Quase todo mundo já. Aí: <em style="color:var(--white)">"Pois é. Tem uma película que cobre exatamente isso, se quebrar em 6 meses, eles trocam a sua tela. Quer ver?"</em> Você não empurrou nada, ele pediu pra ver.</div>
+
+  <h3>🎯 Mentalidade: ninguém sai abaixo da Diamond</h3>
+  <div class="hbox hb-gr"><div class="hb-l">A Ultra Safe puxa o piso pra cima</div>Esse é o pulo do gato: <strong>mesmo quem recusa a Ultra Safe, sai com a Diamond.</strong> Por quê? Quando você ancora lá em cima (R$220, garantia da tela), a Diamond de R$99 deixa de parecer "cara", vira "o meio-termo sensato". Você nunca mais fecha uma 9H de R$19 em quem ouviu a Ultra Safe. <strong>A meta não é vender Ultra Safe sempre. É a Ultra Safe puxar todo mundo pra cima.</strong></div>
+
+  <div class="us-fallback">
+    <div class="us-fallback-t">A escada de recuo (se recusar a Ultra Safe):</div>
+    <div class="us-step"><b>Recusou a Ultra Safe (R$220)?</b> <em>"Tranquilo, ela é pra quem não quer nem pensar em tela quebrada. Mas eu não te deixo sair na proteção básica, não. Olha a Diamond: 7 camadas, não quebra junto com a tela. É a que eu colocaria no meu. R$99."</em></div>
+    <div class="us-step"><b>Recusou a Diamond também?</b> <em>"Sem problema. Mas o mínimo que eu aplico no seu aparelho é a Cerâmica, R$59, essa não estilhaça junto com a tela. Abaixo disso é dinheiro jogado fora."</em></div>
+    <div class="us-step us-floor"><b>🚫 O piso é a Cerâmica.</b> Quem ouviu a Ultra Safe não sai com 9H nem 3D. Você mostrou o topo, o cliente já entendeu o valor de proteger. Deixar ele cair na básica é desperdiçar a âncora que você construiu.</div>
+  </div>
+
+  <div class="hbox hb-yl"><div class="hb-l">Resumo de bolso</div>Ofereça a Ultra Safe em uma frase, do alto. Recuou? Desce um degrau de cada vez (Diamond, depois Cerâmica), nunca despenca pra básica. O cliente que ouviu "garantia da sua tela" não compra mais a de R$19. <strong>A Ultra Safe ganha vendendo ela, e ganha de novo puxando o seu PA e ticket pra cima mesmo quando não vende.</strong></div>
+
+  <h3>Películas: a escada completa</h3>
   <div class="lad" id="lad-pelicula"></div>
   <h3>Cabos</h3>
   <div class="lad" id="lad-cabo"></div>
@@ -1492,7 +1570,8 @@ const ladders={
     {n:'Cerâmica',p:'R$ 59,99 · 7 dias',a:'Não quebra junto. Até R$1.500 de aparelho.',cls:'m',num:3,s:'"Cerâmica é escolha esperta. Agora me fala: você derruba muito? Porque se sim, a Diamond existe exatamente pra você."'},
     {n:'Máquina',p:'R$ 69,99–79,99 · 7 dias',a:'Acabamento melhor, aplicação precisa.',cls:'m',num:4,s:'"A de máquina aplicada fica perfeita, sem bolha. Se a prioridade é visual, é ela. Se é blindagem mesmo, a Diamond ganha."'},
     {n:'Diamond',p:'R$ 99,99 · 7 dias',a:'Proteção premium. Acima de R$2.000.',cls:'p',num:5,s:'"Diamond é o que eu colocaria no meu. Só não deixa câmera e lateral de fora, senão você blindou a frente e esqueceu os fundos."'},
-    {n:'Fiber Pró',p:'R$ 129,99 · 7 dias',a:'Melhor da linha. Kit completo obrigatório.',cls:'t',num:6,s:'"Fiber é o teto. Quem chega nela fecha o conjunto: câmera e capa no mesmo nível."'},
+    {n:'Fiber Pró',p:'R$ 129,99 · 7 dias',a:'Quase o teto. Fibra de vidro, aplicação de máquina.',cls:'t',num:6,s:'"Fiber é altíssima proteção. Mas tem uma acima dela: a Ultra Safe garante a SUA tela. Quer ver a diferença?"'},
+    {n:'Ultra Safe',p:'R$ 220 · garantia da tela 6 meses',a:'O TOPO. Única película com seguro da tela do aparelho por 6 meses.',cls:'us',num:7,s:'"Essa é a única do mercado que, se a SUA tela quebrar nos 6 meses, a fabricante cobre. Não é seguro da película, é da sua tela. Fibra de vidro com vidro temperado, 5 camadas. É colocar e dormir tranquilo."'},
   ],
   cabo:[
     {n:'V3 / Kaidi básico',p:'R$ 19,99–29,99 · 30 dias',a:'Quebra-galho. Ponta fraca, mau contato em 3 meses.',cls:'e',num:1,s:'"Quantos cabos você já comprou esse ano? Pois é. É a ponta que mata eles. Esse resolve o hoje; o Kimaster resolve o ano."'},
@@ -2380,7 +2459,7 @@ function renderPaFlow(){
 }
 function renderLadders(){
   Object.keys(ladders).forEach(key=>{
-    document.getElementById('lad-'+key).innerHTML=ladders[key].map(s=>`<div class="lad-s"><div class="lad-d ${s.cls}">${s.num}</div><div class="lad-c"><div class="lad-n">${s.n}</div><div class="lad-p">${s.p}</div><div class="lad-a">${s.a}</div>${s.s?`<div class="lad-sc">${s.s}</div>`:''}</div></div>`).join('');
+    document.getElementById('lad-'+key).innerHTML=ladders[key].map(s=>`<div class="lad-s ${s.cls==='us'?'us-row':''}"><div class="lad-d ${s.cls}">${s.num}</div><div class="lad-c"><div class="lad-n">${s.n}</div><div class="lad-p">${s.p}</div><div class="lad-a">${s.a}</div>${s.s?`<div class="lad-sc">${s.s}</div>`:''}</div></div>`).join('');
   });
 }
 // ── REPETIÇÃO ESPAÇADA (Leitner simplificado) ──
