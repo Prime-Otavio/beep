@@ -67,6 +67,30 @@ body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-
 .nav-dot{margin-left:auto;width:7px;height:7px;border-radius:50%;background:transparent;flex-shrink:0;}
 .nav-dot.dominado{background:var(--green);}
 .nav-dot.treinando{background:var(--accent);}
+/* atalho de venda no dashboard */
+.dash-venda{width:100%;background:var(--surface);border:1px solid var(--accent-bd);border-radius:var(--r-md);padding:12px;font-size:14px;font-weight:700;color:var(--accent);cursor:pointer;font-family:inherit;margin-bottom:var(--sp-4);}
+.dash-venda:hover{background:var(--accent-dim);}
+
+/* FAB + MODAL DE VENDA */
+#fab-venda{position:fixed;right:20px;bottom:20px;z-index:400;background:var(--accent);color:var(--on-accent);border:none;border-radius:999px;padding:14px 22px;font-size:15px;font-weight:800;font-family:inherit;cursor:pointer;box-shadow:0 6px 20px rgba(182,130,42,0.35);}
+#fab-venda:active{transform:scale(0.97);}
+.vmodal{position:fixed;inset:0;z-index:500;background:rgba(38,34,26,0.45);backdrop-filter:blur(3px);display:flex;align-items:flex-end;justify-content:center;}
+@media(min-width:600px){.vmodal{align-items:center;}}
+.vmodal-card{background:var(--surface);border:1px solid var(--border2);border-radius:18px 18px 0 0;width:100%;max-width:460px;max-height:92vh;overflow-y:auto;padding:20px;}
+@media(min-width:600px){.vmodal-card{border-radius:18px;}}
+.vmodal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;}
+.vmodal-head>span{font-size:18px;font-weight:800;color:var(--white);}
+.vmodal-x{background:var(--surface2);border:none;width:32px;height:32px;border-radius:50%;font-size:15px;color:var(--text2);cursor:pointer;}
+.vlbl{display:block;font-size:12px;font-weight:700;color:var(--text2);margin:14px 0 7px;}
+.vchips{display:flex;flex-wrap:wrap;gap:7px;}
+.vchip{padding:9px 13px;border-radius:999px;border:1px solid var(--border);background:var(--surface2);color:var(--text);font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;}
+.vchip.on{background:var(--accent);border-color:var(--accent);color:var(--on-accent);}
+.vinput{width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:9px;padding:11px 12px;color:var(--text);font-size:15px;font-family:inherit;outline:none;}
+.vinput:focus{border-color:var(--accent);}
+.vrow{display:grid;grid-template-columns:1fr 1fr;gap:11px;}
+.v-hoje{margin-top:14px;font-size:13px;color:var(--text2);text-align:center;line-height:1.5;}
+.v-hoje b{color:var(--accent);}
+
 /* ONBOARDING */
 .onb{position:fixed;inset:0;background:rgba(0,0,0,0.7);backdrop-filter:blur(4px);z-index:500;display:flex;align-items:center;justify-content:center;padding:20px;}
 .onb-card{background:var(--surface);border:1px solid var(--border2);border-radius:var(--r-lg);padding:var(--sp-6) var(--sp-5);max-width:380px;width:100%;text-align:center;}
@@ -675,10 +699,12 @@ table.hist tr:hover td{background:rgba(70,55,20,0.025);}
   <!-- HERO: PRÓXIMO PASSO -->
   <div class="hero" id="hero">
     <div class="hero-l">Seu próximo passo</div>
-    <div class="hero-t" id="hero-t">—</div>
+    <div class="hero-t" id="hero-t">Carregando...</div>
     <div class="hero-meta" id="hero-meta"></div>
     <button class="hero-btn" id="hero-btn" onclick="heroGo()">Começar</button>
   </div>
+
+  <button class="dash-venda" onclick="abrirVenda()">📲 Lançar uma venda agora</button>
 
   <!-- CONTINUAR DE ONDE PAREI -->
   <div class="continue" id="continue-card" style="display:none">
@@ -738,6 +764,14 @@ table.hist tr:hover td{background:rgba(70,55,20,0.025);}
 <div class="pg" id="pg-registrar">
   <div class="pg-t">Registrar o dia</div>
   <p class="pg-s">Preencha no fim do turno. A plataforma calcula tudo e aponta o que você teve dificuldade.</p>
+
+  <!-- BANNER: VENDAS LANÇADAS HOJE -->
+  <div class="hbox hb-gr" id="reg-vendas" style="display:none">
+    <div class="hb-l">📲 Você lançou vendas durante o dia</div>
+    <span id="reg-vendas-txt"></span><br><br>
+    Lançou <strong>todas</strong>? Eu já preencho os números pra você. <span class="ins-link" onclick="autoPreencherDeVendas()">Preencher com as vendas →</span><br>
+    <span style="color:var(--text3);font-size:12px">Ou continue preenchendo na mão se faltou alguma.</span>
+  </div>
 
   <!-- REGISTRO RÁPIDO -->
   <div class="card quickcard" id="quick-card">
@@ -1024,7 +1058,8 @@ table.hist tr:hover td{background:rgba(70,55,20,0.025);}
   <div class="pg-t">Tipos de cliente</div>
   <p class="pg-s">O script certo depende de ler o cliente certo. Aprenda a diagnosticar em 5 segundos quem está na sua frente, e qual abordagem puxar.</p>
 
-  <div class="hbox hb-or"><div class="hb-l">A regra dos 5 segundos</div>Antes de falar qualquer script, leia <strong>3 sinais</strong>: o que ele faz com o corpo (apressado? relaxado?), a primeira frase que solta ("quanto é?" vs "tô só olhando") e o estado do aparelho (tela trincada? sem capa? novo?). Esses 3 sinais já te dizem qual dos 5 tipos abaixo é, e cada tipo é um jogo diferente.</div>
+  <h3>A regra dos 5 segundos</h3>
+  <div class="hbox hb-or"><div class="hb-l">Leia 3 sinais antes de falar</div>Antes de falar qualquer script, leia <strong>3 sinais</strong>: o que ele faz com o corpo (apressado? relaxado?), a primeira frase que solta ("quanto é?" vs "tô só olhando") e o estado do aparelho (tela trincada? sem capa? novo?). Esses 3 sinais já te dizem qual dos 5 tipos abaixo é, e cada tipo é um jogo diferente.</div>
 
   <h3>Os 5 que mais aparecem no balcão</h3>
   <table class="tbl">
@@ -1219,10 +1254,13 @@ table.hist tr:hover td{background:rgba(70,55,20,0.025);}
 
 <!-- ════ VP ════ -->
 <div class="pg" id="pg-vp">
-  <div class="pg-t">VPs, Abordagem</div>
+  <div class="pg-t">VPs: abordagem</div>
   <p class="pg-s">Oferta real: película grátis ou R$20 off acima de R$40. Perguntar o modelo, entregar o vale como presente pessoal, trazer pra dentro, em 20 segundos.</p>
+
+  <h3>Como o vale funciona</h3>
   <div class="hbox hb-or"><div class="hb-l">A oferta do vale</div><strong>Película GRÁTIS</strong> ou <strong>R$20 de desconto</strong> em produtos acima de R$40. Pergunta o modelo PRIMEIRO, revela o vale depois, presente com o nome do aparelho dele é pessoal, e pessoal é difícil de recusar.</div>
   <div class="hbox hb-gr"><div class="hb-l">⭐ O segredo: a grátis é a isca</div>A película grátis é a básica, ela traz o cliente pra cadeira, não é o produto final. Com ele sentado: <em style="color:var(--white)">"essa é a grátis, e com os R$20 do mesmo vale a cerâmica sai por R$39, a diferença é que ela não quebra junto com a tela"</em>. Metade sobe. E quem ficou na grátis ainda ouve o PA da câmera e da capa.</div>
+
   <h3>Scripts por situação</h3>
   <div id="vp-list"></div>
 </div>
@@ -1329,6 +1367,58 @@ table.hist tr:hover td{background:rgba(70,55,20,0.025);}
 
 </main>
 <div id="toast"></div>
+
+<!-- BOTÃO FLUTUANTE: NOVA VENDA -->
+<button id="fab-venda" onclick="abrirVenda()" title="Lançar venda">+ Venda</button>
+
+<!-- MODAL: LANÇAR VENDA -->
+<div id="venda-modal" class="vmodal" style="display:none">
+  <div class="vmodal-card">
+    <div class="vmodal-head"><span>Lançar venda</span><button class="vmodal-x" onclick="fecharVenda()">✕</button></div>
+
+    <label class="vlbl">Como veio o cliente?</label>
+    <div class="vchips" id="v-tipo">
+      <button class="vchip" data-v="vp">🎫 Entrega de VP</button>
+      <button class="vchip" data-v="abordagem">🗣 Abordagem na rua</button>
+      <button class="vchip" data-v="loja">🚪 Entrou na loja</button>
+      <button class="vchip" data-v="troca_tela">💥 Tela quebrada</button>
+    </div>
+
+    <label class="vlbl">Categoria do principal</label>
+    <select id="v-cat" class="vinput">
+      <option value="">Selecione</option>
+      <option>Películas</option><option>Capas</option><option>Cabos</option><option>Carregadores</option><option>Fones</option><option>Caixas de som</option><option>Suportes</option><option>Acessórios</option>
+    </select>
+
+    <div class="vrow">
+      <div><label class="vlbl">Valor (R$)</label><input type="number" id="v-valor" class="vinput" placeholder="ex: 99" inputmode="decimal"></div>
+      <div><label class="vlbl">Itens nessa venda</label><input type="number" id="v-itens" class="vinput" placeholder="ex: 2" min="1" value="1" inputmode="numeric"></div>
+    </div>
+
+    <label class="vlbl">Subiu na escada?</label>
+    <div class="vchips" id="v-escada">
+      <button class="vchip" data-v="basico">Vendi o básico</button>
+      <button class="vchip" data-v="premium">Subi pro premium</button>
+    </div>
+
+    <label class="vlbl">Ofereci o PA (complemento)?</label>
+    <div class="vchips" id="v-pa">
+      <button class="vchip" data-v="aceitou">Ofereci, aceitou</button>
+      <button class="vchip" data-v="recusou">Ofereci, recusou</button>
+      <button class="vchip" data-v="esqueci">Esqueci de oferecer</button>
+    </div>
+
+    <label class="vlbl">Como foi?</label>
+    <div class="vchips" id="v-sent">
+      <button class="vchip" data-v="fluiu">😌 Fluiu</button>
+      <button class="vchip" data-v="travei">😬 Travei</button>
+      <button class="vchip" data-v="forcei">😅 Forcei</button>
+    </div>
+
+    <button class="btn" style="margin-top:16px" onclick="salvarVenda()">Salvar venda</button>
+    <div id="v-hoje" class="v-hoje"></div>
+  </div>
+</div>
 
 <!-- ONBOARDING (primeiro acesso) -->
 <div id="onb" class="onb" style="display:none">
@@ -1915,6 +2005,7 @@ function go(id,el){
   }
   if(id==='home')renderContinue();
   if(id==='erros')renderErros();
+  if(id==='registrar')checarVendasNoRegistro();
   if(window.innerWidth<=820)closeMenu();
   window.scrollTo(0,0);
 }
@@ -1927,9 +2018,14 @@ function enhanceLesson(id){
   const h3s=[...pg.children].filter(e=>e.tagName==='H3');
   if(h3s.length<2)return; // poucas seções: deixa rolar normal
   const secs=[];
-  h3s.forEach(h=>{
+  // conteúdo solto antes do 1º h3 (ex: cards de intro) entra na primeira seção
+  const preBody=[];
+  let pn=h3s[0].previousElementSibling;
+  const pre=[];while(pn){if(pn.classList.contains('pg-s')||pn.classList.contains('pg-t')||pn.classList.contains('lesson-time'))break;pre.unshift(pn);pn=pn.previousElementSibling;}
+  pre.forEach(e=>preBody.push(e));
+  h3s.forEach((h,idx)=>{
     const title=h.textContent.replace(/^\s*\d+\s*[·.]\s*/,'').trim();
-    const body=[];let n=h.nextElementSibling;
+    const body=idx===0?[...preBody]:[];let n=h.nextElementSibling;
     while(n&&n.tagName!=='H3'&&!n.classList.contains('lesson-nav')&&!n.classList.contains('lesson-test')){const nx=n.nextElementSibling;body.push(n);n=nx;}
     secs.push({title,h,body});
   });
@@ -2921,7 +3017,78 @@ document.getElementById('search').addEventListener('input',function(){
 document.addEventListener('click',e=>{if(!e.target.closest('#searchwrap'))document.getElementById('sres').style.display='none';});
 
 // ════════ TOAST ════════
-let tT;function toast(msg,err){const t=document.getElementById('toast');t.textContent=msg;t.style.background=err?'#EF4444':'#22C55E';t.classList.add('show');clearTimeout(tT);tT=setTimeout(()=>t.classList.remove('show'),2200);}
+let tT;function toast(msg,err){const t=document.getElementById('toast');t.textContent=msg;t.style.background=err?'#C2554A':'#3F8F5B';t.classList.add('show');clearTimeout(tT);tT=setTimeout(()=>t.classList.remove('show'),2200);}
+
+// ════════ LANÇAR VENDA ════════
+// chips de seleção única por grupo
+document.addEventListener('click',e=>{
+  const c=e.target.closest('.vchip');if(!c)return;
+  const grupo=c.parentElement;grupo.querySelectorAll('.vchip').forEach(x=>x.classList.remove('on'));c.classList.add('on');
+});
+function chipVal(id){const on=document.querySelector('#'+id+' .vchip.on');return on?on.getAttribute('data-v'):'';}
+function abrirVenda(){document.getElementById('venda-modal').style.display='flex';vendaHojeResumo();}
+function fecharVenda(){document.getElementById('venda-modal').style.display='none';}
+async function salvarVenda(){
+  const tipo=chipVal('v-tipo');
+  const cat=document.getElementById('v-cat').value;
+  const valor=+document.getElementById('v-valor').value||0;
+  const itens=+document.getElementById('v-itens').value||1;
+  if(!cat){toast('Escolha a categoria',1);return;}
+  if(valor<=0){toast('Preencha o valor',1);return;}
+  const reg={user_id:UID,date:todayStr(),tipo_atend:tipo,categoria:cat,valor,itens,
+    subiu_escada:chipVal('v-escada'),pa_ofereci:chipVal('v-pa'),sentimento:chipVal('v-sent')};
+  try{
+    const{error}=await sb.from('vendas').insert(reg);if(error)throw error;
+  }catch(e){toast('Erro ao salvar, tenta de novo',1);console.error(e);return;}
+  toast('Venda lançada ✓');
+  // limpa pra próxima
+  document.getElementById('v-valor').value='';document.getElementById('v-itens').value='1';document.getElementById('v-cat').value='';
+  document.querySelectorAll('#venda-modal .vchip.on').forEach(x=>x.classList.remove('on'));
+  vendaHojeResumo();
+}
+async function vendasHoje(){
+  if(!UID)return[];
+  try{const{data,error}=await sb.from('vendas').select('*').eq('date',todayStr());if(error)throw error;return data||[];}catch(e){return[];}
+}
+async function vendaHojeResumo(){
+  const box=document.getElementById('v-hoje');if(!box)return;
+  const vs=await vendasHoje();
+  if(!vs.length){box.innerHTML='Nenhuma venda lançada hoje ainda.';return;}
+  const itens=vs.reduce((s,v)=>s+(v.itens||0),0);
+  const fat=vs.reduce((s,v)=>s+(+v.valor||0),0);
+  box.innerHTML=`Hoje: <b>${vs.length}</b> venda${vs.length>1?'s':''} · <b>${itens}</b> itens · <b>${fmtBR(fat)}</b>`;
+}
+// banner no Registrar o dia: mostra se houver vendas lançadas
+let _vendasCache=[];
+async function checarVendasNoRegistro(){
+  const banner=document.getElementById('reg-vendas');if(!banner)return;
+  _vendasCache=await vendasHoje();
+  if(!_vendasCache.length){banner.style.display='none';return;}
+  const itens=_vendasCache.reduce((s,v)=>s+(v.itens||0),0);
+  const fat=_vendasCache.reduce((s,v)=>s+(+v.valor||0),0);
+  document.getElementById('reg-vendas-txt').innerHTML=`Você já lançou <strong>${_vendasCache.length}</strong> venda${_vendasCache.length>1?'s':''} hoje (<strong>${itens}</strong> itens, <strong>${fmtBR(fat)}</strong>).`;
+  banner.style.display='block';
+}
+function autoPreencherDeVendas(){
+  if(!_vendasCache.length){toast('Nenhuma venda lançada hoje',1);return;}
+  const itens=_vendasCache.reduce((s,v)=>s+(v.itens||0),0);
+  const fat=_vendasCache.reduce((s,v)=>s+(+v.valor||0),0);
+  // PAs oferecidos/recusados a partir do campo pa_ofereci
+  const ofereci=_vendasCache.filter(v=>v.pa_ofereci==='aceitou'||v.pa_ofereci==='recusou').length;
+  const recusou=_vendasCache.filter(v=>v.pa_ofereci==='recusou').length;
+  const vps=_vendasCache.filter(v=>v.tipo_atend==='vp').length;
+  // preenche o registro rápido (atend = nº de vendas fechadas)
+  document.getElementById('q-atend').value=_vendasCache.length;
+  document.getElementById('q-prod').value=itens;
+  document.getElementById('q-fat').value=fat;
+  // preenche também o form completo se a pessoa quiser detalhar
+  const setIf=(id,val)=>{const el=document.getElementById(id);if(el)el.value=val;};
+  setIf('f-atend',_vendasCache.length);setIf('f-prod',itens);setIf('f-fat',fat);
+  setIf('f-paoff',ofereci);setIf('f-parec',recusou);setIf('f-vp',vps);
+  if(typeof prev==='function')prev();
+  toast('Preenchido com suas vendas ✓');
+  window.scrollTo({top:document.getElementById('quick-card').offsetTop-70,behavior:'smooth'});
+}
 
 // ════════ INIT ════════
 function init(){
