@@ -36,8 +36,9 @@ Toda pergunta boa cai numa dessas. Não servem pra você "saber", servem pra o c
 O Otavio decidiu: NÃO esperar o cliente escolher porta. Atacar a Fiber Pró (proteção) de cara, sempre, com vale ou sem. As portas diluíam (se ele falava "privativa", você ficava preso na privativa).
 
 ## Fluxo de venda da película (o que está no app, aba Diagnóstico):
-1. Pergunta o modelo, já pega a Fiber na mão.
-2. ATACA a Fiber Pró: "pro seu uso já vou na melhor, a Fiber, sente o toque" (dá na mão, vende pela sensação, só depois o preço). Fiber R$129 (R$109 com vale).
+1. Pergunta o modelo.
+2. A PERGUNTA DAS 3 (já abre a porta da proteção, sem dar volta): "privativa, fosca ou mais de proteção?". Se ele falar proteção, já vai direto na Fiber. Se falar privativa/fosca, tenta a Fiber 1x ("deixa eu te mostrar 10s a de proteção, se não curtir te dou a que pediu") e se recusar entrega o desejo.
+3. Na proteção: Fiber Pró, sente o toque (dá na mão, vende pela sensação, só depois o preço). Fiber R$129 (R$109 com vale).
 3. Saídas:
    - Aceitou a Fiber: fecha. Se aparelho top, SOBE pra Ultra Safe (ver abaixo).
    - Hesitou no preço: recuo 1 = Diamond R$99 (R$79). Recusou de novo: de máquina R$50. Piso, nunca a grátis.

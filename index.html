@@ -3025,31 +3025,67 @@ const DIAG_PELICULA={
     modelo:{
       lbl:'Passo 1 · Modelo',
       say:'"Boa! <b>Qual o modelo do seu aparelho?</b>"',
-      tip:'Pega o celular na mão e já pega a Fiber Pró pra mostrar. Veio com vale ou não, o caminho é o mesmo: proteção primeiro.',
+      tip:'Pega o celular na mão. O próximo passo já abre a porta da proteção, sem dar volta.',
       ops:[
-        {t:'Aparelho TOP <b>(iPhone 14 Pro Max+, S24/S25 Ultra)</b>',next:'fiber_top'},
-        {t:'Qualquer outro aparelho',next:'fiber'},
+        {t:'Aparelho TOP <b>(iPhone 14 Pro Max+, S24/S25 Ultra)</b>',next:'tipo_top'},
+        {t:'Qualquer outro aparelho',next:'tipo'},
+      ]
+    },
+    // PERGUNTA DAS 3: já abre a porta da proteção de cara
+    tipo_top:{
+      lbl:'Passo 2 · A pergunta das 3',
+      say:'"Você quer mais uma <b>privativa</b> que ninguém vê do lado, uma <b>fosca</b> que não marca dedo e é boa pra jogo, ou mais de <b>proteção?</b>"',
+      tip:'A própria pergunta já oferece proteção. Se ele falar proteção, você já está na Fiber sem dar volta.',
+      ops:[
+        {t:'"Proteção"',next:'fiber_top'},
+        {t:'"Privativa" ou "fosca"',next:'tentafiber_top'},
+      ]
+    },
+    tipo:{
+      lbl:'Passo 2 · A pergunta das 3',
+      say:'"Você quer mais uma <b>privativa</b> que ninguém vê do lado, uma <b>fosca</b> que não marca dedo e é boa pra jogo, ou mais de <b>proteção?</b>"',
+      tip:'A própria pergunta já oferece proteção. Se ele falar proteção, você já está na Fiber sem dar volta.',
+      ops:[
+        {t:'"Proteção"',next:'fiber'},
+        {t:'"Privativa" ou "fosca"',next:'tentafiber'},
+      ]
+    },
+    // Pediu privativa/fosca: tenta a Fiber 1x antes de entregar o desejo
+    tentafiber_top:{
+      lbl:'Passo 3 · Tenta a Fiber 1x',
+      say:'"Boa, essa que você quer eu tenho. Mas deixa eu te mostrar 10 segundos a de <b>proteção</b>, a Fiber Pró, que é a que eu colocaria no meu. <b>Sente o toque.</b> Se não curtir, te dou a que você pediu, beleza?"',
+      tip:'Não empurre. Plante a Fiber uma vez, deixe sentir. Se recusar, entregue o desejo na hora, sem insistir de novo.',
+      ops:[
+        {t:'Curtiu, vai de Fiber',result:R_FIBER_TOP},
+        {t:'Prefere o que pediu (privativa/fosca)',result:R_DESEJO},
+      ]
+    },
+    tentafiber:{
+      lbl:'Passo 3 · Tenta a Fiber 1x',
+      say:'"Boa, essa que você quer eu tenho. Mas deixa eu te mostrar 10 segundos a de <b>proteção</b>, a Fiber Pró, que é a que eu colocaria no meu. <b>Sente o toque.</b> Se não curtir, te dou a que você pediu, beleza?"',
+      tip:'Não empurre. Plante a Fiber uma vez, deixe sentir. Se recusar, entregue o desejo na hora, sem insistir de novo.',
+      ops:[
+        {t:'Curtiu, vai de Fiber',result:R_FIBER},
+        {t:'Prefere o que pediu (privativa/fosca)',result:R_DESEJO},
       ]
     },
     // ATAQUE: Fiber Pró de cara, nos dois casos
     fiber_top:{
-      lbl:'Passo 2 · Ataca a Fiber (proteção primeiro)',
-      say:'"Ó, pro seu uso eu já vou direto na melhor: a <b>Fiber Pró</b>. Aplicada na máquina, não trinca, não racha, pega a tela inteira e o toque é da própria tela. <b>Sente aqui.</b> É a que eu colocaria no meu."',
+      lbl:'Passo 3 · Fiber (ele pediu proteção)',
+      say:'"Então é a <b>Fiber Pró</b>, a melhor em proteção. Aplicada na máquina, não trinca, não racha, pega a tela inteira e o toque é da própria tela. <b>Sente aqui.</b> É a que eu colocaria no meu."',
       tip:'Dá a Fiber NA MÃO dele. A proteção se vende pela sensação, não pela palavra. Só depois fala preço.',
       ops:[
         {t:'Aceitou / curtiu a Fiber',result:R_FIBER_TOP},
         {t:'Hesitou no preço',next:'recuo1_top'},
-        {t:'"Eu queria era privativa/fosca/lisa"',result:R_DESEJO},
       ]
     },
     fiber:{
-      lbl:'Passo 2 · Ataca a Fiber (proteção primeiro)',
-      say:'"Ó, pro seu uso eu já vou direto na melhor: a <b>Fiber Pró</b>. Aplicada na máquina, não trinca, não racha, pega a tela inteira e o toque é da própria tela. <b>Sente aqui.</b> É a que eu colocaria no meu."',
+      lbl:'Passo 3 · Fiber (ele pediu proteção)',
+      say:'"Então é a <b>Fiber Pró</b>, a melhor em proteção. Aplicada na máquina, não trinca, não racha, pega a tela inteira e o toque é da própria tela. <b>Sente aqui.</b> É a que eu colocaria no meu."',
       tip:'Dá a Fiber NA MÃO dele. A proteção se vende pela sensação, não pela palavra. Só depois fala preço.',
       ops:[
         {t:'Aceitou / curtiu a Fiber',result:R_FIBER},
         {t:'Hesitou no preço',next:'recuo1'},
-        {t:'"Eu queria era privativa/fosca/lisa"',result:R_DESEJO},
       ]
     },
     // RECUO 1: Diamond
