@@ -3035,19 +3035,38 @@ const DIAG_PELICULA={
     tipo_top:{
       lbl:'Passo 2 · A pergunta das 3',
       say:'"Você quer mais uma <b>privativa</b> que ninguém vê do lado, uma <b>fosca</b> que não marca dedo e é boa pra jogo, ou mais de <b>proteção?</b>"',
-      tip:'A própria pergunta já oferece proteção. Se ele falar proteção, você já está na Fiber sem dar volta.',
+      tip:'A própria pergunta já oferece proteção. Anota o que ele falou, mas antes de mostrar produto, aqueça com as perguntas de dor.',
       ops:[
-        {t:'"Proteção"',next:'fiber_top'},
-        {t:'"Privativa" ou "fosca"',next:'tentafiber_top'},
+        {t:'Falou o que quer (qualquer um dos 3)',next:'dor_top'},
       ]
     },
     tipo:{
       lbl:'Passo 2 · A pergunta das 3',
       say:'"Você quer mais uma <b>privativa</b> que ninguém vê do lado, uma <b>fosca</b> que não marca dedo e é boa pra jogo, ou mais de <b>proteção?</b>"',
-      tip:'A própria pergunta já oferece proteção. Se ele falar proteção, você já está na Fiber sem dar volta.',
+      tip:'A própria pergunta já oferece proteção. Anota o que ele falou, mas antes de mostrar produto, aqueça com as perguntas de dor.',
       ops:[
-        {t:'"Proteção"',next:'fiber'},
-        {t:'"Privativa" ou "fosca"',next:'tentafiber'},
+        {t:'Falou o que quer (qualquer um dos 3)',next:'dor'},
+      ]
+    },
+    // PERGUNTAS QUE SE RESPONDEM SOZINHAS: aquecem antes de mostrar produto
+    dor_top:{
+      lbl:'Passo 3 · Perguntas que se respondem sozinhas',
+      say:'Faça 2 ou 3 destas, de boa, como amigo. Deixe ELE trazer a dor:<br><br>• "Esse celular é seu de trabalho também, ou só pessoal?"<br>• "O de antes você trocou por quê: cansou ou aconteceu alguma coisa?"<br>• "Quando quebrou, saiu caro pra arrumar? Ou foi levando trincado?"<br>• "Você é do tipo que deixa cair de vez em quando, ou cuida bem?"',
+      tip:'Pergunte sobre o PASSADO e o HÁBITO dele, nunca sobre o produto. "Deixa cair ou cuida bem?" é a de ouro: qualquer resposta fecha a favor da boa. Quem fala a dor é ele, você só pergunta.',
+      ops:[
+        {t:'Ele trouxe uma dor (já quebrou / deixa cair / usa pra tudo)',next:'fiber_top'},
+        {t:'"Cuido super bem, nunca quebrei"',next:'fiber_top'},
+        {t:'Mesmo assim insiste só na do VP / privativa / fosca',next:'tentafiber_top'},
+      ]
+    },
+    dor:{
+      lbl:'Passo 3 · Perguntas que se respondem sozinhas',
+      say:'Faça 2 ou 3 destas, de boa, como amigo. Deixe ELE trazer a dor:<br><br>• "Esse celular é seu de trabalho também, ou só pessoal?"<br>• "O de antes você trocou por quê: cansou ou aconteceu alguma coisa?"<br>• "Quando quebrou, saiu caro pra arrumar? Ou foi levando trincado?"<br>• "Você é do tipo que deixa cair de vez em quando, ou cuida bem?"',
+      tip:'Pergunte sobre o PASSADO e o HÁBITO dele, nunca sobre o produto. "Deixa cair ou cuida bem?" é a de ouro: qualquer resposta fecha a favor da boa. Quem fala a dor é ele, você só pergunta.',
+      ops:[
+        {t:'Ele trouxe uma dor (já quebrou / deixa cair / usa pra tudo)',next:'fiber'},
+        {t:'"Cuido super bem, nunca quebrei"',next:'fiber'},
+        {t:'Mesmo assim insiste só na do VP / privativa / fosca',next:'tentafiber'},
       ]
     },
     // Pediu privativa/fosca: tenta a Fiber 1x antes de entregar o desejo
@@ -3071,18 +3090,18 @@ const DIAG_PELICULA={
     },
     // ATAQUE: Fiber Pró de cara, nos dois casos
     fiber_top:{
-      lbl:'Passo 3 · Fiber (ele pediu proteção)',
-      say:'"Então é a <b>Fiber Pró</b>, a melhor em proteção. Aplicada na máquina, não trinca, não racha, pega a tela inteira e o toque é da própria tela. <b>Sente aqui.</b> É a que eu colocaria no meu."',
-      tip:'Dá a Fiber NA MÃO dele. A proteção se vende pela sensação, não pela palavra. Só depois fala preço.',
+      lbl:'Passo 4 · Amarra na dor + Fiber',
+      say:'Conecte com o que ELE acabou de falar:<br>• Já quebrou: <em>"Então você sabe a dor. Por isso eu vou na <b>Fiber Pró</b>: ela não racha junto com a tela como a comum. Sente o toque."</em><br>• Deixa cair: <em>"Pro seu uso a comum não serve, racha fácil. A <b>Fiber Pró</b> aguenta. Sente."</em><br>• Cuida bem: <em>"Quem cuida não bota película vagabunda, né? A <b>Fiber Pró</b> é à altura do seu cuidado. Sente o toque."</em>',
+      tip:'A dor que ele trouxe vira o argumento. Dá a Fiber NA MÃO. Só depois fala preço (R$109 com vale).',
       ops:[
         {t:'Aceitou / curtiu a Fiber',result:R_FIBER_TOP},
         {t:'Hesitou no preço',next:'recuo1_top'},
       ]
     },
     fiber:{
-      lbl:'Passo 3 · Fiber (ele pediu proteção)',
-      say:'"Então é a <b>Fiber Pró</b>, a melhor em proteção. Aplicada na máquina, não trinca, não racha, pega a tela inteira e o toque é da própria tela. <b>Sente aqui.</b> É a que eu colocaria no meu."',
-      tip:'Dá a Fiber NA MÃO dele. A proteção se vende pela sensação, não pela palavra. Só depois fala preço.',
+      lbl:'Passo 4 · Amarra na dor + Fiber',
+      say:'Conecte com o que ELE acabou de falar:<br>• Já quebrou: <em>"Então você sabe a dor. Por isso eu vou na <b>Fiber Pró</b>: ela não racha junto com a tela como a comum. Sente o toque."</em><br>• Deixa cair: <em>"Pro seu uso a comum não serve, racha fácil. A <b>Fiber Pró</b> aguenta. Sente."</em><br>• Cuida bem: <em>"Quem cuida não bota película vagabunda, né? A <b>Fiber Pró</b> é à altura do seu cuidado. Sente o toque."</em>',
+      tip:'A dor que ele trouxe vira o argumento. Dá a Fiber NA MÃO. Só depois fala preço (R$109 com vale).',
       ops:[
         {t:'Aceitou / curtiu a Fiber',result:R_FIBER},
         {t:'Hesitou no preço',next:'recuo1'},
