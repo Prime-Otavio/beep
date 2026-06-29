@@ -67,6 +67,13 @@ body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-
 .nav-dot{margin-left:auto;width:7px;height:7px;border-radius:50%;background:transparent;flex-shrink:0;}
 .nav-dot.dominado{background:var(--green);}
 .nav-dot.treinando{background:var(--accent);}
+/* grupo colapsável */
+.nav-lbl-tog{display:flex;align-items:center;justify-content:space-between;cursor:pointer;user-select:none;border-radius:6px;padding-top:2px;padding-bottom:2px;transition:color 0.12s;}
+.nav-lbl-tog:hover{color:var(--text2);}
+.nav-cv{font-size:9px;transition:transform 0.18s;color:var(--text3);}
+.nav-coll{max-height:0;overflow:hidden;transition:max-height 0.25s ease;}
+.nav-grp.open .nav-coll{max-height:600px;}
+.nav-grp.open .nav-cv{transform:rotate(90deg);}
 /* atalho de venda no dashboard */
 .dash-venda{width:100%;background:var(--surface);border:1px solid var(--accent-bd);border-radius:var(--r-md);padding:12px;font-size:14px;font-weight:700;color:var(--accent);cursor:pointer;font-family:inherit;margin-bottom:var(--sp-4);}
 .dash-venda:hover{background:var(--accent-dim);}
@@ -330,6 +337,40 @@ h3:first-of-type{margin-top:var(--sp-4);}
 .prem-r em{color:var(--white);font-style:italic;}
 .prem-l{display:inline-block;font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.4px;color:var(--text3);margin-right:6px;}
 .prem-err{color:var(--text2);}
+
+/* DIAGNÓSTICO DE VENDA */
+.diag-cats{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;margin-bottom:8px;}
+.diag-cat{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px 12px;text-align:center;cursor:pointer;font-family:inherit;transition:all 0.12s;}
+.diag-cat:hover{border-color:var(--accent-bd);background:var(--surface2);}
+.diag-cat.soon{opacity:0.5;cursor:default;}
+.diag-cat-ic{font-size:26px;display:block;margin-bottom:6px;}
+.diag-cat-n{font-size:13.5px;font-weight:700;color:var(--text);}
+.diag-cat-s{font-size:10px;color:var(--text3);margin-top:2px;}
+.diag-step{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:18px;margin-bottom:14px;}
+.diag-bar{display:flex;align-items:center;gap:8px;margin-bottom:14px;}
+.diag-back{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:6px 11px;font-size:12px;font-weight:600;color:var(--text2);cursor:pointer;font-family:inherit;}
+.diag-back:hover{color:var(--text);}
+.diag-crumb{font-size:11px;color:var(--text3);font-weight:600;}
+.diag-q-lbl{font-size:10px;font-weight:700;letter-spacing:0.6px;text-transform:uppercase;color:var(--accent);margin-bottom:6px;}
+.diag-say{background:var(--accent-dim);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:11px 14px;font-size:14.5px;line-height:1.5;color:var(--text);font-style:italic;margin-bottom:14px;}
+.diag-say b{font-style:normal;font-weight:700;}
+.diag-tip{font-size:11.5px;color:var(--text2);margin:-8px 0 14px;padding-left:4px;}
+.diag-op{display:block;width:100%;text-align:left;background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:13px 15px;margin-bottom:9px;color:var(--text);font-size:14px;cursor:pointer;font-family:inherit;line-height:1.4;transition:all 0.12s;}
+.diag-op:hover{border-color:var(--accent);background:var(--accent-dim);}
+.diag-op b{color:var(--accent);}
+.diag-res{background:var(--surface);border:1px solid var(--accent-bd);border-radius:14px;padding:18px;margin-bottom:14px;}
+.diag-res-tag{font-size:10px;font-weight:700;letter-spacing:0.6px;text-transform:uppercase;color:var(--accent);margin-bottom:4px;}
+.diag-res-prod{font-size:20px;font-weight:800;color:var(--text);margin-bottom:2px;}
+.diag-res-price{font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:700;color:var(--accent);margin-bottom:14px;}
+.diag-res-price s{color:var(--text3);font-weight:400;margin-right:6px;}
+.diag-res-h{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.4px;color:var(--text3);margin:14px 0 6px;}
+.diag-res-say{background:var(--accent-dim);border-radius:8px;padding:12px 14px;font-size:14px;line-height:1.55;color:var(--text);font-style:italic;}
+.diag-res-say b{font-style:normal;font-weight:700;color:var(--accent);}
+.diag-recuo{background:var(--surface2);border-radius:8px;padding:11px 13px;font-size:12.5px;line-height:1.5;color:var(--text2);}
+.diag-recuo b{color:var(--text);}
+.diag-warn{background:var(--surface2);border:1px dashed var(--border2);border-radius:8px;padding:11px 13px;font-size:12.5px;color:var(--text2);margin-bottom:14px;}
+.diag-restart{width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:12px;font-size:13px;font-weight:700;color:var(--text2);cursor:pointer;font-family:inherit;}
+.diag-restart:hover{color:var(--text);border-color:var(--accent-bd);}
 
 /* QUIZ */
 .quiz-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px;}
@@ -649,14 +690,21 @@ table.hist tr:hover td{background:rgba(70,55,20,0.025);}
 
 <nav id="sb">
   <div class="nav-grp">
-    <div class="nav-lbl">Hoje</div>
+    <div class="nav-lbl">Meu dia</div>
     <a class="nav-i on" onclick="go('home',this)"><span class="nav-ic">📊</span> Dashboard</a>
     <a class="nav-i" onclick="go('registrar',this)"><span class="nav-ic">✍️</span> Registrar o dia</a>
     <a class="nav-i" onclick="go('revisar',this)"><span class="nav-ic">🎯</span> Revisar dia <span class="nav-bd" id="rev-badge" style="display:none">!</span></a>
-    <a class="nav-i" onclick="go('rotina',this)"><span class="nav-ic">✅</span> Hoje</a>
+    <a class="nav-i" onclick="go('rotina',this)"><span class="nav-ic">✅</span> Rotina do dia</a>
   </div>
   <div class="nav-grp">
-    <div class="nav-lbl">Aprender <span class="nav-prog" id="nav-prog"></span></div>
+    <div class="nav-lbl">Na hora da venda</div>
+    <a class="nav-i" onclick="go('diagnostico',this)"><span class="nav-ic">🧭</span> Diagnóstico de venda <span class="nav-bd">novo</span></a>
+    <a class="nav-i" onclick="go('biblioteca',this)"><span class="nav-ic">📚</span> Biblioteca de produtos <span class="nav-bd">80+</span></a>
+    <a class="nav-i" onclick="go('telas',this)"><span class="nav-ic">💰</span> Custos de tela</a>
+  </div>
+  <div class="nav-grp">
+    <div class="nav-lbl nav-lbl-tog" onclick="toggleNavGrp(this)"><span>Aprender <span class="nav-prog" id="nav-prog"></span></span><span class="nav-cv">▸</span></div>
+    <div class="nav-coll">
     <a class="nav-i" onclick="go('mente',this)" data-aula="mente"><span class="nav-ic">🧠</span> Mente do vendedor <span class="nav-dot" data-dot="mente"></span></a>
     <a class="nav-i" onclick="go('abordagem',this)" data-aula="abordagem"><span class="nav-ic">🎯</span> Abordagem: puxar pra loja <span class="nav-dot" data-dot="abordagem"></span></a>
     <a class="nav-i" onclick="go('tipos',this)" data-aula="tipos"><span class="nav-ic">👁</span> Tipos de cliente <span class="nav-dot" data-dot="tipos"></span></a>
@@ -668,6 +716,7 @@ table.hist tr:hover td{background:rgba(70,55,20,0.025);}
     <a class="nav-i" onclick="go('posnao',this)" data-aula="posnao"><span class="nav-ic">🌱</span> Depois do "não" <span class="nav-dot" data-dot="posnao"></span></a>
     <a class="nav-i" onclick="go('posvenda',this)" data-aula="posvenda"><span class="nav-ic">🔁</span> Pós-venda e recompra <span class="nav-dot" data-dot="posvenda"></span></a>
     <a class="nav-i" onclick="go('vp',this)" data-aula="vp"><span class="nav-ic">🎫</span> VPs: abordagem <span class="nav-dot" data-dot="vp"></span></a>
+    </div>
   </div>
   <div class="nav-grp">
     <div class="nav-lbl">Treinar</div>
@@ -676,12 +725,7 @@ table.hist tr:hover td{background:rgba(70,55,20,0.025);}
     <a class="nav-i" onclick="go('flashcards',this)"><span class="nav-ic">🃏</span> Flashcards</a>
     <a class="nav-i" onclick="go('simulador',this)"><span class="nav-ic">🎮</span> Simulador de PA</a>
     <a class="nav-i" onclick="go('erros',this)"><span class="nav-ic">📓</span> Caderno de erros <span class="nav-bd" id="erros-badge" style="display:none">0</span></a>
-    <a class="nav-i" onclick="go('ia',this)"><span class="nav-ic">✨</span> Treinador IA <span class="nav-bd">novo</span></a>
-  </div>
-  <div class="nav-grp">
-    <div class="nav-lbl">Consulta</div>
-    <a class="nav-i" onclick="go('biblioteca',this)"><span class="nav-ic">📚</span> Biblioteca de produtos <span class="nav-bd">80+</span></a>
-    <a class="nav-i" onclick="go('telas',this)"><span class="nav-ic">💰</span> Custos de tela</a>
+    <a class="nav-i" onclick="go('ia',this)"><span class="nav-ic">✨</span> Treinador IA</a>
   </div>
   <div class="nav-grp">
     <div class="nav-user" id="nav-user"></div>
@@ -1327,6 +1371,13 @@ table.hist tr:hover td{background:rgba(70,55,20,0.025);}
 </div>
 
 <!-- ════ BIBLIOTECA ════ -->
+<!-- ════ DIAGNÓSTICO DE VENDA ════ -->
+<div class="pg" id="pg-diagnostico">
+  <div class="pg-t">Diagnóstico de venda</div>
+  <p class="pg-s">O cliente chegou. Toque no que ele responde, o app te dá a fala certa e o produto certo na hora. Método das portas: o cliente decide sozinho, você só conduz.</p>
+  <div id="diag-app"></div>
+</div>
+
 <div class="pg" id="pg-biblioteca">
   <div class="pg-t">Biblioteca de produtos</div>
   <p class="pg-s">Todos os produtos, por categoria. Preço, garantia, para onde subir e como falar de cada um. Estude um bloco por dia.</p>
@@ -1993,6 +2044,8 @@ const lessonMin=id=>{const l=LESSONS.find(x=>x.id===id);return l?l.min:null;};
 const LESSON_IDS=LESSONS.map(l=>l.id);
 let lastLesson=null;
 
+function toggleNavGrp(el){el.closest('.nav-grp').classList.toggle('open');}
+
 function go(id,el){
   document.querySelectorAll('.pg').forEach(p=>p.classList.remove('on'));
   document.querySelectorAll('.nav-i').forEach(n=>n.classList.remove('on'));
@@ -2002,8 +2055,12 @@ function go(id,el){
   // se for uma aula do curso: lembra e injeta a barra prox/anterior + testar
   if(LESSON_IDS.includes(id)){
     lastLesson=id; saveLast(id); injectLessonNav(id);
+    // abre o grupo "Aprender" pra mostrar a aula ativa
+    const grpAula=document.querySelector('.nav-lbl-tog');
+    if(grpAula&&!grpAula.closest('.nav-grp').classList.contains('open'))grpAula.closest('.nav-grp').classList.add('open');
   }
   if(id==='home')renderContinue();
+  if(id==='diagnostico')renderDiag();
   if(id==='erros')renderErros();
   if(id==='registrar')checarVendasNoRegistro();
   if(window.innerWidth<=820)closeMenu();
@@ -2896,6 +2953,190 @@ function atendMinBox(cat){
   const campos=atendMinFor(cat);
   return `<div class="amin"><div class="amin-t">✅ Atendimento Mínimo, ${cat}</div><div class="amin-s">Antes de fechar, o cliente TEM que ouvir:</div><div class="amin-chips">${campos.map(c=>`<span class="amin-c">${c}</span>`).join('')}</div></div>`;
 }
+
+// ════════════ DIAGNÓSTICO DE VENDA ════════════
+// Motor de fluxo por toque. Cada categoria tem passos (perguntas-porta).
+// Cada opção leva a outro passo (next) ou a um resultado (result).
+// O resultado mostra: produto, preço, fala de fechamento, escada de recuo.
+
+const APARELHOS_US=['iPhone 14 Pro Max','iPhone 15 Pro Max','iPhone 16 Pro Max','iPhone 17 Pro Max','Galaxy S24 Ultra','Galaxy S25 Ultra'];
+
+const DIAG_CATS=[
+  {id:'pelicula',ic:'🛡️',n:'Película',s:'completo'},
+  {id:'capa',ic:'📱',n:'Capa',s:'em breve'},
+  {id:'cabo',ic:'🔌',n:'Cabo',s:'em breve'},
+  {id:'carregador',ic:'⚡',n:'Carregador',s:'em breve'},
+  {id:'powerbank',ic:'🔋',n:'Power Bank',s:'em breve'},
+  {id:'fone',ic:'🎧',n:'Fone',s:'em breve'},
+];
+
+// Resultados (produtos finais) reutilizados pelo fluxo da película
+const R_ULTRASAFE={
+  tag:'Indique',prod:'Ultra Safe',price:'<s>R$220</s> R$200 com o vale',
+  say:'"Pro seu aparelho a loja tem uma parada que não é pra todo mundo: a <b>Ultra Safe</b>. É a única que, se a sua tela quebrar em 6 meses, a marca paga o conserto. Um seguro de tela. Faz sentido num aparelho desse nível. Com seu vale sai R$200. Coloco?"',
+  porque:'Aparelho top + cliente que quer blindar de vez. A garantia de tela é o argumento que nenhuma outra película tem.',
+  recuo:'Recusou? <b>Diamond R$99</b> (proteção top sem o seguro). Recusou de novo? <b>De máquina R$50</b> com o vale, piso. Nunca a grátis.'
+};
+const R_PREMIUM={
+  tag:'Indique',prod:'Diamond / Fiber Pró',price:'Diamond R$99 · Fiber R$129 (-R$20 com vale)',
+  say:'"Pro seu aparelho a mais forte é a <b>Diamond</b> ou a <b>Fiber Pró</b>. Aplicada na máquina, não trinca, não racha, pega a tela inteira. É a que eu colocaria no meu. <b>Sente o toque</b>, parece que não tem nada na tela. Com seu vale sai mais barato. Coloco?"',
+  porque:'Cliente quer proteção de verdade mas o aparelho não tem Ultra Safe. Vende pela SENSAÇÃO: põe o dedo dele na tela aplicada.',
+  recuo:'Travou no preço? Desce pra <b>de máquina R$50</b> com o vale. Já é proteção real. Piso, nunca a grátis.'
+};
+const R_MAQUINA={
+  tag:'Indique',prod:'Película de máquina',price:'<s>R$70</s> R$50 com o vale',
+  say:'"Então a sua é a <b>de máquina</b>. Aplicada perfeita, sem bolha, e o toque é da própria tela. <b>Sente a diferença pra do vale</b>, a do vale você sente a borda, essa some. Com seu vale sai R$50. Coloco essa?"',
+  porque:'Cliente de uso normal, sensível a preço. O alvo é tirar ele da grátis. Contraste físico (sentir as duas) fecha.',
+  recuo:'Insiste na grátis? "Coloco a do vale sim, mas é a comum, se cair racha junto com a tela. Por R$50 você leva a de verdade." Deixe ele sentir as duas antes de desistir.'
+};
+
+let diagState={cat:null,stepId:null,history:[]};
+
+// FLUXO DA PELÍCULA
+const DIAG_PELICULA={
+  start:'modelo',
+  steps:{
+    modelo:{
+      lbl:'Passo 1 · Situação',
+      say:'"Boa, me passa o vale. <b>Qual o modelo do seu aparelho?</b>"',
+      tip:'Pega o vale e o celular na mão. Você assume o controle, não entrega a grátis.',
+      ops:[
+        {t:'Aparelho TOP <b>(iPhone 14 Pro Max+, S24/S25 Ultra)</b>',next:'permissao_top'},
+        {t:'Qualquer outro aparelho',next:'permissao'},
+      ]
+    },
+    permissao_top:{
+      lbl:'Passo 2 · Permissão',
+      say:'"Deixa eu te fazer uma pergunta rápida pra acertar a certa pro seu uso, <b>posso?</b>"',
+      tip:'Pedir permissão obriga um sim. Quem diz sim se comprometeu a olhar.',
+      ops:[{t:'Ele disse "pode"',next:'porta_top'}]
+    },
+    permissao:{
+      lbl:'Passo 2 · Permissão',
+      say:'"Deixa eu te fazer uma pergunta rápida pra acertar a certa pro seu uso, <b>posso?</b>"',
+      tip:'Pedir permissão obriga um sim. Quem diz sim se comprometeu a olhar.',
+      ops:[{t:'Ele disse "pode"',next:'porta'}]
+    },
+    porta_top:{
+      lbl:'Passo 3 · Porta do desejo',
+      say:'"Você quer mais uma <b>lisa</b> que deixa a tela original, uma <b>fosca</b> que não marca dedo e é boa pra jogo, ou uma <b>privativa</b> que ninguém vê do lado?"',
+      tip:'A escolha te diz a dor. Proteção NÃO entra aqui, vem como revelação no próximo passo.',
+      ops:[
+        {t:'Lisa / fosca / privativa (escolheu visual)',next:'revela_top'},
+        {t:'"Quero é proteção, que não quebre"',next:'bolso_top'},
+      ]
+    },
+    porta:{
+      lbl:'Passo 3 · Porta do desejo',
+      say:'"Você quer mais uma <b>lisa</b> que deixa a tela original, uma <b>fosca</b> que não marca dedo e é boa pra jogo, ou uma <b>privativa</b> que ninguém vê do lado?"',
+      tip:'A escolha te diz a dor. Proteção vem como revelação no próximo passo.',
+      ops:[
+        {t:'Lisa / fosca / privativa (escolheu visual)',next:'revela'},
+        {t:'"Quero é proteção, que não quebre"',next:'bolso'},
+      ]
+    },
+    revela_top:{
+      lbl:'Passo 4 · Revela a proteção',
+      say:'"Fechou. Agora deixa eu te mostrar uma coisa rápida, <b>posso?</b> Além dessas, a loja tem as top de linha em proteção. São 30 segundos."',
+      tip:'Mesmo quem quer visual precisa ouvir a proteção. Permissão de novo.',
+      ops:[{t:'Ele topou ver',next:'bolso_top'}]
+    },
+    revela:{
+      lbl:'Passo 4 · Revela a proteção',
+      say:'"Fechou. Agora deixa eu te mostrar uma coisa rápida, <b>posso?</b> Além dessas, a loja tem as top de linha em proteção. São 30 segundos."',
+      tip:'Mesmo quem quer visual precisa ouvir a proteção. Permissão de novo.',
+      ops:[{t:'Ele topou ver',next:'bolso'}]
+    },
+    bolso_top:{
+      lbl:'Passo 5 · Mede o bolso (sem dizer preço)',
+      say:'"E você prefere a proteção do <b>dia a dia</b>, ou a de <b>blindar de vez e não pensar mais nisso?</b>"',
+      tip:'"Blindar de vez" = ele pediu o seguro. "Não pensar mais nisso" É a Ultra Safe.',
+      ops:[
+        {t:'"Blindar de vez / não pensar mais"',result:R_ULTRASAFE},
+        {t:'"Do dia a dia mesmo"',result:R_MAQUINA},
+      ]
+    },
+    bolso:{
+      lbl:'Passo 5 · Mede o bolso (sem dizer preço)',
+      say:'"E você prefere a proteção do <b>dia a dia</b>, ou a de <b>blindar de vez e não pensar mais nisso?</b>"',
+      tip:'Aparelho sem Ultra Safe: o topo é a premium (Diamond/Fiber).',
+      ops:[
+        {t:'"Blindar de vez / não pensar mais"',result:R_PREMIUM},
+        {t:'"Do dia a dia mesmo"',result:R_MAQUINA},
+      ]
+    },
+  }
+};
+const DIAG_FLOWS={pelicula:DIAG_PELICULA};
+
+function renderDiag(){
+  const app=document.getElementById('diag-app');
+  if(!app)return;
+  if(!diagState.cat){app.innerHTML=diagCatsHTML();return;}
+  const flow=DIAG_FLOWS[diagState.cat];
+  if(!flow){app.innerHTML=diagCatsHTML();return;}
+  const step=flow.steps[diagState.stepId||flow.start];
+  app.innerHTML=diagStepHTML(step);
+}
+function diagCatsHTML(){
+  return `<div class="diag-cats">`+DIAG_CATS.map(c=>
+    `<button class="diag-cat${c.s==='em breve'?' soon':''}" ${c.s==='em breve'?'':`onclick="diagStart('${c.id}')"`}>
+      <span class="diag-cat-ic">${c.ic}</span>
+      <span class="diag-cat-n">${c.n}</span>
+      <span class="diag-cat-s">${c.s}</span>
+    </button>`).join('')+`</div>
+    <div class="diag-warn">Comece pela <b>Película</b>, está completa com o método das portas. As outras categorias chegam em breve com o mesmo padrão.</div>`;
+}
+function diagStepHTML(step){
+  const cat=DIAG_CATS.find(c=>c.id===diagState.cat);
+  let h=`<div class="diag-bar"><button class="diag-back" onclick="diagBack()">← Voltar</button><span class="diag-crumb">${cat.ic} ${cat.n}</span></div>`;
+  h+=`<div class="diag-step">
+    <div class="diag-q-lbl">${step.lbl}</div>
+    <div class="diag-say">${step.say}</div>
+    ${step.tip?`<div class="diag-tip">💡 ${step.tip}</div>`:''}
+    ${step.ops.map((o,i)=>`<button class="diag-op" onclick="diagPick(${i})">${o.t}</button>`).join('')}
+  </div>`;
+  return h;
+}
+function diagResultHTML(r){
+  const cat=DIAG_CATS.find(c=>c.id===diagState.cat);
+  return `<div class="diag-bar"><button class="diag-back" onclick="diagBack()">← Voltar</button><span class="diag-crumb">${cat.ic} ${cat.n} · resultado</span></div>
+  <div class="diag-res">
+    <div class="diag-res-tag">${r.tag}</div>
+    <div class="diag-res-prod">${r.prod}</div>
+    <div class="diag-res-price">${r.price}</div>
+    <div class="diag-res-h">Por que é essa</div>
+    <div class="diag-tip" style="margin:0 0 4px;padding:0">${r.porque}</div>
+    <div class="diag-res-h">Fala de fechamento</div>
+    <div class="diag-res-say">${r.say}</div>
+    <div class="diag-res-h">Se travar no preço, escada de recuo</div>
+    <div class="diag-recuo">${r.recuo}</div>
+  </div>
+  <button class="diag-restart" onclick="diagReset()">↺ Novo cliente</button>`;
+}
+function diagStart(catId){
+  const flow=DIAG_FLOWS[catId];if(!flow)return;
+  diagState={cat:catId,stepId:flow.start,history:[]};
+  renderDiag();
+}
+function diagPick(i){
+  const flow=DIAG_FLOWS[diagState.cat];
+  const step=flow.steps[diagState.stepId];
+  const op=step.ops[i];
+  diagState.history.push(diagState.stepId);
+  if(op.result){
+    document.getElementById('diag-app').innerHTML=diagResultHTML(op.result);
+    window.scrollTo(0,0);
+  }else if(op.next){
+    diagState.stepId=op.next;renderDiag();window.scrollTo(0,0);
+  }
+}
+function diagBack(){
+  if(diagState.history.length){
+    diagState.stepId=diagState.history.pop();renderDiag();
+  }else{diagReset();}
+}
+function diagReset(){diagState={cat:null,stepId:null,history:[]};renderDiag();}
 
 function renderLib(){
   const list=document.getElementById('lib-list');
