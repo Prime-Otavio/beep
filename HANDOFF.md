@@ -3,7 +3,17 @@
 **Data:** 2026-06-28
 **Status:** em andamento (tudo funcional, faltam melhorias opcionais e o deploy da última leva de mudanças)
 
-## SESSÃO 2026-06-28 (mais recente, leia primeiro)
+## SESSÃO 2026-06-28 parte 2 (VP + Fiber primeiro)
+
+O Otavio NÃO gostou do método das portas (diluía). Decisão nova, JÁ APLICADA:
+1. **Diagnóstico da Película refeito: FIBER PRIMEIRO.** Não espera o cliente escolher porta. Ataca a Fiber Pró (proteção) de cara, sempre. Saídas: aceitou (fecha; se top, oferece subir pra Ultra Safe), hesitou no preço (recuo Diamond R$99 → máquina R$50), ou insistiu num tipo (entrega o desejo). Preços com vale no app: Fiber R$109, Diamond R$79, máquina R$50, Ultra Safe R$200.
+2. **Ultra Safe virou UPSELL pós-Fiber** (não mais oferta direta). Só aparece depois de aceitar a Fiber e digerir o valor, via botão "tente subir pra Ultra Safe" no resultado. Ancoragem: R$200 vira "um pouco mais" que os R$109. Só em aparelho top.
+3. **Aba VP reescrita.** Tirou "vou deixar um vale grátis" (fazia a pessoa só agradecer). Agora: pergunta sobre o celular dela ("já tá com película boa ou precisando?") + convite pra dentro ("vem comigo, 1 minuto") + na cadeira ataca a Fiber. Regra: nunca entregar a grátis de cara, o vale é desculpa pra ela sentar.
+4. METODO-VENDAS.md atualizado (portas arquivado, Fiber-primeiro + VP novo no topo). Lógica testada no node (7 percursos batem).
+
+Pendente: DEPLOY (git push). Testar: aba VP (texto novo), Diagnóstico > Película (Fiber primeiro, botão Ultra Safe em aparelho top).
+
+## SESSÃO 2026-06-28 (parte 1, leia também)
 
 **Feito:**
 1. **Menu reorganizado** (estava com 22 itens, confuso). Novos grupos: "Meu dia" (Dashboard, Registrar, Revisar, Rotina do dia), "Na hora da venda" (Diagnóstico, Biblioteca, Custos de tela), "Aprender" (11 aulas, agora COLAPSÁVEL, recolhido por padrão, abre ao clicar no label ou ao navegar pra uma aula), "Treinar". O item "Hoje" virou "Rotina do dia" (resolveu a confusão com Dashboard). Funções novas: `toggleNavGrp`, classe `.nav-coll`/`.nav-grp.open`.

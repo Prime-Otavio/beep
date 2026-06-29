@@ -1299,11 +1299,18 @@ table.hist tr:hover td{background:rgba(70,55,20,0.025);}
 <!-- ════ VP ════ -->
 <div class="pg" id="pg-vp">
   <div class="pg-t">VPs: abordagem</div>
-  <p class="pg-s">Oferta real: película grátis ou R$20 off acima de R$40. Perguntar o modelo, entregar o vale como presente pessoal, trazer pra dentro, em 20 segundos.</p>
+  <p class="pg-s">O VP não é dar um vale, é trazer a pessoa pra dentro. O erro nº1: "vou deixar um vale grátis". Ela agradece e some, porque "grátis" soa panfleto e ninguém valoriza o que é jogado na mão. O certo é PERGUNTA + CONVITE.</p>
 
-  <h3>Como o vale funciona</h3>
-  <div class="hbox hb-or"><div class="hb-l">A oferta do vale</div><strong>Película GRÁTIS</strong> ou <strong>R$20 de desconto</strong> em produtos acima de R$40. Pergunta o modelo PRIMEIRO, revela o vale depois, presente com o nome do aparelho dele é pessoal, e pessoal é difícil de recusar.</div>
-  <div class="hbox hb-gr"><div class="hb-l">⭐ O segredo: a grátis é a isca</div>A película grátis é a básica, ela traz o cliente pra cadeira, não é o produto final. Com ele sentado: <em style="color:var(--white)">"essa é a grátis, e com os R$20 do mesmo vale a cerâmica sai por R$39, a diferença é que ela não quebra junto com a tela"</em>. Metade sobe. E quem ficou na grátis ainda ouve o PA da câmera e da capa.</div>
+  <h3>❌ O que NÃO funciona (e por quê)</h3>
+  <div class="hbox hb-or"><div class="hb-l">A frase que faz a pessoa fugir</div><em>"Boa tarde, vou deixar esse vale com o senhor, dá uma película grátis."</em> A pessoa só fala "obrigado" e segue. Você deu o motivo dela ir embora: ela já "ganhou", não precisa parar. E "grátis" = panfleto.</div>
+
+  <h3>✅ A abordagem que faz parar</h3>
+  <div class="hbox hb-gr"><div class="hb-l">Passo 1 · Pergunta sobre o celular DELE</div>Olhando pro celular na mão da pessoa: <em style="color:var(--white)">"Boa tarde! Esse seu celular já tá com película boa ou tá precisando?"</em> É pergunta, o cérebro é obrigado a responder. É sobre o celular dela, que ela liga. Não soa panfleto, soa quem entende de celular.</div>
+  <div class="hbox hb-gr"><div class="hb-l">Passo 2 · Convite, não brinde</div>Ela responde. Aí: <em style="color:var(--white)">"Então vem comigo aqui ó, 1 minuto. Tô fazendo a aplicação pra quem tá com o celular sem proteção. Qual o modelo do seu?"</em> Você CHAMA pra dentro ("vem, 1 minuto") e já pergunta o modelo. Ela anda com você antes de pensar.</div>
+  <div class="hbox hb-or"><div class="hb-l">Passo 3 · Na cadeira, proteção primeiro</div>Sentou, é venda. Vai DIRETO na Fiber Pró (não na grátis): <em style="color:var(--white)">"Pro seu uso eu já vou na melhor, a Fiber Pró, sente o toque."</em> Use o <strong>Diagnóstico de venda</strong> pra conduzir o resto, ataca a proteção e recua só se precisar.</div>
+
+  <h3>A regra de ouro do VP</h3>
+  <div class="hbox hb-gr"><div class="hb-l">⭐ Nunca entregue a grátis de cara</div>Se a pessoa pega o brinde, a venda morreu, ela já ganhou o que veio buscar. O vale é a desculpa pra ela SENTAR. Quem senta, compra. Na cadeira você ataca a proteção. O piso é a de máquina (R$50 com vale), nunca a grátis.</div>
 
   <h3>Scripts por situação</h3>
   <div id="vp-list"></div>
@@ -2972,97 +2979,98 @@ const DIAG_CATS=[
 
 // Resultados (produtos finais) reutilizados pelo fluxo da película
 const R_ULTRASAFE={
-  tag:'Indique',prod:'Ultra Safe',price:'<s>R$220</s> R$200 com o vale',
-  say:'"Pro seu aparelho a loja tem uma parada que não é pra todo mundo: a <b>Ultra Safe</b>. É a única que, se a sua tela quebrar em 6 meses, a marca paga o conserto. Um seguro de tela. Faz sentido num aparelho desse nível. Com seu vale sai R$200. Coloco?"',
-  porque:'Aparelho top + cliente que quer blindar de vez. A garantia de tela é o argumento que nenhuma outra película tem.',
-  recuo:'Recusou? <b>Diamond R$99</b> (proteção top sem o seguro). Recusou de novo? <b>De máquina R$50</b> com o vale, piso. Nunca a grátis.'
+  tag:'Fechou no topo',prod:'Ultra Safe',price:'<s>R$220</s> R$200 com o vale',
+  say:'"Show. E ó, já que você curtiu a proteção, pro SEU aparelho especificamente tem uma versão que não é pra todo mundo: a <b>Ultra Safe</b>. Por um pouco mais que a Fiber, ela vem com <b>seguro de tela</b>, se a tela quebrar em 6 meses a marca paga o conserto. Num aparelho desse nível compensa demais. Vou nessa pra você ficar 100% tranquilo?"',
+  porque:'Ele JÁ aceitou a Fiber e já digeriu ~R$129. Agora R$200 é "um pouco mais", não um salto. Você ancorou no preço da Fiber primeiro. Por isso a Ultra Safe vem só agora, nunca de cara.',
+  recuo:'Recusou a Ultra Safe? Sem drama, <b>fica na Fiber</b> que ele já aceitou. Você não perde a venda, só não subiu. Já foi um ótimo PA.'
 };
-const R_PREMIUM={
-  tag:'Indique',prod:'Diamond / Fiber Pró',price:'Diamond R$99 · Fiber R$129 (-R$20 com vale)',
-  say:'"Pro seu aparelho a mais forte é a <b>Diamond</b> ou a <b>Fiber Pró</b>. Aplicada na máquina, não trinca, não racha, pega a tela inteira. É a que eu colocaria no meu. <b>Sente o toque</b>, parece que não tem nada na tela. Com seu vale sai mais barato. Coloco?"',
-  porque:'Cliente quer proteção de verdade mas o aparelho não tem Ultra Safe. Vende pela SENSAÇÃO: põe o dedo dele na tela aplicada.',
-  recuo:'Travou no preço? Desce pra <b>de máquina R$50</b> com o vale. Já é proteção real. Piso, nunca a grátis.'
+const R_FIBER={
+  tag:'Aceitou a proteção',prod:'Fiber Pró',price:'<s>R$129</s> R$109 com o vale',
+  say:'"Perfeito, escolha certa. <b>Sente o toque</b>, parece que não tem nada na tela. Aplicada na máquina, fica perfeita. Com seu vale sai R$109. Já vou aplicar."',
+  porque:'Cliente aceitou a melhor proteção. Fechamento assumido ("já vou aplicar"). Aparelho sem Ultra Safe, então fechou no topo dele.',
+  recuo:'Tudo certo, ele aceitou o topo. Não precisa recuar. Ofereça o PA na sequência (capa, câmera).'
+};
+const R_FIBER_TOP={
+  tag:'Aceitou a proteção',prod:'Fiber Pró',price:'<s>R$129</s> R$109 com o vale',
+  say:'"Perfeito, escolha certa. <b>Sente o toque</b>, parece que não tem nada na tela. Aplicada na máquina, fica perfeita. Com seu vale sai R$109."',
+  porque:'Ele aceitou a Fiber e já digeriu o valor (~R$109). É AGORA, e só agora, que você sobe pra Ultra Safe: o salto pra R$200 virou "um pouco mais".',
+  recuo:'Não force. Se recusar a Ultra Safe, a Fiber já está fechada. Ótimo PA.',
+  upsell:R_ULTRASAFE
+};
+const R_DIAMOND={
+  tag:'Recuo 1',prod:'Diamond',price:'<s>R$99</s> R$79 com o vale',
+  say:'"Sem problema. Então vou na <b>Diamond</b>, que é proteção top também, só sem o detalhe da Fiber. Não trinca, não racha, e some na tela, fica original. Com o vale R$79. Fechou?"',
+  porque:'Recuou da Fiber pelo preço. Diamond mantém a proteção de verdade, só um degrau abaixo. Você não desistiu da proteção.',
+  recuo:'Recusou a Diamond também? Desce pra <b>de máquina R$50</b>. Piso. Nunca a grátis pra quem você já mostrou proteção.'
 };
 const R_MAQUINA={
-  tag:'Indique',prod:'Película de máquina',price:'<s>R$70</s> R$50 com o vale',
-  say:'"Então a sua é a <b>de máquina</b>. Aplicada perfeita, sem bolha, e o toque é da própria tela. <b>Sente a diferença pra do vale</b>, a do vale você sente a borda, essa some. Com seu vale sai R$50. Coloco essa?"',
-  porque:'Cliente de uso normal, sensível a preço. O alvo é tirar ele da grátis. Contraste físico (sentir as duas) fecha.',
+  tag:'Piso',prod:'Película de máquina',price:'<s>R$70</s> R$50 com o vale',
+  say:'"Então vamos na <b>de máquina</b>, que já é proteção de verdade. Aplicada perfeita, e o toque é da própria tela. <b>Sente a diferença pra do vale</b>, a do vale você sente a borda, essa some. Com o vale R$50. Coloco essa?"',
+  porque:'Piso da venda. O alvo é nunca deixar sair com a grátis. Contraste físico (sentir as duas) fecha.',
   recuo:'Insiste na grátis? "Coloco a do vale sim, mas é a comum, se cair racha junto com a tela. Por R$50 você leva a de verdade." Deixe ele sentir as duas antes de desistir.'
+};
+const R_DESEJO={
+  tag:'Entrega o desejo',prod:'A que ele pediu (privativa / fosca / lisa)',price:'conforme o tipo',
+  say:'"Fechou, vou na <b>[a que ele pediu]</b> então. Boa escolha pro que você quer. Com seu vale tem R$20 de desconto. Coloco?"',
+  porque:'Ele recusou a proteção e insistiu num tipo específico. Não brigue: entregue o desejo dele e garanta a venda. Melhor uma venda no gosto dele que perder pra concorrência.',
+  recuo:'Já é o recuo final pelo gosto dele. Feche e ofereça o PA (capa, câmera) na sequência.'
 };
 
 let diagState={cat:null,stepId:null,history:[]};
 
-// FLUXO DA PELÍCULA
+// FLUXO DA PELÍCULA (Fiber primeiro, proteção sempre, recuo depois)
 const DIAG_PELICULA={
   start:'modelo',
   steps:{
     modelo:{
-      lbl:'Passo 1 · Situação',
-      say:'"Boa, me passa o vale. <b>Qual o modelo do seu aparelho?</b>"',
-      tip:'Pega o vale e o celular na mão. Você assume o controle, não entrega a grátis.',
+      lbl:'Passo 1 · Modelo',
+      say:'"Boa! <b>Qual o modelo do seu aparelho?</b>"',
+      tip:'Pega o celular na mão e já pega a Fiber Pró pra mostrar. Veio com vale ou não, o caminho é o mesmo: proteção primeiro.',
       ops:[
-        {t:'Aparelho TOP <b>(iPhone 14 Pro Max+, S24/S25 Ultra)</b>',next:'permissao_top'},
-        {t:'Qualquer outro aparelho',next:'permissao'},
+        {t:'Aparelho TOP <b>(iPhone 14 Pro Max+, S24/S25 Ultra)</b>',next:'fiber_top'},
+        {t:'Qualquer outro aparelho',next:'fiber'},
       ]
     },
-    permissao_top:{
-      lbl:'Passo 2 · Permissão',
-      say:'"Deixa eu te fazer uma pergunta rápida pra acertar a certa pro seu uso, <b>posso?</b>"',
-      tip:'Pedir permissão obriga um sim. Quem diz sim se comprometeu a olhar.',
-      ops:[{t:'Ele disse "pode"',next:'porta_top'}]
-    },
-    permissao:{
-      lbl:'Passo 2 · Permissão',
-      say:'"Deixa eu te fazer uma pergunta rápida pra acertar a certa pro seu uso, <b>posso?</b>"',
-      tip:'Pedir permissão obriga um sim. Quem diz sim se comprometeu a olhar.',
-      ops:[{t:'Ele disse "pode"',next:'porta'}]
-    },
-    porta_top:{
-      lbl:'Passo 3 · Porta do desejo',
-      say:'"Você quer mais uma <b>lisa</b> que deixa a tela original, uma <b>fosca</b> que não marca dedo e é boa pra jogo, ou uma <b>privativa</b> que ninguém vê do lado?"',
-      tip:'A escolha te diz a dor. Proteção NÃO entra aqui, vem como revelação no próximo passo.',
+    // ATAQUE: Fiber Pró de cara, nos dois casos
+    fiber_top:{
+      lbl:'Passo 2 · Ataca a Fiber (proteção primeiro)',
+      say:'"Ó, pro seu uso eu já vou direto na melhor: a <b>Fiber Pró</b>. Aplicada na máquina, não trinca, não racha, pega a tela inteira e o toque é da própria tela. <b>Sente aqui.</b> É a que eu colocaria no meu."',
+      tip:'Dá a Fiber NA MÃO dele. A proteção se vende pela sensação, não pela palavra. Só depois fala preço.',
       ops:[
-        {t:'Lisa / fosca / privativa (escolheu visual)',next:'revela_top'},
-        {t:'"Quero é proteção, que não quebre"',next:'bolso_top'},
+        {t:'Aceitou / curtiu a Fiber',result:R_FIBER_TOP},
+        {t:'Hesitou no preço',next:'recuo1_top'},
+        {t:'"Eu queria era privativa/fosca/lisa"',result:R_DESEJO},
       ]
     },
-    porta:{
-      lbl:'Passo 3 · Porta do desejo',
-      say:'"Você quer mais uma <b>lisa</b> que deixa a tela original, uma <b>fosca</b> que não marca dedo e é boa pra jogo, ou uma <b>privativa</b> que ninguém vê do lado?"',
-      tip:'A escolha te diz a dor. Proteção vem como revelação no próximo passo.',
+    fiber:{
+      lbl:'Passo 2 · Ataca a Fiber (proteção primeiro)',
+      say:'"Ó, pro seu uso eu já vou direto na melhor: a <b>Fiber Pró</b>. Aplicada na máquina, não trinca, não racha, pega a tela inteira e o toque é da própria tela. <b>Sente aqui.</b> É a que eu colocaria no meu."',
+      tip:'Dá a Fiber NA MÃO dele. A proteção se vende pela sensação, não pela palavra. Só depois fala preço.',
       ops:[
-        {t:'Lisa / fosca / privativa (escolheu visual)',next:'revela'},
-        {t:'"Quero é proteção, que não quebre"',next:'bolso'},
+        {t:'Aceitou / curtiu a Fiber',result:R_FIBER},
+        {t:'Hesitou no preço',next:'recuo1'},
+        {t:'"Eu queria era privativa/fosca/lisa"',result:R_DESEJO},
       ]
     },
-    revela_top:{
-      lbl:'Passo 4 · Revela a proteção',
-      say:'"Fechou. Agora deixa eu te mostrar uma coisa rápida, <b>posso?</b> Além dessas, a loja tem as top de linha em proteção. São 30 segundos."',
-      tip:'Mesmo quem quer visual precisa ouvir a proteção. Permissão de novo.',
-      ops:[{t:'Ele topou ver',next:'bolso_top'}]
-    },
-    revela:{
-      lbl:'Passo 4 · Revela a proteção',
-      say:'"Fechou. Agora deixa eu te mostrar uma coisa rápida, <b>posso?</b> Além dessas, a loja tem as top de linha em proteção. São 30 segundos."',
-      tip:'Mesmo quem quer visual precisa ouvir a proteção. Permissão de novo.',
-      ops:[{t:'Ele topou ver',next:'bolso'}]
-    },
-    bolso_top:{
-      lbl:'Passo 5 · Mede o bolso (sem dizer preço)',
-      say:'"E você prefere a proteção do <b>dia a dia</b>, ou a de <b>blindar de vez e não pensar mais nisso?</b>"',
-      tip:'"Blindar de vez" = ele pediu o seguro. "Não pensar mais nisso" É a Ultra Safe.',
+    // RECUO 1: Diamond
+    recuo1_top:{
+      lbl:'Passo 3 · Recuo 1 (Diamond)',
+      say:'"Sem problema. Então te mostro a <b>Diamond</b>: proteção top também, só sem aquele detalhe da Fiber. Não trinca, some na tela. Com o vale fica bem em conta."',
+      tip:'Não largou a proteção, só desceu um degrau. Mostre a Diamond na mão também.',
       ops:[
-        {t:'"Blindar de vez / não pensar mais"',result:R_ULTRASAFE},
-        {t:'"Do dia a dia mesmo"',result:R_MAQUINA},
+        {t:'Aceitou a Diamond',result:R_DIAMOND},
+        {t:'Ainda achou caro',result:R_MAQUINA},
+        {t:'"Queria era privativa/fosca/lisa"',result:R_DESEJO},
       ]
     },
-    bolso:{
-      lbl:'Passo 5 · Mede o bolso (sem dizer preço)',
-      say:'"E você prefere a proteção do <b>dia a dia</b>, ou a de <b>blindar de vez e não pensar mais nisso?</b>"',
-      tip:'Aparelho sem Ultra Safe: o topo é a premium (Diamond/Fiber).',
+    recuo1:{
+      lbl:'Passo 3 · Recuo 1 (Diamond)',
+      say:'"Sem problema. Então te mostro a <b>Diamond</b>: proteção top também, só sem aquele detalhe da Fiber. Não trinca, some na tela. Com o vale fica bem em conta."',
+      tip:'Não largou a proteção, só desceu um degrau. Mostre a Diamond na mão também.',
       ops:[
-        {t:'"Blindar de vez / não pensar mais"',result:R_PREMIUM},
-        {t:'"Do dia a dia mesmo"',result:R_MAQUINA},
+        {t:'Aceitou a Diamond',result:R_DIAMOND},
+        {t:'Ainda achou caro',result:R_MAQUINA},
+        {t:'"Queria era privativa/fosca/lisa"',result:R_DESEJO},
       ]
     },
   }
@@ -3112,8 +3120,11 @@ function diagResultHTML(r){
     <div class="diag-res-h">Se travar no preço, escada de recuo</div>
     <div class="diag-recuo">${r.recuo}</div>
   </div>
+  ${r.upsell?`<button class="dash-venda" style="margin-bottom:14px" onclick="diagUpsell()">⬆ Ele aceitou e digeriu o valor? Tente subir pra Ultra Safe</button>`:''}
   <button class="diag-restart" onclick="diagReset()">↺ Novo cliente</button>`;
 }
+let _diagUpsell=null;
+function diagUpsell(){if(_diagUpsell){document.getElementById('diag-app').innerHTML=diagResultHTML(_diagUpsell);window.scrollTo(0,0);}}
 function diagStart(catId){
   const flow=DIAG_FLOWS[catId];if(!flow)return;
   diagState={cat:catId,stepId:flow.start,history:[]};
@@ -3125,6 +3136,7 @@ function diagPick(i){
   const op=step.ops[i];
   diagState.history.push(diagState.stepId);
   if(op.result){
+    _diagUpsell=op.result.upsell||null;
     document.getElementById('diag-app').innerHTML=diagResultHTML(op.result);
     window.scrollTo(0,0);
   }else if(op.next){

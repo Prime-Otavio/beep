@@ -32,7 +32,28 @@ Toda pergunta boa cai numa dessas. Não servem pra você "saber", servem pra o c
 
 ---
 
-# MÉTODO DAS PORTAS (o coração do balcão)
+# ATUALIZAÇÃO 2026-06-28: FIBER PRIMEIRO (substitui o método das portas)
+O Otavio decidiu: NÃO esperar o cliente escolher porta. Atacar a Fiber Pró (proteção) de cara, sempre, com vale ou sem. As portas diluíam (se ele falava "privativa", você ficava preso na privativa).
+
+## Fluxo de venda da película (o que está no app, aba Diagnóstico):
+1. Pergunta o modelo, já pega a Fiber na mão.
+2. ATACA a Fiber Pró: "pro seu uso já vou na melhor, a Fiber, sente o toque" (dá na mão, vende pela sensação, só depois o preço). Fiber R$129 (R$109 com vale).
+3. Saídas:
+   - Aceitou a Fiber: fecha. Se aparelho top, SOBE pra Ultra Safe (ver abaixo).
+   - Hesitou no preço: recuo 1 = Diamond R$99 (R$79). Recusou de novo: de máquina R$50. Piso, nunca a grátis.
+   - Insistiu num tipo (privativa/fosca/lisa): entrega o desejo dele, não brigue, garanta a venda.
+4. ULTRA SAFE só DEPOIS de aceitar a Fiber E digerir o valor (aparelho top). Aí R$200 vira "um pouco mais" que os R$109 que ele já topou. Ancoragem. Nunca oferecer Ultra Safe de cara.
+
+## VP, abordagem que faz parar (substitui "vou deixar um vale grátis"):
+Erro: "vou deixar esse vale, ganha película grátis" = pessoa agradece e some (grátis soa panfleto, ela já ganhou, não para).
+Certo:
+1. Pergunta sobre o celular dela: "Esse seu celular já tá com película boa ou tá precisando?" (obriga resposta, é sobre algo que ela liga).
+2. Convite, não brinde: "Vem comigo aqui ó, 1 minuto, tô fazendo a aplicação pra quem tá sem proteção. Qual o modelo?" (chama pra dentro, já pergunta modelo).
+3. Na cadeira: Fiber primeiro (fluxo acima). Nunca entrega a grátis de cara, o vale é a desculpa pra ela SENTAR.
+
+---
+
+# MÉTODO DAS PORTAS (arquivado, NÃO use mais, mantido só de referência)
 Princípio: nunca diga preço primeiro. Abra caminhos e deixe o cliente apontar. A porta que ele escolhe entrega o bolso e a dor sem ele perceber. Quem decide é ele.
 
 ## Regra de ouro: peça permissão
