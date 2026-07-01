@@ -3,6 +3,16 @@
 **Data:** 2026-06-28
 **Status:** em andamento (tudo funcional, faltam melhorias opcionais e o deploy da última leva de mudanças)
 
+## SESSÃO 2026-06-28 parte 3 (plano do Otávio aplicado)
+
+O Otávio colou o "Plano de Evolução" dele (salvo em PLANO-EVOLUCAO-OTAVIO.md). Aplicado no app:
+1. **Diagnóstico Película: as 3 perguntas finais dele.** Passo 3 agora usa: (1) "já quebrou tela ou quase de susto?", (2) "fica na mão o tempo todo ou solto na bolsa com chave?", (3) top: "se a TELA quebrar a loja troca de graça?" (= Ultra Safe direto) / outros: "a película que usava segurou ou quebrou junto?". Ultra Safe reescrita pra amarrar na dor+uso que ele trouxe (não é mais só upsell da Fiber, é resposta ao medo). R_MAQUINA agora usa a matemática do R$10 (genérica R$40 vs máquina R$50).
+2. **VP reescrito por tipo de pessoa.** Jovem/adulto corrido/idoso com falas próprias. Etapas: ler a pessoa, trazer pra loja ("não precisa comprar nada"), converter com a jogada "nunca deixe a grátis ser opção visível" (pergunta tipo de proteção, não preço). Aponta pro Diagnóstico depois de sentar.
+3. **Argumento técnico (trava nº1 do Otávio) na Biblioteca.** Novo bloco argTecnicoBox aparece no topo das categorias Cabos, Fones, Carregadores, Power Banks: fato técnico REAL (chip E-mark, bitola, Bluetooth 5.3, latência, PD/PPS, proteções) + como falar + mata-objeção de preço. Pesquisado na web, é fato, fala com convicção. Preços mantidos: Fiber R$129/R$109, Diamond R$99/R$79, máquina R$70/R$50, Ultra Safe R$220/R$200.
+4. Sintaxe do JS checada com node --check (OK), arquivo íntegro (fecha em </html>).
+
+AINDA PENDENTE do plano (próximas sessões): P.A. reflexo do combo em lugar visível ("e o cabo/capa, já tá resolvido?"); melhorar quiz (muito fácil, quer cenários); escada que ensina a vender; kit embutido (está "muito IA"); constância emocional (reset entre atendimentos). E DEPLOY (git push) de tudo.
+
 ## SESSÃO 2026-06-28 parte 2 (VP + Fiber primeiro)
 
 O Otavio NÃO gostou do método das portas (diluía). Decisão nova, JÁ APLICADA:
