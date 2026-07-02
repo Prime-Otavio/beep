@@ -32,7 +32,20 @@ Toda pergunta boa cai numa dessas. Não servem pra você "saber", servem pra o c
 
 ---
 
-# ATUALIZAÇÃO 2026-06-28: FIBER PRIMEIRO (substitui o método das portas)
+# ATUALIZAÇÃO 2026-07-01: MÉTODO HÍBRIDO (portas + Fiber), vale este
+Decisão do Otávio em 01/07: voltar às perguntas de porta, mas SEM diluir. O fluxo:
+1. Modelo do aparelho.
+2. AS 3 PORTAS (privativa / fosca / proteção): descobre o DESEJO sem falar preço. Falou privativa/fosca: tenta a Fiber 1x, recusou, entrega o desejo. Falou proteção (ou dúvida): segue.
+3. As 3 perguntas que vendem (dor + uso). Aparelho top: a 3ª já é o pitch da Ultra Safe.
+4. PERGUNTA DE BOLSO, sem preço: "cê prefere resolver o dia a dia ou blindar de vez e esquecer que película existe?". Blindar: Fiber na mão, sente o toque, preço depois (R$109 com vale). Dia a dia: entra pela máquina (R$50) MAS dá a Fiber na mão pro contraste físico ("sentiu a diferença?"), metade sobe.
+5. Revelação sempre amarrada NA RESPOSTA dele. Ele sente que escolheu.
+6. Escada de recuo intacta: Fiber → Diamond R$79 → máquina R$50. Piso é a máquina, nunca a grátis.
+7. Ultra Safe só depois de aceitar a Fiber (ancoragem), só aparelho top.
+Scripts por perfil (idade, gênero, pressa, situação): ver SCRIPTS-PERFIS.md e a aba VPs do app.
+
+---
+
+# FIBER PRIMEIRO 2026-06-28 (superado pelo híbrido acima, referência)
 O Otavio decidiu: NÃO esperar o cliente escolher porta. Atacar a Fiber Pró (proteção) de cara, sempre, com vale ou sem. As portas diluíam (se ele falava "privativa", você ficava preso na privativa).
 
 ## Fluxo de venda da película (o que está no app, aba Diagnóstico):

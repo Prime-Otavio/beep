@@ -1,7 +1,22 @@
 # Handoff: Beep Elite (plataforma de treino de vendas)
 
-**Data:** 2026-06-28
-**Status:** em andamento (tudo funcional, faltam melhorias opcionais e o deploy da última leva de mudanças)
+**Data:** 2026-07-01
+**Status:** em andamento (tudo funcional, falta DEPLOY da leva de 01/07)
+
+## SESSÃO 2026-07-01 (scripts humanizados + Coragem + método híbrido)
+
+Pedido do Otávio: scripts humanizados por perfil, técnicas reais anti-nervosismo, voltar às 3 portas, "nunca parecer vendedor". Decidido via pergunta: MÉTODO HÍBRIDO (3 portas descobrem desejo + pergunta de bolso sem preço + revelação puxa Fiber). Feito com 2 agentes paralelos (copy + psicologia) e aplicado com Edit:
+1. **Aula nova "Coragem: abordar sem travar"** (pg-coragem, nav em Aprender depois de Mente, LESSONS min:7, TRILHA em Fundamentos). 6 seções: corpo (suspiro fisiológico/Huberman, 4-6, postura), vergonha (efeito holofote, reappraisal "tô animado"), escada de exposição 7 degraus com metas, jogo do NÃO (15/dia + reset 10s), constância sem reconhecimento (identidade, placar interno, ritual fim de turno), rotina 5 min. Fonte: MODULO-CORAGEM.md.
+2. **Aba VP reescrita inteira por perfil:** leitura em 5s (tabela de sinais), abordagem por idade (adolescente/jovem/adulto corrido/adulto de boa/idoso, cada um com abrir/trazer/papo/nunca), mulher/homem/pressa, 7 situações (casal, criança, andando no cel, vitrine, trincada, sem capa, aparelho novo). vps array virou "10 frases de ouro". Fonte: SCRIPTS-PERFIS.md.
+3. **Diagnóstico Película virou HÍBRIDO:** passo 2 = 3 portas (com variações de tom por idade no say), privativa/fosca vai pra tentafiber; passo 4 novo = pergunta de bolso sem preço (bolso/bolso_top); "dia a dia" cai no passo novo basico/basico_top (máquina com contraste físico da Fiber, opções sobe/fica). Lógica testada no node: 27 caminhos, todos terminam, sem loop.
+4. **Mente do vendedor:** +4 alavancas (etiquetagem Voss, espelhamento, "porque" Langer, aversão à perda Kahneman) + link pra Coragem.
+5. **Objeções:** +2 entradas ("só quero a grátis" com variação idoso, "meu filho/marido resolve" idoso/mulher).
+6. **Travessões visíveis removidos de novo** (17 sobras `<em>—` nas aulas viraram `<em>→ `). Os "—" de placeholder de métrica vazia (dashboard) ficaram, são traço de dado vazio, não frase.
+7. METODO-VENDAS.md atualizado (híbrido no topo, Fiber-primeiro rebaixado a referência). Novos docs na pasta: SCRIPTS-PERFIS.md, MODULO-CORAGEM.md, MUDANCAS-2026-07-01.md.
+8. Integridade: node --check OK, arquivo fecha em </html> (3623 linhas).
+
+**PENDENTE: DEPLOY.** Otávio roda: `cd C:\Users\ombar\OneDrive\Documentos\Otavio\Beep && git add . && git commit -m "scripts por perfil + coragem + hibrido" && git push`
+**Testar no ar:** aula Coragem (índice+leitura), aba VPs (perfis), Diagnóstico > Película (portas → bolso → básico com contraste), Objeções (2 novas).
 
 ## SESSÃO 2026-06-28 parte 3 (plano do Otávio aplicado)
 
