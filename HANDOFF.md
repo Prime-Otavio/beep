@@ -18,6 +18,9 @@ Pedido: "faça todas" as melhorias diagnosticadas com base em psicologia da apre
 
 **Verificação:** node --check OK no JS (cópia do bash cobria até linha 3743; o trecho final só teve o init, conferido via Read). Arquivo fecha em </html> (3893 linhas). ATENÇÃO: o bash ficou preso numa cópia parcial do OneDrive nesta sessão; a Read tool é a fonte de verdade.
 
+10. **FICHA TÉCNICA em TODOS os 170 produtos da Biblioteca** (pedido do Otávio: qualidade, material, bateria de fone). Campo novo `t` em cada item de `library`, renderizado no card entre Garantia e "Subir para" (linha "🔧 Ficha (fatos)"). Conteúdo: material e diferencial técnico real por produto; TODOS os fones BT/headphones/caixas com bateria (valores de marca exatos pra JBL: 520BT 57h, 720BT 76h, GO4 7h, Clip5 12h, Flip6 12h, Tune Buds 48h; genéricos com "~" e instrução de confirmar na caixa). Box "Regra da ficha" no topo da Biblioteca: número com ~ é média da categoria, confirmar na caixa, nunca inventar spec. Estrutura validada: 170/170 linhas batem no padrão `{cat,n,p,w,t,nx,s}`, único apóstrofo interno escapado (d\'água).
+ATENÇÃO: o mount do bash congelou numa cópia velha nesta sessão (326744 bytes fixos); node --check do arquivo completo não rodou nesta leva, mas a validação foi feita por regex estrutural + Read (arquivo fecha em </html>, 3896 linhas). Se algo quebrar no ar, suspeitar primeiro da Biblioteca.
+
 **PENDENTE: DEPLOY** (`git add . && git commit && git push`, roda o Otávio).
 **Testar no ar:** Dashboard (placar de processo + degrau clicável), Registrar (campos novos salvam no Supabase), Treino do dia (3 passos, sorteio muda amanhã), Quiz (botão "pensei"), Trilha (grupos novos + "vence em Xd"), Rotina (gatilhos), aulas (falas em bloco âmbar, fonte maior).
 
