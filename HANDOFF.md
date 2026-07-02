@@ -1,7 +1,25 @@
 # Handoff: Beep Elite (plataforma de treino de vendas)
 
-**Data:** 2026-07-01
-**Status:** em andamento (tudo funcional, falta DEPLOY da leva de 01/07)
+**Data:** 2026-07-02
+**Status:** em andamento (tudo funcional, falta DEPLOY das levas de 01/07 e 02/07)
+
+## SESSÃO 2026-07-02 (reforma psicológica: design + organização com base científica)
+
+Pedido: "faça todas" as melhorias diagnosticadas com base em psicologia da aprendizagem. Feito:
+1. **Placar de processo** (metas de processo > resultado, psicologia do esporte). MIGRATION no Supabase: colunas `abord`, `naos`, `conv30` em `daily_records`. Campos novos no Registrar (rápido: abordagens+nãos; completo: +conversas 30s), card "Placar de processo" no topo do Dashboard (antes dos resultados, com meta 20/15), degrau da escada editável (kv `beep_degrau_v1`, `editDegrau`/`loadDegrau`/`renderProcesso`).
+2. **Dominado com validade** (Ebbinghaus). `beep_trilha_meta_v1` guarda {ts,lvl}; validade 7/21/60d por nível; `expireTrilha` no load rebaixa vencidos pra "treinando" com chip "venceu, refaz o quiz!"; quiz 80% chama `dominar()` que recertifica e sobe o nível. Trilha mostra "vence em Xd". Lógica testada no node (8 casos OK).
+3. **Quiz "pensa antes"** (testing effect): opções escondidas atrás do botão "Pensei, mostrar as opções" (`quizReveal`). +10 perguntas de cenário novas (vp x4, coragem x2, escada, objeções, mente, abordagem).
+4. **Treino do dia** (pg-treino, nav Treinar, badge): 3 exercícios sorteados por dia (seed estável `daySeed`): flashcard due inline (SRS), cenário com "escreve antes de ver" (generation effect, errou → caderno de erros), frase de ouro em voz alta com timer 30s (`falarTimer`). Estado em kv `beep_treino_YYYY-MM-DD`. Entrou no heroAction (prioridade antes dos flashcards).
+5. **Voz alta nas frases de ouro** da aula VP (botão 🎙 30s em cada card).
+6. **Aulas reordenadas pela jornada** (nav + LESSONS + TRILHA em 5 grupos: Dentro de você / Na rua / No balcão / Fechar / Depois da venda). VP subiu pra 3ª posição.
+7. **Rotina com gatilhos** (implementation intentions, Gollwitzer): checklist reescrito com "Depois de X: Y", incorporando respiração 4-6, metas de nãos, treino do dia, reset pós-não, ritual de fim de turno.
+8. **Streak com escudo**: 1 dia de buraco não zera (diff<=2.5 no renderStreak), cobre a folga de quarta.
+9. **Tipografia**: body 15px, todas as font-size +1px (9→10 ... 13→14), --text2/--text3 escurecidos (contraste WCAG). **Blocos de fala**: CSS transforma todo `<em style="color:var(--white)">` das aulas em bloco de citação com borda âmbar (1 ideia por olhada).
+
+**Verificação:** node --check OK no JS (cópia do bash cobria até linha 3743; o trecho final só teve o init, conferido via Read). Arquivo fecha em </html> (3893 linhas). ATENÇÃO: o bash ficou preso numa cópia parcial do OneDrive nesta sessão; a Read tool é a fonte de verdade.
+
+**PENDENTE: DEPLOY** (`git add . && git commit && git push`, roda o Otávio).
+**Testar no ar:** Dashboard (placar de processo + degrau clicável), Registrar (campos novos salvam no Supabase), Treino do dia (3 passos, sorteio muda amanhã), Quiz (botão "pensei"), Trilha (grupos novos + "vence em Xd"), Rotina (gatilhos), aulas (falas em bloco âmbar, fonte maior).
 
 ## SESSÃO 2026-07-01 (scripts humanizados + Coragem + método híbrido)
 

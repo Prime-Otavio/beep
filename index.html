@@ -17,7 +17,7 @@
   --yellow:#B6822A; --yellow-dim:rgba(182,130,42,0.12);
   --blue:#4A739E; --blue-dim:rgba(74,115,158,0.10);
   --purple:#8A6BB0;
-  --text:#26221A; --text2:#6E675A; --text3:#9A917E; --white:#16130D;
+  --text:#26221A; --text2:#635C4F; --text3:#7E7563; --white:#16130D;
   --on-accent:#FFFAF0;
   --sb:248px; --hh:54px;
   /* escala de espaçamento (4px) */
@@ -29,7 +29,15 @@
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
-body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:14px;line-height:1.6;overflow-x:hidden;}
+/* FALAS EM DESTAQUE: script vira bloco de citação (1 ideia por olhada = menos carga cognitiva, Sweller).
+   Pega todo <em style="color:var(--white)"> das aulas, que é o padrão das frases prontas. */
+.hbox em[style*="var(--white)"],.pg em[style*="var(--white)"]{
+  display:block;font-style:normal;font-weight:500;
+  background:var(--accent-dim);border-left:3px solid var(--accent);
+  border-radius:0 var(--r-sm) var(--r-sm) 0;
+  padding:8px 12px;margin:8px 0;line-height:1.55;
+}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:15px;line-height:1.6;overflow-x:hidden;}
 ::-webkit-scrollbar{width:5px;height:5px;}
 ::-webkit-scrollbar-track{background:var(--surface);}
 ::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px;}
@@ -39,38 +47,38 @@ body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-
 .logo{font-weight:800;font-size:16px;color:var(--white);letter-spacing:-0.4px;white-space:nowrap;}
 .logo b{color:var(--accent);}
 #searchwrap{flex:1;max-width:360px;position:relative;}
-#search{width:100%;background:var(--surface);border:1px solid var(--border);border-radius:7px;padding:8px 12px 8px 32px;color:var(--text);font-family:inherit;font-size:13px;outline:none;}
+#search{width:100%;background:var(--surface);border:1px solid var(--border);border-radius:7px;padding:8px 12px 8px 32px;color:var(--text);font-family:inherit;font-size:14px;outline:none;}
 #search:focus{border-color:var(--accent);}
 #search::placeholder{color:var(--text3);}
-.sicon{position:absolute;left:10px;top:50%;transform:translateY(-50%);color:var(--text3);font-size:12px;pointer-events:none;}
+.sicon{position:absolute;left:10px;top:50%;transform:translateY(-50%);color:var(--text3);font-size:13px;pointer-events:none;}
 #sres{position:absolute;top:calc(100% + 6px);left:0;right:0;background:var(--surface);border:1px solid var(--border2);border-radius:8px;max-height:300px;overflow-y:auto;display:none;z-index:300;box-shadow:0 8px 28px rgba(70,55,20,0.12);}
 .sr{padding:9px 13px;cursor:pointer;border-bottom:1px solid var(--border);}
 .sr:last-child{border-bottom:none;}
 .sr:hover{background:var(--accent-dim);}
-.sr-n{font-weight:600;font-size:13px;color:var(--white);}
-.sr-m{font-size:11px;color:var(--text2);}
+.sr-n{font-weight:600;font-size:14px;color:var(--white);}
+.sr-m{font-size:12px;color:var(--text2);}
 .hdr-pa{margin-left:auto;display:flex;gap:14px;}
 .hpa{display:flex;flex-direction:column;align-items:flex-end;line-height:1.15;}
 .hpa-v{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:14px;color:var(--accent);}
-.hpa-l{font-size:9px;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;color:var(--text3);}
+.hpa-l{font-size:10px;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;color:var(--text3);}
 
 /* SIDEBAR */
 #sb{position:fixed;top:var(--hh);left:0;bottom:0;width:var(--sb);background:var(--surface);border-right:1px solid var(--border);overflow-y:auto;z-index:100;padding:10px 0 30px;}
 .nav-grp{padding:14px 12px 4px;}
-.nav-lbl{font-size:9px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:var(--text3);padding:0 8px;margin-bottom:5px;}
-.nav-i{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:7px;cursor:pointer;color:var(--text2);font-size:13px;font-weight:500;transition:all 0.12s;}
+.nav-lbl{font-size:10px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:var(--text3);padding:0 8px;margin-bottom:5px;}
+.nav-i{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:7px;cursor:pointer;color:var(--text2);font-size:14px;font-weight:500;transition:all 0.12s;}
 .nav-i:hover{background:var(--surface2);color:var(--text);}
 .nav-i.on{background:var(--accent-dim);color:var(--accent);}
 .nav-ic{font-size:15px;width:20px;text-align:center;flex-shrink:0;}
 .nav-bd{margin-left:auto;background:var(--accent);color:var(--on-accent);font-size:8px;font-weight:800;padding:1px 5px;border-radius:8px;letter-spacing:0.3px;}
-.nav-prog{font-size:9px;font-weight:700;color:var(--green);letter-spacing:0;text-transform:none;margin-left:6px;}
+.nav-prog{font-size:10px;font-weight:700;color:var(--green);letter-spacing:0;text-transform:none;margin-left:6px;}
 .nav-dot{margin-left:auto;width:7px;height:7px;border-radius:50%;background:transparent;flex-shrink:0;}
 .nav-dot.dominado{background:var(--green);}
 .nav-dot.treinando{background:var(--accent);}
 /* grupo colapsável */
 .nav-lbl-tog{display:flex;align-items:center;justify-content:space-between;cursor:pointer;user-select:none;border-radius:6px;padding-top:2px;padding-bottom:2px;transition:color 0.12s;}
 .nav-lbl-tog:hover{color:var(--text2);}
-.nav-cv{font-size:9px;transition:transform 0.18s;color:var(--text3);}
+.nav-cv{font-size:10px;transition:transform 0.18s;color:var(--text3);}
 .nav-coll{max-height:0;overflow:hidden;transition:max-height 0.25s ease;}
 .nav-grp.open .nav-coll{max-height:600px;}
 .nav-grp.open .nav-cv{transform:rotate(90deg);}
@@ -88,14 +96,14 @@ body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-
 .vmodal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;}
 .vmodal-head>span{font-size:18px;font-weight:800;color:var(--white);}
 .vmodal-x{background:var(--surface2);border:none;width:32px;height:32px;border-radius:50%;font-size:15px;color:var(--text2);cursor:pointer;}
-.vlbl{display:block;font-size:12px;font-weight:700;color:var(--text2);margin:14px 0 7px;}
+.vlbl{display:block;font-size:13px;font-weight:700;color:var(--text2);margin:14px 0 7px;}
 .vchips{display:flex;flex-wrap:wrap;gap:7px;}
-.vchip{padding:9px 13px;border-radius:999px;border:1px solid var(--border);background:var(--surface2);color:var(--text);font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;}
+.vchip{padding:9px 13px;border-radius:999px;border:1px solid var(--border);background:var(--surface2);color:var(--text);font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;}
 .vchip.on{background:var(--accent);border-color:var(--accent);color:var(--on-accent);}
 .vinput{width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:9px;padding:11px 12px;color:var(--text);font-size:15px;font-family:inherit;outline:none;}
 .vinput:focus{border-color:var(--accent);}
 .vrow{display:grid;grid-template-columns:1fr 1fr;gap:11px;}
-.v-hoje{margin-top:14px;font-size:13px;color:var(--text2);text-align:center;line-height:1.5;}
+.v-hoje{margin-top:14px;font-size:14px;color:var(--text2);text-align:center;line-height:1.5;}
 .v-hoje b{color:var(--accent);}
 
 /* ONBOARDING */
@@ -108,24 +116,24 @@ body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-
 .onb-dots span{width:7px;height:7px;border-radius:50%;background:var(--border2);}
 .onb-dots span.on{background:var(--accent);}
 .onb-btns{display:flex;gap:var(--sp-2);}
-.onb-skip{flex:0 0 auto;background:transparent;border:none;color:var(--text3);font-size:13px;cursor:pointer;font-family:inherit;padding:12px;}
+.onb-skip{flex:0 0 auto;background:transparent;border:none;color:var(--text3);font-size:14px;cursor:pointer;font-family:inherit;padding:12px;}
 .onb-next{flex:1;background:var(--accent);border:none;border-radius:var(--r-md);padding:12px;color:var(--on-accent);font-weight:700;font-size:14px;cursor:pointer;font-family:inherit;}
 
 /* HERO, próximo passo (ação primária do dashboard) */
 .hero{background:var(--surface);border:1px solid var(--accent-bd);border-radius:var(--r-lg);padding:var(--sp-5);margin-bottom:var(--sp-4);}
-.hero-l{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--accent);}
+.hero-l{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--accent);}
 .hero-t{font-size:20px;font-weight:800;color:var(--white);line-height:1.3;margin:var(--sp-2) 0 var(--sp-1);}
-.hero-meta{font-size:13px;font-weight:600;color:var(--text2);margin-bottom:var(--sp-4);}
+.hero-meta{font-size:14px;font-weight:600;color:var(--text2);margin-bottom:var(--sp-4);}
 .hero-btn{background:var(--accent);color:var(--on-accent);border:none;border-radius:var(--r-md);padding:13px 22px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;width:100%;}
 .hero-btn:active{transform:scale(0.99);}
-.ins-more{font-size:12px;font-weight:700;color:var(--text2);cursor:pointer;padding:8px 0;text-align:center;}
+.ins-more{font-size:13px;font-weight:700;color:var(--text2);cursor:pointer;padding:8px 0;text-align:center;}
 .ins-more:hover{color:var(--accent);}
 
 /* CONTINUAR DE ONDE PAREI */
 .continue{display:flex;align-items:center;gap:13px;background:var(--surface);border:1px solid var(--accent-bd);border-radius:var(--r-md);padding:var(--sp-4);margin-bottom:var(--sp-4);cursor:pointer;transition:border-color 0.15s;}
 .continue:hover{border-color:var(--accent);}
 .continue-ic{font-size:24px;width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:var(--accent-dim);border-radius:var(--r-md);flex-shrink:0;}
-.continue-l{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.6px;color:var(--text2);}
+.continue-l{font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.6px;color:var(--text2);}
 .continue-t{font-size:15px;font-weight:700;color:var(--white);margin-top:2px;}
 .continue-go{margin-left:auto;font-size:20px;color:var(--accent);}
 /* NAV ANTERIOR/PRÓXIMO (rodapé das aulas) */
@@ -134,26 +142,26 @@ body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-
 .ln-b:hover{border-color:var(--accent-bd);}
 .ln-b.next{align-items:flex-end;text-align:right;}
 .ln-b.disabled{opacity:0.35;pointer-events:none;}
-.ln-l{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:var(--text3);}
-.ln-t{font-size:13px;font-weight:600;color:var(--text);}
+.ln-l{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:var(--text3);}
+.ln-t{font-size:14px;font-weight:600;color:var(--text);}
 .lesson-test{display:block;width:100%;margin-top:var(--sp-4);padding:13px;background:var(--accent);border:none;border-radius:var(--r-md);color:var(--on-accent);font-weight:700;font-size:14px;cursor:pointer;font-family:inherit;text-align:center;}
 .lesson-test:hover{opacity:0.92;}
-.lesson-time{display:inline-block;font-size:11.5px;font-weight:700;color:var(--text2);background:var(--surface2);border:1px solid var(--border);border-radius:14px;padding:4px 11px;margin:-12px 0 18px;}
+.lesson-time{display:inline-block;font-size:12.5px;font-weight:700;color:var(--text2);background:var(--surface2);border:1px solid var(--border);border-radius:14px;padding:4px 11px;margin:-12px 0 18px;}
 
 /* ÍNDICE + LEITURA FOCADA (aulas) */
 .lesson-tabs{display:flex;gap:7px;overflow-x:auto;padding-bottom:10px;margin-bottom:18px;border-bottom:1px solid var(--border);}
 .lesson-tabs::-webkit-scrollbar{display:none;}
-.lesson-tab{white-space:nowrap;font-size:13px;font-weight:600;padding:8px 14px;border-radius:999px;border:1px solid var(--border);background:var(--surface);color:var(--text2);cursor:pointer;font-family:inherit;flex-shrink:0;}
+.lesson-tab{white-space:nowrap;font-size:14px;font-weight:600;padding:8px 14px;border-radius:999px;border:1px solid var(--border);background:var(--surface);color:var(--text2);cursor:pointer;font-family:inherit;flex-shrink:0;}
 .lesson-tab:hover{border-color:var(--border2);color:var(--text);}
 .lesson-tab.on{background:var(--accent);border-color:var(--accent);color:var(--on-accent);}
 .lesson-sec{display:none;}
 .lesson-sec.on{display:block;animation:fade 0.2s ease;}
 .lesson-sec-h{margin-top:0!important;margin-bottom:var(--sp-4);}
 .lesson-secnav{display:flex;align-items:center;justify-content:space-between;gap:var(--sp-2);margin-top:var(--sp-5);padding-top:var(--sp-4);border-top:1px solid var(--border);}
-.lsn-prev,.lsn-next{background:var(--surface);border:1px solid var(--border2);border-radius:var(--r-md);padding:9px 15px;font-size:13px;font-weight:600;color:var(--text);cursor:pointer;font-family:inherit;}
+.lsn-prev,.lsn-next{background:var(--surface);border:1px solid var(--border2);border-radius:var(--r-md);padding:9px 15px;font-size:14px;font-weight:600;color:var(--text);cursor:pointer;font-family:inherit;}
 .lsn-next{background:var(--accent);border-color:var(--accent);color:var(--on-accent);font-weight:700;}
 .lsn-prev:hover{border-color:var(--accent-bd);}
-.lsn-pos{font-size:12px;color:var(--text3);font-weight:600;}
+.lsn-pos{font-size:13px;color:var(--text3);font-weight:600;}
 @media(min-width:821px){
   .lesson-wrap{display:grid;grid-template-columns:210px minmax(0,1fr);gap:28px;align-items:start;}
   .lesson-tabs{flex-direction:column;overflow:visible;border-bottom:none;border-right:1px solid var(--border);padding:0 16px 0 0;margin:0;position:sticky;top:70px;gap:4px;}
@@ -170,7 +178,7 @@ body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-
 .pg.on{display:block;animation:fade 0.25s ease;}
 @keyframes fade{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
 .pg-t{font-size:24px;font-weight:800;color:var(--white);letter-spacing:-0.5px;margin-bottom:var(--sp-1);}
-.pg-s{color:var(--text2);font-size:13.5px;margin-bottom:var(--sp-5);line-height:1.55;}
+.pg-s{color:var(--text2);font-size:14px;margin-bottom:var(--sp-5);line-height:1.55;}
 /* título de seção: agora título DE VERDADE (branco, 16px), não eyebrow apagado */
 h3{font-size:16px;font-weight:700;letter-spacing:-0.2px;color:var(--white);margin:var(--sp-6) 0 var(--sp-3);display:flex;align-items:center;gap:9px;line-height:1.3;}
 h3::before{content:'';width:4px;height:17px;border-radius:2px;background:var(--accent);flex-shrink:0;}
@@ -179,7 +187,7 @@ h3:first-of-type{margin-top:var(--sp-4);}
 /* CARDS / GENERIC */
 .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);padding:var(--sp-4);margin-bottom:var(--sp-2);}
 .card:hover{border-color:var(--border2);}
-.pill{display:inline-flex;align-items:center;font-size:10px;font-weight:700;letter-spacing:0.4px;text-transform:uppercase;padding:3px 8px;border-radius:14px;gap:4px;}
+.pill{display:inline-flex;align-items:center;font-size:11px;font-weight:700;letter-spacing:0.4px;text-transform:uppercase;padding:3px 8px;border-radius:14px;gap:4px;}
 .p-or{background:var(--accent-dim);color:var(--accent);border:1px solid var(--accent-bd);}
 .p-gr{background:var(--green-dim);color:var(--green);border:1px solid rgba(34,197,94,0.22);}
 .p-rd{background:var(--red-dim);color:var(--red);border:1px solid rgba(239,68,68,0.22);}
@@ -197,31 +205,31 @@ h3:first-of-type{margin-top:var(--sp-4);}
 .hb-yl{background:var(--yellow-dim);border-left:3px solid var(--yellow);}
 /* azul rebaixado: info de contexto não precisa gritar cor */
 .hb-bl{background:var(--surface2);border-left:3px solid var(--border2);}
-.hb-l{font-size:10.5px;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;margin-bottom:var(--sp-2);}
+.hb-l{font-size:11.5px;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;margin-bottom:var(--sp-2);}
 .hb-or .hb-l{color:var(--accent);} .hb-gr .hb-l{color:var(--green);} .hb-rd .hb-l{color:var(--red);} .hb-yl .hb-l{color:var(--yellow);} .hb-bl .hb-l{color:var(--text2);}
 .hbox strong{color:var(--white);}
 /* plano diário: hoje destacado, outros dias colapsados */
 .day-today{outline:2px solid var(--green);outline-offset:2px;}
 .day-collapsed{max-height:46px;overflow:hidden;position:relative;}
 .day-collapsed .hb-l{margin-bottom:0;}
-.day-collapsed .hb-l::after{content:' ▾ (toque pra ver)';font-size:9px;color:var(--text3);font-weight:600;letter-spacing:0;}
+.day-collapsed .hb-l::after{content:' ▾ (toque pra ver)';font-size:10px;color:var(--text3);font-weight:600;letter-spacing:0;}
 
 /* STAT CARDS */
 .statc{background:var(--surface);border:1px solid var(--border);border-radius:11px;padding:16px;display:flex;flex-direction:column;gap:4px;}
 .statc.feat{border-color:var(--accent-bd);background:var(--surface);}
-.sc-l{font-size:10px;font-weight:700;letter-spacing:0.7px;text-transform:uppercase;color:var(--text2);}
+.sc-l{font-size:11px;font-weight:700;letter-spacing:0.7px;text-transform:uppercase;color:var(--text2);}
 .sc-v{font-family:'JetBrains Mono',monospace;font-size:30px;font-weight:700;color:var(--white);line-height:1;}
 .sc-v.ac{color:var(--accent);} .sc-v.gr{color:var(--green);}
-.sc-s{font-size:11px;color:var(--text2);margin-top:5px;display:flex;align-items:center;gap:4px;}
+.sc-s{font-size:12px;color:var(--text2);margin-top:5px;display:flex;align-items:center;gap:4px;}
 .trend{font-family:'JetBrains Mono',monospace;font-weight:700;}
 .trend.up{color:var(--green);} .trend.dn{color:var(--red);} .trend.fl{color:var(--text2);}
 
 /* GOAL BANNER */
 .goalbanner{background:var(--surface);border:1px solid var(--accent-bd);border-radius:12px;padding:14px 16px;margin-bottom:14px;}
 .gb-top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:13px;}
-.gb-beep{font-size:13px;color:var(--text);} .gb-beep b{color:var(--white);font-family:'JetBrains Mono',monospace;}
+.gb-beep{font-size:14px;color:var(--text);} .gb-beep b{color:var(--white);font-family:'JetBrains Mono',monospace;}
 .gb-beep.hit{color:var(--green);} .gb-beep.hit b{color:var(--green);}
-.gb-elite{font-size:12px;color:var(--text2);} .gb-elite b{color:var(--accent);font-family:'JetBrains Mono',monospace;}
+.gb-elite{font-size:13px;color:var(--text2);} .gb-elite b{color:var(--accent);font-family:'JetBrains Mono',monospace;}
 .gb-steps{display:flex;align-items:center;gap:0;margin-bottom:10px;}
 .gb-step{flex:1;display:flex;flex-direction:column;align-items:center;gap:5px;position:relative;}
 .gb-dot{width:16px;height:16px;border-radius:50%;background:var(--surface2);border:2px solid var(--border2);z-index:2;}
@@ -229,34 +237,34 @@ h3:first-of-type{margin-top:var(--sp-4);}
 .gb-step.cur .gb-dot{background:var(--accent);border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-dim);}
 .gb-line{position:absolute;top:7px;left:50%;width:100%;height:2px;background:var(--border2);z-index:1;}
 .gb-step.done .gb-line{background:var(--green);}
-.gb-num{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;color:var(--text2);}
+.gb-num{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700;color:var(--text2);}
 .gb-step.cur .gb-num{color:var(--accent);} .gb-step.done .gb-num{color:var(--green);}
-.gb-lbl{font-size:9px;color:var(--text3);text-transform:uppercase;letter-spacing:0.4px;font-weight:700;}
-.gb-next{font-size:12.5px;color:var(--text2);line-height:1.5;} .gb-next b{color:var(--white);}
+.gb-lbl{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:0.4px;font-weight:700;}
+.gb-next{font-size:13.5px;color:var(--text2);line-height:1.5;} .gb-next b{color:var(--white);}
 
 /* FORM */
 .fgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin-bottom:14px;}
 .fld{display:flex;flex-direction:column;gap:5px;}
-.fld label{font-size:11px;font-weight:600;color:var(--text2);}
+.fld label{font-size:12px;font-weight:600;color:var(--text2);}
 .fld input,.fld select,.fld textarea{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:10px 12px;color:var(--white);font-size:14px;outline:none;font-family:'JetBrains Mono',monospace;width:100%;transition:border-color 0.15s;}
 .fld select,.fld textarea{font-family:'Inter',sans-serif;}
 .fld input:focus,.fld select:focus,.fld textarea:focus{border-color:var(--accent);}
 .fld input::placeholder,.fld textarea::placeholder{color:var(--text3);font-family:'Inter',sans-serif;}
-.fld .h{font-size:10px;color:var(--text3);}
+.fld .h{font-size:11px;color:var(--text3);}
 .fld textarea{resize:vertical;min-height:60px;line-height:1.5;}
 .fld-date input{font-family:'Inter',sans-serif;}
 
 .chips{display:flex;flex-wrap:wrap;gap:7px;}
-.chip{padding:7px 13px;border-radius:18px;border:1px solid var(--border);background:var(--surface2);color:var(--text2);font-size:12px;font-weight:600;cursor:pointer;transition:all 0.12s;user-select:none;}
+.chip{padding:7px 13px;border-radius:18px;border:1px solid var(--border);background:var(--surface2);color:var(--text2);font-size:13px;font-weight:600;cursor:pointer;transition:all 0.12s;user-select:none;}
 .chip:hover{border-color:var(--border2);color:var(--text);}
 .chip.on{background:var(--accent-dim);border-color:var(--accent-bd);color:var(--accent);}
 
 .btn{width:100%;padding:12px;background:var(--accent);border:none;border-radius:8px;color:var(--on-accent);font-weight:700;font-size:14px;cursor:pointer;font-family:inherit;transition:opacity 0.15s;}
 .btn:hover{opacity:0.92;}
 .btn:active{transform:scale(0.99);}
-.btn-gh{background:transparent;border:1px solid var(--border2);color:var(--text2);width:auto;padding:8px 16px;font-size:12px;}
+.btn-gh{background:transparent;border:1px solid var(--border2);color:var(--text2);width:auto;padding:8px 16px;font-size:13px;}
 .btn-gh:hover{border-color:var(--red);color:var(--red);}
-.btn-sm{width:auto;padding:8px 16px;font-size:13px;}
+.btn-sm{width:auto;padding:8px 16px;font-size:14px;}
 
 /* FORM DETALHADO COLAPSÁVEL */
 .detail-form{margin-bottom:var(--sp-2);}
@@ -264,24 +272,24 @@ h3:first-of-type{margin-top:var(--sp-4);}
 .detail-form>summary::-webkit-details-marker{display:none;}
 .detail-form>summary:hover{border-color:var(--border2);}
 .detail-form[open]>summary{border-bottom-left-radius:0;border-bottom-right-radius:0;}
-.df-hint{font-size:11px;font-weight:500;color:var(--text3);}
+.df-hint{font-size:12px;font-weight:500;color:var(--text3);}
 
 /* QUICK REGISTER */
 .quickcard{border-color:var(--accent-bd);background:var(--surface);margin-bottom:14px;}
 .quick-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:12px;}
 .quick-head>span:first-child{font-size:14px;font-weight:700;color:var(--white);}
-.quick-sub{font-size:11px;color:var(--text3);}
+.quick-sub{font-size:12px;color:var(--text3);}
 .quick-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:11px;margin-bottom:13px;}
 @media(max-width:640px){.quick-grid{grid-template-columns:1fr 1fr;}}
 
 .live{display:flex;gap:18px;padding:13px 15px;background:var(--surface2);border-radius:8px;margin-bottom:14px;flex-wrap:wrap;}
 .li{display:flex;flex-direction:column;gap:2px;}
-.li-l{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:0.5px;font-weight:600;}
+.li-l{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:0.5px;font-weight:600;}
 .li-v{font-family:'JetBrains Mono',monospace;font-size:17px;font-weight:700;color:var(--accent);}
 .li-v.m{color:var(--text2);font-size:14px;}
 
 /* INSIGHTS */
-.ins{border-radius:9px;padding:13px 15px;margin-bottom:9px;display:flex;gap:11px;align-items:flex-start;font-size:13px;line-height:1.55;}
+.ins{border-radius:9px;padding:13px 15px;margin-bottom:9px;display:flex;gap:11px;align-items:flex-start;font-size:14px;line-height:1.55;}
 .ins-ic{font-size:17px;flex-shrink:0;line-height:1.4;}
 .ins.good{background:var(--green-dim);border:1px solid rgba(34,197,94,0.2);}
 .ins.warn{background:var(--yellow-dim);border:1px solid rgba(234,179,8,0.2);}
@@ -294,54 +302,54 @@ h3:first-of-type{margin-top:var(--sp-4);}
 .meta-row{margin-bottom:16px;}
 .meta-row:last-child{margin-bottom:0;}
 .meta-h{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:7px;}
-.meta-n{font-size:13px;font-weight:600;color:var(--text);}
-.meta-num{font-family:'JetBrains Mono',monospace;font-size:12px;}
+.meta-n{font-size:14px;font-weight:600;color:var(--text);}
+.meta-num{font-family:'JetBrains Mono',monospace;font-size:13px;}
 .meta-c{color:var(--accent);font-weight:700;} .meta-t{color:var(--text3);}
-.meta-rec{font-size:11px;color:var(--text3);font-weight:500;font-family:'JetBrains Mono',monospace;}
+.meta-rec{font-size:12px;color:var(--text3);font-weight:500;font-family:'JetBrains Mono',monospace;}
 .track{height:8px;background:var(--surface2);border-radius:4px;overflow:hidden;}
 .fill{height:100%;border-radius:4px;transition:width 0.6s cubic-bezier(0.4,0,0.2,1);background:var(--accent);}
 .fill.gr{background:var(--green);}
 
 /* TRILHA DE ESTUDO */
 .tr-legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:12px;}
-.tr-tag{font-size:11px;font-weight:600;display:flex;align-items:center;gap:6px;color:var(--text2);}
+.tr-tag{font-size:12px;font-weight:600;display:flex;align-items:center;gap:6px;color:var(--text2);}
 .tr-tag::before{content:'';width:10px;height:10px;border-radius:50%;}
 .tr-tag.dominado::before{background:var(--green);}
 .tr-tag.treinando::before{background:var(--accent);}
 .tr-tag.novo::before{background:var(--border2);}
 .tr-grp{margin-bottom:20px;}
-.tr-grp-t{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:var(--text2);margin-bottom:10px;}
+.tr-grp-t{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:var(--text2);margin-bottom:10px;}
 .tr-item{display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px 14px;margin-bottom:8px;flex-wrap:wrap;}
 .tr-item.s-dominado{border-color:rgba(34,197,94,0.35);}
 .tr-item.s-treinando{border-color:var(--accent-bd);}
-.tr-name{font-size:13.5px;font-weight:600;color:var(--text);flex:1;min-width:160px;cursor:pointer;}
+.tr-name{font-size:14px;font-weight:600;color:var(--text);flex:1;min-width:160px;cursor:pointer;}
 .tr-name:hover{color:var(--accent);}
 .tr-btns{display:flex;gap:6px;}
-.tr-b{padding:6px 11px;border-radius:14px;border:1px solid var(--border2);background:var(--surface2);color:var(--text2);font-size:11px;font-weight:600;cursor:pointer;transition:all 0.12s;}
+.tr-b{padding:6px 11px;border-radius:14px;border:1px solid var(--border2);background:var(--surface2);color:var(--text2);font-size:12px;font-weight:600;cursor:pointer;transition:all 0.12s;}
 .tr-b:hover{color:var(--text);}
 .tr-b.on-dominado{background:var(--green-dim);border-color:rgba(34,197,94,0.4);color:var(--green);}
 .tr-b.on-treinando{background:var(--accent-dim);border-color:var(--accent-bd);color:var(--accent);}
 
 /* ATENDIMENTO MÍNIMO (catálogo) */
 .amin{background:var(--green-dim);border:1px solid rgba(34,197,94,0.25);border-radius:10px;padding:12px 14px;margin-bottom:12px;}
-.amin-t{font-size:12.5px;font-weight:700;color:var(--green);margin-bottom:3px;}
-.amin-s{font-size:11px;color:var(--text2);margin-bottom:9px;}
+.amin-t{font-size:13.5px;font-weight:700;color:var(--green);margin-bottom:3px;}
+.amin-s{font-size:12px;color:var(--text2);margin-bottom:9px;}
 .amin-chips{display:flex;flex-wrap:wrap;gap:6px;}
-.amin-c{font-size:11.5px;font-weight:600;background:var(--surface2);border:1px solid var(--border2);color:var(--text);border-radius:14px;padding:5px 11px;}
+.amin-c{font-size:12.5px;font-weight:600;background:var(--surface2);border:1px solid var(--border2);color:var(--text);border-radius:14px;padding:5px 11px;}
 
 /* ARGUMENTO TÉCNICO (biblioteca) */
 .argt{background:var(--surface);border:1px solid var(--accent-bd);border-radius:10px;padding:13px 15px;margin-bottom:14px;}
-.argt-t{font-size:12.5px;font-weight:700;color:var(--accent);margin-bottom:10px;}
+.argt-t{font-size:13.5px;font-weight:700;color:var(--accent);margin-bottom:10px;}
 .argt-p{margin-bottom:11px;}
-.argt-f{font-size:12.5px;line-height:1.5;color:var(--text);}
-.argt-s{font-size:12.5px;line-height:1.5;color:var(--text2);font-style:italic;margin-top:3px;}
-.argt-mata{background:var(--accent-dim);border-radius:8px;padding:10px 12px;font-size:12.5px;line-height:1.5;color:var(--text);font-style:italic;margin-top:4px;}
+.argt-f{font-size:13.5px;line-height:1.5;color:var(--text);}
+.argt-s{font-size:13.5px;line-height:1.5;color:var(--text2);font-style:italic;margin-top:3px;}
+.argt-mata{background:var(--accent-dim);border-radius:8px;padding:10px 12px;font-size:13.5px;line-height:1.5;color:var(--text);font-style:italic;margin-top:4px;}
 .argt-ml{display:inline-block;font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.4px;color:var(--accent);margin-right:6px;font-style:normal;}
 
 /* BLOCO PREMIUM (o que falar) */
 .prem{margin-top:10px;background:var(--surface2);border:1px solid var(--accent-bd);border-radius:9px;padding:12px 14px;}
-.prem-tag{font-size:11px;font-weight:700;letter-spacing:0.5px;color:var(--accent);margin-bottom:9px;}
-.prem-r{font-size:12.5px;line-height:1.5;color:var(--text);margin-bottom:7px;}
+.prem-tag{font-size:12px;font-weight:700;letter-spacing:0.5px;color:var(--accent);margin-bottom:9px;}
+.prem-r{font-size:13.5px;line-height:1.5;color:var(--text);margin-bottom:7px;}
 .prem-r:last-child{margin-bottom:0;}
 .prem-r em{color:var(--white);font-style:italic;}
 .prem-l{display:inline-block;font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.4px;color:var(--text3);margin-right:6px;}
@@ -353,44 +361,44 @@ h3:first-of-type{margin-top:var(--sp-4);}
 .diag-cat:hover{border-color:var(--accent-bd);background:var(--surface2);}
 .diag-cat.soon{opacity:0.5;cursor:default;}
 .diag-cat-ic{font-size:26px;display:block;margin-bottom:6px;}
-.diag-cat-n{font-size:13.5px;font-weight:700;color:var(--text);}
-.diag-cat-s{font-size:10px;color:var(--text3);margin-top:2px;}
+.diag-cat-n{font-size:14px;font-weight:700;color:var(--text);}
+.diag-cat-s{font-size:11px;color:var(--text3);margin-top:2px;}
 .diag-step{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:18px;margin-bottom:14px;}
 .diag-bar{display:flex;align-items:center;gap:8px;margin-bottom:14px;}
-.diag-back{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:6px 11px;font-size:12px;font-weight:600;color:var(--text2);cursor:pointer;font-family:inherit;}
+.diag-back{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:6px 11px;font-size:13px;font-weight:600;color:var(--text2);cursor:pointer;font-family:inherit;}
 .diag-back:hover{color:var(--text);}
-.diag-crumb{font-size:11px;color:var(--text3);font-weight:600;}
-.diag-q-lbl{font-size:10px;font-weight:700;letter-spacing:0.6px;text-transform:uppercase;color:var(--accent);margin-bottom:6px;}
+.diag-crumb{font-size:12px;color:var(--text3);font-weight:600;}
+.diag-q-lbl{font-size:11px;font-weight:700;letter-spacing:0.6px;text-transform:uppercase;color:var(--accent);margin-bottom:6px;}
 .diag-say{background:var(--accent-dim);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:11px 14px;font-size:14.5px;line-height:1.5;color:var(--text);font-style:italic;margin-bottom:14px;}
 .diag-say b{font-style:normal;font-weight:700;}
-.diag-tip{font-size:11.5px;color:var(--text2);margin:-8px 0 14px;padding-left:4px;}
+.diag-tip{font-size:12.5px;color:var(--text2);margin:-8px 0 14px;padding-left:4px;}
 .diag-op{display:block;width:100%;text-align:left;background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:13px 15px;margin-bottom:9px;color:var(--text);font-size:14px;cursor:pointer;font-family:inherit;line-height:1.4;transition:all 0.12s;}
 .diag-op:hover{border-color:var(--accent);background:var(--accent-dim);}
 .diag-op b{color:var(--accent);}
 .diag-res{background:var(--surface);border:1px solid var(--accent-bd);border-radius:14px;padding:18px;margin-bottom:14px;}
-.diag-res-tag{font-size:10px;font-weight:700;letter-spacing:0.6px;text-transform:uppercase;color:var(--accent);margin-bottom:4px;}
+.diag-res-tag{font-size:11px;font-weight:700;letter-spacing:0.6px;text-transform:uppercase;color:var(--accent);margin-bottom:4px;}
 .diag-res-prod{font-size:20px;font-weight:800;color:var(--text);margin-bottom:2px;}
 .diag-res-price{font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:700;color:var(--accent);margin-bottom:14px;}
 .diag-res-price s{color:var(--text3);font-weight:400;margin-right:6px;}
-.diag-res-h{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.4px;color:var(--text3);margin:14px 0 6px;}
+.diag-res-h{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.4px;color:var(--text3);margin:14px 0 6px;}
 .diag-res-say{background:var(--accent-dim);border-radius:8px;padding:12px 14px;font-size:14px;line-height:1.55;color:var(--text);font-style:italic;}
 .diag-res-say b{font-style:normal;font-weight:700;color:var(--accent);}
-.diag-recuo{background:var(--surface2);border-radius:8px;padding:11px 13px;font-size:12.5px;line-height:1.5;color:var(--text2);}
+.diag-recuo{background:var(--surface2);border-radius:8px;padding:11px 13px;font-size:13.5px;line-height:1.5;color:var(--text2);}
 .diag-recuo b{color:var(--text);}
-.diag-warn{background:var(--surface2);border:1px dashed var(--border2);border-radius:8px;padding:11px 13px;font-size:12.5px;color:var(--text2);margin-bottom:14px;}
-.diag-restart{width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:12px;font-size:13px;font-weight:700;color:var(--text2);cursor:pointer;font-family:inherit;}
+.diag-warn{background:var(--surface2);border:1px dashed var(--border2);border-radius:8px;padding:11px 13px;font-size:13.5px;color:var(--text2);margin-bottom:14px;}
+.diag-restart{width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:12px;font-size:14px;font-weight:700;color:var(--text2);cursor:pointer;font-family:inherit;}
 .diag-restart:hover{color:var(--text);border-color:var(--accent-bd);}
 
 /* QUIZ */
 .quiz-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px;}
-.quiz-prog{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;font-size:12px;color:var(--text2);font-weight:600;}
+.quiz-prog{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;font-size:13px;color:var(--text2);font-weight:600;}
 .quiz-scn{background:var(--surface2);border-radius:9px;padding:13px 15px;font-size:14px;line-height:1.5;margin-bottom:6px;}
-.quiz-says{font-size:13.5px;color:var(--accent);font-style:italic;margin-bottom:14px;padding-left:4px;}
-.quiz-op{display:block;width:100%;text-align:left;background:var(--surface2);border:1px solid var(--border);border-radius:9px;padding:12px 14px;margin-bottom:8px;color:var(--text);font-size:13.5px;cursor:pointer;font-family:inherit;line-height:1.45;transition:border-color 0.12s;}
+.quiz-says{font-size:14px;color:var(--accent);font-style:italic;margin-bottom:14px;padding-left:4px;}
+.quiz-op{display:block;width:100%;text-align:left;background:var(--surface2);border:1px solid var(--border);border-radius:9px;padding:12px 14px;margin-bottom:8px;color:var(--text);font-size:14px;cursor:pointer;font-family:inherit;line-height:1.45;transition:border-color 0.12s;}
 .quiz-op:hover{border-color:var(--border2);}
 .quiz-op.ok{background:var(--green-dim);border-color:rgba(34,197,94,0.45);}
 .quiz-op.no{background:var(--red-dim);border-color:rgba(239,68,68,0.45);}
-.quiz-fb{display:none;border-radius:9px;padding:13px 15px;font-size:13px;line-height:1.55;margin-top:6px;}
+.quiz-fb{display:none;border-radius:9px;padding:13px 15px;font-size:14px;line-height:1.55;margin-top:6px;}
 .quiz-fb.show{display:block;} .quiz-fb.ok{background:var(--green-dim);} .quiz-fb.no{background:var(--red-dim);}
 .quiz-fb strong{color:var(--white);}
 .quiz-nx{display:none;width:100%;margin-top:12px;padding:12px;background:var(--accent);border:none;border-radius:8px;color:var(--on-accent);font-weight:700;font-size:14px;cursor:pointer;font-family:inherit;}
@@ -404,30 +412,30 @@ h3:first-of-type{margin-top:var(--sp-4);}
 .stk{flex:1;min-width:140px;background:var(--surface);border:1px solid var(--border);border-radius:11px;padding:14px;display:flex;align-items:center;gap:11px;}
 .stk-ic{font-size:23px;width:42px;height:42px;display:flex;align-items:center;justify-content:center;background:var(--surface2);border-radius:9px;}
 .stk-v{font-family:'JetBrains Mono',monospace;font-size:21px;font-weight:700;color:var(--white);line-height:1;}
-.stk-l{font-size:11px;color:var(--text2);margin-top:3px;}
+.stk-l{font-size:12px;color:var(--text2);margin-top:3px;}
 
 /* CHART */
 .chartc{background:var(--surface);border:1px solid var(--border);border-radius:11px;padding:18px;}
 .ctabs{display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap;}
-.ctab{padding:6px 13px;border-radius:18px;border:1px solid var(--border);background:var(--surface2);color:var(--text2);font-size:12px;font-weight:600;cursor:pointer;transition:all 0.12s;}
+.ctab{padding:6px 13px;border-radius:18px;border:1px solid var(--border);background:var(--surface2);color:var(--text2);font-size:13px;font-weight:600;cursor:pointer;transition:all 0.12s;}
 .ctab:hover{color:var(--text);}
 .ctab.on{background:var(--accent-dim);border-color:var(--accent-bd);color:var(--accent);}
 .cwrap{position:relative;height:230px;}
 canvas{display:block;width:100%;height:100%;}
-.cempty{display:flex;align-items:center;justify-content:center;height:230px;color:var(--text3);font-size:13px;text-align:center;flex-direction:column;gap:8px;}
+.cempty{display:flex;align-items:center;justify-content:center;height:230px;color:var(--text3);font-size:14px;text-align:center;flex-direction:column;gap:8px;}
 
 /* HISTORY */
 .histc{background:var(--surface);border:1px solid var(--border);border-radius:11px;overflow:hidden;}
 .hscroll{overflow-x:auto;}
-table.hist{width:100%;border-collapse:collapse;font-size:13px;min-width:680px;}
-table.hist th{text-align:left;padding:11px 13px;background:var(--surface2);color:var(--text2);font-size:9px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;white-space:nowrap;border-bottom:1px solid var(--border);}
+table.hist{width:100%;border-collapse:collapse;font-size:14px;min-width:680px;}
+table.hist th{text-align:left;padding:11px 13px;background:var(--surface2);color:var(--text2);font-size:10px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;white-space:nowrap;border-bottom:1px solid var(--border);}
 table.hist td{padding:11px 13px;border-bottom:1px solid var(--border);white-space:nowrap;}
 table.hist tr:last-child td{border-bottom:none;}
 table.hist tr:hover td{background:rgba(70,55,20,0.025);}
 .td-d{font-weight:600;color:var(--white);} .td-m{font-family:'JetBrains Mono',monospace;}
 .td-pa{font-family:'JetBrains Mono',monospace;font-weight:700;}
 .td-pa.hit{color:var(--green);} .td-pa.near{color:var(--yellow);} .td-pa.low{color:var(--red);}
-.del{background:none;border:none;color:var(--text3);cursor:pointer;font-size:13px;padding:2px 6px;border-radius:4px;}
+.del{background:none;border:none;color:var(--text3);cursor:pointer;font-size:14px;padding:2px 6px;border-radius:4px;}
 .del:hover{color:var(--red);background:var(--red-dim);}
 .empty{text-align:center;color:var(--text3);padding:30px;font-style:italic;}
 
@@ -438,50 +446,50 @@ table.hist tr:hover td{background:rgba(70,55,20,0.025);}
 .sc-h{display:flex;align-items:center;justify-content:space-between;padding:13px 15px;cursor:pointer;user-select:none;gap:10px;}
 .sc-h:hover{background:rgba(70,55,20,0.03);}
 .sc-tt{font-weight:700;font-size:14px;color:var(--white);display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
-.sc-ch{color:var(--text3);font-size:11px;transition:transform 0.2s;flex-shrink:0;}
+.sc-ch{color:var(--text3);font-size:12px;transition:transform 0.2s;flex-shrink:0;}
 .sc-item.open .sc-ch{transform:rotate(180deg);}
 .sc-b{display:none;padding:0 15px 15px;border-top:1px solid var(--border);}
 .sc-item.open .sc-b{display:block;}
 .sc-r{display:grid;grid-template-columns:110px 1fr;gap:10px;padding:10px 0;border-bottom:1px solid var(--border);align-items:start;}
 .sc-r:last-child{border-bottom:none;padding-bottom:0;}
-.sc-rl{font-size:10px;font-weight:700;letter-spacing:0.6px;text-transform:uppercase;color:var(--text3);padding-top:1px;}
-.sc-rv{font-size:13px;color:var(--text);line-height:1.6;}
+.sc-rl{font-size:11px;font-weight:700;letter-spacing:0.6px;text-transform:uppercase;color:var(--text3);padding-top:1px;}
+.sc-rv{font-size:14px;color:var(--text);line-height:1.6;}
 
 /* OBJ */
 .obj{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--red);border-radius:0 9px 9px 0;margin-bottom:9px;overflow:hidden;}
 .obj-h{display:flex;align-items:center;justify-content:space-between;padding:12px 15px;cursor:pointer;user-select:none;}
 .obj-h:hover{background:rgba(70,55,20,0.03);}
-.obj-q{font-weight:700;font-size:13px;color:var(--red);}
-.obj-ch{color:var(--text3);font-size:11px;transition:transform 0.2s;}
+.obj-q{font-weight:700;font-size:14px;color:var(--red);}
+.obj-ch{color:var(--text3);font-size:12px;transition:transform 0.2s;}
 .obj.open .obj-ch{transform:rotate(180deg);}
 .obj-b{display:none;padding:0 15px 13px;border-top:1px solid var(--border);}
 .obj.open .obj-b{display:block;}
-.obj-r{font-size:13px;color:var(--text);line-height:1.7;padding:10px 0 6px;}
-.obj-w{font-size:11px;color:var(--text3);font-style:italic;padding:6px 10px;background:var(--surface2);border-radius:4px;}
+.obj-r{font-size:14px;color:var(--text);line-height:1.7;padding:10px 0 6px;}
+.obj-w{font-size:12px;color:var(--text3);font-style:italic;padding:6px 10px;background:var(--surface2);border-radius:4px;}
 
 /* ULTRA SAFE (destaque máximo) */
 .ultrasafe{background:var(--surface);border:2px solid var(--accent);border-radius:var(--r-lg);padding:20px;margin-bottom:8px;box-shadow:0 6px 22px rgba(182,130,42,0.14);}
-.us-badge{display:inline-block;background:var(--accent);color:var(--on-accent);font-size:10.5px;font-weight:800;letter-spacing:0.6px;padding:5px 12px;border-radius:999px;margin-bottom:12px;}
+.us-badge{display:inline-block;background:var(--accent);color:var(--on-accent);font-size:11.5px;font-weight:800;letter-spacing:0.6px;padding:5px 12px;border-radius:999px;margin-bottom:12px;}
 .us-title{font-size:22px;font-weight:800;color:var(--white);line-height:1.15;}
-.us-sub{font-size:12.5px;color:var(--text2);margin-bottom:12px;}
+.us-sub{font-size:13.5px;color:var(--text2);margin-bottom:12px;}
 .us-p{font-size:14.5px;line-height:1.65;color:var(--text);margin-bottom:14px;}
 .us-p strong{color:var(--accent);}
 .us-specs{display:grid;gap:8px;margin-bottom:14px;}
-.us-spec{font-size:13px;line-height:1.5;color:var(--text);background:var(--surface2);border-radius:var(--r-sm);padding:9px 12px;}
+.us-spec{font-size:14px;line-height:1.5;color:var(--text);background:var(--surface2);border-radius:var(--r-sm);padding:9px 12px;}
 .us-spec b{color:var(--accent);font-weight:700;margin-right:4px;}
 .us-block{background:var(--accent-dim);border-radius:var(--r-md);padding:14px;margin-bottom:12px;}
-.us-block-t{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.5px;color:var(--accent);margin-bottom:9px;}
-.us-way{font-size:13.5px;line-height:1.6;color:var(--text);margin-bottom:9px;}
+.us-block-t{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:0.5px;color:var(--accent);margin-bottom:9px;}
+.us-way{font-size:14px;line-height:1.6;color:var(--text);margin-bottom:9px;}
 .us-way:last-child{margin-bottom:0;}
 .us-way em{color:var(--white);font-style:italic;}
-.us-close{font-size:13.5px;line-height:1.6;color:var(--text);background:var(--green-dim);border-radius:var(--r-sm);padding:11px 13px;margin-bottom:8px;}
+.us-close{font-size:14px;line-height:1.6;color:var(--text);background:var(--green-dim);border-radius:var(--r-sm);padding:11px 13px;margin-bottom:8px;}
 .us-close em{color:var(--white);font-style:italic;}
-.us-erro{font-size:12.5px;line-height:1.55;color:var(--text2);background:var(--red-dim);border-radius:var(--r-sm);padding:10px 12px;}
+.us-erro{font-size:13.5px;line-height:1.55;color:var(--text2);background:var(--red-dim);border-radius:var(--r-sm);padding:10px 12px;}
 .us-erro strong{color:var(--red);}
 /* escada de recuo Ultra Safe */
 .us-fallback{background:var(--surface);border:1px solid var(--border2);border-radius:var(--r-md);padding:16px;margin:8px 0;}
-.us-fallback-t{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.5px;color:var(--accent);margin-bottom:11px;}
-.us-step{font-size:13.5px;line-height:1.6;color:var(--text);padding:11px 13px;background:var(--surface2);border-radius:var(--r-sm);border-left:3px solid var(--accent);margin-bottom:8px;}
+.us-fallback-t{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:0.5px;color:var(--accent);margin-bottom:11px;}
+.us-step{font-size:14px;line-height:1.6;color:var(--text);padding:11px 13px;background:var(--surface2);border-radius:var(--r-sm);border-left:3px solid var(--accent);margin-bottom:8px;}
 .us-step b{color:var(--white);}
 .us-step em{color:var(--text);font-style:italic;}
 .us-step.us-floor{border-left-color:var(--red);background:var(--red-dim);}
@@ -491,42 +499,42 @@ table.hist tr:hover td{background:rgba(70,55,20,0.025);}
 .lad{margin:14px 0;}
 .lad-s{display:flex;gap:12px;position:relative;}
 .lad-s:not(:last-child)::after{content:'';position:absolute;left:19px;top:40px;bottom:-4px;width:2px;background:var(--border);}
-.lad-d{width:40px;height:40px;min-width:40px;border-radius:50%;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;z-index:1;background:var(--surface);}
+.lad-d{width:40px;height:40px;min-width:40px;border-radius:50%;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;z-index:1;background:var(--surface);}
 .lad-d.e{border-color:var(--red);color:var(--red);} .lad-d.m{border-color:var(--yellow);color:var(--yellow);}
 .lad-d.p{border-color:var(--green);color:var(--green);} .lad-d.t{border-color:var(--accent);color:var(--accent);background:var(--accent-dim);}
 /* Ultra Safe: topo destacado de todos */
 .lad-d.us{border-color:var(--accent);color:var(--on-accent);background:var(--accent);box-shadow:0 0 0 4px var(--accent-dim);}
 .lad-s.us-row{background:var(--surface);border:1.5px solid var(--accent);border-radius:var(--r-md);padding:12px;margin-top:6px;}
 .lad-s.us-row::after{display:none;}
-.lad-s.us-row .lad-n::after{content:' ⭐ TOPO';font-size:10px;font-weight:800;color:var(--accent);letter-spacing:0.5px;}
+.lad-s.us-row .lad-n::after{content:' ⭐ TOPO';font-size:11px;font-weight:800;color:var(--accent);letter-spacing:0.5px;}
 .lad-s.us-row .lad-c{padding-bottom:0;}
 .lad-c{flex:1;padding-bottom:18px;}
 .lad-n{font-weight:700;font-size:14px;color:var(--white);margin-bottom:2px;}
-.lad-p{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--accent);margin-bottom:4px;}
-.lad-a{font-size:12px;color:var(--text2);line-height:1.4;}
-.lad-sc{font-size:12px;color:var(--text);font-style:italic;margin-top:6px;padding:8px 10px;background:var(--surface2);border-radius:4px;border-left:2px solid var(--accent);line-height:1.5;}
+.lad-p{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--accent);margin-bottom:4px;}
+.lad-a{font-size:13px;color:var(--text2);line-height:1.4;}
+.lad-sc{font-size:13px;color:var(--text);font-style:italic;margin-top:6px;padding:8px 10px;background:var(--surface2);border-radius:4px;border-left:2px solid var(--accent);line-height:1.5;}
 
 /* PA FLOW */
 .pa-row{display:grid;grid-template-columns:140px 1fr auto;gap:10px;align-items:center;background:var(--surface);border:1px solid var(--border);border-radius:7px;padding:11px 13px;margin-bottom:8px;}
-.pa-p{font-weight:700;font-size:13px;color:var(--white);}
-.pa-f{font-size:12px;color:var(--text2);line-height:1.5;font-style:italic;}
-.pa-c{font-size:11px;font-weight:700;color:var(--green);white-space:nowrap;background:var(--green-dim);padding:3px 8px;border-radius:10px;}
+.pa-p{font-weight:700;font-size:14px;color:var(--white);}
+.pa-f{font-size:13px;color:var(--text2);line-height:1.5;font-style:italic;}
+.pa-c{font-size:12px;font-weight:700;color:var(--green);white-space:nowrap;background:var(--green-dim);padding:3px 8px;border-radius:10px;}
 
 /* KIT */
 .kitb{background:var(--accent-dim);border:1px solid var(--accent-bd);border-radius:11px;padding:16px 18px;margin:14px 0;}
-.kit-l{font-size:10px;font-weight:700;letter-spacing:1.3px;text-transform:uppercase;color:var(--accent);margin-bottom:10px;}
+.kit-l{font-size:11px;font-weight:700;letter-spacing:1.3px;text-transform:uppercase;color:var(--accent);margin-bottom:10px;}
 .kit-i{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:11px;align-items:center;}
-.kit-it{background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:6px 11px;font-size:13px;color:var(--text);display:flex;align-items:center;gap:5px;}
-.kit-it .kp{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent);}
+.kit-it{background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:6px 11px;font-size:14px;color:var(--text);display:flex;align-items:center;gap:5px;}
+.kit-it .kp{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--accent);}
 .kit-ar{color:var(--text3);}
 .kit-tot{display:flex;align-items:baseline;gap:8px;padding-top:10px;border-top:1px solid var(--border);flex-wrap:wrap;}
-.kit-tl{font-size:11px;color:var(--text2);font-weight:600;text-transform:uppercase;letter-spacing:0.4px;}
+.kit-tl{font-size:12px;color:var(--text2);font-weight:600;text-transform:uppercase;letter-spacing:0.4px;}
 .kit-tv{font-family:'JetBrains Mono',monospace;font-size:21px;font-weight:700;color:var(--green);}
-.kit-tn{font-size:11px;color:var(--text3);}
+.kit-tn{font-size:12px;color:var(--text3);}
 
 /* FLASHCARDS */
 .fcf{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;}
-.fcb{padding:5px 12px;border-radius:18px;border:1px solid var(--border);background:var(--surface);color:var(--text2);font-size:12px;font-weight:600;cursor:pointer;transition:all 0.12s;}
+.fcb{padding:5px 12px;border-radius:18px;border:1px solid var(--border);background:var(--surface);color:var(--text2);font-size:13px;font-weight:600;cursor:pointer;transition:all 0.12s;}
 .fcb:hover{border-color:var(--border2);color:var(--text);}
 .fcb.on{background:var(--accent-dim);border-color:var(--accent-bd);color:var(--accent);}
 .fcg{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:9px;}
@@ -535,14 +543,14 @@ table.hist tr:hover td{background:rgba(70,55,20,0.025);}
 .fc.flip{border-color:var(--accent);background:var(--accent-dim);}
 .fc.flip .fc-f{display:none;} .fc:not(.flip) .fc-bk{display:none;}
 .fc-f,.fc-bk{display:flex;flex-direction:column;justify-content:space-between;height:100%;}
-.fc-n{font-weight:700;font-size:12px;color:var(--white);line-height:1.3;margin-bottom:4px;}
-.fc-cat{font-size:10px;color:var(--text3);}
-.fc-tap{font-size:9px;font-weight:700;letter-spacing:0.4px;text-transform:uppercase;color:var(--text3);}
+.fc-n{font-weight:700;font-size:13px;color:var(--white);line-height:1.3;margin-bottom:4px;}
+.fc-cat{font-size:11px;color:var(--text3);}
+.fc-tap{font-size:10px;font-weight:700;letter-spacing:0.4px;text-transform:uppercase;color:var(--text3);}
 .fc-pr{font-family:'JetBrains Mono',monospace;font-size:18px;font-weight:700;color:var(--accent);line-height:1;margin-bottom:4px;}
-.fc-wr{font-size:11px;color:var(--green);margin-bottom:4px;}
-.fc-nx{font-size:11px;color:var(--text2);} .fc-nx span{color:var(--yellow);font-weight:600;}
+.fc-wr{font-size:12px;color:var(--green);margin-bottom:4px;}
+.fc-nx{font-size:12px;color:var(--text2);} .fc-nx span{color:var(--yellow);font-weight:600;}
 .fc-srs{display:flex;gap:7px;margin-top:11px;}
-.fc-srs-b{flex:1;padding:8px;border-radius:var(--r-sm);border:1px solid var(--border2);background:var(--surface2);font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;}
+.fc-srs-b{flex:1;padding:8px;border-radius:var(--r-sm);border:1px solid var(--border2);background:var(--surface2);font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;}
 .fc-srs-b.ok{color:var(--green);border-color:rgba(34,197,94,0.4);}
 .fc-srs-b.err{color:var(--red);border-color:rgba(239,68,68,0.4);}
 .fc-srs-b:active{transform:scale(0.97);}
@@ -551,51 +559,51 @@ table.hist tr:hover td{background:rgba(70,55,20,0.025);}
 #sim{background:var(--surface);border:1px solid var(--border);border-radius:11px;overflow:hidden;}
 .sim-hd{padding:13px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
 .sim-tt{font-weight:700;font-size:14px;color:var(--white);}
-.sim-sc{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--text2);}
+.sim-sc{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--text2);}
 .sim-bd{padding:18px 16px;}
-.sim-scn{font-size:13px;color:var(--text2);margin-bottom:11px;line-height:1.5;}
+.sim-scn{font-size:14px;color:var(--text2);margin-bottom:11px;line-height:1.5;}
 .sim-says{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:11px 15px;font-size:14px;color:var(--white);font-weight:500;margin-bottom:16px;}
-.sim-says::before{content:'💬 Cliente diz:';display:block;font-size:9px;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;color:var(--text3);margin-bottom:5px;}
+.sim-says::before{content:'💬 Cliente diz:';display:block;font-size:10px;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;color:var(--text3);margin-bottom:5px;}
 .sim-o{display:flex;flex-direction:column;gap:7px;}
-.sim-op{background:var(--surface2);border:1px solid var(--border);border-radius:7px;padding:11px 15px;cursor:pointer;font-size:13px;color:var(--text);transition:all 0.15s;text-align:left;}
+.sim-op{background:var(--surface2);border:1px solid var(--border);border-radius:7px;padding:11px 15px;cursor:pointer;font-size:14px;color:var(--text);transition:all 0.15s;text-align:left;}
 .sim-op:hover{border-color:var(--border2);color:var(--white);}
 .sim-op.ok{border-color:var(--green);background:var(--green-dim);color:var(--green);}
 .sim-op.no{border-color:var(--red);background:var(--red-dim);color:var(--red);}
-.sim-fb{display:none;margin-top:14px;padding:13px 15px;border-radius:8px;font-size:13px;line-height:1.6;}
+.sim-fb{display:none;margin-top:14px;padding:13px 15px;border-radius:8px;font-size:14px;line-height:1.6;}
 .sim-fb.show{display:block;}
 .sim-fb.ok{background:var(--green-dim);border:1px solid rgba(34,197,94,0.2);}
 .sim-fb.no{background:var(--red-dim);border:1px solid rgba(239,68,68,0.2);}
 .sim-fb strong{color:var(--white);}
-.sim-nx{margin-top:13px;padding:9px 18px;background:var(--accent);border:none;border-radius:6px;color:var(--on-accent);font-weight:700;font-size:13px;cursor:pointer;display:none;font-family:inherit;}
+.sim-nx{margin-top:13px;padding:9px 18px;background:var(--accent);border:none;border-radius:6px;color:var(--on-accent);font-weight:700;font-size:14px;cursor:pointer;display:none;font-family:inherit;}
 .sim-nx.show{display:inline-block;}
 
 /* ROTINA / CHECKLIST */
 .rot-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
 .rot{background:var(--surface);border:1px solid var(--border);border-radius:9px;padding:15px;}
-.rot-tm{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent);font-weight:600;margin-bottom:5px;}
-.rot-tt{font-weight:700;font-size:13px;color:var(--white);margin-bottom:10px;}
+.rot-tm{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--accent);font-weight:600;margin-bottom:5px;}
+.rot-tt{font-weight:700;font-size:14px;color:var(--white);margin-bottom:10px;}
 .chk{list-style:none;}
-.chk li{display:flex;align-items:flex-start;gap:9px;padding:6px 0;font-size:13px;color:var(--text);cursor:pointer;user-select:none;line-height:1.4;}
-.chk-box{width:17px;height:17px;min-width:17px;border:1.5px solid var(--border2);border-radius:4px;margin-top:1px;display:flex;align-items:center;justify-content:center;font-size:11px;transition:all 0.12s;}
+.chk li{display:flex;align-items:flex-start;gap:9px;padding:6px 0;font-size:14px;color:var(--text);cursor:pointer;user-select:none;line-height:1.4;}
+.chk-box{width:17px;height:17px;min-width:17px;border:1.5px solid var(--border2);border-radius:4px;margin-top:1px;display:flex;align-items:center;justify-content:center;font-size:12px;transition:all 0.12s;}
 .chk li.done .chk-box{background:var(--green);border-color:var(--green);color:var(--on-accent);}
 .chk li.done span{color:var(--text3);text-decoration:line-through;}
-.chk-prog{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text2);margin-top:8px;padding-top:8px;border-top:1px solid var(--border);}
+.chk-prog{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--text2);margin-top:8px;padding-top:8px;border-top:1px solid var(--border);}
 
 /* TELA TABLE */
-.tbl{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:14px;}
-.tbl th{text-align:left;padding:8px 12px;background:var(--surface2);color:var(--text2);font-size:9px;font-weight:700;letter-spacing:0.6px;text-transform:uppercase;border-bottom:1px solid var(--border);}
+.tbl{width:100%;border-collapse:collapse;font-size:14px;margin-bottom:14px;}
+.tbl th{text-align:left;padding:8px 12px;background:var(--surface2);color:var(--text2);font-size:10px;font-weight:700;letter-spacing:0.6px;text-transform:uppercase;border-bottom:1px solid var(--border);}
 .tbl td{padding:9px 12px;border-bottom:1px solid var(--border);color:var(--text);vertical-align:top;line-height:1.5;}
 .tbl tr:last-child td{border-bottom:none;}
 .tbl td:first-child{font-weight:600;color:var(--white);}
-.tbl-g{color:var(--green) !important;font-size:12px;font-style:italic;}
-.tela-bd{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;padding:2px 7px;border-radius:4px;background:rgba(239,68,68,0.12);color:var(--red);border:1px solid rgba(239,68,68,0.2);}
+.tbl-g{color:var(--green) !important;font-size:13px;font-style:italic;}
+.tela-bd{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;padding:2px 7px;border-radius:4px;background:rgba(239,68,68,0.12);color:var(--red);border:1px solid rgba(239,68,68,0.2);}
 
 /* REVIEW PANEL (the difficulty -> study screen) */
 .rev-hero{background:var(--surface);border:1px solid var(--accent-bd);border-radius:13px;padding:20px;margin-bottom:16px;}
-.rev-date{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent);font-weight:600;text-transform:uppercase;letter-spacing:0.6px;margin-bottom:10px;}
+.rev-date{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--accent);font-weight:600;text-transform:uppercase;letter-spacing:0.6px;margin-bottom:10px;}
 .rev-sum{display:flex;gap:20px;flex-wrap:wrap;margin-bottom:6px;}
 .rev-st{display:flex;flex-direction:column;}
-.rev-stl{font-size:10px;color:var(--text2);text-transform:uppercase;letter-spacing:0.5px;font-weight:600;}
+.rev-stl{font-size:11px;color:var(--text2);text-transform:uppercase;letter-spacing:0.5px;font-weight:600;}
 .rev-stv{font-family:'JetBrains Mono',monospace;font-size:22px;font-weight:700;color:var(--white);line-height:1.2;}
 .rev-stv.ac{color:var(--accent);} .rev-stv.gr{color:var(--green);} .rev-stv.rd{color:var(--red);}
 .study-card{background:var(--surface);border:1px solid var(--border);border-radius:9px;padding:14px 16px;margin-bottom:9px;display:flex;gap:12px;align-items:flex-start;cursor:pointer;transition:all 0.15s;}
@@ -603,11 +611,11 @@ table.hist tr:hover td{background:rgba(70,55,20,0.025);}
 .study-ic{font-size:20px;flex-shrink:0;}
 .study-bd{flex:1;}
 .study-t{font-weight:700;font-size:14px;color:var(--white);margin-bottom:3px;display:flex;align-items:center;gap:8px;}
-.study-d{font-size:12px;color:var(--text2);line-height:1.5;}
+.study-d{font-size:13px;color:var(--text2);line-height:1.5;}
 .study-go{color:var(--accent);font-size:18px;align-self:center;}
 
 /* toast */
-#toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(100px);background:var(--green);color:var(--on-accent);padding:12px 22px;border-radius:8px;font-weight:700;font-size:13px;z-index:999;transition:transform 0.3s cubic-bezier(0.4,0,0.2,1);box-shadow:0 8px 24px rgba(70,55,20,0.18);}
+#toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(100px);background:var(--green);color:var(--on-accent);padding:12px 22px;border-radius:8px;font-weight:700;font-size:14px;z-index:999;transition:transform 0.3s cubic-bezier(0.4,0,0.2,1);box-shadow:0 8px 24px rgba(70,55,20,0.18);}
 #toast.show{transform:translateX(-50%) translateY(0);}
 
 /* mobile */
@@ -637,27 +645,27 @@ table.hist tr:hover td{background:rgba(70,55,20,0.025);}
 #auth{position:fixed;inset:0;z-index:9999;background:var(--bg);display:flex;align-items:center;justify-content:center;padding:20px}
 .auth-card{width:100%;max-width:380px;background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:32px 28px}
 .auth-logo{font-size:22px;font-weight:800;text-align:center;margin-bottom:4px;color:var(--white)}
-.auth-sub{font-size:13px;color:var(--text2);text-align:center;margin-bottom:22px}
+.auth-sub{font-size:14px;color:var(--text2);text-align:center;margin-bottom:22px}
 .auth-tabs{display:flex;gap:6px;background:var(--surface2);border-radius:10px;padding:4px;margin-bottom:18px}
-.auth-tab{flex:1;text-align:center;padding:8px;border-radius:8px;font-size:13px;font-weight:600;color:var(--text2);cursor:pointer}
+.auth-tab{flex:1;text-align:center;padding:8px;border-radius:8px;font-size:14px;font-weight:600;color:var(--text2);cursor:pointer}
 .auth-tab.on{background:var(--surface);color:var(--white);border:1px solid var(--border)}
-.auth-card label{display:block;font-size:12px;color:var(--text2);margin:12px 0 5px;font-weight:600}
+.auth-card label{display:block;font-size:13px;color:var(--text2);margin:12px 0 5px;font-weight:600}
 .auth-card input{width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:11px 13px;color:var(--text);font-size:14px;outline:none;box-sizing:border-box}
 .auth-card input:focus{border-color:var(--accent)}
 .auth-btn{width:100%;margin-top:18px;background:var(--accent);color:var(--on-accent);border:none;border-radius:10px;padding:12px;font-size:14px;font-weight:700;cursor:pointer}
 .auth-btn:disabled{opacity:.6;cursor:wait}
-.auth-msg{font-size:12.5px;margin-top:12px;text-align:center;min-height:16px}
+.auth-msg{font-size:13.5px;margin-top:12px;text-align:center;min-height:16px}
 .auth-msg.err{color:var(--red)}.auth-msg.ok{color:var(--green)}
-.auth-forgot{display:block;text-align:center;font-size:12px;color:var(--text2);margin-top:14px;cursor:pointer;text-decoration:underline}
+.auth-forgot{display:block;text-align:center;font-size:13px;color:var(--text2);margin-top:14px;cursor:pointer;text-decoration:underline}
 #app-wrap-hidden{visibility:hidden}
-.nav-user{font-size:11px;color:var(--text2);padding:10px 14px 2px;word-break:break-all}
+.nav-user{font-size:12px;color:var(--text2);padding:10px 14px 2px;word-break:break-all}
 
 
 /* ── MENTE ── */
 .ex{border-radius:var(--r-md);padding:var(--sp-4);margin:var(--sp-2) 0;font-size:14px;line-height:1.6}
 .ex-bad{background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.35)}
 .ex-good{background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.35)}
-.ex b{display:block;font-size:11px;letter-spacing:1px;margin-bottom:4px}
+.ex b{display:block;font-size:12px;letter-spacing:1px;margin-bottom:4px}
 .ex-bad b{color:#EF4444}.ex-good b{color:#22C55E}
 
 </style>
@@ -716,6 +724,7 @@ table.hist tr:hover td{background:rgba(70,55,20,0.025);}
     <div class="nav-coll">
     <a class="nav-i" onclick="go('mente',this)" data-aula="mente"><span class="nav-ic">🧠</span> Mente do vendedor <span class="nav-dot" data-dot="mente"></span></a>
     <a class="nav-i" onclick="go('coragem',this)" data-aula="coragem"><span class="nav-ic">🦁</span> Coragem: abordar sem travar <span class="nav-dot" data-dot="coragem"></span></a>
+    <a class="nav-i" onclick="go('vp',this)" data-aula="vp"><span class="nav-ic">🎫</span> VPs: abordagem <span class="nav-dot" data-dot="vp"></span></a>
     <a class="nav-i" onclick="go('abordagem',this)" data-aula="abordagem"><span class="nav-ic">🎯</span> Abordagem: puxar pra loja <span class="nav-dot" data-dot="abordagem"></span></a>
     <a class="nav-i" onclick="go('tipos',this)" data-aula="tipos"><span class="nav-ic">👁</span> Tipos de cliente <span class="nav-dot" data-dot="tipos"></span></a>
     <a class="nav-i" onclick="go('escada',this)" data-aula="escada"><span class="nav-ic">📈</span> Escada de produto <span class="nav-dot" data-dot="escada"></span></a>
@@ -725,11 +734,11 @@ table.hist tr:hover td{background:rgba(70,55,20,0.025);}
     <a class="nav-i" onclick="go('objecoes',this)" data-aula="objecoes"><span class="nav-ic">🛡</span> Objeções <span class="nav-dot" data-dot="objecoes"></span></a>
     <a class="nav-i" onclick="go('posnao',this)" data-aula="posnao"><span class="nav-ic">🌱</span> Depois do "não" <span class="nav-dot" data-dot="posnao"></span></a>
     <a class="nav-i" onclick="go('posvenda',this)" data-aula="posvenda"><span class="nav-ic">🔁</span> Pós-venda e recompra <span class="nav-dot" data-dot="posvenda"></span></a>
-    <a class="nav-i" onclick="go('vp',this)" data-aula="vp"><span class="nav-ic">🎫</span> VPs: abordagem <span class="nav-dot" data-dot="vp"></span></a>
     </div>
   </div>
   <div class="nav-grp">
     <div class="nav-lbl">Treinar</div>
+    <a class="nav-i" onclick="go('treino',this)"><span class="nav-ic">⚡</span> Treino do dia <span class="nav-bd" id="treino-badge">5 min</span></a>
     <a class="nav-i" onclick="go('trilha',this)"><span class="nav-ic">🎓</span> Minha trilha</a>
     <a class="nav-i" onclick="go('quiz',this)"><span class="nav-ic">📝</span> Quiz da semana</a>
     <a class="nav-i" onclick="go('flashcards',this)"><span class="nav-ic">🃏</span> Flashcards</a>
@@ -777,6 +786,16 @@ table.hist tr:hover td{background:rgba(70,55,20,0.025);}
     <div class="gb-next" id="gb-next"></div>
   </div>
 
+  <h3>Placar de processo (o que SÓ depende de você)</h3>
+  <div class="grid4" style="margin-bottom:6px">
+    <div class="statc feat"><div class="sc-l">🔥 Abordagens/dia</div><div class="sc-v ac" id="d-abord">—</div><div class="sc-s">meta 20 · seu combustível</div></div>
+    <div class="statc"><div class="sc-l">🎯 Nãos/dia</div><div class="sc-v" id="d-naos">—</div><div class="sc-s">meta 15 · cada não é ponto</div></div>
+    <div class="statc"><div class="sc-l">💬 Conversas 30s+</div><div class="sc-v" id="d-conv30">—</div><div class="sc-s">papos que renderam</div></div>
+    <div class="statc" style="cursor:pointer" onclick="editDegrau()"><div class="sc-l">🪜 Degrau da escada</div><div class="sc-v" id="d-degrau">1</div><div class="sc-s">da aula Coragem · toque pra mudar</div></div>
+  </div>
+  <p style="font-size:13.5px;color:var(--text2);margin:0 0 14px">Esses números você controla 100%. Bateu abordagens e nãos, o dia foi GANHO, independente de venda ou elogio. O resultado (abaixo) é consequência.</p>
+
+  <h3>Resultados (consequência do processo)</h3>
   <div class="grid4" style="margin-bottom:6px">
     <div class="statc feat"><div class="sc-l">PA médio</div><div class="sc-v ac" id="d-pa">—</div><div class="sc-s">meta 1.90 · <span class="trend fl" id="d-pa-tr">—</span></div></div>
     <div class="statc"><div class="sc-l">Ticket médio</div><div class="sc-v" id="d-tk">—</div><div class="sc-s">loja R$73 · <span class="trend fl" id="d-tk-tr">—</span></div></div>
@@ -805,7 +824,7 @@ table.hist tr:hover td{background:rgba(70,55,20,0.025);}
 
   <h3>Conquistas</h3>
   <div class="streak">
-    <div class="stk"><div class="stk-ic">🔥</div><div><div class="stk-v" id="s-days">0</div><div class="stk-l">dias seguidos</div></div></div>
+    <div class="stk"><div class="stk-ic">🔥</div><div><div class="stk-v" id="s-days">0</div><div class="stk-l">dias no jogo <span title="1 dia de folga não zera a sequência">🛡</span></div></div></div>
     <div class="stk"><div class="stk-ic">🎯</div><div><div class="stk-v" id="s-hits">0</div><div class="stk-l">dias com PA 1.90+</div></div></div>
     <div class="stk"><div class="stk-ic">📈</div><div><div class="stk-v" id="s-best">—</div><div class="stk-l">melhor PA</div></div></div>
   </div>
@@ -824,7 +843,7 @@ table.hist tr:hover td{background:rgba(70,55,20,0.025);}
     <div class="hb-l">📲 Você lançou vendas durante o dia</div>
     <span id="reg-vendas-txt"></span><br><br>
     Lançou <strong>todas</strong>? Eu já preencho os números pra você. <span class="ins-link" onclick="autoPreencherDeVendas()">Preencher com as vendas →</span><br>
-    <span style="color:var(--text3);font-size:12px">Ou continue preenchendo na mão se faltou alguma.</span>
+    <span style="color:var(--text3);font-size:13px">Ou continue preenchendo na mão se faltou alguma.</span>
   </div>
 
   <!-- REGISTRO RÁPIDO -->
@@ -835,7 +854,10 @@ table.hist tr:hover td{background:rgba(70,55,20,0.025);}
       <div class="fld"><label>Atendimentos</label><input type="number" id="q-atend" min="0" placeholder="ex: 40"></div>
       <div class="fld"><label>Produtos</label><input type="number" id="q-prod" min="0" placeholder="ex: 62"></div>
       <div class="fld"><label>Faturamento (R$) <span style="color:var(--text3);font-weight:400">opc.</span></label><input type="number" id="q-fat" min="0" step="0.01" placeholder="ex: 5200"></div>
+      <div class="fld"><label>Abordagens na rua 🔥</label><input type="number" id="q-abord" min="0" placeholder="ex: 20"></div>
+      <div class="fld"><label>Nãos colecionados 🎯</label><input type="number" id="q-naos" min="0" placeholder="ex: 15"></div>
     </div>
+    <p style="font-size:13px;color:var(--text2);margin:0 0 10px">Abordagens e nãos são o seu <strong>placar de processo</strong>: os números que SÓ dependem de você. Bateu a meta, dia ganho, com ou sem venda.</p>
     <button class="btn btn-sm" style="width:100%" onclick="saveQuick()">Salvar registro rápido</button>
   </div>
 
@@ -851,6 +873,9 @@ table.hist tr:hover td{background:rgba(70,55,20,0.025);}
       <div class="fld"><label>PAs recusados</label><input type="number" id="f-parec" min="0" placeholder="ex: 13" oninput="prev()"><span class="h">Clientes que disseram não</span></div>
       <div class="fld"><label>VPs entregues</label><input type="number" id="f-vp" min="0" placeholder="ex: 22" oninput="prev()"><span class="h">Vales entregues na rua</span></div>
       <div class="fld"><label>VPs que viraram cliente</label><input type="number" id="f-vpconv" min="0" placeholder="ex: 6" oninput="prev()"><span class="h">Entraram e compraram</span></div>
+      <div class="fld"><label>Abordagens na rua 🔥</label><input type="number" id="f-abord" min="0" placeholder="ex: 20"><span class="h">Quantas pessoas você abordou</span></div>
+      <div class="fld"><label>Nãos colecionados 🎯</label><input type="number" id="f-naos" min="0" placeholder="ex: 15"><span class="h">Cada não é ponto no placar</span></div>
+      <div class="fld"><label>Conversas de 30s+</label><input type="number" id="f-conv30" min="0" placeholder="ex: 8"><span class="h">Papos que renderam</span></div>
     </div>
 
     <div class="live" id="preview" style="display:none">
@@ -868,7 +893,7 @@ table.hist tr:hover td{background:rgba(70,55,20,0.025);}
       <select id="f-script"><option value="">Selecione</option><option>Película → kit completo</option><option>Capa → película</option><option>Cabo → ponteira</option><option>Carregador → cabo</option><option>Fone → carregar</option><option>Escada de upgrade</option><option>Objeção "tá caro"</option><option>VP abordagem</option></select>
     </div>
 
-    <label style="font-size:11px;font-weight:600;color:var(--text2);display:block;margin-bottom:8px">Onde tive dificuldade hoje? <span style="color:var(--text3)">(marque tudo que se aplica)</span></label>
+    <label style="font-size:12px;font-weight:600;color:var(--text2);display:block;margin-bottom:8px">Onde tive dificuldade hoje? <span style="color:var(--text3)">(marque tudo que se aplica)</span></label>
     <div class="chips" id="diff-chips" style="margin-bottom:16px"></div>
 
     <div class="fld" style="margin-bottom:14px"><label>Como me senti falando hoje? (autoavaliação)</label>
@@ -898,7 +923,7 @@ table.hist tr:hover td{background:rgba(70,55,20,0.025);}
 <!-- ════ ROTINA ════ -->
 <div class="pg" id="pg-rotina">
   <div class="pg-t">Hoje</div>
-  <p class="pg-s">Seu foco do dia e o checklist do turno num lugar só. Marque conforme cumpre, reseta a cada dia.</p>
+  <p class="pg-s">Seu foco do dia e o checklist do turno num lugar só. Cada item tem um GATILHO ("depois de X, faço Y"): hábito amarrado em gatilho gruda, hábito solto evapora. Marque conforme cumpre, reseta a cada dia.</p>
 
   <div class="hbox hb-or" id="hoje-foco" style="margin-bottom:18px"><div class="hb-l">📅 Foco de hoje</div><span id="hoje-foco-txt">Carregando...</span> <span class="ins-link" onclick="go('diario')">ver a semana toda ›</span></div>
 
@@ -908,10 +933,10 @@ table.hist tr:hover td{background:rgba(70,55,20,0.025);}
       <div class="rot-tm">ANTES DO TURNO · 15 min</div>
       <div class="rot-tt">Ativação</div>
       <ul class="chk" data-block="ativacao">
-        <li onclick="toggleChk(this)"><span class="chk-box"></span><span>10 flashcards em voz alta</span></li>
-        <li onclick="toggleChk(this)"><span class="chk-box"></span><span>Revisar escada da categoria do dia</span></li>
-        <li onclick="toggleChk(this)"><span class="chk-box"></span><span>Repetir kit-padrão 3x em voz alta</span></li>
-        <li onclick="toggleChk(this)"><span class="chk-box"></span><span>Definir meta: quantos PAs hoje</span></li>
+        <li onclick="toggleChk(this)"><span class="chk-box"></span><span><strong>Depois de bater o ponto:</strong> 90s de respiração 4-6</span></li>
+        <li onclick="toggleChk(this)"><span class="chk-box"></span><span><strong>Depois de respirar:</strong> metas no celular (15 nãos + degrau da escada)</span></li>
+        <li onclick="toggleChk(this)"><span class="chk-box"></span><span><strong>Antes de abrir:</strong> Treino do dia (5 min, aba Treinar)</span></li>
+        <li onclick="toggleChk(this)"><span class="chk-box"></span><span><strong>Saindo pro salão:</strong> postura 5s + "sou o cara das 20 abordagens"</span></li>
       </ul>
       <div class="chk-prog" data-prog="ativacao">0/4</div>
     </div>
@@ -919,9 +944,9 @@ table.hist tr:hover td{background:rgba(70,55,20,0.025);}
       <div class="rot-tm">PRIMEIROS 2 CLIENTES</div>
       <div class="rot-tt">Aquecimento</div>
       <ul class="chk" data-block="aquecimento">
+        <li onclick="toggleChk(this)"><span class="chk-box"></span><span><strong>1º cliente é treino, não prova:</strong> tira a pressão, o resto flui</span></li>
         <li onclick="toggleChk(this)"><span class="chk-box"></span><span>Diagnóstico completo nos 2 primeiros</span></li>
-        <li onclick="toggleChk(this)"><span class="chk-box"></span><span>Kit embutido desde o início</span></li>
-        <li onclick="toggleChk(this)"><span class="chk-box"></span><span>Prova física em 1 produto</span></li>
+        <li onclick="toggleChk(this)"><span class="chk-box"></span><span>Kit embutido + prova física desde o início</span></li>
       </ul>
       <div class="chk-prog" data-prog="aquecimento">0/3</div>
     </div>
@@ -929,10 +954,10 @@ table.hist tr:hover td{background:rgba(70,55,20,0.025);}
       <div class="rot-tm">DURANTE O TURNO</div>
       <div class="rot-tt">Execução</div>
       <ul class="chk" data-block="execucao">
-        <li onclick="toggleChk(this)"><span class="chk-box"></span><span>Contar PA mentalmente a cada cliente</span></li>
-        <li onclick="toggleChk(this)"><span class="chk-box"></span><span>Reforçar kit se PA cair de 1.7</span></li>
-        <li onclick="toggleChk(this)"><span class="chk-box"></span><span>Reposicionar 1x quando recusam</span></li>
-        <li onclick="toggleChk(this)"><span class="chk-box"></span><span>Pergunta fechada sempre</span></li>
+        <li onclick="toggleChk(this)"><span class="chk-box"></span><span><strong>Antes de CADA abordagem:</strong> 1 suspiro fisiológico + "tô animado"</span></li>
+        <li onclick="toggleChk(this)"><span class="chk-box"></span><span><strong>Depois de CADA não:</strong> reset de 10s e próxima em 60s</span></li>
+        <li onclick="toggleChk(this)"><span class="chk-box"></span><span>Contar PA mentalmente + marcar nãos no contador</span></li>
+        <li onclick="toggleChk(this)"><span class="chk-box"></span><span>Pergunta fechada sempre, e silêncio depois dela</span></li>
       </ul>
       <div class="chk-prog" data-prog="execucao">0/4</div>
     </div>
@@ -940,9 +965,9 @@ table.hist tr:hover td{background:rgba(70,55,20,0.025);}
       <div class="rot-tm">APÓS O TURNO · 10 min</div>
       <div class="rot-tt">Revisão</div>
       <ul class="chk" data-block="revisao">
-        <li onclick="toggleChk(this)"><span class="chk-box"></span><span>Registrar o dia na plataforma</span></li>
-        <li onclick="toggleChk(this)"><span class="chk-box"></span><span>Ver dificuldades e estudar 1 script</span></li>
-        <li onclick="toggleChk(this)"><span class="chk-box"></span><span>Anotar 1 atendimento pra melhorar</span></li>
+        <li onclick="toggleChk(this)"><span class="chk-box"></span><span><strong>Depois de fechar o caixa:</strong> registrar o dia (processo primeiro: abordagens e nãos)</span></li>
+        <li onclick="toggleChk(this)"><span class="chk-box"></span><span>Anotar 1 linha: melhor abordagem do dia e por quê</span></li>
+        <li onclick="toggleChk(this)"><span class="chk-box"></span><span>Fechar com a frase: "placar batido, eu me pago com isso"</span></li>
       </ul>
       <div class="chk-prog" data-prog="revisao">0/3</div>
     </div>
@@ -1416,6 +1441,17 @@ table.hist tr:hover td{background:rgba(70,55,20,0.025);}
   <div id="vp-list"></div>
 </div>
 
+<!-- ════ TREINO DO DIA ════ -->
+<div class="pg" id="pg-treino">
+  <div class="pg-t">Treino do dia</div>
+  <p class="pg-s">5 minutos, 3 exercícios de temas misturados: lembrar (flashcard), decidir (cenário) e falar (voz alta). Misturar fixa mais que estudar em bloco, e completar os 3 paga o estudo do dia.</p>
+  <div class="card" style="margin-bottom:14px">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px"><strong>Progresso de hoje</strong><span id="td-pct" style="font-weight:700;color:var(--accent)">0/3</span></div>
+    <div class="track"><div class="fill" id="td-bar" style="width:0%"></div></div>
+  </div>
+  <div id="treino-box"></div>
+</div>
+
 <!-- ════ FLASHCARDS ════ -->
 <div class="pg" id="pg-flashcards">
   <div class="pg-t">Flashcards</div>
@@ -1457,7 +1493,7 @@ table.hist tr:hover td{background:rgba(70,55,20,0.025);}
   <p class="pg-s">Cole o que você falou num atendimento real. A IA analisa com a sua metodologia (silêncio, âncora, desapego, escada, kit embutido) e aponta o que você não viu.</p>
 
   <div class="card">
-    <label style="font-size:12px;font-weight:600;color:var(--text2);display:block;margin-bottom:8px">O que você falou no atendimento</label>
+    <label style="font-size:13px;font-weight:600;color:var(--text2);display:block;margin-bottom:8px">O que você falou no atendimento</label>
     <textarea id="ia-input" placeholder="Ex: O cliente chegou querendo só uma película. Eu disse que tinha de 19 a 99 reais, mostrei as opções, ele escolheu a de 59. Aí perguntei se ele queria a câmera também, ele disse que não e eu deixei..." style="min-height:120px"></textarea>
     <button class="btn" style="margin-top:12px" onclick="iaAnalisar()">Analisar meu atendimento</button>
   </div>
@@ -1497,7 +1533,7 @@ table.hist tr:hover td{background:rgba(70,55,20,0.025);}
   <div style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap">
     <button class="btn-gh btn-sm" onclick="expandAllLib(true)">Abrir todos</button>
     <button class="btn-gh btn-sm" onclick="expandAllLib(false)">Fechar todos</button>
-    <span id="lib-count" style="font-size:12px;color:var(--text3);align-self:center;margin-left:auto"></span>
+    <span id="lib-count" style="font-size:13px;color:var(--text3);align-self:center;margin-left:auto"></span>
   </div>
 
   <div id="lib-list"></div>
@@ -1672,8 +1708,8 @@ sb.auth.onAuthStateChange(async(ev,session)=>{
 })();
 
 // ── window.storage agora grava no Supabase ──
-const ROW2DAY=r=>({date:r.date,atend:r.atend,prod:r.prod,fat:+r.fat,paOff:r.pa_off,paRec:r.pa_rec,vp:r.vp,vpConv:r.vp_conv,cat:r.cat||'',script:r.script||'',fala:r.fala||'',note:r.note||'',diffs:r.diffs||[]});
-const DAY2ROW=d=>({user_id:UID,date:d.date,atend:d.atend||0,prod:d.prod||0,fat:d.fat||0,pa_off:d.paOff||0,pa_rec:d.paRec||0,vp:d.vp||0,vp_conv:d.vpConv||0,cat:d.cat||'',script:d.script||'',fala:d.fala||'',note:d.note||'',diffs:d.diffs||[]});
+const ROW2DAY=r=>({date:r.date,atend:r.atend,prod:r.prod,fat:+r.fat,paOff:r.pa_off,paRec:r.pa_rec,vp:r.vp,vpConv:r.vp_conv,abord:r.abord||0,naos:r.naos||0,conv30:r.conv30||0,cat:r.cat||'',script:r.script||'',fala:r.fala||'',note:r.note||'',diffs:r.diffs||[]});
+const DAY2ROW=d=>({user_id:UID,date:d.date,atend:d.atend||0,prod:d.prod||0,fat:d.fat||0,pa_off:d.paOff||0,pa_rec:d.paRec||0,vp:d.vp||0,vp_conv:d.vpConv||0,abord:d.abord||0,naos:d.naos||0,conv30:d.conv30||0,cat:d.cat||'',script:d.script||'',fala:d.fala||'',note:d.note||'',diffs:d.diffs||[]});
 
 window.storage={
   async get(k){
@@ -2138,9 +2174,11 @@ const todayStr=()=>new Date().toISOString().split('T')[0];
 
 // ════════ NAV ════════
 // ordem das aulas do curso (mesma do menu "Aprender")
+// ordem = jornada da venda (chunking narrativo: a sequência conta uma história, memória episódica ajuda a semântica)
 const LESSONS=[
   {id:'mente',n:'Mente do vendedor',min:6},
   {id:'coragem',n:'Coragem: abordar sem travar',min:7},
+  {id:'vp',n:'VPs: abordagem',min:5},
   {id:'abordagem',n:'Abordagem: puxar pra loja',min:5},
   {id:'tipos',n:'Tipos de cliente',min:4},
   {id:'escada',n:'Escada de produto',min:5},
@@ -2150,7 +2188,6 @@ const LESSONS=[
   {id:'objecoes',n:'Objeções',min:4},
   {id:'posnao',n:'Depois do "não"',min:3},
   {id:'posvenda',n:'Pós-venda e recompra',min:3},
-  {id:'vp',n:'VPs: abordagem',min:5},
 ];
 const lessonMin=id=>{const l=LESSONS.find(x=>x.id===id);return l?l.min:null;};
 const LESSON_IDS=LESSONS.map(l=>l.id);
@@ -2333,6 +2370,9 @@ function saveDay(){
   const paRec=+document.getElementById('f-parec').value||0;
   const vp=+document.getElementById('f-vp').value||0;
   const vpConv=+document.getElementById('f-vpconv').value||0;
+  const abord=+document.getElementById('f-abord').value||0;
+  const naos=+document.getElementById('f-naos').value||0;
+  const conv30=+document.getElementById('f-conv30').value||0;
   const cat=document.getElementById('f-cat').value;
   const script=document.getElementById('f-script').value;
   const fala=document.getElementById('f-fala').value;
@@ -2343,14 +2383,14 @@ function saveDay(){
   if(prod<=0){toast('Preencha os produtos vendidos',1);return;}
   if(paRec>paOff){toast('Confere os números, recusados não pode ser mais que oferecidos',1);return;}
 
-  const day={date,atend,prod,fat,paOff,paRec,vp,vpConv,cat,script,fala,note,diffs:[...selectedDiffs]};
+  const day={date,atend,prod,fat,paOff,paRec,vp,vpConv,abord,naos,conv30,cat,script,fala,note,diffs:[...selectedDiffs]};
   const ex=days.findIndex(d=>d.date===date);
   if(ex>=0){days[ex]=day;toast('Dia atualizado');}else{days.push(day);toast('Dia salvo');}
   days.sort((a,b)=>a.date.localeCompare(b.date));
   persist();renderAll();
 
   // reset
-  ['f-atend','f-prod','f-fat','f-paoff','f-parec','f-vp','f-vpconv','f-note'].forEach(i=>document.getElementById(i).value='');
+  ['f-atend','f-prod','f-fat','f-paoff','f-parec','f-vp','f-vpconv','f-abord','f-naos','f-conv30','f-note'].forEach(i=>document.getElementById(i).value='');
   ['f-cat','f-script','f-fala'].forEach(i=>document.getElementById(i).value='');
   selectedDiffs=[];document.querySelectorAll('#diff-chips .chip').forEach(c=>c.classList.remove('on'));
   document.getElementById('preview').style.display='none';
@@ -2364,21 +2404,23 @@ function saveQuick(){
   const atend=+document.getElementById('q-atend').value||0;
   const prod=+document.getElementById('q-prod').value||0;
   const fat=+document.getElementById('q-fat').value||0;
+  const abord=+document.getElementById('q-abord').value||0;
+  const naos=+document.getElementById('q-naos').value||0;
   if(!date){toast('Escolha a data',1);return;}
   if(atend<=0){toast('Preencha os atendimentos',1);return;}
   if(prod<=0){toast('Preencha os produtos',1);return;}
   const ex=days.findIndex(d=>d.date===date);
   if(ex>=0){
     // preserva campos já existentes, só atualiza os números
-    days[ex]={...days[ex],atend,prod,fat:fat||days[ex].fat};
+    days[ex]={...days[ex],atend,prod,fat:fat||days[ex].fat,abord:abord||days[ex].abord||0,naos:naos||days[ex].naos||0};
     toast('Dia atualizado');
   }else{
-    days.push({date,atend,prod,fat,paOff:0,paRec:0,vp:0,vpConv:0,cat:'',script:'',fala:'',note:'',diffs:[]});
+    days.push({date,atend,prod,fat,paOff:0,paRec:0,vp:0,vpConv:0,abord,naos,conv30:0,cat:'',script:'',fala:'',note:'',diffs:[]});
     toast('Registro rápido salvo');
   }
   days.sort((a,b)=>a.date.localeCompare(b.date));
   persist();renderAll();
-  ['q-atend','q-prod','q-fat'].forEach(i=>document.getElementById(i).value='');
+  ['q-atend','q-prod','q-fat','q-abord','q-naos'].forEach(i=>document.getElementById(i).value='');
   go('home');
 }
 
@@ -2386,7 +2428,7 @@ function deleteDay(date){days=days.filter(d=>d.date!==date);persist();renderAll(
 function clearAll(){if(!confirm('Apagar todos os dados? Não pode ser desfeito.'))return;days=[];persist();renderAll();toast('Tudo limpo');}
 
 // ════════ RENDER ALL ════════
-function renderAll(){renderStats();renderHero();renderGoalBanner();renderMeta();renderStreak();renderInsights();renderChart();renderReview();updateRevBadge();}
+function renderAll(){renderStats();renderProcesso();renderHero();renderGoalBanner();renderMeta();renderStreak();renderInsights();renderChart();renderReview();updateRevBadge();}
 
 // ════════ GOAL BANNER (degraus de meta) ════════
 const GOAL_STEPS=[1.36,1.65,1.78,1.90];
@@ -2478,9 +2520,31 @@ function renderMeta(){
 function renderStreak(){
   document.getElementById('s-hits').textContent=days.filter(d=>pa(d)>=1.9).length;
   document.getElementById('s-best').textContent=days.length?fmt(Math.max(...days.map(d=>pa(d)))):'—';
+  // streak com escudo: 1 dia de buraco não zera (loss aversion não pode trabalhar contra o hábito)
   let streak=0;
-  if(days.length){const dt=days.map(d=>d.date).sort();streak=1;for(let i=dt.length-1;i>0;i--){const diff=(new Date(dt[i])-new Date(dt[i-1]))/(864e5);if(diff<=1.5)streak++;else break;}}
+  if(days.length){const dt=days.map(d=>d.date).sort();streak=1;for(let i=dt.length-1;i>0;i--){const diff=(new Date(dt[i])-new Date(dt[i-1]))/(864e5);if(diff<=2.5)streak++;else break;}}
   document.getElementById('s-days').textContent=streak;
+}
+
+// ════════ PLACAR DE PROCESSO (metas de processo > metas de resultado, psicologia do esporte) ════════
+let degrauAtual=1;
+async function loadDegrau(){try{const r=await window.storage.get('beep_degrau_v1');degrauAtual=+r.value||1;}catch(e){degrauAtual=1;}const el=document.getElementById('d-degrau');if(el)el.textContent=degrauAtual;}
+function editDegrau(){
+  const v=prompt('Em qual degrau da escada de exposição você tá? (1 a 7)\n1 bom dia · 2 comentário · 3 VP pra parado · 4 VP andando · 5 pós-não em 60s · 6 difícil · 7 grupo',degrauAtual);
+  const n=+v;if(!v||isNaN(n)||n<1||n>7)return;
+  degrauAtual=n;document.getElementById('d-degrau').textContent=n;
+  try{window.storage.set('beep_degrau_v1',String(n));}catch(e){}
+  toast('Degrau '+n+' anotado. Bateu a meta 2 dias seguidos? Sobe.');
+}
+function renderProcesso(){
+  const setV=(id,v)=>{const el=document.getElementById(id);if(el)el.textContent=v;};
+  const dd=days.filter(d=>(d.abord||0)>0||(d.naos||0)>0);
+  if(!dd.length){setV('d-abord','—');setV('d-naos','—');setV('d-conv30','—');return;}
+  const last7=dd.slice(-7);
+  const avg=f=>fmt(last7.reduce((s,d)=>s+(d[f]||0),0)/last7.length,1);
+  setV('d-abord',avg('abord'));setV('d-naos',avg('naos'));
+  const cc=last7.filter(d=>(d.conv30||0)>0);
+  setV('d-conv30',cc.length?fmt(cc.reduce((s,d)=>s+d.conv30,0)/cc.length,1):'—');
 }
 
 function renderInsights(){
@@ -2568,6 +2632,8 @@ function heroAction(){
     if(temQuiz)return{tipo:'treino',titulo:'Treinar: '+d.label,meta:'Sua dificuldade de ontem, vira treino · ~4 min',act:()=>{go('quiz');startQuiz(d.study);}};
     return{tipo:'estudo',titulo:'Estudar: '+d.label,meta:'Sua dificuldade de ontem · ~5 min',act:()=>go(d.study)};
   }}
+  // treino do dia incompleto? (interleaving diário vem antes de tudo que é estudo)
+  if(typeof treinoDone==='function'&&!treinoDone())return{tipo:'treino',titulo:'Treino do dia: 5 minutos',meta:'1 flashcard + 1 cenário + 1 frase em voz alta',act:()=>go('treino')};
   // tem flashcard pra revisar hoje?
   const due=flashcards.filter(c=>srsDue(c.n)).length;
   if(due>0)return{tipo:'flash',titulo:`Revisar ${due} flashcard${due>1?'s':''} de hoje`,meta:'Repetição espaçada · ~3 min',act:()=>{go('flashcards');renderFc('Revisar hoje');document.querySelectorAll('.fcb').forEach(b=>b.classList.toggle('on',b.textContent.includes('Revisar')));}};
@@ -2720,7 +2786,7 @@ function renderObj(){
   document.getElementById('obj-list').innerHTML=objections.map(o=>`<div class="obj"><div class="obj-h" onclick="this.parentElement.classList.toggle('open')"><span class="obj-q">${o.q}</span><span class="obj-ch">▼</span></div><div class="obj-b"><div class="obj-r">${o.r}</div><div class="obj-w">→ Por que funciona: ${o.w}</div></div></div>`).join('');
 }
 function renderVp(){
-  document.getElementById('vp-list').innerHTML=vps.map(v=>`<div class="card"><div style="margin-bottom:8px"><span class="pill p-${v.c}">${v.tag}</span></div><p style="font-size:13px;color:var(--text);font-style:italic;line-height:1.6">${v.t}</p></div>`).join('');
+  document.getElementById('vp-list').innerHTML=vps.map(v=>`<div class="card"><div style="margin-bottom:8px"><span class="pill p-${v.c}">${v.tag}</span></div><p style="font-size:14px;color:var(--text);font-style:italic;line-height:1.6;margin-bottom:8px">${v.t}</p><button class="btn-gh" style="font-size:13px" onclick="falarTimer(this)">🎙 Treinar em voz alta (30s)</button></div>`).join('');
 }
 function renderPaFlow(){
   document.getElementById('pa-flow').innerHTML=paFlow.map(x=>`<div class="pa-row"><div class="pa-p">${x.p}</div><div class="pa-f">${x.f}</div><div class="pa-c">${x.c}</div></div>`).join('');
@@ -2779,36 +2845,71 @@ function renderFcFilters(){
 // ════════ TRILHA DE ESTUDO (progresso) ════════
 const TR_KEY='beep_trilha_v1';
 let trProgress={}; // {itemId: 'dominado'|'treinando'}
+// grupos = jornada da venda, na ordem em que ela acontece de verdade
 const TRILHA=[
-  {grp:'Fundamentos',items:[
-    {id:'tipos',n:'Tipos de cliente',go:'tipos'},
-    {id:'pa',n:'PA: kit embutido',go:'pa'},
-    {id:'escada',n:'Escada de produto',go:'escada'},
+  {grp:'1 · Dentro de você (antes de tudo)',items:[
     {id:'mente',n:'Mente do vendedor',go:'mente'},
     {id:'coragem',n:'Coragem: abordar sem travar',go:'coragem'},
   ]},
-  {grp:'Fechamento e objeções',items:[
+  {grp:'2 · Na rua (trazer gente)',items:[
+    {id:'vp',n:'VPs: abordagem',go:'vp'},
+    {id:'abordagem',n:'Abordagem: puxar pra loja',go:'abordagem'},
+  ]},
+  {grp:'3 · No balcão (vender)',items:[
+    {id:'tipos',n:'Tipos de cliente',go:'tipos'},
+    {id:'escada',n:'Escada de produto',go:'escada'},
+    {id:'pa',n:'PA: kit embutido',go:'pa'},
+  ]},
+  {grp:'4 · Fechar (a hora H)',items:[
     {id:'fechamento',n:'Técnicas de fechamento',go:'fechamento'},
     {id:'objecoes',n:'Objeções',go:'objecoes'},
     {id:'posnao',n:'Depois do "não"',go:'posnao'},
   ]},
-  {grp:'Relacionamento',items:[
-    {id:'vp',n:'VPs: abordagem',go:'vp'},
+  {grp:'5 · Depois da venda (a próxima)',items:[
     {id:'posvenda',n:'Pós-venda e recompra',go:'posvenda'},
   ]},
   {grp:'Scripts por produto',items:
     scripts.map((s,i)=>({id:'script_'+i,n:s.title,go:'scripts'}))
   },
 ];
+// DOMÍNIO COM VALIDADE (curva do esquecimento, Ebbinghaus): dominado vence e volta pra revisão.
+// Recertificar pelo quiz sobe o nível e alonga a validade: 7d → 21d → 60d (repetição espaçada).
+const TRMETA_KEY='beep_trilha_meta_v1';
+let trMeta={}; // {id:{ts,lvl}}
+const TR_INTERVALS=[7,21,60]; // dias de validade por nível
+function trValidade(id){
+  const m=trMeta[id];if(!m)return null;
+  const dias=TR_INTERVALS[Math.min(m.lvl||0,2)];
+  return m.ts+dias*864e5-Date.now(); // ms restantes (negativo = venceu)
+}
+function expireTrilha(){
+  let mudou=false;
+  Object.keys(trProgress).forEach(id=>{
+    if(trProgress[id]!=='dominado')return;
+    if(!trMeta[id]){trMeta[id]={ts:Date.now(),lvl:0};mudou=true;return;} // legado: ganha validade a partir de hoje
+    if(trValidade(id)<0){trProgress[id]='treinando';trMeta[id].exp=1;mudou=true;}
+  });
+  if(mudou){saveTrilha();saveTrilhaMeta();}
+}
 async function loadTrilha(){
   try{const r=await window.storage.get(TR_KEY);trProgress=r&&r.value?JSON.parse(r.value):{};}catch(e){trProgress={};}
+  try{const r=await window.storage.get(TRMETA_KEY);trMeta=r&&r.value?JSON.parse(r.value):{};}catch(e){trMeta={};}
+  expireTrilha();
   renderTrilha();
 }
 async function saveTrilha(){try{await window.storage.set(TR_KEY,JSON.stringify(trProgress));}catch(e){console.error(e);}}
+async function saveTrilhaMeta(){try{await window.storage.set(TRMETA_KEY,JSON.stringify(trMeta));}catch(e){console.error(e);}}
+function dominar(id){ // via quiz 80%+: recertificou = nível sobe, validade alonga
+  const lvl=trMeta[id]?Math.min((trMeta[id].lvl||0)+1,2):0;
+  trProgress[id]='dominado';
+  trMeta[id]={ts:Date.now(),lvl};
+  saveTrilha();saveTrilhaMeta();renderTrilha();
+  return TR_INTERVALS[lvl];
+}
 function setTr(id,state){
-  if(trProgress[id]===state)delete trProgress[id]; // toque de novo desmarca
-  else trProgress[id]=state;
-  saveTrilha();renderTrilha();
+  if(trProgress[id]===state){delete trProgress[id];delete trMeta[id];} // toque de novo desmarca
+  else{trProgress[id]=state;if(state==='dominado')trMeta[id]={ts:Date.now(),lvl:0};else delete trMeta[id];}
+  saveTrilha();saveTrilhaMeta();renderTrilha();
 }
 function renderTrilha(){
   const box=document.getElementById('trilha-list');if(!box)return;
@@ -2823,8 +2924,11 @@ function renderTrilha(){
   box.innerHTML=TRILHA.map(g=>{
     const items=g.items.map(it=>{
       const st=trProgress[it.id]||'';
+      let chip='';
+      if(st==='dominado'){const ms=trValidade(it.id);if(ms!==null){const dias=Math.max(0,Math.ceil(ms/864e5));chip=`<span style="font-size:12px;color:var(--text2)"> · vence em ${dias}d</span>`;}}
+      else if(trMeta[it.id]&&trMeta[it.id].exp)chip=`<span style="font-size:12px;color:var(--red);font-weight:700"> · venceu, refaz o quiz!</span>`;
       return `<div class="tr-item ${st?'s-'+st:''}">
-        <div class="tr-name" onclick="go('${it.go}')">${it.n}</div>
+        <div class="tr-name" onclick="go('${it.go}')">${it.n}${chip}</div>
         <div class="tr-btns">
           <button class="tr-b ${st==='treinando'?'on-treinando':''}" onclick="setTr('${it.id}','treinando')">Treinando</button>
           <button class="tr-b ${st==='dominado'?'on-dominado':''}" onclick="setTr('${it.id}','dominado')">Dominado</button>
@@ -2891,6 +2995,66 @@ const quizQuestions=[
          {t:'"Não tem problema se não quiser nenhuma."',ok:false}],
    fok:'Perfeito. Depois da pergunta de fechamento: silêncio. Quem fala primeiro perde. O desconforto empurra a decisão.',
    fno:'Você fez a pergunta certa e aí respondeu por ele, devolvendo a saída. Segura o silêncio, é a técnica mais forte que existe.'},
+  {tema:'vp',scn:'Na rua, uma mulher vem andando sozinha na sua direção, celular na bolsa.',says:'Você vai abordar. Como abre?',
+   opts:[{t:'"Oi moça, tudo bem? Película grátis, aproveita!"',ok:false},
+         {t:'[Chega de lado, com espaço] "Oi, com licença! Pergunta rápida sobre seu celular: ele tá com película ou tá na sorte? É que eu trabalho ali na Beep e tô entregando uns vales de proteção."',ok:true},
+         {t:'[Se aproxima por trás] "Ei, posso te mostrar uma coisa rapidinho?"',ok:false}],
+   fok:'Certo. De lado, com espaço, e a loja citada logo no início: dá contexto de trabalho, não de cantada. O gancho é sempre o CELULAR.',
+   fno:'Com mulher: um passo a mais de distância, nunca por trás, e fala da loja logo. Gritar "grátis" é filtro de panfleteiro, e susto mata a venda antes do oi.'},
+  {tema:'vp',scn:'Adolescente de uns 16 anos passa jogando no celular, tela já riscada.',says:'Você quer entregar o VP.',
+   opts:[{t:'"Ô jovem, seu pai deixa você colocar película? Chama ele aqui."',ok:false},
+         {t:'"Boa tarde, senhor! Temos uma promoção de películas imperdível hoje!"',ok:false},
+         {t:'"Ei, deixa eu ver uma coisa... cê joga nele, né? Dá pra ver pelo jeito que segura. E tá sem película memo? Vem aqui na loja comigo, 2 minuto, cê não paga nada."',ok:true}],
+   fok:'Exato. Adolescente decide (o adulto só paga): fala de igual, gancho no jogo, zero formalidade. "Senhor" e "promoção" soam velho e soam vendedor.',
+   fno:'Tratar adolescente como criança mata a conversa. Ele decide, o adulto paga. Fala de igual, gancho no que ele tá fazendo (jogo), e convite leve.'},
+  {tema:'vp',scn:'A pessoa aceitou vir com você até a loja, mas no caminho ficou desconfiada.',says:'"Mas eu não vou ter que comprar nada, né?"',
+   opts:[{t:'"Cê tá achando que é pegadinha, né? Todo mundo acha. É de graça memo, não precisa comprar NADA, só sentar. Se não curtir, levanta e vai embora."',ok:true},
+         {t:'"Não! Quer dizer... só se você quiser, a gente tem umas opções boas também..."',ok:false},
+         {t:'"Comprar não, mas dá uma olhadinha nas capas que vale a pena."',ok:false}],
+   fok:'Perfeito. Etiquetagem emocional (Voss): nomear a desconfiança dela ("cê tá achando que é pegadinha") desarma na hora. E "não precisa comprar nada" é verdade, usa sem medo.',
+   fno:'Titubear ou já empurrar produto confirma a desconfiança dela. Nomeia a emoção ("tá achando que é pegadinha, né?") e reafirma o zero compromisso. Ela relaxa e senta.'},
+  {tema:'coragem',scn:'Você levou um "não" seco e grosso. A próxima pessoa já vem andando na sua direção.',says:'O que você faz nos próximos 10 segundos?',
+   opts:[{t:'Dá uma pausa de uns 10 minutos pra recompor, ninguém é de ferro.',ok:false},
+         {t:'1 suspiro fisiológico, "esse não era dela, não meu", ombros pra trás e aborda a próxima em menos de 60 segundos.',ok:true},
+         {t:'Aborda a próxima na hora, do jeito que tá, sem parar pra respirar.',ok:false}],
+   fok:'Exato. O reset de 10s corta a bola de neve: sem ele, o não da pessoa 3 contamina a abordagem da pessoa 4. E abordar logo (menos de 60s) é o degrau 5 da escada, treina exatamente seu ponto fraco.',
+   fno:'Pausa longa deixa o não crescer na cabeça (ruminação). E abordar carregando a energia do não passa pro próximo. O caminho: suspiro, frase de reset, postura, próxima em 60s.'},
+  {tema:'coragem',scn:'Fim do dia: 20 abordagens, 0 vendas do VP. O gerente nem olhou pra você.',says:'Como você fecha o dia na sua cabeça?',
+   opts:[{t:'"Dia perdido. Vou diminuir as abordagens que não tá valendo a pena."',ok:false},
+         {t:'"Placar batido: 20 abordagens. Dia GANHO. Venda é consequência, amanhã ela vem."',ok:true},
+         {t:'"Preciso que alguém reconheça isso, senão não dá."',ok:false}],
+   fok:'Certo. Meta de processo (20 abordagens) você bateu, e ela é a ÚNICA coisa que você controla. Quem roda na base do elogio seca quando o elogio não vem. Você se paga com dados.',
+   fno:'Resultado e elogio não dependem de você; abordagem sim. Dia de 20 abordagens e 0 vendas é dia ganho no placar de processo: é ele que constrói o vendedor que não despenca.'},
+  {tema:'escada',scn:'Cliente amou a Fiber na mão, mas travou quando ouviu R$109.',says:'"Nossa, é mais do que eu pensava..."',
+   opts:[{t:'"Sem problema. Então te mostro a Diamond: proteção top também, não trinca, some na tela. Com o vale fica R$79."',ok:true},
+         {t:'"Mas a Fiber vale cada centavo, é a melhor! Tem certeza que não leva?"',ok:false},
+         {t:'"Tá bom, então leva a grátis do vale mesmo."',ok:false}],
+   fok:'Certo. Escada de recuo: desceu UM degrau (Diamond R$79) sem largar a proteção. O piso é a de máquina R$50, nunca a grátis pra quem já pediu proteção.',
+   fno:'Defender o preço vira queda de braço, e pular direto pra grátis joga fora a venda. Hesitou no preço? Desce UM degrau: Diamond R$79, depois máquina R$50. Piso, nunca a grátis.'},
+  {tema:'objecoes',scn:'Senhora de uns 70 anos gostou da película boa, mas hesitou.',says:'"Vou perguntar pro meu filho primeiro, ele que entende."',
+   opts:[{t:'"A senhora não precisa do seu filho pra isso, é só uma película!"',ok:false},
+         {t:'"Perfeito, e que bom que tem quem cuide. Liga pra ele agora aqui comigo que eu explico rapidinho. Se não atender, anoto tudo num papel pra senhora mostrar em casa, com o vale grampeado."',ok:true},
+         {t:'"Tá bom, quando ele deixar a senhora volta."',ok:false}],
+   fok:'Exato. Não briga com o decisor externo: traz ele pra conversa AGORA (ligação) ou arma a senhora com tudo anotado. Nos dois casos a venda continua viva.',
+   fno:'Desdenhar do filho quebra a confiança dela; "volta depois" é venda morta. Traz o decisor pra agora (liga) ou prepara a volta (papel + vale grampeado).'},
+  {tema:'mente',scn:'Cliente comenta, meio rindo:',says:'"Eu vivo quebrando tela, já é a terceira esse ano..."',
+   opts:[{t:'"Terceira?! Então você PRECISA da mais cara, sem dúvida!"',ok:false},
+         {t:'"Quebra muita tela?" [e espera ele continuar]',ok:true},
+         {t:'"Pois é, todo mundo quebra. Vou te mostrar as películas."',ok:false}],
+   fok:'Perfeito. Espelhamento (Voss): repetir as últimas palavras em tom de pergunta faz ELE continuar falando. Ele mesmo vai te contar tudo que você precisa pra fechar.',
+   fno:'Pular pro produto desperdiça o ouro que ele te deu. Espelha ("quebra muita tela?") e deixa ele falar: a história DELE é seu melhor argumento de venda.'},
+  {tema:'abordagem',scn:'Pessoa parada na porta da loja, olhando a vitrine há 1 minuto.',says:'Você se aproxima. O que fala?',
+   opts:[{t:'"Posso te ajudar?"',ok:false},
+         {t:'[Chega do lado, olhando a vitrine junto] "Tá procurando algo específico ou só namorando os produto? Se for película eu te adianto: tenho um vale que te dá uma sem custo."',ok:true},
+         {t:'"Entra, entra! Lá dentro tem muito mais coisa!"',ok:false}],
+   fok:'Certo. "Posso te ajudar?" tem resposta automática ("só tô olhando") e mata o papo. Chegar DO LADO olhando junto é postura de aliado, não de vendedor.',
+   fno:'"Posso te ajudar?" dispara o "só tô olhando" automático. Chega do lado, olha a vitrine JUNTO, e abre com pergunta leve + o vale como cortesia.'},
+  {tema:'vp',scn:'No balcão, você fez as 3 portas e ele escolheu "proteção". Fez as perguntas de dor. Agora vem a pergunta de bolso.',says:'Qual é a pergunta certa (sem falar preço)?',
+   opts:[{t:'"Você quer a de R$50, R$79 ou R$109?"',ok:false},
+         {t:'"Cê prefere resolver o dia a dia, ou blindar de vez e esquecer que película existe?"',ok:true},
+         {t:'"Quanto você pretende gastar?"',ok:false}],
+   fok:'Exato. A pergunta de bolso mede o investimento SEM citar número: "blindar de vez" te manda pra Fiber, "dia a dia" te manda pra máquina com contraste. Ele escolheu, você só entregou.',
+   fno:'Falar preço ou perguntar "quanto quer gastar" trava e soa vendedor. A pergunta de bolso usa DESEJO como régua: dia a dia vs blindar de vez. Zero número, e ele mesmo aponta o caminho.'},
 ];
 let quizIdx=0,quizScore=0,quizAns=false,quizOrder=[],quizTema=null;
 function quizThemeCount(tema){return quizQuestions.filter(q=>q.tema===tema).length;}
@@ -2908,7 +3072,7 @@ function renderQuiz(){
     // DOMÍNIO CONQUISTADO: ≥80% domina o tema, ≥50% treina
     let dominioMsg='';
     if(quizTema){
-      if(pct>=80){trProgress[quizTema]='dominado';saveTrilha();renderTrilha();dominioMsg='<div style="color:var(--green);font-weight:700;margin-top:6px">✅ Você DOMINOU este tema na trilha!</div>';}
+      if(pct>=80){const dias=dominar(quizTema);dominioMsg=`<div style="color:var(--green);font-weight:700;margin-top:6px">✅ Tema DOMINADO por ${dias} dias! Depois disso ele volta pro quiz (memória precisa de manutenção).</div>`;}
       else if(pct>=50){if(trProgress[quizTema]!=='dominado'){trProgress[quizTema]='treinando';saveTrilha();renderTrilha();}dominioMsg='<div style="color:var(--accent);font-weight:700;margin-top:6px">📈 Marcado como "treinando". Faça 80%+ pra dominar.</div>';}
     }
     let msg;
@@ -2921,16 +3085,29 @@ function renderQuiz(){
   }
   const q=quizOrder[quizIdx];quizAns=false;
   const opts=[...q.opts].sort(()=>Math.random()-0.5);
+  // PENSA ANTES: tentar lembrar antes de ver as opções (testing effect, Roediger & Karpicke).
+  // Reconhecer é fácil; LEMBRAR é o que grava.
   box.innerHTML=`<div class="quiz-card">
     <div class="quiz-prog"><span>Situação ${quizIdx+1} de ${quizOrder.length}</span><span>Acertos: ${quizScore}</span></div>
     <div class="quiz-scn">${q.scn}</div>
     <div class="quiz-says">${q.says}</div>
-    <div id="quiz-opts"></div>
-    <div class="quiz-fb" id="quiz-fb"></div>
-    <button class="quiz-nx" id="quiz-nx" onclick="quizNext()">Próxima →</button>
+    <div id="quiz-think" style="background:var(--accent-dim);border:1px dashed var(--accent-bd);border-radius:var(--r-md);padding:14px;margin:10px 0;text-align:center">
+      <div style="font-weight:700;margin-bottom:4px">🧠 O que VOCÊ falaria agora?</div>
+      <div style="font-size:14px;color:var(--text2);margin-bottom:10px">Fala baixinho ou pensa a frase inteira. Só depois abre as opções, é aí que grava de verdade.</div>
+      <button class="btn btn-sm" onclick="quizReveal()">Pensei, mostrar as opções</button>
+    </div>
+    <div id="quiz-rest" style="display:none">
+      <div id="quiz-opts"></div>
+      <div class="quiz-fb" id="quiz-fb"></div>
+      <button class="quiz-nx" id="quiz-nx" onclick="quizNext()">Próxima →</button>
+    </div>
   </div>`;
   const o=document.getElementById('quiz-opts');
   opts.forEach(op=>{const b=document.createElement('button');b.className='quiz-op';b.textContent=op.t;b.onclick=()=>quizAnswer(op.ok,q,b);o.appendChild(b);});
+}
+function quizReveal(){
+  const t=document.getElementById('quiz-think'),r=document.getElementById('quiz-rest');
+  if(t)t.style.display='none';if(r)r.style.display='block';
 }
 function quizAnswer(ok,q,btn){
   if(quizAns)return;quizAns=true;
@@ -2941,6 +3118,97 @@ function quizAnswer(ok,q,btn){
   document.getElementById('quiz-nx').classList.add('show');
 }
 function quizNext(){quizIdx++;renderQuiz();}
+
+// ════════ TREINO DO DIA (5 min: interleaving + retrieval + produção em voz alta) ════════
+let treinoState={f:0,q:0,v:0};
+const treinoKey=()=>'beep_treino_'+todayStr();
+function treinoDone(){return (treinoState.f+treinoState.q+treinoState.v)>=3;}
+function daySeed(){const s=todayStr();let h=0;for(const c of s)h=(h*31+c.charCodeAt(0))%9973;return h;}
+async function loadTreino(){
+  try{const r=await window.storage.get(treinoKey());treinoState=r&&r.value?JSON.parse(r.value):{f:0,q:0,v:0};}catch(e){treinoState={f:0,q:0,v:0};}
+  renderTreino();
+}
+function saveTreino(){try{window.storage.set(treinoKey(),JSON.stringify(treinoState));}catch(e){}}
+function treinoMark(step){
+  if(treinoState[step])return;
+  treinoState[step]=1;saveTreino();renderTreino();
+  if(treinoDone())toast('Treino do dia completo! Estudo pago. 🔥');
+  if(typeof renderHero==='function')renderHero();
+}
+// sorteio estável por dia: o exercício não troca no meio do dia
+function tdPicks(){
+  const s=daySeed();
+  const due=flashcards.filter(c=>srsDue(c.n));
+  const fc=(due.length?due:flashcards)[s%(due.length||flashcards.length)];
+  const qz=quizQuestions[s%quizQuestions.length];
+  const fr=vps[s%vps.length];
+  return{fc,qz,fr};
+}
+function renderTreino(){
+  const box=document.getElementById('treino-box');if(!box)return;
+  const done=treinoState.f+treinoState.q+treinoState.v;
+  const bar=document.getElementById('td-bar'),pct=document.getElementById('td-pct');
+  if(bar)bar.style.width=(done/3*100)+'%';
+  if(pct)pct.textContent=done+'/3';
+  const badge=document.getElementById('treino-badge');
+  if(badge){badge.textContent=treinoDone()?'✓':(3-done)+' de 3';}
+  const{fc,qz,fr}=tdPicks();
+  const okTag=t=>`<div style="color:var(--green);font-weight:700;margin-bottom:6px">✓ ${t} feito</div>`;
+  // 1 · LEMBRAR (flashcard, retrieval)
+  let h1=`<div class="card" style="margin-bottom:12px"><div style="font-weight:700;margin-bottom:6px">1 · Lembrar 🧠</div>`;
+  if(treinoState.f)h1+=okTag('Flashcard');
+  else{
+    h1+=`<div style="font-size:14px;margin-bottom:8px">Antes de virar, fala baixinho: preço, garantia e pra onde subir.</div>
+    <div style="background:var(--surface2);border-radius:var(--r-md);padding:14px;text-align:center;margin-bottom:8px">
+      <div style="font-weight:700;font-size:16px">${fc.n}</div><div style="font-size:13px;color:var(--text2)">${fc.cat}</div>
+      <div id="td-fc-back" style="display:none;margin-top:8px;font-size:14px">💰 ${fc.p} · 🛡 ${fc.w}<br>⬆ Subir para: ${fc.nx}</div>
+    </div>
+    <div id="td-fc-b1"><button class="btn btn-sm" onclick="document.getElementById('td-fc-back').style.display='block';document.getElementById('td-fc-b1').style.display='none';document.getElementById('td-fc-b2').style.display='flex'">Virar</button></div>
+    <div id="td-fc-b2" style="display:none;gap:8px"><button class="btn btn-sm" onclick="srsHit('${fc.n.replace(/'/g,"\\'")}',true);treinoMark('f')">Acertei ✓</button><button class="btn-gh" onclick="srsHit('${fc.n.replace(/'/g,"\\'")}',false);treinoMark('f')">Errei</button></div>`;
+  }
+  h1+=`</div>`;
+  // 2 · DECIDIR (cenário, produção antes de ver: generation effect)
+  let h2=`<div class="card" style="margin-bottom:12px"><div style="font-weight:700;margin-bottom:6px">2 · Decidir 🎯</div>`;
+  if(treinoState.q)h2+=okTag('Cenário');
+  else{
+    h2+=`<div style="font-size:14px;margin-bottom:4px">${qz.scn}</div>
+    <div style="font-size:14px;color:var(--accent);font-style:italic;margin-bottom:8px">${qz.says}</div>
+    <textarea id="td-q-txt" placeholder="Escreve aqui (ou fala em voz alta) o que VOCÊ responderia..." style="margin-bottom:8px"></textarea>
+    <div id="td-q-b1"><button class="btn btn-sm" onclick="document.getElementById('td-q-r').style.display='block';document.getElementById('td-q-b1').style.display='none'">Ver a resposta sugerida</button></div>
+    <div id="td-q-r" style="display:none">
+      <div style="font-size:14px;background:var(--green-dim);border-radius:var(--r-sm);padding:9px 11px;margin-bottom:6px"><strong style="color:var(--green)">Sugerida:</strong> ${qz.opts.find(o=>o.ok).t}</div>
+      <div style="font-size:13.5px;color:var(--text2);margin-bottom:8px">${qz.fok}</div>
+      <div style="display:flex;gap:8px"><button class="btn btn-sm" onclick="treinoMark('q')">Cheguei perto ✓</button><button class="btn-gh" onclick="tdQErrou()">Errei feio</button></div>
+    </div>`;
+  }
+  h2+=`</div>`;
+  // 3 · FALAR (voz alta, production effect)
+  let h3=`<div class="card" style="margin-bottom:12px"><div style="font-weight:700;margin-bottom:6px">3 · Falar 🎙</div>`;
+  if(treinoState.v)h3+=okTag('Voz alta');
+  else{
+    h3+=`<div style="font-size:14px;margin-bottom:8px">Fala essa frase em voz alta até o timer zerar, variando o jeito. Falar grava o dobro de só ler (production effect).</div>
+    <div style="background:var(--accent-dim);border-left:3px solid var(--accent);border-radius:0 var(--r-sm) var(--r-sm) 0;padding:10px 12px;margin-bottom:8px;font-weight:500">${fr.t}</div>
+    <button class="btn btn-sm" onclick="falarTimer(this,()=>treinoMark('v'))">🎙 Começar (30s)</button>`;
+  }
+  h3+=`</div>`;
+  let fim='';
+  if(done>=3)fim=`<div class="ins good"><span class="ins-ic">🏆</span><span>Treino do dia completo. Amanhã tem outro sorteio. Constância vale mais que maratona: 5 min todo dia ganha de 1h no domingo.</span></div>`;
+  box.innerHTML=h1+h2+h3+fim;
+}
+function tdQErrou(){
+  const{qz}=tdPicks();
+  addErro({fonte:'Treino do dia',scn:qz.scn,says:qz.says,certa:qz.opts.find(o=>o.ok).t,porque:qz.fno});
+  treinoMark('q');
+}
+// timer de fala (usado no treino e nas frases de ouro da aula VP)
+function falarTimer(btn,cb){
+  if(btn.dataset.run)return;btn.dataset.run='1';
+  let t=30;btn.textContent='🎙 Falando... 30s';
+  const iv=setInterval(()=>{t--;
+    if(t<=0){clearInterval(iv);btn.textContent='✓ Falou! De novo?';btn.dataset.run='';if(cb)cb();}
+    else btn.textContent='🎙 Falando... '+t+'s';
+  },1000);
+}
 
 // ════════ CADERNO DE ERROS ════════
 let erros=[];
@@ -2961,11 +3229,11 @@ function renderErros(){
   if(!erros.length){box.innerHTML='<div class="ins good"><span class="ins-ic">🎉</span><span>Caderno limpo! Você não errou nada ainda, ou já revisou tudo. Faça um quiz pra testar.</span></div>';return;}
   let html=`<div class="hbox hb-yl"><div class="hb-l">Como usar</div>Releia cada situação que você errou, foque na resposta certa e no porquê. Quando dominar, limpe o caderno. <span class="ins-link" onclick="limparErros()">Limpar tudo</span></div>`;
   html+=erros.map(e=>`<div class="card">
-    <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:var(--text3);margin-bottom:6px">${e.fonte} · ${e.data}</div>
+    <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:var(--text3);margin-bottom:6px">${e.fonte} · ${e.data}</div>
     <div style="font-size:14px;margin-bottom:5px">${e.scn}</div>
-    ${e.says?`<div style="font-size:13.5px;color:var(--accent);font-style:italic;margin-bottom:9px">${e.says}</div>`:''}
-    <div style="font-size:13px;background:var(--green-dim);border-radius:var(--r-sm);padding:9px 11px;margin-bottom:6px"><strong style="color:var(--green)">✓ Resposta certa:</strong> ${e.certa}</div>
-    <div style="font-size:12.5px;color:var(--text2);line-height:1.55">${e.porque||''}</div>
+    ${e.says?`<div style="font-size:14px;color:var(--accent);font-style:italic;margin-bottom:9px">${e.says}</div>`:''}
+    <div style="font-size:14px;background:var(--green-dim);border-radius:var(--r-sm);padding:9px 11px;margin-bottom:6px"><strong style="color:var(--green)">✓ Resposta certa:</strong> ${e.certa}</div>
+    <div style="font-size:13.5px;color:var(--text2);line-height:1.55">${e.porque||''}</div>
   </div>`).join('');
   box.innerHTML=html;
 }
@@ -3437,7 +3705,7 @@ function libItem(p){
       <div class="sc-r"><div class="sc-rl">Garantia</div><div class="sc-rv">${p.w}</div></div>
       <div class="sc-r"><div class="sc-rl">Subir para</div><div class="sc-rv" style="color:var(--yellow)">${p.nx}</div></div>
       <div class="sc-r"><div class="sc-rl">💬 Como falar</div><div class="sc-rv" style="font-style:italic">${p.s}</div></div>
-      <div class="sc-r"><div class="sc-rl">✅ Atend. Mínimo</div><div class="sc-rv" style="font-size:12px;color:var(--text2)">${atendMinFor(p.cat).join(' · ')}</div></div>
+      <div class="sc-r"><div class="sc-rl">✅ Atend. Mínimo</div><div class="sc-rv" style="font-size:13px;color:var(--text2)">${atendMinFor(p.cat).join(' · ')}</div></div>
       ${premiumBlock(p)}
     </div></div>`;
 }
@@ -3611,6 +3879,8 @@ function init(){
   loadSrs().then(()=>{updateFcDue();});
   loadLast();
   loadErros();
+  loadDegrau();
+  loadTreino();
   load();
   renderFocoHoje();
   maybeOnboard();
